@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>裏・16コア性格診断 - あなたの真の毒舌性格を暴露</title>
+  <meta name="description" content="16Personalitiesの裏の顔を暴く！あなたの隠された辛辣な性格・毒舌ラベル・トリセツを徹底分析する診断テスト。">
+  <!-- OGP / X (Twitter) Cards -->
+  <meta property="og:title" content="裏・16コア性格診断 - あなたの真の毒舌性格を暴露">
+  <meta property="og:description" content="16Personalitiesの裏の顔を暴く！あなたの隠された辛辣な性格を徹底分析。">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #ef4444;
+      --accent-hover: #dc2626;
+      --border-color: #334155;
+      
+      --nt-color: #a855f7;
+      --nf-color: #22c55e;
+      --sj-color: #3b82f6;
+      --sp-color: #eab308;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px 12px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    p.subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* 進行状況バー */
+    .progress-container {
+      width: 100%;
+      background-color: #020617;
+      border-radius: 999px;
+      height: 10px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ef4444, #f97316);
+      transition: width 0.3s ease;
+    }
+
+    /* 質問カード */
+    .question-card {
+      background-color: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .question-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option-btn {
+      background-color: #1e293b;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 12px;
+      border-radius: 8px;
+      text-align: left;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option-btn:hover {
+      border-color: var(--accent);
+      background-color: #334155;
+    }
+
+    .option-btn.selected {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* ナビゲーションボタン */
+    .nav-btns {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-prev {
+      background-color: #334155;
+      color: var(--text-main);
+    }
+
+    .btn-next {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .btn-next:disabled {
+      background-color: #475569;
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* 結果画面 */
+    #result-page {
+      display: none;
+      text-align: center;
+    }
+
+    .type-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .type-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .type-code {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .result-section {
+      background-color: #0f172a;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      text-align: left;
+      border: 1px solid var(--border-color);
+    }
+
+    .result-section h3 {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 4px;
+    }
+
+    .result-section p, .result-section ul {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .result-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .status-bar-container {
+      margin-bottom: 10px;
+    }
+
+    .status-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    .status-bar-bg {
+      background-color: #334155;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .status-bar-fill {
+      height: 100%;
+      background-color: var(--accent);
+    }
+
+    .share-btn {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1px solid #334155;
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1rem;
+      margin-top: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .share-btn:hover {
+      background-color: #111827;
+    }
+
+    .retry-btn {
+      background-color: transparent;
+      color: var(--text-muted);
+      border: none;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>裏・16コア性格診断</h1>
+    <p class="subtitle">※閲覧注意：あなたの「隠された毒舌な真実」を露わにします</p>
+  </header>
+
+  <div id="quiz-page">
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    
+    <div id="questions-container"></div>
+
+    <div class="nav-btns">
+      <button class="btn btn-prev" id="prev-btn" onclick="prevPage()" style="display:none;">前へ</button>
+      <button class="btn btn-next" id="next-btn" onclick="nextPage()" disabled>次へ</button>
+    </div>
+  </div>
+
+  <div id="result-page">
+    <span class="type-badge" id="type-badge">分析完了</span>
+    <h2 class="type-title" id="type-title">--</h2>
+    <div class="type-code" id="type-code">----</div>
+
+    <div class="result-section">
+      <h3>🔥 本性の毒舌暴露</h3>
+      <p id="type-desc">--</p>
+    </div>
+
+    <div class="result-section">
+      <h3>⚠️ 勘違いされがちな痛い特徴</h3>
+      <p id="type-flaw">--</p>
+    </div>
+
+    <div class="result-section">
+      <h3>📊 毒舌ステータス</h3>
+      <div id="status-bars"></div>
+    </div>
+
+    <div class="result-section">
+      <h3>📖 取扱説明書（トリセツ）</h3>
+      <ul id="type-manual"></ul>
+    </div>
+
+    <button class="share-btn" onclick="shareX()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      結果をXでポストして暴く
+    </button>
+    <button class="retry-btn" onclick="location.reload()">もう一度診断する</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  // E vs I (1-7)
+  { q: "大人数の飲み会やイベントが終わった直後のあなたの心境は？", options: [{ text: "楽しかった！次どこいく？", score: { E: 1 } }, { text: "やっと終わった…一人にしてくれ", score: { I: 1 } }] },
+  { q: "休日の理想の過ごし方は？", options: [{ text: "外に出て誰かと遊ぶ・出かける", score: { E: 1 } }, { text: "家から一歩も出ずにネットや趣味に没頭", score: { I: 1 } }] },
+  { q: "自分の考えていることは？", options: [{ text: "口に出して話しながら整理するタイプ", score: { E: 1 } }, { text: "頭の中でしっかり完成させてから話すタイプ", score: { I: 1 } }] },
+  { q: "新しい環境に入った時、あなたの行動は？", options: [{ text: "自分から積極的に話しかけにいく", score: { E: 1 } }, { text: "様子を見て誰かが話しかけてくるのを待つ", score: { I: 1 } }] },
+  { q: "静かな部屋で1人で作業しているとどうなる？", options: [{ text: "退屈して誰かに連絡したくなる", score: { E: 1 } }, { text: "集中力が限界まで高まる", score: { I: 1 } }] },
+  { q: "注目の的になることに対してどう思う？", options: [{ text: "快感、できれば目立ちたい", score: { E: 1 } }, { text: "勘弁してほしい、視線が苦痛", score: { I: 1 } }] },
+  { q: "愚痴や悩みがある時は？", options: [{ text: "友達に話しまくってスッキリさせる", score: { E: 1 } }, { text: "自分の中で反芻して自己完結させる", score: { I: 1 } }] },
+
+  // N vs S (8-14)
+  { q: "物事を考える時に重要なのは？", options: [{ text: "未来の可能性や「もし〜なら」という妄想", score: { N: 1 } }, { text: "目の前の現実データと過去の実績", score: { S: 1 } }] },
+  { q: "説明を受ける時に好むのは？", options: [{ text: "全体像や概念・ビジョンから話してほしい", score: { N: 1 } }, { text: "具体例や手順を1から順に話してほしい", score: { S: 1 } }] },
+  { q: "ぼーっとしている時、頭の中にあるのは？", options: [{ text: "宇宙の終わりや突飛なアイデアの妄想", score: { N: 1 } }, { text: "今日のご飯や明日の予定などの現実的なこと", score: { S: 1 } }] },
+  { q: "マニュアルや取扱説明書を読むタイプ？", options: [{ text: "読まずに直感でいじり倒す", score: { N: 1 } }, { text: "しっかり読んでから正しく使う", score: { S: 1 } }] },
+  { q: "会話の中でよく使うフレーズは？", options: [{ text: "「要するに」「概念的には」「例えると」", score: { N: 1 } }, { text: "「実際」「具体的に言うと」「過去の例では」", score: { S: 1 } }] },
+  { q: "小説や映画に求めるものは？", options: [{ text: "伏線回収や裏の考察・深いテーマ性", score: { N: 1 } }, { text: "わかりやすい展開とリアルな描写", score: { S: 1 } }] },
+  { q: "部屋の模様替えをするなら？", options: [{ text: "ガラッとテーマを変えて冒険してみる", score: { N: 1 } }, { text: "使いやすさや導線を重視して実用的に配置", score: { S: 1 } }] },
+
+  // T vs F (15-21)
+  { q: "友人が「恋人と別れて辛い…」と相談してきたら？", options: [{ text: "「なんで別れたの？何が悪かったの？」と原因分析", score: { T: 1 } }, { text: "「辛かったね…大変だったね」と寄り添い感情共感", score: { F: 1 } }] },
+  { q: "議論の場で優先するべきなのは？", options: [{ text: "感情を排除した客観的な事実と論理", score: { T: 1 } }, { text: "みんなの感情や人間関係の和", score: { F: 1 } }] },
+  { q: "他人の失敗を見た時、真っ先に思うのは？", options: [{ text: "「効率が悪い」「やり方が間違っている」", score: { T: 1 } }, { text: "「大丈夫かな」「落ち込んでいないかな」", score: { F: 1 } }] },
+  { q: "褒め言葉としてより嬉しいのは？", options: [{ text: "「優秀だね」「頭がいいね」", score: { T: 1 } }, { text: "「優しいね」「いい人だね」", score: { F: 1 } }] },
+  { q: "映画を見て泣くことはある？", options: [{ text: "めったに泣かない、感情移入しづらい", score: { T: 1 } }, { text: "すぐ感情移入してボロボロ泣く", score: { F: 1 } }] },
+  { q: "間違った意見を言っている人がいたら？", options: [{ text: "事実を淡々と指摘して訂正する", score: { T: 1 } }, { text: "場の空気を壊さないように遠回しに言うかスルー", score: { F: 1 } }] },
+  { q: "決断を下す時の基準は？", options: [{ text: "損するか得するか、合理的かどうか", score: { T: 1 } }, { text: "自分や周囲が納得して気持ちよくいられるか", score: { F: 1 } }] },
+
+  // J vs P (22-28)
+  { q: "旅行に行く時の計画の立て方は？", options: [{ text: "分刻みでスケジュールと予約をガチガチに固める", score: { J: 1 } }, { text: "行き先だけ決めてあとは現地で気分次第", score: { P: 1 } }] },
+  { q: "夏休みの宿題や仕事のタスクは？", options: [{ text: "計画を立ててコツコツ前倒しで終わらせる", score: { J: 1 } }, { text: "締め切り直前まで手を付けず一気にやる", score: { P: 1 } }] },
+  { q: "部屋やデスクの状況は？", options: [{ text: "定位置が決まっていて整理整頓されている", score: { J: 1 } }, { text: "散らかっているが自分なりのカオスな配置がある", score: { P: 1 } }] },
+  { q: "予定が突然キャンセルされたら？", options: [{ text: "計画が狂ってめちゃくちゃイライラする", score: { J: 1 } }, { text: "「自由時間できた！」とむしろラッキーに思う", score: { P: 1 } }] },
+  { q: "目標を設定したらどうする？", options: [{ text: "達成までのロードマップを作って順調に進める", score: { J: 1 } }, { text: "その時のモチベーションに任せて臨機応変に動く", score: { P: 1 } }] },
+  { q: "買い物をするときは？", options: [{ text: "買いたいものをリストアップしてから店に行く", score: { J: 1 } }, { text: "店内をぶらぶらして直感で気になったものを買う", score: { P: 1 } }] },
+  { q: "「ルールや決まり事」に対する考え方は？", options: [{ text: "守るべきものであり、ないと社会が崩壊する", score: { J: 1 } }, { text: "状況に応じて柔軟に変えたり破ってもいい", score: { P: 1 } }] }
+];
+
+const results = {
+  INTJ: { title: "冷血冷酷な独裁参謀", group: "NT", desc: "愚民を見下す孤高の冷血モンスター。自分以外は全員無能だと思っており、他人の感情論に反吐が出るタイプ。", flaw: "アドバイスが正論すぎて友達が離れていく", status: { 毒舌度: 95, 協調性: 15, プライド: 99 }, manual: ["無駄な雑談を振らないでください", "感情論ではなくデータで話してください", "愚痴を言っても共感は期待しないでください"] },
+  INTP: { title: "社会不適合な理屈モンスター", group: "NT", desc: "頭の中だけ天才で行動力ゼロのネット弁慶。揚げ足取りが得意で、会話の9割を心の中で論破して満足している。", flaw: "「それってあなたの感想ですよね？」を素で言う", status: { 毒舌度: 90, 協調性: 20, 実行力: 10 }, manual: ["「で、要するに何？」と詰めないでください", "興味のない話題では露骨に白目を剥きます", "締め切りを守ると思わないでください"] },
+  ENTJ: { title: "パワハラ気質の暴君クラッシャー", group: "NT", desc: "効率重視の圧迫面接官。成果を出さない人間を生ゴミ扱いし、周囲を駒としか見ていない最恐の独裁者。", flaw: "味方すら恐怖で全員敵にまわす", status: { 毒舌度: 100, 協調性: 10, 圧迫感: 100 }, manual: ["遅刻と無能な言い訳は死を意味します", "指示には速攻で従ってください", "涙の訴えは一切通用しません"] },
+  ENTP: { title: "レスバ中毒のひろゆき信者", group: "NT", desc: "相手を論破することだけに快感を覚えるイカれ悪魔。嘘でも屁理屈でも勝てばOK。場を荒らすのが生きがい。", flaw: "面白がって余計な一言を言い大炎上する", status: { 毒舌度: 98, 協調性: 5, 煽り性能: 100 }, manual: ["議論を挑むと朝までレスバされます", "マジレスすると爆笑して煽ってきます", "真面目な雰囲気をぶち壊します"] },
+
+  INFJ: { title: "陰湿な教祖様", group: "NF", desc: "表面は仏、心は暗黒のサイコパス。静かに人間を観察し、限界を迎えると予告なしで人生から永久追放（ドアスラム）する。", flaw: "勝手に期待して勝手に失望して人間関係を切る", status: { 毒舌度: 85, 協調性: 60, 根に持つ度: 100 }, manual: ["心のドアを一度閉められたら二度と開きません", "表面上の笑顔に騙されないでください", "突然音信不通になります"] },
+  INFP: { title: "メンヘラ被害妄想ポエマー", group: "NF", desc: "ガラスのハートを持つ自己中ポエマー。「私なんて…」と悲劇のヒロイン気取りだが、実は承認欲求の化け物。", flaw: "ちょっと怒られただけで「存在を否定された」と大騒ぎ", status: { 毒舌度: 60, 協調性: 40, メンヘラ度: 100 }, manual: ["語気強めに喋ると泣きます", "アドバイスではなく全肯定だけを求めています", "SNSの病み投稿はスルーしてください"] },
+  ENFJ: { title: "押し売りお節介カルトリーダー", group: "NF", desc: "「あなたのために」が口癖の善意の暴走機関車。自分の価値観が絶対正しいと信じて疑わない宗教的おせっかいババア。", flaw: "親切の押し売りで相手を窒息させる", status: { 毒舌度: 70, 協調性: 85, 同調圧力: 95 }, manual: ["「ノー」と言わせない圧があります", "感謝の言葉を大袈裟に求めてきます", "裏切り者には冷酷な制裁を下します"] },
+  ENFP: { title: "情緒不安定なリitalinピエロ", group: "NF", desc: "集中力3秒の躁鬱かまってちゃん。目新しさに飛びついては即飽きて放置。周りを巻き込むだけ巻き込んで失踪する。", flaw: "熱量が熱湯から氷点下まで一瞬で冷める", status: { 毒舌度: 65, 協調性: 70, 飽き性: 100 }, manual: ["言った約束は8割忘れています", "計画性を求めるとパニックを起こします", "急にテンションが下がっても放置してください"] },
+
+  ISTJ: { title: "融通ゼロの頭堅物マシーン", group: "SJ", desc: "「前例がありません」しか言えないロボット。マニュアル至上主義で、1ミリでもルールから外れた者を排除する。", flaw: "冗談が通じなさすぎて空気が凍りつく", status: { 毒舌度: 75, 協調性: 50, 頑固さ: 100 }, manual: ["急な予定変更はフリーズします", "冗談を間に受けて説教を始めます", "ルール違反は絶対に許しません"] },
+  ISFJ: { title: "自己犠牲アピール陰湿おかん", group: "SJ", desc: "頼まれてもいないのに尽くして「私ばっかり損してる」と陰で愚痴る被害者面プロ。面と向かって文句が言えない小心者。", flaw: "陰で文句を言いすぎて信頼を失う", status: { 毒舌度: 80, 協調性: 80, 陰湿さ: 95 }, manual: ["「大丈夫」は全然大丈夫じゃないサインです", "本音を言わないので察してあげてください", "陰口の同調を求めてきます"] },
+  ESTJ: { title: "老害全開の威張り散らしボス", group: "SJ", desc: "自分のやり方以外は全否定する老害予備軍。説教が大好きで、他人のプライベートにまで土足で上がり込んでくる。", flaw: "「俺が若い頃は〜」を連発して嫌われる", status: { 毒舌度: 90, 協調性: 30, 説教力: 100 }, manual: ["話はとにかく「ハイ！」と聞いておいてください", "反論すると火に油を注ぎます", "効率の悪さを見せつけると激怒します"] },
+  ESFJ: { title: "同調圧力マフィア", group: "SJ", desc: "陰口と仲間外れでグループを支配するボス猫。「みんなそう言ってるよ」という悪魔の言葉でターゲットを追い詰める。", flaw: "グループの空気に合わない奴を陰湿にハブる", status: { 毒舌度: 85, 協調性: 90, 陰湿さ: 90 }, manual: ["集団の噂話には笑顔で同意しておいてください", "単独行動をとると目をつけられます", "LINEの返信が遅いとブチ切れます"] },
+
+  ISTP: { title: "感情欠落した一匹狼サイコ", group: "SP", desc: "人間関係を「めんどくさい」の一言で片付ける省エネサイコパス。他人が泣いていても「で？」としか思わない冷徹さ。", flaw: "冷たすぎてサイコパスだと本気で引かれる", status: { 毒舌度: 88, 協調性: 5, 無関心さ: 100 }, manual: ["無駄な長文LINEを送るとスルーされます", "感情的な相談は絶対にしないでください", "1人にしておくのが一番喜びます"] },
+  ISFP: { title: "現逃回避のタダ乗りナマケモノ", group: "SP", desc: "不都合な現実からすぐ逃亡するメンタル激弱人間。締め切りや重い話になると消え、美味しいところだけタダ乗りする。", flaw: "都合が悪くなると急に体調不良アピールをする", status: { 毒舌度: 50, 協調性: 60, 回避能力: 100 }, manual: ["重い責任のある役職を与えないでください", "怒ると殻に閉じこもって出てきません", "連絡が途絶えたら察してください"] },
+  ESTP: { title: "ノリだけの暴走ダンプカー", group: "SP", desc: "反省の色ゼロのイキリヤンキー。後先考えずにノリで突撃し、盛大に事故って周りに後始末を押し付ける迷惑野郎。", flaw: "ノリで余計なことをして大問題を起こす", status: { 毒舌度: 80, 協調性: 40, 事故率: 100 }, manual: ["説教しても右から左へ受け流されます", "危険なノリには乗らないでください", "反省の顔は演技です"] },
+  ESFP: { title: "脳内花畑のパリピ害悪怪獣", group: "SP", desc: "ノリと勢いだけで生きているTikTok中毒者。静かな空間に耐えられず、どこでも大声で騒いで周りの迷惑を省みない。", flaw: "空気が読めなさすぎてガチトーンで怒られる", status: { 毒舌度: 55, 協調性: 75, 騒音レベル: 100 }, manual: ["真面目なトーンで喋らないでください", "ノリが悪いと「つまんない」と切り捨てます", "3秒以上静かにさせないでください"] }
+};
+
+let currentPage = 0;
+const questionsPerPage = 7;
+let userAnswers = {};
+
+function renderQuestions() {
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  
+  const start = currentPage * questionsPerPage;
+  const end = Math.min(start + questionsPerPage, questions.length);
+
+  for (let i = start; i < end; i++) {
+    const qData = questions[i];
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    
+    let html = `<div class="question-title">Q${i + 1}. ${qData.q}</div><div class="options">`;
+    
+    qData.options.forEach((opt, optIdx) => {
+      const isSelected = userAnswers[i] === optIdx ? 'selected' : '';
+      html += `<button class="option-btn ${isSelected}" onclick="selectOption(${i}, ${optIdx})">${opt.text}</button>`;
+    });
+
+    html += `</div>`;
+    card.innerHTML = html;
+    container.appendChild(card);
+  }
+
+  updateProgress();
+  updateButtons();
+}
+
+function selectOption(questionIndex, optionIndex) {
+  userAnswers[questionIndex] = optionIndex;
+  renderQuestions();
+}
+
+function updateProgress() {
+  const answeredCount = Object.keys(userAnswers).length;
+  const progressPercent = (answeredCount / questions.length) * 100;
+  document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+}
+
+function updateButtons() {
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+
+  prevBtn.style.display = currentPage === 0 ? 'none' : 'block';
+
+  const start = currentPage * questionsPerPage;
+  const end = Math.min(start + questionsPerPage, questions.length);
+  
+  let pageComplete = true;
+  for (let i = start; i < end; i++) {
+    if (userAnswers[i] === undefined) {
+      pageComplete = false;
+      break;
+    }
+  }
+
+  nextBtn.disabled = !pageComplete;
+  
+  if (currentPage === Math.ceil(questions.length / questionsPerPage) - 1) {
+    nextBtn.innerText = '診断結果を見る';
+  } else {
+    nextBtn.innerText = '次へ';
+  }
+}
+
+function nextPage() {
+  const totalPages = Math.ceil(questions.length / questionsPerPage);
+  if (currentPage < totalPages - 1) {
+    currentPage++;
+    renderQuestions();
+    window.scrollTo(0, 0);
+  } else {
+    calculateResult();
+  }
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    currentPage--;
+    renderQuestions();
+    window.scrollTo(0, 0);
+  }
+}
+
+function calculateResult() {
+  let scores = { E: 0, I: 0, N: 0, S: 0, T: 0, F: 0, J: 0, P: 0 };
+
+  Object.keys(userAnswers).forEach(qIdx => {
+    const optIdx = userAnswers[qIdx];
+    const scoreObj = questions[qIdx].options[optIdx].score;
+    for (let key in scoreObj) {
+      scores[key] += scoreObj[key];
+    }
+  });
+
+  const type = [
+    scores.E >= scores.I ? 'E' : 'I',
+    scores.N >= scores.S ? 'N' : 'S',
+    scores.T >= scores.F ? 'T' : 'F',
+    scores.J >= scores.P ? 'J' : 'P'
+  ].join('');
+
+  showResult(type);
+}
+
+function showResult(type) {
+  document.getElementById('quiz-page').style.display = 'none';
+  const resultPage = document.getElementById('result-page');
+  resultPage.style.display = 'block';
+
+  const res = results[type];
+  const badge = document.getElementById('type-badge');
+
+  document.getElementById('type-title').innerText = res.title;
+  document.getElementById('type-code').innerText = type;
+  document.getElementById('type-desc').innerText = res.desc;
+  document.getElementById('type-flaw').innerText = res.flaw;
+
+  // グループごとの色設定
+  if (res.group === 'NT') { badge.style.backgroundColor = 'var(--nt-color)'; badge.style.color = '#fff'; }
+  else if (res.group === 'NF') { badge.style.backgroundColor = 'var(--nf-color)'; badge.style.color = '#fff'; }
+  else if (res.group === 'SJ') { badge.style.backgroundColor = 'var(--sj-color)'; badge.style.color = '#fff'; }
+  else if (res.group === 'SP') { badge.style.backgroundColor = 'var(--sp-color)'; badge.style.color = '#000'; }
+
+  // ステータスバー生成
+  const statusContainer = document.getElementById('status-bars');
+  statusContainer.innerHTML = '';
+  for (let key in res.status) {
+    const val = res.status[key];
+    statusContainer.innerHTML += `
+      <div class="status-bar-container">
+        <div class="status-label"><span>${key}</span><span>${val}%</span></div>
+        <div class="status-bar-bg"><div class="status-bar-fill" style="width: ${val}%"></div></div>
+      </div>
+    `;
+  }
+
+  // トリセツ生成
+  const manualList = document.getElementById('type-manual');
+  manualList.innerHTML = '';
+  res.manual.forEach(item => {
+    manualList.innerHTML += `<li>${item}</li>`;
+  });
+
+  window.scrollTo(0, 0);
+}
+
+function shareX() {
+  const typeCode = document.getElementById('type-code').innerText;
+  const typeTitle = document.getElementById('type-title').innerText;
+  const text = encodeURIComponent(`私の裏性格は【${typeCode}: ${typeTitle}】でした…💀\n\nあなたの隠された毒舌な本性も暴いてみない？\n#裏16コア性格診断 #性格診断 #16Personalities\n`);
+  const url = encodeURIComponent(window.location.href);
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+}
+
+// 初期化
+renderQuestions();
+</script>
+
+</body>
+</html>
