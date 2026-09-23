@@ -1,132 +1,2020 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>裏・16コア性格診断 - あなたの真の毒舌性格を暴露</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 20px 12px; }
-    .container { max-width: 500px; margin: 0 auto; background: #1e293b; padding: 20px; border-radius: 12px; border: 1px solid #334155; }
-    h1 { font-size: 1.4rem; text-align: center; color: #ef4444; margin-bottom: 8px; }
-    p.sub { font-size: 0.85rem; text-align: center; color: #94a3b8; margin-bottom: 20px; }
-    .q-card { background: #0f172a; padding: 14px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #334155; }
-    .q-title { font-size: 0.95rem; font-weight: bold; margin-bottom: 10px; color: #38bdf8; }
-    .btn-option { width: 100%; text-align: left; padding: 10px 12px; margin-bottom: 8px; background: #1e293b; color: #f8fafc; border: 1px solid #475569; border-radius: 6px; font-size: 0.85rem; cursor: pointer; }
-    .btn-option.selected { background: #ef4444; border-color: #f87171; color: white; font-weight: bold; }
-    .submit-btn { width: 100%; padding: 14px; background: #ef4444; color: white; font-size: 1rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; }
-    .result { display: none; margin-top: 20px; padding: 16px; background: #0f172a; border-radius: 8px; border: 1px solid #ef4444; }
-    .result-type { font-size: 1.3rem; font-weight: bold; color: #ef4444; margin-bottom: 8px; text-align: center; }
-    .result-desc { font-size: 0.9rem; line-height: 1.6; color: #cbd5e1; }
-    .back-btn { display: block; text-align: center; margin-top: 16px; font-size: 0.85rem; color: #38bdf8; text-decoration: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="24問であなたの性格を16タイプに分類。あなたの隠れた一面まで分かる、裏・16コア性格診断。">
+<title>裏・16コア性格診断｜24問で分かるあなたの本性</title>
+
+<style>
+:root{
+  --bg:#090d18;
+  --card:#121a2a;
+  --card2:#0d1422;
+  --line:#26344d;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --red:#ff4d5e;
+  --green:#55c98b;
+  --purple:#9b7bd8;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% -10%,#202b4a 0,#0d1323 35%,var(--bg) 70%);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
+}
+
+button{
+  font:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.app{
+  width:min(100% - 24px,720px);
+  margin:auto;
+  padding:24px 0 70px;
+}
+
+.hero{
+  text-align:center;
+  padding:18px 8px 24px;
+}
+
+.eyebrow{
+  font-size:.72rem;
+  letter-spacing:.18em;
+  color:#fda4af;
+  font-weight:900;
+}
+
+h1{
+  font-size:clamp(1.8rem,7vw,3rem);
+  margin:8px 0;
+  background:linear-gradient(90deg,#ff5567,#ff9b55);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.8;
+  margin:0;
+}
+
+.progress-wrap{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(9,13,24,.9);
+  backdrop-filter:blur(14px);
+  padding:12px 0;
+}
+
+.progress-meta{
+  display:flex;
+  justify-content:space-between;
+  font-size:.78rem;
+  color:var(--muted);
+  margin-bottom:7px;
+}
+
+.progress{
+  height:8px;
+  background:#1d293d;
+  border-radius:99px;
+  overflow:hidden;
+}
+
+.progress>div{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#ff4d5e,#fb923c);
+  transition:.25s;
+}
+
+.q-card{
+  background:linear-gradient(145deg,#111a2c,#0d1422);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:22px 18px;
+  margin:14px 0;
+  box-shadow:0 12px 35px rgba(0,0,0,.15);
+}
+
+.q-num{
+  font-size:.68rem;
+  color:#64748b;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.q-title{
+  font-size:1.02rem;
+  font-weight:800;
+  line-height:1.65;
+  margin:7px 0 22px;
+}
+
+.scale-labels{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:0 2px 10px;
+  font-size:.75rem;
+  font-weight:900;
+}
+
+.scale-labels span:first-child{
+  color:var(--green);
+}
+
+.scale-labels span:last-child{
+  color:var(--purple);
+}
+
+.scale{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:5px;
+  min-height:50px;
+}
+
+.scale-option{
+  appearance:none;
+  -webkit-appearance:none;
+  flex:0 0 auto;
+  padding:0;
+  border-radius:50%;
+  background:transparent;
+  cursor:pointer;
+  transition:
+    transform .15s,
+    background .15s,
+    box-shadow .15s;
+}
+
+.scale-option:nth-child(1),
+.scale-option:nth-child(7){
+  width:46px;
+  height:46px;
+}
+
+.scale-option:nth-child(2),
+.scale-option:nth-child(6){
+  width:40px;
+  height:40px;
+}
+
+.scale-option:nth-child(3),
+.scale-option:nth-child(5){
+  width:34px;
+  height:34px;
+}
+
+.scale-option:nth-child(4){
+  width:29px;
+  height:29px;
+}
+
+.scale-option:nth-child(-n+3){
+  border:3px solid var(--green);
+}
+
+.scale-option:nth-child(4){
+  border:3px solid #94a3b8;
+}
+
+.scale-option:nth-child(n+5){
+  border:3px solid var(--purple);
+}
+
+.scale-option:nth-child(-n+3).selected{
+  background:var(--green);
+  box-shadow:0 0 0 5px rgba(85,201,139,.12);
+}
+
+.scale-option:nth-child(4).selected{
+  background:#94a3b8;
+  box-shadow:0 0 0 5px rgba(148,163,184,.12);
+}
+
+.scale-option:nth-child(n+5).selected{
+  background:var(--purple);
+  box-shadow:0 0 0 5px rgba(155,123,216,.12);
+}
+
+.scale-option.selected{
+  transform:scale(1.08);
+}
+
+.scale-sub{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  margin-top:8px;
+  color:#64748b;
+  font-size:.58rem;
+  line-height:1.25;
+}
+
+.scale-sub span:first-child{
+  text-align:left;
+}
+
+.scale-sub span:nth-child(2){
+  text-align:center;
+}
+
+.scale-sub span:last-child{
+  text-align:right;
+}
+
+.submit{
+  width:100%;
+  border:0;
+  border-radius:14px;
+  padding:16px;
+  background:linear-gradient(100deg,#ef4457,#f97345);
+  color:#fff;
+  font-weight:900;
+  font-size:1.05rem;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(239,68,68,.25);
+  margin-top:12px;
+}
+
+.error{
+  display:none;
+  background:#3a151d;
+  border:1px solid #7f1d2d;
+  color:#fecdd3;
+  padding:12px;
+  border-radius:10px;
+  margin-top:10px;
+  font-size:.85rem;
+}
+
+#result{
+  display:none;
+}
+
+.reveal{
+  text-align:center;
+  padding:44px 10px 12px;
+  animation:up .55s ease;
+}
+
+@keyframes up{
+  from{
+    opacity:0;
+    transform:translateY(18px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
+.reveal .small{
+  color:var(--muted);
+  font-weight:800;
+  letter-spacing:.12em;
+}
+
+.type{
+  font-size:clamp(4rem,18vw,7.5rem);
+  font-weight:1000;
+  line-height:.95;
+  margin:10px 0 4px;
+}
+
+.nickname{
+  font-size:clamp(1.45rem,7vw,2.35rem);
+  font-weight:1000;
+  margin:0 0 8px;
+}
+
+.catch{
+  color:#cbd5e1;
+  font-weight:700;
+}
+
+.result-image{
+  width:100%;
+  display:block;
+  border-radius:20px;
+  margin:24px 0 16px;
+  border:1px solid #334155;
+  box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+
+.section{
+  background:linear-gradient(145deg,#121a2a,#0d1422);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  margin:14px 0;
+}
+
+.section h2{
+  font-size:1.05rem;
+  margin:0 0 12px;
+}
+
+.section p{
+  color:#cbd5e1;
+  line-height:1.85;
+  font-size:.91rem;
+  margin:0;
+}
+
+.lead{
+  font-size:1rem!important;
+  color:#eef4ff!important;
+}
+
+.bars{
+  display:grid;
+  gap:17px;
+}
+
+.bar-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.84rem;
+  font-weight:800;
+}
+
+.bar-head span:nth-child(2){
+  color:#aab7ca;
+}
+
+.bar{
+  height:10px;
+  background:#26344a;
+  border-radius:99px;
+  overflow:hidden;
+  margin-top:7px;
+}
+
+.bar-fill{
+  height:100%;
+  border-radius:99px;
+  background:linear-gradient(90deg,#38bdf8,#a78bfa);
+  width:0;
+  transition:width 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.mini{
+  background:#10192a;
+  border:1px solid #273750;
+  border-radius:14px;
+  padding:15px;
+}
+
+.mini h3{
+  font-size:.9rem;
+  margin:0 0 8px;
+}
+
+.mini p{
+  font-size:.82rem;
+  line-height:1.65;
+  color:#bdc8d8;
+  margin:0;
+}
+
+.compat{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.pill{
+  padding:8px 11px;
+  border-radius:999px;
+  background:#19263b;
+  border:1px solid #334a69;
+  font-weight:900;
+  font-size:.8rem;
+}
+
+.share-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+
+.share-grid button,
+.again,
+.alltypes button{
+  border:1px solid #34455f;
+  background:#172238;
+  color:white;
+  border-radius:11px;
+  padding:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.share-grid .x{
+  background:#050505;
+}
+
+.share-grid .line{
+  background:#06c755;
+  border-color:#06c755;
+}
+
+.again{
+  width:100%;
+  margin-top:9px;
+  background:#ef4457;
+  border-color:#ef4457;
+}
+
+.alltypes{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+}
+
+.alltypes button{
+  padding:10px 4px;
+  font-size:.76rem;
+}
+
+.toast{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  opacity:0;
+  background:#fff;
+  color:#111827;
+  padding:10px 16px;
+  border-radius:99px;
+  font-size:.8rem;
+  font-weight:900;
+  transition:.2s;
+  z-index:50;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateX(-50%);
+}
+
+.footer{
+  text-align:center;
+  color:#64748b;
+  font-size:.72rem;
+  padding:30px 0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+@media(max-width:520px){
+  .two{
+    grid-template-columns:1fr;
+  }
+
+  .section{
+    padding:17px;
+  }
+
+  .scale{
+    gap:3px;
+  }
+
+  .scale-option:nth-child(1),
+  .scale-option:nth-child(7){
+    width:40px;
+    height:40px;
+  }
+
+  .scale-option:nth-child(2),
+  .scale-option:nth-child(6){
+    width:35px;
+    height:35px;
+  }
+
+  .scale-option:nth-child(3),
+  .scale-option:nth-child(5){
+    width:30px;
+    height:30px;
+  }
+
+  .scale-option:nth-child(4){
+    width:27px;
+    height:27px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-  <h1>🔥 裏・16コア性格診断</h1>
-  <p class="sub">全20问であなたの真の毒舌性格を徹底解剖！</p>
+<main class="app">
 
-  <div id="quizArea"></div>
+<section id="quiz">
 
-  <button class="submit-btn" onclick="diagnose()">裏の顔を判定する</button>
+<div class="hero">
 
-  <div class="result" id="resultArea">
-    <div class="result-type" id="resultType"></div>
-    <div class="result-desc" id="resultDesc"></div>
-  </div>
+<div class="eyebrow">
+UNFILTERED PERSONALITY TEST
+</div>
 
-  <a href="index.html" class="back-btn">← トップページに戻る</a>
+<h1>
+🔥 裏・16コア性格診断
+</h1>
+
+<p>
+24問で、あなたの本性を暴きます。<br>
+深く考えすぎず、普段のあなたに最も当てはまるものを選んで下さい。
+</p>
+
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-meta">
+<span id="progressText">0 / 24 回答済み</span>
+<span id="progressPct">0%</span>
+</div>
+
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+
+</div>
+
+<div id="quizArea"></div>
+
+<div class="error" id="error"></div>
+
+<button class="submit" onclick="diagnose()">
+🔥 診断結果を見る
+</button>
+
+</section>
+
+
+<section id="result">
+
+<div class="reveal">
+
+<div class="small">
+DIAGNOSIS COMPLETE
+</div>
+
+<div style="color:#94a3b8;margin-top:12px">
+あなたの裏タイプは――
+</div>
+
+<div class="type" id="resultType"></div>
+
+<div class="nickname" id="nickname"></div>
+
+<div class="catch" id="catch"></div>
+
+</div>
+
+<img
+  id="resultImage"
+  class="result-image"
+  alt="診断結果"
+>
+
+<div class="section">
+<h2>🧠 30秒で分かる「あなた」</h2>
+<p class="lead" id="summary"></p>
+</div>
+
+<div class="section">
+
+<h2>📊 あなたの性格バランス</h2>
+
+<div class="bars" id="bars"></div>
+
+<p id="dynamicNote" style="margin-top:18px"></p>
+
+</div>
+
+<div class="two">
+
+<div class="mini">
+<h3>😇 表の顔</h3>
+<p id="front"></p>
+</div>
+
+<div class="mini">
+<h3>😈 裏の顔</h3>
+<p id="back"></p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>✨ 意外とすごいところ</h2>
+<p id="strength"></p>
+</div>
+
+<div class="section">
+<h2>☠️ あなたの弱点</h2>
+<p id="weakness"></p>
+</div>
+
+<div class="section">
+<h2>❤️ 恋愛するとこうなる</h2>
+<p id="love"></p>
+</div>
+
+<div class="section">
+<h2>💔 関係がこじれると…</h2>
+<p id="breakup"></p>
+</div>
+
+<div class="section">
+<h2>👥 友達から見たあなた</h2>
+<p id="friend"></p>
+</div>
+
+<div class="section">
+<h2>💼 仕事での生態</h2>
+<p id="work"></p>
+</div>
+
+<div class="section">
+<h2>🤯 ストレスMAXになると…</h2>
+<p id="stress"></p>
+</div>
+
+<div class="section">
+<h2>📖 あなたの取扱説明書</h2>
+<p id="manual"></p>
+</div>
+
+<div class="section">
+
+<h2>🧩 タイプ相性</h2>
+
+<p>
+会話や行動パターンが噛み合いやすいタイプ
+</p>
+
+<div class="compat" id="good"></div>
+
+<p style="margin-top:16px">
+価値観の違いが出やすいタイプ
+</p>
+
+<div class="compat" id="hard"></div>
+
+<p style="font-size:.72rem;margin-top:14px;color:#718096">
+※相性は人間関係を決めるものではなく、この診断上の傾向です。
+</p>
+
+</div>
+
+<div class="section">
+
+<h2>📣 結果をシェア</h2>
+
+<div class="share-grid">
+
+<button class="x" onclick="shareX()">
+𝕏 でシェア
+</button>
+
+<button class="line" onclick="shareLine()">
+LINEで送る
+</button>
+
+<button onclick="copyResult()">
+結果をコピー
+</button>
+
+<button onclick="nativeShare()">
+友達に送る
+</button>
+
+</div>
+
+<button class="again" onclick="restart()">
+↻ もう一度診断する
+</button>
+
+</div>
+
+<div class="section">
+
+<h2>👀 他の15タイプを見る</h2>
+
+<div class="alltypes" id="allTypes"></div>
+
+</div>
+
+</section>
+
+<div class="footer">
+裏・16コア性格診断｜娯楽目的のオリジナル性格診断です。
+</div>
+
+</main>
+
+<div class="toast" id="toast">
+コピーしました！
 </div>
 
 <script>
+
 const questions = [
-  { q: "1. 休日の理想的な過ごし方は？", a: [{t:"E", val:0, text:"友達と外に出てワイワイ遊ぶ"}, {t:"E", val:1, text:"家で1人で趣味に没頭する"}] },
-  { q: "2. 初対面の人だらけの集まりに行ったら？", a: [{t:"E", val:0, text:"自分から積極的に声をかける"}, {t:"E", val:1, text:"壁の花になって話しかけられるのを待つ"}] },
-  { q: "3. 悩みを相談された時、真っ先に考えることは？", a: [{t:"T", val:1, text:"具体的にどう解決すべきかの正論"}, {t:"T", val:0, text:"相手の気持ちに共感して慰めること"}] },
-  { q: "4. 友達が明らかに間違ったことを言っていたら？", a: [{t:"T", val:1, text:"「それは違うで」とその場で指摘する"}, {t:"T", val:0, text:"雰囲気を壊さないようにあえて流す"}] },
-  { q: "5. 旅行に行くとき、スケジュールはどう立てる？", a: [{t:"J", val:0, text:"分単位でしっかり計画を立てて移動する"}, {t:"J", val:1, text:"行き当たりばったりでその場のノリで決める"}] },
-  { q: "6. 部屋の散らかり具合や書類の整理は？", a: [{t:"J", val:0, text:"常にキレイに整頓されている"}, {t:"J", val:1, text:"足の踏み場がなくなるまで放置しがち"}] },
-  { q: "7. 物事を考えるときに重視するのは？", a: [{t:"S", val:0, text:"現実的なデータや過去の実績"}, {t:"S", val:1, text:"自分の直感や「こうなったら面白そう」という可能性"}] },
-  { q: "8. 映画やアニメを見ている時の感覚は？", a: [{t:"S", val:0, text:"ストーリーの辻褄や設定の矛盾が気になる"}, {t:"S", val:1, text:"世界観やキャラクターの感情に深く感情移入する"}] },
-  { q: "9. チーム作業で意見が分かれたときは？", a: [{t:"T", val:1, text:"感情を抜きにして一番効率的な案を推す"}, {t:"T", val:0, text:"全員が納得できる丸く収まる着地点を探す"}] },
-  { q: "10. 予定していた約束が急にキャンセルになったら？", a: [{t:"J", val:1, text:"「ラッキー！自由時間増えた！」と喜ぶ"}, {t:"J", val:0, text:"計画が狂って少しイラッとする"}] },
-  { q: "11. 周囲から「変わってるね」と言われたら？", a: [{t:"S", val:1, text:"心の中で「褒め言葉だな」とニヤリとする"}, {t:"S", val:0, text:"「え、浮いてるかな…」と少し心配になる"}] },
-  { q: "12. 大人数での発言や発表の場面では？", a: [{t:"E", val:0, text:"目立つチャンス！と平気で喋れる"}, {t:"E", val:1, text:"心臓バクバクで一刻も早く終わらせたい"}] },
-  { q: "13. LINEの返信ペースは？", a: [{t:"E", val:0, text:"気づいたらすぐ返すテンポ早め"}, {t:"E", val:1, text:"既読をつけても気分が乗るまで放置しがち"}] },
-  { q: "14. 新しい家電やアプリを使うときは？", a: [{t:"S", val:0, text:"取扱説明書やガイドを読んでから使う"}, {t:"S", val:1, text:"説明書は見ずに適当に触りながら覚える"}] },
-  { q: "15. 人から理不尽に怒られたらどうする？", a: [{t:"T", val:1, text:"相手の論理の破綻を徹底的に詰め返す"}, {t:"T", val:0, text:"ショックを受けてその場では何も言えなくなる"}] },
-  { q: "16. 締め切りや期限に対する姿勢は？", a: [{t:"J", val:0, text:"余裕をもって数日前には終わらせる"}, {t:"J", val:1, text:"締め切り直前のギリギリにならないと本気が出ない"}] },
-  { q: "17. 人混みや賑やかな街に出かけた後は？", a: [{t:"E", val:0, text:"楽しかった！と充実感に満たされる"}, {t:"E", val:1, text:"HPがゼロになってぐったり疲れる"}] },
-  { q: "18. 「抽象的な哲学の話」や「宇宙の謎」の話は？", a: [{t:"S", val:1, text:"想像が膨らんでワクワクしてずっと話せる"}, {t:"S", val:0, text:"「で、それが何の役に立つの？」と思ってしまう"}] },
-  { q: "19. 判断に迷ったとき、最終的な決め手は？", a: [{t:"T", val:1, text:"損得勘定や合理的なメリット"}, {t:"T", val:0, text:"自分や周りの人が納得・感動できるか"}] },
-  { q: "20. 突発的なトラブルが起きたときは？", a: [{t:"J", val:1, text:"アドレナリンが出てその場の臨機応変で対処する"}, {t:"J", val:0, text:"「想定外だ…」とパニックになりかける"}] }
+
+["休日に予定が空いたら、誰かを誘って外に出たい。","EI"],
+["初対面ばかりの集まりでは、とりあえず誰かに話しかける。","EI"],
+["考えを整理するときは、一人で考えるより誰かと話しながら考えたい。","EI"],
+["長時間、人と遊んだ後でも、まだ誰かと話したり一緒に過ごしたい。","EI"],
+["グループで沈黙が続いたら、自分から話題を出すことが多い。","EI"],
+["知らない環境に入ったら、まず動きながら人や雰囲気をつかむ。","EI"],
+
+["新しいことを説明されるなら、全体像や可能性より具体例や実物から入る方が分かりやすい。","SN"],
+["空想や仮説の話より、実際に起きたリアルな話の方が面白い。","SN"],
+["何かを覚えるときは、意味や関連性より手順や事実を順番に覚える方だ。","SN"],
+["旅行先を選ぶときは、未知の面白さより食事・景色・アクセスなど現実的な条件を重視する。","SN"],
+["作品を見終わった後は、テーマや作者の意図より細かい場面やリアルさについて考えることが多い。","SN"],
+["新しい企画を考えるときは、自由にアイデアを広げるより実現できる案から考える。","SN"],
+
+["友達が失敗して落ち込んでいたら、まず気持ちを慰めるより原因と次の対策を考える。","TF"],
+["議論では、相手がどう感じるかより筋が通っているかを重視する。","TF"],
+["誰かを評価するときは、事情や努力より結果や能力を重視する。","TF"],
+["正しいけれど相手が傷つくことでも、必要なら率直に伝える。","TF"],
+["意見が割れたときは、みんなが納得する案より一番合理的な案を選びたい。","TF"],
+["映画やドラマでは、人物の感情や関係性より頭を使う展開や構成の巧さに惹かれる。","TF"],
+
+["旅行の前日には、予定や持ち物がだいたい決まっている方が安心する。","JP"],
+["締切が2週間後でも、できるだけ早めに進めておきたい。","JP"],
+["休日でも、その日の気分で決めるよりある程度予定が決まっている方が落ち着く。","JP"],
+["急な予定変更が入ると、少しでも『予定が狂った』と感じる。","JP"],
+["買い物では、その場の直感より比較してある程度決めてから買うことが多い。","JP"],
+["複数の作業を行き来するより、一つずつ終わらせていきたい。","JP"]
+
 ];
 
-let answers = {};
+const R = {
 
-function renderQuiz() {
-  const area = document.getElementById('quizArea');
-  let html = '';
-  questions.forEach((q, idx) => {
-    html += `<div class="q-card">
-      <div class="q-title">${q.q}</div>
-      <button class="btn-option" id="btn_${idx}_0" onclick="selectOpt(${idx}, 0, '${q.a[0].t}', ${q.a[0].val})">${q.a[0].text}</button>
-      <button class="btn-option" id="btn_${idx}_1" onclick="selectOpt(${idx}, 1, '${q.a[1].t}', ${q.a[1].val})">${q.a[1].text}</button>
-    </div>`;
-  });
-  area.innerHTML = html;
+INTJ:{
+n:"上から目線のひきこもり",
+c:"人類を遠目から眺めて、脳内ではもう三手先。",
+s:"静かにしているだけなのに、頭の中では状況・人間・未来を勝手に分析している戦略型。無駄を嫌い、自分なりの正解がかなり明確。問題は、その正解を他人も当然分かると思いがちなところ。",
+f:"落ち着いていて、自立していて、何を考えているか少し読みにくい人。",
+b:"内心では『それ、先に考えたら分かるのでは？』が頻発。人に任せるより自分でやった方が早いと思いがち。",
+st:"長期戦略、改善、独学、複雑な問題の整理。感情に流されず先を読む力はかなり強い。",
+w:"非効率・中身のない雑談・何度も同じミスをされること。説明を省きすぎて冷たく見られるのも罠。",
+l:"好きになるまで慎重。付き合うと未来まで考えるが、愛情表現を『分かるはず』で省略しがち。",
+br:"感情的に追いすがるより、一人で原因分析を始める。結論が出ると切り替えが妙に速い。",
+fr:"頼れるけれど誘わないと出てこない人。仲良くなるほど辛口が解禁される。",
+wo:"裁量と専門性がある環境で強い。意味のないルールと過剰な会議で急速にHPが減る。",
+x:"人間関係ごとシャットダウンし、頭の中だけで全部片付けようとする。",
+m:"結論だけでなく途中の説明も渡す。たまには『分かっているはず』を捨てて言葉にすると無双しやすい。",
+g:["ENTP","INTP"],
+h:["ESFP","ESFJ"]
+},
+
+INTP:{
+n:"頭脳派ニート",
+c:"脳内だけは研究所。現実世界の締切は知らない。",
+s:"気になることを見つけた瞬間、異常な深さまで潜る知識オタク型。『なぜ？』を何回でも繰り返せる一方、興味がないタスクにはびっくりするほどエンジンがかからない。",
+f:"静かでマイペース。詳しい分野になると急に別人のように話す。",
+b:"脳内で反論を組み立てながら、現実の雑務を未来の自分へ丸投げしている。",
+st:"分析、仕組み化、発想、矛盾発見。常識を一回バラして考え直せる。",
+w:"単純作業、過度なルール、結論ありきの会話。考えすぎて着手しないことも。",
+l:"距離感は慎重。でも心を許すと知識・ネタ・変な仮説を大量共有するのが愛情表現。",
+br:"一人反省会が長い。感情を理屈で処理しようとして逆に沼ることがある。",
+fr:"連絡は遅いのに会えば普通に楽しい。友達認定した相手には意外と長い。",
+wo:"難問と自由があるほど強い。管理されすぎると能力より先にやる気が死ぬ。",
+x:"思考ループに入り、行動が止まる。生活リズムも一緒に崩れがち。",
+m:"完璧な答えが出る前に60点で動く。締切を外部化すると頭脳がちゃんと現実世界に降りてくる。",
+g:["ENTP","INTJ"],
+h:["ESFJ","ESTJ"]
+},
+
+ENTJ:{
+n:"圧強めサイコパス",
+c:"結果が出るなら、とりあえず前へ。",
+s:"目的を見つけると勝手にプロジェクト化する司令塔タイプ。決断が速く、周囲まで動かす力がある。その速度について来られない人を見ると、顔には出さなくても脳内評価会議が始まる。",
+f:"自信があって頼れる。決断を任せると話が早い人。",
+b:"『それで結局いつ終わる？』が心の口癖。情より成果を優先しすぎる瞬間がある。",
+st:"決断、統率、交渉、目標達成。大きな目標ほど燃える。",
+w:"遅さ、曖昧さ、責任逃れ。正論の火力が高すぎて味方まで焼くことがある。",
+l:"好きなら行動で示す。将来設計まで早いが、相手の感情を課題解決のように扱わない注意が必要。",
+br:"修復可能なら全力で立て直す。無理と判断すると仕事並みに損切りが速い。",
+fr:"頼れる幹事兼ボス。弱音を見せるまで時間がかかる。",
+wo:"責任と裁量が大きいほど強い。指示待ちだけの環境ではストレスが溜まる。",
+x:"支配範囲を増やし、全部自分でコントロールしようとする。",
+m:"人はKPIではない。結論を出す前に相手の感情を一回聞くだけで、強さが怖さから頼もしさに変わる。",
+g:["INTJ","ENTP"],
+h:["ISFP","INFP"]
+},
+
+ENTP:{
+n:"屁理屈モンスター",
+c:"『いや、それ本当にそう？』から全部始まる。",
+s:"常識を見ると一回ひっくり返したくなる発想型。議論と新ネタが大好物で、誰も考えなかった抜け道を見つける。ただし面白さのピークを越えた瞬間、完成作業を置いて次へ行きがち。",
+f:"話題が多く、頭の回転が速く、場を面白くする人。",
+b:"相手が怒り始めても『でも論点そこじゃなくない？』と続けられる。",
+st:"発想、交渉、即興、問題の別解探し。ゼロから一を作る場面に強い。",
+w:"単調さ、細かすぎる規則、議論禁止。論破が目的化すると人間関係が消し飛ぶ。",
+l:"会話が面白い相手に弱い。追う時は猛烈、安定すると刺激不足を感じやすい。",
+br:"理由を全部理解したくなり、最後の最後まで話し合おうとする。",
+fr:"ネタの供給源。急に変な企画へ巻き込んでくる。",
+wo:"企画・営業・起業・改善など変化が多い場所で輝く。ルーティンだけは天敵。",
+x:"刺激を増やして逃げるか、周囲全員と議論を始める。",
+m:"アイデアを出した人ではなく、最後まで完成させた人が勝つ。仕上げ役と組むと化ける。",
+g:["INTP","ENTJ"],
+h:["ISFJ","ISTJ"]
+},
+
+INFJ:{
+n:"闇深ピエロ",
+c:"笑っているけど、頭の奥では全部考えている。",
+s:"人の感情を読む力と、自分だけの深い世界を両方持つタイプ。優しく合わせられるぶん、本音を奥へ奥へ隠しやすい。静かなのに内面の情報量が多すぎる。",
+f:"穏やかで話を聞いてくれる、安心感のある人。",
+b:"相手の言葉の裏まで読みすぎて、一人で意味を増やして疲れている。",
+st:"洞察、共感、長期的なビジョン。人が言葉にできない違和感を拾いやすい。",
+w:"雑な扱い、浅い関係、価値観への踏み込み。限界まで我慢した後に突然ドアを閉める。",
+l:"かなり深くつながりたい。一度大切だと思うと真剣だが、相手の小さな変化まで読みすぎる。",
+br:"表面上は冷静でも内側では長期間反芻する。納得できる意味を探し続ける。",
+fr:"相談相手になりがち。自分の相談は意外と最後まで言わない。",
+wo:"意味を感じる仕事、文章、企画、支援、創造で力が出る。表面的な競争だけだと消耗。",
+x:"人から離れて脳内会議。悪い可能性まで物語化してしまう。",
+m:"察する力が強いからこそ、察したことを事実扱いしない。本音を小出しにするとかなり楽になる。",
+g:["ENFP","INFP"],
+h:["ESTP","ESTJ"]
+},
+
+INFP:{
+n:"メンヘラポエマー",
+c:"感情の解像度だけ8K。",
+s:"自分の『好き・嫌い・大切』がかなり深い理想主義者。想像力が豊かで、小さな出来事にも意味を見つける。外からは静かでも、内側では長編映画が上映中。",
+f:"優しくて柔らかい。好きなものの話になると急に熱い。",
+b:"何気ない一言を持ち帰って深夜に再上映。勝手に傷ついて、でも説明は苦手。",
+st:"創造性、共感、文章、独自の価値観。人と違う感覚を作品や言葉に変えられる。",
+w:"否定、冷笑、価値観の押し付け。理想が高すぎて現実の一歩が重くなる。",
+l:"好きになると心の中では超大作。雑な愛情表現より『自分を理解してくれた』に弱い。",
+br:"思い出を美化して何度も戻る。切り替えには時間が必要。",
+fr:"少人数で深く付き合う。安心した相手には妙なテンションも出る。",
+wo:"創作・文章・企画など自分の意味を乗せられる仕事向き。数字だけの競争は疲れやすい。",
+x:"現実から離れ、音楽・妄想・SNSなど自分の世界へ避難。",
+m:"気持ちは本物でも、想像した相手の気持ちは仮説。確認する習慣を持つと無駄なダメージが減る。",
+g:["INFJ","ENFP"],
+h:["ESTJ","ENTJ"]
+},
+
+ENFJ:{
+n:"お節介偽善者",
+c:"全員幸せにしたい。頼まれていなくても。",
+s:"人の変化にすぐ気づき、場をまとめ、背中まで押す世話焼きリーダー。善意の出力が大きいぶん、相手の人生に入り込みすぎると『それ本人が望んでいる？』問題が発生する。",
+f:"気が利いて、話しやすく、みんなを見てくれる人。",
+b:"『あなたのため』で予定・目標・人間関係までプロデュースし始めることがある。",
+st:"共感、鼓舞、調整、発信。人の良さを見つけて伸ばすのが上手い。",
+w:"無関心、感謝ゼロ、空気を壊す態度。人の問題まで背負って自滅しやすい。",
+l:"愛情表現は多め。相手を喜ばせたいが、反応が薄いと急に不安になる。",
+br:"自分だけでなく『二人の未来』を失った感覚になりやすい。話し合いを求める。",
+fr:"グループの相談窓口。イベントを成立させる人。",
+wo:"教育、営業、マネジメント、接客など人の反応が返る場所で強い。",
+x:"さらに人へ尽くし、見返りがなくて限界になる。",
+m:"助ける前に『助けてほしい？』を一回聞く。それだけでお節介が才能に変わる。",
+g:["INFP","INFJ"],
+h:["ISTP","INTP"]
+},
+
+ENFP:{
+n:"多動気質のかまってちゃん",
+c:"あれもやりたい。これも行きたい。あと私の話も聞いて。",
+s:"好奇心と人への興味で動くアイデア発電機。楽しい可能性を見つける速度が速く、人まで巻き込む。ただし昨日の大発明が今日はもう過去になっていることも珍しくない。",
+f:"明るく話しやすい。急に面白そうな提案を持ってくる。",
+b:"反応が薄いと『何かした？』と意外と気にする。自由人なのに心は結構繊細。",
+st:"発想、人脈、盛り上げ、挑戦。ゼロから熱量を作るのが上手い。",
+w:"退屈、無反応、細かい管理。興味が散って未完成品を量産しがち。",
+l:"好きになると分かりやすい。共有したいことが爆増するが、束縛されると逃げたくなる。",
+br:"落ち込む→誰かに話す→新しい刺激→また思い出す、を行ったり来たり。",
+fr:"誘いの発生源。しばらく連絡がなくても再会した瞬間昨日の続き。",
+wo:"企画、発信、営業、クリエイティブなど変化が多いほど強い。",
+x:"予定と刺激を詰め込み、静かになった瞬間に一気に落ちる。",
+m:"新しいものを始める前に一個だけ終わらせる。自由を残した軽い締切が最強。",
+g:["INFJ","INFP"],
+h:["ISTJ","ESTJ"]
+},ISTJ:{
+n:"指示待ち人間",
+c:"ルールがあるなら、まずそれを見せてください。",
+s:"責任感と再現性を重視する堅実型。決めたことをきちんと積み上げる力は強い。ただし前提が突然変わると『聞いていない』が脳内に響く。",
+f:"真面目、時間を守る、任せたことを忘れない。",
+b:"雑な人を見ると静かに減点表をつけている。",
+st:"継続、正確さ、管理、責任感。誰も見ていなくても必要なことをやれる。",
+w:"急変更、曖昧な指示、根拠のないノリ。柔軟性より正しさを優先しすぎることがある。",
+l:"派手さより安定。約束を守ること自体が愛情表現になりやすい。",
+br:"原因と経緯を何度も確認。納得できない終わり方を引きずりやすい。",
+fr:"頻繁に連絡しなくても関係を維持する。困った時に実務で助ける。",
+wo:"基準・責任範囲が明確な環境で強い。混沌とした指示変更は消耗。",
+x:"さらにルールと予定へ固執して、変化を拒み始める。",
+m:"『今までこうだった』と『今も最適』は別。小さな例外を許すと強みがもっと生きる。",
+g:["ISFJ","ESTJ"],
+h:["ENFP","ENTP"]
+},
+
+ISFJ:{
+n:"自己犠牲ストーカー",
+c:"覚えています。あなたが忘れていることまで。",
+s:"細かい変化や好みをよく覚え、黙って支える献身型。気遣いの精度が高いぶん、自分の負担を言わずに溜めて『こんなにやったのに』へ到達しやすい。",
+f:"優しい、気が利く、安心できる。",
+b:"相手の好み・予定・言ったことを驚くほど記憶。断れないのに内心では疲れている。",
+st:"サポート、記憶、継続、細かな配慮。日常を安定させる力が強い。",
+w:"無神経、急な変更、感謝の欠如。我慢を美徳にして限界を見失う。",
+l:"相手の好きなものを覚えて尽くす。欲しい愛情を自分から言うのは少し苦手。",
+br:"『あの時も』が大量に蘇る。自分が悪かった可能性まで抱え込みやすい。",
+fr:"気づいたら世話役。長い付き合いを大切にする。",
+wo:"支援、事務、医療福祉、顧客対応など丁寧さが報われる場所で強い。",
+x:"もっと頑張れば何とかなると自分の負担を増やす。",
+m:"優しさと我慢は別物。小さいNOを早めに出す方が関係は長持ちする。",
+g:["ISTJ","ESFJ"],
+h:["ENTP","ESTP"]
+},
+
+ESTJ:{
+n:"老害予備軍",
+c:"普通はこうするでしょう。……その『普通』は誰基準？",
+s:"現実的で決断が速く、物事をちゃんと前へ進める実務リーダー。基準と責任を大切にする。ただし成功体験が強いほど、自分方式を全人類標準にしやすい。",
+f:"しっかり者で頼れる。任せると段取りができる。",
+b:"遅い・曖昧・適当を見ると説教ゲージが溜まる。",
+st:"実行、管理、決断、組織化。現場を回す力はトップクラス。",
+w:"ルール無視、言い訳、期限破り。正しさを強く押しすぎると反発を生む。",
+l:"責任感が強く、将来を現実的に考える。相手にも同じ基準を求めすぎないこと。",
+br:"何が悪かったか明確にしたい。曖昧な関係が一番苦手。",
+fr:"計画役。頼まれたら現実的な解決策を出す。",
+wo:"管理・営業・運営など成果と責任が見える場所で強い。",
+x:"細かいところまで口を出し、周囲を管理し始める。",
+m:"正しい方法が一つとは限らない。目的さえ達成できるなら他人のやり方を残す余白を。",
+g:["ISTJ","ESFJ"],
+h:["INFP","ENFP"]
+},
+
+ESFJ:{
+n:"世間体モンスター",
+c:"みんながどう思うか、かなり大事。",
+s:"人とのつながりと場の調和を大切にする社交型。誕生日、空気、礼儀、人間関係の温度をよく見ている。そのアンテナが強すぎると『普通こうするよね？』が圧になる。",
+f:"親しみやすく、気配り上手。場をちゃんと成立させる。",
+b:"誰と誰がどうなっているか把握率が高い。周囲の評価が気になって疲れることも。",
+st:"気配り、協力、実務、人間関係の維持。コミュニティを温める力。",
+w:"無礼、既読無視、空気を読まない行動。周囲の目を気にしすぎる。",
+l:"愛情は分かりやすく示したいし返してほしい。記念日や日常の共有を大切にする。",
+br:"友達に話して整理するタイプ。相手の態度だけでなく周囲の反応も気になる。",
+fr:"グループをつなぐハブ。誘い・祝い・フォローを忘れにくい。",
+wo:"接客、調整、教育、チーム運営など人と関わる仕事で強い。",
+x:"人の反応を確認し続け、自分の評価を他人に預けてしまう。",
+m:"『みんな』ではなく『自分はどうしたい？』を定期的に聞くと、気遣いがもっと健全になる。",
+g:["ISFJ","ESTJ"],
+h:["INTP","INTJ"]
+},
+
+ISTP:{
+n:"感情死んでる一匹狼",
+c:"必要なら呼んでください。雑談だけなら寝ています。",
+s:"無駄を嫌い、状況を見て最短で手を動かす職人気質。感情がないわけではなく、わざわざ全部言語化しないだけ。緊急時ほど妙に冷静。",
+f:"クール、マイペース、干渉してこない。",
+b:"興味のない会話では魂がログアウト。束縛されると物理的にも心理的にも距離を取る。",
+st:"実践、トラブル対応、道具・技術、冷静さ。現場で答えを出す力。",
+w:"過干渉、長い会議、感情論だけの要求。説明不足で誤解される。",
+l:"ベタベタより自然体。行動で助けるが言葉の愛情表現は省エネ。",
+br:"一人になる。表面上平気そうでも、後から静かに処理している。",
+fr:"毎日連絡不要。でも困っている時は突然助けに来る。",
+wo:"技術・現場・トラブル対応など裁量がある仕事向き。",
+x:"全部面倒になって人との接点を切る。刺激で気分転換したくなることも。",
+m:"説明は無駄ではない。短くても『今こう思っている』を出すと人間関係の事故が激減する。",
+g:["ESTP","ISFP"],
+h:["ENFJ","ESFJ"]
+},
+
+ISFP:{
+n:"省エネのらりくらり",
+c:"急かさないでください。ちゃんと自分のペースがあります。",
+s:"穏やかで感覚が繊細、自分の好き嫌いには意外と芯がある自由人。競争より心地よさを重視し、無理な環境からは静かに離れる。",
+f:"柔らかくて自然体。押し付けてこない。",
+b:"嫌なことをその場で言わず、静かに距離を取って突然いなくなることがある。",
+st:"感性、適応、観察、自然な気遣い。美意識や体験を形にする力。",
+w:"強制、批判、管理されすぎること。先送りで後から自分が困る。",
+l:"言葉より一緒に過ごす時間や行動。安心できる相手にはかなり素直。",
+br:"争うより離れる。思い出の物や場所で後から感情が戻ってくる。",
+fr:"気楽に会える友達を大事にする。大人数より少人数。",
+wo:"デザイン、接客、制作、手仕事など感覚を活かせる環境で強い。",
+x:"何も考えたくなくなり、娯楽へ逃避。問題を見ないふりしやすい。",
+m:"嫌になる前に小さく意思表示する。自由を守るためにも最低限の計画は味方になる。",
+g:["ISTP","ESFP"],
+h:["ENTJ","ESTJ"]
+},
+
+ESTP:{
+n:"脳筋ギャンブラー",
+c:"考える前にもう動いている。人生はだいたい現場判断。",
+s:"刺激・勝負・面白そうの匂いを嗅ぐとアクセル全開。状況判断と度胸があり、ピンチほど頭が回る実戦型。ただし『まあ何とかなる』で未来の自分に請求書を回しがち。",
+f:"ノリがよく、行動が速く、初対面でも物怖じしない。",
+b:"退屈すると自分から事件を作りに行く。慎重派の忠告は『考えすぎ』で処理しがち。",
+st:"行動力、交渉、臨機応変、勝負勘。現場の瞬発力はかなり強い。",
+w:"退屈、細かい規則、長期計画。勢いで約束や出費を増やすと後から詰む。",
+l:"追っている時の火力が高い。一緒に遊べてテンポが合う相手に弱い。マンネリ対策は重要。",
+br:"じっと悩むより動いて忘れようとする。ただし勢いの新恋愛で上書きすると未処理が残る。",
+fr:"遊びの中心人物。『今から行こう』が成立するフットワーク。",
+wo:"営業、現場、イベント、交渉など結果がすぐ返る環境で強い。単調作業は魂が抜ける。",
+x:"刺激をさらに強くし、リスク判断が雑になる。",
+m:"行動力はそのままで、大きな判断だけ一晩寝かせる。それだけで事故率がかなり下がる。",
+g:["ISTP","ESFP"],
+h:["INFJ","ISFJ"]
+},
+
+ESFP:{
+n:"目立ちたがり露出狂",
+c:"人生はステージ。反応があるほどテンションが上がる。",
+s:"人・体験・楽しい空気が大好物のエンターテイナー。リアクションが豊かで、その場を明るくする力がある。注目されたい気持ちが暴走すると、静かな場でもセンターを取りに行く。",
+f:"明るい、親しみやすい、一緒にいると退屈しにくい。",
+b:"反応が薄いとテンションが急落。『誰も見ていない』が地味に効く。",
+st:"社交性、表現力、即興、空気を明るくする力。人の気分を動かすのが上手い。",
+w:"無反応、孤独、単調さ。楽しい方を優先して後の予定が崩れることも。",
+l:"好きが顔と行動に出やすい。一緒に楽しい思い出を大量生産したい。",
+br:"一人で閉じこもるより友達・外出・新しい体験で回復しようとする。",
+fr:"盛り上げ役。写真とエピソードがやたら多い。",
+wo:"接客、販売、芸能、イベント、発信など反応が見える場所で強い。",
+x:"予定を詰め、買い物や遊びで気分を上げ続けようとする。",
+m:"注目されていない時間にも自分の価値は減らない。楽しさ＋少しの先読みで魅力が長持ちする。",
+g:["ISFP","ESTP"],
+h:["INTJ","ISTJ"]
 }
 
-function selectOpt(qIdx, optIdx, type, val) {
-  answers[qIdx] = { type, val };
-  document.getElementById(`btn_${qIdx}_0`).classList.remove('selected');
-  document.getElementById(`btn_${qIdx}_1`).classList.remove('selected');
-  document.getElementById(`btn_${qIdx}_${optIdx}`).classList.add('selected');
+};
+
+
+const answers = {};
+let current = null;
+
+
+function scaleLabel(value){
+
+const labels = {
+3:"かなりそう思う",
+2:"そう思う",
+1:"ややそう思う",
+0:"どちらともいえない",
+"-1":"ややそう思わない",
+"-2":"そう思わない",
+"-3":"かなりそう思わない"
+};
+
+return labels[value];
+
 }
 
-function diagnose() {
-  if (Object.keys(answers).length < questions.length) {
-    alert('すべての質問に答えてな！（あと ' + (questions.length - Object.keys(answers).length) + ' 問）');
-    return;
-  }
 
-  let score = { E:0, I:0, S:0, N:0, T:0, F:0, J:0, P:0 };
-  Object.values(answers).forEach(a => {
-    if (a.type === 'E') a.val === 0 ? score.E++ : score.I++;
-    if (a.type === 'S') a.val === 0 ? score.S++ : score.N++;
-    if (a.type === 'T') a.val === 1 ? score.T++ : score.F++;
-    if (a.type === 'J') a.val === 0 ? score.J++ : score.P++;
-  });
+function renderQuiz(){
 
-  const type = (score.I >= score.E ? 'I':'E') + (score.N >= score.S ? 'N':'S') + (score.F >= score.T ? 'F':'T') + (score.P >= score.J ? 'P':'J');
+const area =
+document.getElementById("quizArea");
 
-  const results = {
-    "INTP": { name: "冷酷な理屈屋マシーン", desc: "感情ゼロの論理モンスター。他人の感情論に反論するのが快感。引きこもり予備軍。" },
-    "INTJ": { name: "孤高のドS黒幕参謀", desc: "上から目線で人間を観察する冷血漢。計画通りにいかないと内心ブチギレ。" },
-    "INFP": { name: "ガラスのハートメンヘラ", desc: "被害妄想のプロ。自分の世界に閉じこもり、勝手に傷ついて勝手に病む。" },
-    "INFJ": { name: "腹黒おせっかい偽善者", desc: "笑顔の裏で人を査定。一見優しいが限界を超えると一瞬で人間関係を断絶する。" },
-    "ISTP": { name: "単独行動サイコパス", desc: "興味のない話は1秒も聞いてない。群れる奴らを「群れなきゃ生きてけない弱者」と見下す。" },
-    "ISTJ": { name: "頭の硬いロボット公務員", desc: "マニュアル通りしか動けない頭カチカチ人間。融通が効かない変化嫌い。" },
-    "ISFP": { name: "キャパ狭お気楽なまけもの", desc: "現実逃避の天才。ストレスを感じるとすぐ脳死状態になり、後回しにして詰む。" },
-    "ISFJ": { name: "自己犠牲アピール妖怪", desc: "「私ばっかり損してる」が裏の口癖。断れない弱さを「優しさ」だと勘違い。" },
-    "ENTP": { name: "レスバ中毒ひろゆきキッズ", desc: "相手を論破してニヤニヤするのが生きがい。口だけで実行力ゼロ。" },
-    "ENTJ": { name: "独裁者ワンプッシュ暴君", desc: "他人は自分の駒。成果が出ない奴は人権なしだと思っている超絶クラッシャー。" },
-    "ENFP": { name: "多動気質のかまってちゃん", desc: "アイディアは出すが飽き性で投げ出す。キャピキャピしてるが内面スカスカ。" },
-    "ENFJ": { name: "教祖様ごっこ洗脳野郎", desc: "「みんなで仲良く！」を強要する平和主義の押し売り。裏で逆らう奴を排除。" },
-    "ESTP": { name: "イキリパリピ直感バカ", desc: "スリルとノリだけで生きてる。後先考えずに突っ込んで周りを巻き込んで爆死する。" },
-    "ESTJ": { name: "老害予備軍説教ババア/ジジイ", desc: "「普通はさぁ」が口癖の老害予備軍。自分の価値観こそが正義だと信じて疑わない。" },
-    "ESFP": { name: "目立ちたがり露出狂", desc: "チヤホヤされないと死ぬマグロ。ノリは良いが深い話は何もできない。" },
-    "ESFJ": { name: "同調圧力の女王", desc: "陰口と噂話が大好物。「みんな言ってるよ」を武器に他人を叩く警察官。" }
-  };
+area.innerHTML =
+questions.map((q,i)=>`
 
-  const res = results[type] || { name: "謎の毒舌人間", desc: "計測不能の怪人物やで。" };
+<article
+class="q-card"
+id="q${i}"
+>
 
-  document.getElementById('resultType').innerText = `${type} : ${res.name}`;
-  document.getElementById('resultDesc').innerText = res.desc;
-  document.getElementById('resultArea').style.display = 'block';
+<div class="q-num">
+QUESTION ${String(i+1).padStart(2,"0")}
+</div>
+
+<div class="q-title">
+${q[0]}
+</div>
+
+<div class="scale-labels">
+<span>そう思う</span>
+<span>そう思わない</span>
+</div>
+
+<div class="scale">
+
+${[3,2,1,0,-1,-2,-3].map(value=>`
+
+<button
+type="button"
+class="scale-option"
+aria-label="${scaleLabel(value)}"
+title="${scaleLabel(value)}"
+onclick="pick(${i},${value},this)"
+></button>
+
+`).join("")}
+
+</div>
+
+<div class="scale-sub">
+<span>かなり</span>
+<span>どちらとも<br>いえない</span>
+<span>かなり</span>
+</div>
+
+</article>
+
+`).join("");
+
+updateProgress();
+
 }
+
+
+function pick(i,value,button){
+
+answers[i] = value;
+
+document
+.querySelectorAll(`#q${i} .scale-option`)
+.forEach(
+b=>b.classList.remove("selected")
+);
+
+button.classList.add("selected");
+
+updateProgress();
+
+}
+
+
+function updateProgress(){
+
+const n =
+Object.keys(answers).length;
+
+const p =
+Math.round(
+n/questions.length*100
+);
+
+document.getElementById(
+"progressText"
+).textContent =
+`${n} / ${questions.length} 回答済み`;
+
+document.getElementById(
+"progressPct"
+).textContent =
+p+"%";
+
+document.getElementById(
+"progressBar"
+).style.width =
+p+"%";
+
+}
+
+
+function calc(){
+
+const score = {
+EI:0,
+SN:0,
+TF:0,
+JP:0
+};
+
+questions.forEach(
+(q,i)=>{
+
+score[q[1]] +=
+answers[i];
+
+}
+);
+
+
+/*
+プラス側
+EI → E
+SN → S
+TF → T
+JP → J
+
+マイナス側
+EI → I
+SN → N
+TF → F
+JP → P
+*/
+
+const type =
+
+(score.EI >= 0 ? "E":"I")
+
++
+
+(score.SN >= 0 ? "S":"N")
+
++
+
+(score.TF >= 0 ? "T":"F")
+
++
+
+(score.JP >= 0 ? "J":"P");
+
+
+/*
+各軸は
+
+6問 × 最大3点 = +18
+6問 × 最小-3点 = -18
+
+なので
+-18～+18を0～100%へ変換。
+*/
+
+const toPercent =
+value =>
+Math.round(
+((value+18)/36)*100
+);
+
+
+const e =
+toPercent(score.EI);
+
+const s =
+toPercent(score.SN);
+
+const t =
+toPercent(score.TF);
+
+const j =
+toPercent(score.JP);
+
+
+const count = {
+
+E:e,
+I:100-e,
+
+S:s,
+N:100-s,
+
+T:t,
+F:100-t,
+
+J:j,
+P:100-j
+
+};
+
+
+return {
+count,
+type,
+score
+};
+
+}
+
+
+function diagnose(){
+
+if(
+Object.keys(answers).length
+<
+questions.length
+){
+
+const missing =
+questions
+.map(
+(_,i)=>
+answers[i]===undefined
+? i
+: null
+)
+.filter(
+x=>x!==null
+);
+
+
+const e =
+document.getElementById(
+"error"
+);
+
+e.style.display =
+"block";
+
+e.textContent =
+`未回答があと ${missing.length} 問あります。回答していない最初の質問へ移動します。`;
+
+
+document.getElementById(
+"q"+missing[0]
+).scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+return;
+
+}
+
+
+document.getElementById(
+"error"
+).style.display =
+"none";
+
+
+const {
+count,
+type,
+score
+} = calc();
+
+
+current = {
+count,
+type,
+score,
+data:R[type]
+};
+
+
+showResult(
+type,
+count,
+true
+);
+
+}
+
+
+function showResult(
+type,
+count,
+scroll
+){
+
+const d = R[type];
+
+if(!d)return;
+
+
+document.getElementById(
+"quiz"
+).classList.add(
+"hidden"
+);
+
+
+document.getElementById(
+"result"
+).style.display =
+"block";
+
+
+document.getElementById(
+"resultType"
+).textContent =
+type;
+
+
+document.getElementById(
+"nickname"
+).textContent =
+d.n;
+
+
+document.getElementById(
+"catch"
+).textContent =
+"「"+d.c+"」";
+
+
+const img =
+document.getElementById(
+"resultImage"
+);
+
+
+img.src =
+`images/${type.toLowerCase()}.jpg`;
+
+
+img.alt =
+`${type} ${d.n} の診断結果イラスト`;
+
+
+img.onerror =
+()=>{
+
+img.style.display =
+"none";
+
+};
+
+
+img.style.display =
+"block";
+
+
+const ids = {
+
+summary:"s",
+front:"f",
+back:"b",
+strength:"st",
+weakness:"w",
+love:"l",
+breakup:"br",
+friend:"fr",
+work:"wo",
+stress:"x",
+manual:"m"
+
+};
+
+
+Object.entries(
+ids
+).forEach(
+([id,k])=>
+
+document.getElementById(
+id
+).textContent =
+d[k]
+
+);
+
+
+document.getElementById(
+"good"
+).innerHTML =
+
+d.g.map(
+x=>
+
+`<span class="pill">
+${x} ${R[x].n}
+</span>`
+
+).join("");
+
+
+document.getElementById(
+"hard"
+).innerHTML =
+
+d.h.map(
+x=>
+
+`<span class="pill">
+${x} ${R[x].n}
+</span>`
+
+).join("");
+
+
+renderBars(
+count,
+type
+);
+
+
+renderAll(
+type
+);
+
+
+document.title =
+`${type}「${d.n}」｜裏・16コア性格診断`;
+
+
+if(scroll){
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+}
+
+
+function renderBars(
+c,
+type
+){
+
+const pairs = [
+
+["E","I","外向","内向"],
+
+["S","N","感覚","直感"],
+
+["T","F","思考","感情"],
+
+["J","P","計画","柔軟"]
+
+];
+
+
+let html = "";
+
+let notes = [];
+
+
+pairs.forEach(
+([a,b,al,bl])=>{
+
+
+const ap =
+Math.round(c[a]);
+
+const bp =
+Math.round(c[b]);
+
+
+const winner =
+ap>=bp
+? a
+: b;
+
+
+const wp =
+Math.max(
+ap,
+bp
+);
+
+
+html += `
+
+<div>
+
+<div class="bar-head">
+
+<span>
+${a} ${al} ${ap}%
+</span>
+
+<span>
+${b} ${bl} ${bp}%
+</span>
+
+</div>
+
+<div class="bar">
+
+<div
+class="bar-fill"
+data-w="${ap}%">
+</div>
+
+</div>
+
+</div>
+
+`;
+
+
+if(wp>=75){
+
+notes.push(
+`${winner}の傾向がかなり強め`
+);
+
+}else if(wp<=58){
+
+notes.push(
+`${a}/${b}はかなり接戦`
+);
+
+}
+
+});
+
+
+document.getElementById(
+"bars"
+).innerHTML =
+html;
+
+
+requestAnimationFrame(
+()=>{
+
+document
+.querySelectorAll(
+".bar-fill"
+)
+.forEach(
+x=>
+
+x.style.width =
+x.dataset.w
+
+);
+
+}
+);
+
+
+document.getElementById(
+"dynamicNote"
+).textContent =
+personalNote(
+c,
+type,
+notes
+);
+
+}
+
+
+function personalNote(
+c,
+type,
+notes
+){
+
+const axis = [
+
+["E","I"],
+
+["S","N"],
+
+["T","F"],
+
+["J","P"]
+
+];
+
+
+const close =
+axis
+.filter(
+([a,b])=>
+
+Math.abs(
+c[a]-c[b]
+)<=16
+
+)
+.map(
+x=>
+x.join("/")
+);
+
+
+let text =
+notes.length
+
+?
+
+`今回の回答では「${notes.join("・")}」。`
+
+:
+
+"今回の回答では、極端に一方へ偏っていない軸もあります。";
+
+
+if(close.length){
+
+text +=
+` ${close.join("、")} は境界寄りなので、状況によって反対側の特徴もかなり出そうです。`;
+
+}else{
+
+text +=
+" 4つの軸とも比較的はっきり傾向が出ています。";
+
+}
+
+
+return text;
+
+}
+
+
+function renderAll(
+now
+){
+
+document.getElementById(
+"allTypes"
+).innerHTML =
+
+Object.keys(R)
+.map(
+t=>
+
+`<button
+onclick="preview('${t}')"
+${t===now
+?
+'style="border-color:#ef4457"'
+:
+''}
+>
+${t}
+</button>`
+
+)
+.join("");
+
+}
+
+
+function preview(t){
+
+/*
+他タイプを見る場合は
+診断スコアではないため
+バーを50/50表示。
+*/
+
+const fake = {
+
+E:50,
+I:50,
+
+S:50,
+N:50,
+
+T:50,
+F:50,
+
+J:50,
+P:50
+
+};
+
+
+current = {
+
+type:t,
+count:fake,
+data:R[t]
+
+};
+
+
+showResult(
+t,
+fake,
+false
+);
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function shareText(){
+
+const d =
+current.data;
+
+
+return `【裏・16コア性格診断】
+
+私の裏タイプは……
+
+${current.type}
+『${d.n}』でした🔥
+
+${d.c}
+
+あなたの裏タイプは？
+
+#裏16コア性格診断`;
+
+}
+
+
+function shareX(){
+
+const u =
+encodeURIComponent(
+location.href.split("#")[0]
+);
+
+
+const t =
+encodeURIComponent(
+shareText()
+);
+
+
+window.open(
+
+`https://twitter.com/intent/tweet?text=${t}&url=${u}`,
+
+"_blank",
+
+"noopener"
+
+);
+
+}
+
+
+function shareLine(){
+
+const text =
+encodeURIComponent(
+
+shareText()
+
++"\n"
+
++location.href.split("#")[0]
+
+);
+
+
+window.open(
+
+`https://line.me/R/msg/text/?${text}`,
+
+"_blank",
+
+"noopener"
+
+);
+
+}
+
+
+async function copyResult(){
+
+try{
+
+await navigator.clipboard.writeText(
+
+shareText()
+
++"\n"
+
++location.href.split("#")[0]
+
+);
+
+
+toast(
+"コピーしました！"
+);
+
+}catch(e){
+
+toast(
+"コピーできませんでした"
+);
+
+}
+
+}
+
+
+async function nativeShare(){
+
+if(
+navigator.share
+){
+
+try{
+
+await navigator.share({
+
+title:
+"裏・16コア性格診断",
+
+text:
+shareText(),
+
+url:
+location.href.split("#")[0]
+
+});
+
+}catch(e){}
+
+}else{
+
+copyResult();
+
+}
+
+}
+
+
+function toast(t){
+
+const x =
+document.getElementById(
+"toast"
+);
+
+
+x.textContent =
+t;
+
+
+x.classList.add(
+"show"
+);
+
+
+setTimeout(
+()=>x.classList.remove(
+"show"
+),
+1800
+);
+
+}
+
+
+function restart(){
+
+Object.keys(
+answers
+).forEach(
+k=>
+delete answers[k]
+);
+
+
+current = null;
+
+
+document.getElementById(
+"result"
+).style.display =
+"none";
+
+
+document.getElementById(
+"quiz"
+).classList.remove(
+"hidden"
+);
+
+
+document.title =
+"裏・16コア性格診断｜24問で分かるあなたの本性";
+
 
 renderQuiz();
+
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+renderQuiz();
+
 </script>
 
 </body>
