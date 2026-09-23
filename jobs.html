@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>意外と稼げる仕事ランキングTOP50【学歴不問・未経験OK多数】 - KoroPop Games</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #ef4444;
+      --gold: #f59e0b;
+      --silver: #94a3b8;
+      --bronze: #d97706;
+      --text: #f8fafc;
+      --sub-text: #94a3b8;
+      --border: #334155;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 16px 8px; }
+    .container { max-width: 680px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 24px; }
+    h1 { font-size: 1.5rem; color: #38bdf8; margin-bottom: 8px; }
+    p.lead { font-size: 0.85rem; color: var(--sub-text); line-height: 1.5; }
+    
+    .filter-bar { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 16px; }
+    .filter-btn { background: var(--card-bg); color: var(--sub-text); border: 1px solid var(--border); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; cursor: pointer; white-space: nowrap; }
+    .filter-btn.active { background: #0284c7; color: white; border-color: #38bdf8; font-weight: bold; }
+
+    .job-card { background: var(--card-bg); border-radius: 10px; padding: 14px; margin-bottom: 12px; border: 1px solid var(--border); }
+    .job-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .rank-badge { font-weight: bold; font-size: 0.9rem; padding: 2px 8px; border-radius: 4px; background: #334155; color: white; }
+    .rank-1 { background: var(--gold); color: #000; }
+    .rank-2 { background: var(--silver); color: #000; }
+    .rank-3 { background: var(--bronze); color: #fff; }
+    
+    .job-title { font-size: 1.05rem; font-weight: bold; color: var(--text); }
+    .salary-tag { font-size: 1.1rem; font-weight: bold; color: #4ade80; text-align: right; }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .tag { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: #0f172a; color: #38bdf8; border: 1px solid #1e293b; }
+    
+    .detail-btn { width: 100%; margin-top: 10px; background: #0f172a; color: #94a3b8; border: 1px solid var(--border); padding: 8px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; text-align: center; }
+    .job-detail { display: none; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border); font-size: 0.85rem; color: #cbd5e1; line-height: 1.6; }
+
+    .back-btn { display: block; text-align: center; margin-top: 24px; font-size: 0.9rem; color: #38bdf8; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>意外と稼げる仕事 TOP50</h1>
+    <p class="lead">学歴不問・未経験からでも年収600万〜1,000万円越えを狙える職業を厳選まとめ！</p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterJobs('all')">全表示</button>
+    <button class="filter-btn" onclick="filterJobs('学歴不問')">学歴不问</button>
+    <button class="filter-btn" onclick="filterJobs('未経験OK')">未経験OK</button>
+    <button class="filter-btn" onclick="filterJobs('インセンティブ高')">歩合で稼ぐ</button>
+  </div>
+
+  <div id="jobList"></div>
+
+  <a href="index.html" class="back-btn">← ポータルに戻る</a>
+</div>
+
+<script>
+const jobs = [
+  { rank: 1, title: "不動産営業（個人・売買）", salary: "年収 800万〜1,500万円", tags: ["学歴不問", "未経験OK", "インセンティブ高"], desc: "成果報酬（歩合）の割合が極めて高く、高額物件を一契約決めれば数十万〜数百万円の手当が入る。実力主義の世界。" },
+  { rank: 2, title: "建築施工管理技士", salary: "年収 600万〜950万円", tags: ["学歴不問", "需要急増", "資格手当重視"], desc: "現場の安全や工程を管理する仕事。人手不足の影響で未経験からの採用枠が広がり、資格取得で年収が跳ね上がる。" },
+  { rank: 3, title: "タクシー・ハイヤー運転手", salary: "年収 500万〜800万円", tags: ["未経験OK", "歩合制", "ナイトシフト強み"], desc: "歩合制の会社が多く、需要の高いエリアや夜間シフト・アプリ配車を効率よく回すことで月収60万円越えも現実的。" },
+  { rank: 4, title: "広域長距離トラックドライバー", salary: "年収 550万〜800万円", tags: ["学歴不問", "手当充実", "一人作業"], desc: "大型免許やトレーラー免許を所有していれば高収入確定。長距離手当や深夜手当が手厚い。" },
+  { rank: 5, title: "ビル設備管理（ビルメン・責任者）", salary: "年収 450万〜700万円", tags: ["学歴不問", "ビルメン資格", "夜勤手当"], desc: "「ビルメン4点セット」や「電験三種」などの資格を習得し、ビル管理責任者になると一気に高年収ラインへ到達。" },
+  { rank: 6, title: "金融営業・FP・保険アジエンシー", salary: "年収 700万〜1,200万円", tags: ["インセンティブ高", "実力主義"], desc: "フルコミッション（完全歩合制）契約が多く、成果次第で年収1,000万円超えを達成するプレイヤーが多数。" },
+  { rank: 7, title: "Webエンジニア（バックエンド）", salary: "年収 550万〜900万円", tags: ["未経験OK", "リモート可", "スキル重視"], desc: "実務経験とポートフォリオさえあれば学歴は一切問われない。スキル次第でフリーランス独立して高報酬を狙える。" },
+  { rank: 8, title: "自動車整備士（特修・大型）", salary: "年収 500万〜750万円", tags: ["学歴不問", "技術職", "手当手厚い"], desc: "大型車や外車ディーラーの整備士は手当が厚く、需要が途切れないため安定して稼げる。" },
+  { rank: 9, title: "特殊プラント配管工・鍛冶工", salary: "年収 550万〜850万円", tags: ["学歴不問", "ガテン系", "日給高め"], desc: "専門性の高い溶接やプラント工事を行う職人。日給2万円超えも珍しくなく、経験を積むと高年収。" },
+  { rank: 10, title: "期間工・自動車製造ライン", salary: "年収 450万〜600万円", tags: ["未経験OK", "寮費無料", "満了金あり"], desc: "大手メーカーの工場で稼働。入社祝い金や数ヶ月ごとの満了慰労金（数十万円）があり、短期集中で貯金ができる。" },
+  { rank: 11, title: "システムコンサルタント", salary: "年収 700万〜1,200万円", tags: ["高年収", "知識重視"], desc: "IT導入で企業の課題を解決する。知識が必要だが需要が非常に高く高額案件が多い。" },
+  { rank: 12, title: "重機オペレーター（建設）", salary: "年収 500万〜750万円", tags: ["学歴不問", "資格要"], desc: "ユンボやクレーンなどの大型重機を扱う職人。熟練者になると現場から引っ張りだこになる。" },
+  { rank: 13, title: "外壁塗装・防水工事職人", salary: "年収 500万〜800万円", tags: ["学歴不問", "独立推奨"], desc: "下貼りを経て独立開業すると利益率が跳ね上がり、年収1,000万円を突破しやすい職種。" },
+  { rank: 14, title: "インフラエンジニア（NW/クラウド）", salary: "年収 500万〜850万円", tags: ["未経験OK", "夜勤手当"], desc: "サーバーやネットワークの設計・保守。24時間運用でのシフト手当や資格手当で確実に年収アップ。" },
+  { rank: 15, title: "通信営業（光回線・スマホ販売）", salary: "年収 500万〜900万円", tags: ["学歴不問", "未経験OK", "歩合制"], desc: "ショッピングモールやショップでの獲得営業。インセンティブ制度が充実している。" },
+  { rank: 16, title: "電気工事士", salary: "年収 480万〜720万円", tags: ["学歴不問", "一生モノ資格"], desc: "第一種・第二種電気工事士を取得すれば仕事に困ることはない。独立時の利益率も高い。" },
+  { rank: 17, title: "登録販売者（ドラッグストア店長）", salary: "年収 450万〜650万円", tags: ["未経験OK", "資格手当"], desc: "医薬品を販売できる資格。大手チェーンの店長クラスになると年収600万円越え。" },
+  { rank: 18, title: "生活環境衛生・害虫駆除スタッフ", salary: "年収 480万〜700万円", tags: ["学歴不問", "穴場職種"], desc: "特殊なニーズに対応するため競合が少なく、施工単価が高いため意外な高収入を狙える。" },
+  { rank: 19, title: "中古車買取営業", salary: "年収 500万〜1,000万円", tags: ["学歴不問", "インセンティブ高"], desc: "買い取った台数や粗利に応じてダイレクトにインセンティブが支給される。" },
+  { rank: 20, title: "クレーン・デリック運転士", salary: "年収 520万〜780万円", tags: ["専門資格", "高需要"], desc: "大型ビルや港湾での荷揚げ作業を担当。事故リスクを伴うため基本給が高めに設定されている。" }
+];
+
+// 21〜50位のデータを簡易生成
+const extraJobTitles = [
+  "Webライター・セールスコピーライター", "映像編集クリエイター", "SNS運用代行・マーカー", "治験ボランティア（短期高額）",
+  "産業廃棄物収集運搬", "潜水士・特殊水質作業", "高圧ガス製造保安責任者", "発破技士（トンネル工事）",
+  "登録手話通訳士", "特殊清掃・遺品整理士", "レッカー移動作業員", "イベント設営ディレクター",
+  "林業・伐採作業員", "養殖業・漁業クルー", "警備員（交通誘導2級持ち）", "コールセンター管理者（SV）",
+  "フォークリフト作業員（夜間）", "結婚相談所カウンセラー", "パーソナルトレーナー（独立）", "リフォーム営業",
+  "貴金属・ブランド買取鑑定士", "ポスター貼り・ポスティング手配", "エアコン取付工事職人", "ルート配送（飲料・食品）",
+  "鍵師・ロックサービス技術者", "義肢装具士", "土地家屋調査士補助", "スクラップ買取・金属選別",
+  "納棺師・エンバーマー", "ひよこ鑑定士（初生雛鑑別師）"
+];
+
+extraJobTitles.forEach((title, i) => {
+  jobs.push({
+    rank: 21 + i,
+    title: title,
+    salary: `年収 ${420 + (i % 5)*60}万〜${600 + (i % 6)*70}万円`,
+    tags: i % 2 === 0 ? ["学歴不問", "未経験OK"] : ["需要急増", "資格手当"],
+    desc: "専門技術や現場ニーズに基づき、一般企業よりも高めの手当や日給が設定されている職種。"
+  });
+});
+
+function renderJobs(filter = 'all') {
+  const container = document.getElementById('jobList');
+  let html = '';
+  
+  jobs.forEach(j => {
+    if (filter !== 'all' && !j.tags.includes(filter)) return;
+    
+    let badgeClass = 'rank-badge';
+    if (j.rank === 1) badgeClass += ' rank-1';
+    if (j.rank === 2) badgeClass += ' rank-2';
+    if (j.rank === 3) badgeClass += ' rank-3';
+
+    html += `
+      <div class="job-card">
+        <div class="job-header">
+          <span class="${badgeClass}">第${j.rank}位</span>
+          <div class="salary-tag">${j.salary}</div>
+        </div>
+        <div class="job-title">${j.title}</div>
+        <div class="tags">
+          ${j.tags.map(t => `<span class="tag">${t}</span>`).join('')}
+        </div>
+        <button class="detail-btn" onclick="toggleDetail(${j.rank})">稼げる理由・詳細を見る ▼</button>
+        <div class="job-detail" id="detail-${j.rank}">${j.desc}</div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html;
+}
+
+function toggleDetail(rank) {
+  const el = document.getElementById(`detail-${rank}`);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function filterJobs(tag) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  renderJobs(tag);
+}
+
+renderJobs();
+</script>
+
+</body>
+</html>
