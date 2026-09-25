@@ -1,180 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KOROPOP GAMES｜無料診断・仕事情報・便利ツール</title>
-
-<meta name="description"
-content="KOROPOP GAMESは、性格診断、給与シミュレーター、仕事・転職情報など、無料で使えるWebコンテンツを提供するサイトです。">
+<meta name="description" content="KOROPOP GAMESは、性格診断、給与シミュレーター、仕事・転職情報など、無料で使えるWebコンテンツを提供するサイトです。">
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-  background:#0f172a;
-  color:#f8fafc;
   margin:0;
-  padding:20px 16px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
+  background:#f5f7fb;
+  color:#1f2937;
+  line-height:1.7;
 }
 
-.container{
-  max-width:620px;
-  margin:0 auto;
-}
-
-h1{
-  font-size:1.8rem;
-  margin-bottom:8px;
-  color:#38bdf8;
+header{
+  background:linear-gradient(135deg,#111827,#2563eb);
+  color:white;
   text-align:center;
+  padding:55px 20px;
 }
 
-.sub,.count{
-  color:#94a3b8;
-  font-size:.9rem;
-  text-align:center;
-}
-
-.count{
-  margin:0 0 24px;
-}
-
-.card-list{
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-.card{
-  background:#1e293b;
-  border:1px solid #334155;
-  border-radius:12px;
-  padding:16px;
-  text-decoration:none;
-  color:inherit;
-  display:block;
-}
-
-.card:hover{
-  border-color:#38bdf8;
-}
-
-.card h2{
-  font-size:1.15rem;
-  margin:0 0 6px;
-}
-
-.card p{
+header h1{
   margin:0;
-  font-size:.85rem;
-  color:#94a3b8;
-  line-height:1.6;
+  font-size:2.2rem;
+}
+
+header p{
+  margin:12px 0 0;
+  color:#e5e7eb;
+}
+
+main{
+  max-width:1050px;
+  margin:auto;
+  padding:40px 18px;
 }
 
 .intro{
-  margin:28px 0;
-  padding:18px;
-  background:#111827;
-  border-radius:12px;
-  line-height:1.8;
-  color:#cbd5e1;
-  font-size:.9rem;
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.intro h2{
+  margin-bottom:8px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.card{
+  display:block;
+  background:white;
+  color:#1f2937;
+  text-decoration:none;
+  border-radius:16px;
+  padding:25px;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+  border:1px solid #e5e7eb;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 28px rgba(0,0,0,.1);
+}
+
+.card h2{
+  margin-top:0;
+  color:#1d4ed8;
+}
+
+.card p{
+  margin-bottom:0;
+  color:#4b5563;
+}
+
+.about{
+  margin-top:45px;
+  padding:28px;
+  background:white;
+  border-radius:16px;
+  border:1px solid #e5e7eb;
 }
 
 footer{
-  margin-top:32px;
-  padding:22px 12px;
   text-align:center;
-  border-top:1px solid #334155;
-  font-size:.82rem;
-  line-height:2;
-  color:#94a3b8;
+  padding:30px 15px 40px;
+  color:#6b7280;
 }
 
 footer a{
-  color:#94a3b8;
+  color:#4b5563;
+  margin:0 6px;
+}
+
+@media(max-width:700px){
+  header{
+    padding:40px 16px;
+  }
+
+  header h1{
+    font-size:1.8rem;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  main{
+    padding:28px 14px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<main class="container">
+<header>
+  <h1>🎮 KOROPOP GAMES</h1>
+  <p>ちょっと楽しく、日常に役立つWebコンテンツ</p>
+</header>
 
-<h1>KOROPOP GAMES</h1>
+<main>
 
-<p class="sub">
-診断・仕事情報・便利ツールを無料で楽しめるWebサイト
-</p>
+<section class="intro">
+  <h2>無料で使えるコンテンツ</h2>
+  <p>現在5コンテンツ公開中。気になるものから自由に使ってください。</p>
+</section>
 
-<p class="count">
-現在5コンテンツ公開中
-</p>
-
-<div class="card-list">
+<section class="cards">
 
 <a href="shindan.html" class="card">
-<h2>🔥 裏・16コア性格診断</h2>
-<p>
-24問への回答から16タイプに分類し、
-性格傾向をエンタメとして楽しめる診断です。
-</p>
+  <h2>🧠 裏・16コア性格診断</h2>
+  <p>
+    24問の質問から16タイプに分類。
+    あなたの考え方や行動傾向を楽しくチェックできます。
+  </p>
 </a>
 
 <a href="tedori.html" class="card">
-<h2>💰 手取り・残業代 概算シミュレーター</h2>
-<p>
-基本給と残業時間から、
-残業代・総支給額・手取り額の目安を簡単に計算します。
-</p>
+  <h2>💰 手取り・残業代シミュレーター</h2>
+  <p>
+    月給や残業時間を入力して、
+    手取り額や残業代の目安を簡単に計算できます。
+  </p>
 </a>
 
 <a href="jobs.html" class="card">
-<h2>💼 収入アップを目指せる仕事20選</h2>
-<p>
-給与の伸び方や必要資格など、
-仕事選びのヒントになる職種を紹介します。
-</p>
+  <h2>💼 収入アップを目指せる仕事20選</h2>
+  <p>
+    転職先を考えるときに知っておきたい仕事を20職種紹介。
+    特徴や確認したいポイントを分かりやすくまとめています。
+  </p>
 </a>
 
 <a href="20s-mikeiken-tenshoku.html" class="card">
-<h2>🧭 20代・未経験からの転職ガイド</h2>
-<p>
-仕事選びで失敗しないための候補と、
-求人を確認するときのポイントを解説します。
-</p>
+  <h2>🧭 20代・未経験からの転職</h2>
+  <p>
+    未経験から検討しやすい7職種と、
+    求人選びで失敗しないためのポイントを解説します。
+  </p>
 </a>
 
 <a href="mikeiken-it-tenshoku.html" class="card">
-<h2>💻 未経験からIT転職するなら？</h2>
-<p>
-ヘルプデスク・IT運用・インフラなど7職種を比較。
-必要な資格や求人の見分け方、転職までの進め方を解説します。
-</p>
+  <h2>💻 未経験からIT転職するなら？</h2>
+  <p>
+    ヘルプデスク・IT運用・インフラなど7職種を比較。
+    必要な資格や求人の見分け方、転職までの進め方を解説します。
+  </p>
 </a>
 
-</div>
+</section>
 
-<section class="intro">
+<section class="about">
 
-<strong>KOROPOP GAMESについて</strong><br>
+  <strong>KOROPOP GAMESについて</strong>
 
-「ちょっと楽しく、日常に役立つ」をテーマに、
-ブラウザですぐ使える診断・シミュレーター・読み物を制作しています。
+  <p>
+    「ちょっと楽しく、日常に役立つ」をテーマに、
+    ブラウザですぐ使える診断・シミュレーター・仕事情報などを公開しています。
+  </p>
 
-各コンテンツは目的や前提条件を分かりやすく示し、
-必要に応じて注意事項も掲載します。
+  <p>
+    各コンテンツは目的や前提条件を分かりやすく掲載し、
+    必要に応じて注意事項も掲載します。
+  </p>
 
 </section>
 
 <footer>
-<a href="index.html">トップ</a> ・
-<a href="about.html">このサイトについて</a> ・
-<a href="privacy.html">プライバシーポリシー</a> ・
-<a href="contact.html">お問い合わせ</a>
-<br>
-© 2026 KOROPOP GAMES
+  <a href="index.html">トップ</a> ・
+  <a href="about.html">このサイトについて</a> ・
+  <a href="privacy.html">プライバシーポリシー</a> ・
+  <a href="contact.html">お問い合わせ</a>
+  <br><br>
+  © 2026 KOROPOP GAMES
 </footer>
 
 </main>
