@@ -1,104 +1,362 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>手取り・残業代 一発計算シミュレーター</title>
-  <meta name="description" content="額面給与や残業時間から、ざっくりとした手取り額や残業代を簡単一発計算！">
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #f8fafc; color: #334155; margin: 0; padding: 20px 12px; }
-    .container { max-width: 450px; margin: 0 auto; background: #ffffff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-    h1 { font-size: 1.3rem; text-align: center; color: #1e293b; margin-bottom: 6px; }
-    p.sub { font-size: 0.8rem; text-align: center; color: #64748b; margin-bottom: 20px; }
-    .form-group { margin-bottom: 14px; }
-    label { display: block; font-size: 0.85rem; font-weight: bold; margin-bottom: 4px; }
-    input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
-    input:focus { border-color: #2563eb; outline: none; }
-    button { width: 100%; padding: 14px; background: #2563eb; color: #fff; font-size: 1rem; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; }
-    button:active { background: #1d4ed8; }
-    .result { margin-top: 20px; padding: 16px; background: #f1f5f9; border-radius: 8px; display: none; }
-    .result-item { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; }
-    .result-item.total { border-top: 1px solid #cbd5e1; padding-top: 8px; font-weight: bold; font-size: 1.1rem; color: #1e293b; }
-    .result-item.net { color: #16a34a; font-size: 1.2rem; font-weight: bold; border-top: 2px solid #16a34a; padding-top: 8px; margin-top: 8px; }
-    .back-btn { display: block; text-align: center; margin-top: 16px; font-size: 0.85rem; color: #2563eb; text-decoration: none; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>手取り・残業代 概算シミュレーター｜KOROPOP GAMES</title>
+
+<meta name="description"
+content="基本給と残業時間から、残業代・総支給額・手取り額の目安を無料で計算できるシミュレーターです。結果は一定の条件に基づく概算です。">
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:#0f172a;
+  color:#f8fafc;
+  margin:0;
+  padding:20px 16px;
+}
+
+.container{
+  max-width:620px;
+  margin:0 auto;
+}
+
+h1{
+  color:#38bdf8;
+  font-size:1.7rem;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  color:#94a3b8;
+  line-height:1.7;
+  margin-bottom:24px;
+}
+
+.card{
+  background:#1e293b;
+  border:1px solid #334155;
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:18px;
+}
+
+label{
+  display:block;
+  margin-top:16px;
+  margin-bottom:7px;
+  font-weight:600;
+}
+
+label:first-child{
+  margin-top:0;
+}
+
+input{
+  width:100%;
+  padding:13px;
+  font-size:16px;
+  border-radius:8px;
+  border:1px solid #475569;
+  background:#0f172a;
+  color:#fff;
+}
+
+button{
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  border:0;
+  border-radius:9px;
+  background:#38bdf8;
+  color:#082f49;
+  font-weight:700;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.9;
+}
+
+.result{
+  display:none;
+}
+
+.result h2{
+  margin-top:0;
+  color:#38bdf8;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid #334155;
+}
+
+.row:last-child{
+  border-bottom:0;
+}
+
+.value{
+  font-weight:700;
+  text-align:right;
+}
+
+.takehome{
+  color:#4ade80;
+  font-size:1.15rem;
+}
+
+.notice{
+  background:#111827;
+  border-left:4px solid #f59e0b;
+  padding:16px;
+  margin-top:22px;
+  border-radius:8px;
+  color:#cbd5e1;
+  font-size:.85rem;
+  line-height:1.8;
+}
+
+.explanation{
+  margin-top:28px;
+  color:#cbd5e1;
+  line-height:1.8;
+}
+
+.explanation h2{
+  color:#38bdf8;
+  font-size:1.25rem;
+}
+
+footer{
+  margin-top:36px;
+  padding:22px 8px;
+  border-top:1px solid #334155;
+  text-align:center;
+  color:#94a3b8;
+  font-size:.82rem;
+  line-height:2;
+}
+
+footer a{
+  color:#94a3b8;
+}
+
+.home{
+  display:inline-block;
+  margin-bottom:16px;
+  color:#7dd3fc;
+  text-decoration:none;
+}
+</style>
 </head>
+
 <body>
 
-<div class="container">
-  <h1>手取り・残業代 計算ツール</h1>
-  <p class="sub">基本給と残業時間を入れるだけで一発計算！</p>
+<main class="container">
 
-  <div class="form-group">
-    <label for="baseSalary">基本給（月額 / 円）</label>
-    <input type="number" id="baseSalary" placeholder="例: 250000" inputmode="numeric">
-  </div>
+<a class="home" href="index.html">← トップへ戻る</a>
 
-  <div class="form-group">
-    <label for="overtimeHours">今月の残業時間（時間）</label>
-    <input type="number" id="overtimeHours" placeholder="例: 20" inputmode="numeric">
-  </div>
+<h1>💰 手取り・残業代 概算シミュレーター</h1>
 
-  <div class="form-group">
-    <label for="workDays">月間所定労働日数（日）</label>
-    <input type="number" id="workDays" value="20" inputmode="numeric">
-  </div>
+<p class="subtitle">
+基本給と1か月の残業時間を入力すると、
+残業代・総支給額・手取り額のおおよその目安を計算できます。
+</p>
 
-  <button onclick="calculate()">計算する</button>
+<div class="card">
 
-  <div class="result" id="resultArea">
-    <div class="result-item">
-      <span>推定時給:</span>
-      <span id="hourlyRate">0 円</span>
-    </div>
-    <div class="result-item">
-      <span>残業代（1.25倍割増）:</span>
-      <span id="overtimePay">0 円</span>
-    </div>
-    <div class="result-item total">
-      <span>総支給額（額面）:</span>
-      <span id="grossPay">0 円</span>
-    </div>
-    <div class="result-item">
-      <span>概算控除額（税金・保険料 約20%）:</span>
-      <span id="deduction">-0 円</span>
-    </div>
-    <div class="result-item net">
-      <span>推定手取り額:</span>
-      <span id="netPay">0 円</span>
-    </div>
-  </div>
+<label for="salary">月の基本給（円）</label>
+<input
+  id="salary"
+  type="number"
+  min="0"
+  inputmode="numeric"
+  placeholder="例：250000"
+>
 
-  <a href="index.html" class="back-btn">← トップページに戻る</a>
+<label for="hours">1か月の残業時間（時間）</label>
+<input
+  id="hours"
+  type="number"
+  min="0"
+  step="0.5"
+  inputmode="decimal"
+  placeholder="例：20"
+>
+
+<button type="button" onclick="calculate()">
+概算する
+</button>
+
 </div>
 
-<script>
-function calculate() {
-  const baseSalary = parseFloat(document.getElementById('baseSalary').value) || 0;
-  const overtimeHours = parseFloat(document.getElementById('overtimeHours').value) || 0;
-  const workDays = parseFloat(document.getElementById('workDays').value) || 20;
+<div id="result" class="card result">
 
-  if (baseSalary <= 0) {
-    alert('基本給を入力してください。');
+<h2>計算結果</h2>
+
+<div class="row">
+<span>時給換算</span>
+<span id="hourly" class="value">-</span>
+</div>
+
+<div class="row">
+<span>残業代の目安</span>
+<span id="overtime" class="value">-</span>
+</div>
+
+<div class="row">
+<span>総支給額の目安</span>
+<span id="gross" class="value">-</span>
+</div>
+
+<div class="row">
+<span>控除額の目安</span>
+<span id="deduction" class="value">-</span>
+</div>
+
+<div class="row">
+<span>手取り額の目安</span>
+<span id="takehome" class="value takehome">-</span>
+</div>
+
+</div>
+
+<div class="notice">
+
+<strong>この計算について</strong><br><br>
+
+本ツールは、1日8時間・月20日勤務を基準として
+月160時間勤務と仮定し、
+時間外労働の割増率を1.25倍として簡易計算しています。
+
+<br><br>
+
+また、税金・社会保険料などの控除額は、
+総支給額の20％として便宜上計算しています。
+
+<br><br>
+
+実際の残業代や手取り額は、
+勤務先の給与規定、所定労働時間、残業時間の区分、
+深夜・休日労働、年齢、居住地、扶養状況、
+社会保険、税金、各種手当・控除などによって異なります。
+
+<br><br>
+
+表示結果はあくまで概算です。
+実際の金額については給与明細、勤務先、
+公的機関等の情報をご確認ください。
+
+</div>
+
+<section class="explanation">
+
+<h2>どうやって計算している？</h2>
+
+<p>
+このシミュレーターでは、
+入力された基本給を月160時間で割って
+簡易的な時給を算出しています。
+</p>
+
+<p>
+その時給に1.25倍の割増率と入力された残業時間を掛け、
+残業代の目安を計算します。
+</p>
+
+<p>
+さらに基本給と残業代を合計して総支給額を算出し、
+そこから20％を控除額の目安として差し引いています。
+</p>
+
+<p>
+そのため、給与明細と完全に一致する金額を計算するものではなく、
+「残業時間が増えると、おおよそどのくらい変わるのか」
+を見るための簡易シミュレーターとしてご利用ください。
+</p>
+
+</section>
+
+<footer>
+
+<a href="index.html">トップ</a> ・
+<a href="about.html">このサイトについて</a> ・
+<a href="privacy.html">プライバシーポリシー</a> ・
+<a href="contact.html">お問い合わせ</a>
+
+<br>
+
+© 2026 KOROPOP GAMES
+
+</footer>
+
+</main>
+
+<script>
+function yen(value){
+  return Math.round(value).toLocaleString("ja-JP") + "円";
+}
+
+function calculate(){
+
+  const salary = Number(document.getElementById("salary").value);
+  const hours = Number(document.getElementById("hours").value);
+
+  if(
+    !Number.isFinite(salary) ||
+    !Number.isFinite(hours) ||
+    salary <= 0 ||
+    hours < 0
+  ){
+    alert("基本給と残業時間を正しく入力してください。");
     return;
   }
 
-  // 1日8時間労働として計算
-  const hourlyRate = baseSalary / (workDays * 8);
-  const overtimePay = hourlyRate * 1.25 * overtimeHours;
-  const grossPay = baseSalary + overtimePay;
-  
-  // 概算控除（約20%想定）
+  // 1日8時間 × 月20日 = 月160時間として概算
+  const monthlyHours = 160;
+
+  // 簡易的な時給
+  const hourlyRate = salary / monthlyHours;
+
+  // 時間外割増率を1.25倍として概算
+  const overtimePay = hourlyRate * 1.25 * hours;
+
+  // 総支給額
+  const grossPay = salary + overtimePay;
+
+  // 税金・社会保険料等を総支給額の20％として簡易計算
   const deduction = grossPay * 0.20;
-  const netPay = grossPay - deduction;
 
-  document.getElementById('hourlyRate').innerText = Math.round(hourlyRate).toLocaleString() + ' 円';
-  document.getElementById('overtimePay').innerText = Math.round(overtimePay).toLocaleString() + ' 円';
-  document.getElementById('grossPay').innerText = Math.round(grossPay).toLocaleString() + ' 円';
-  document.getElementById('deduction').innerText = '-' + Math.round(deduction).toLocaleString() + ' 円';
-  document.getElementById('netPay').innerText = Math.round(netPay).toLocaleString() + ' 円';
+  // 手取り額の目安
+  const takehome = grossPay - deduction;
 
-  document.getElementById('resultArea').style.display = 'block';
+  document.getElementById("hourly").textContent =
+    yen(hourlyRate);
+
+  document.getElementById("overtime").textContent =
+    yen(overtimePay);
+
+  document.getElementById("gross").textContent =
+    yen(grossPay);
+
+  document.getElementById("deduction").textContent =
+    yen(deduction);
+
+  document.getElementById("takehome").textContent =
+    yen(takehome);
+
+  document.getElementById("result").style.display = "block";
 }
 </script>
 
