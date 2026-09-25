@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>未経験からIT転職するなら何から？おすすめ職種7選・資格・求人の見分け方｜KOROPOP GAMES</title>
+
+<meta name="description" content="未経験からIT転職を目指す人向けに、ITヘルプデスク、運用監視、インフラなど7職種を比較。必要な資格、求人の見分け方、転職までのロードマップを初心者向けに解説します。">
+
+<style>
+:root{
+  --bg:#07111f;
+  --card:#0f1d31;
+  --card2:#13243c;
+  --line:#263b59;
+  --text:#f8fafc;
+  --muted:#a9b8cc;
+  --blue:#38bdf8;
+  --purple:#a78bfa;
+  --green:#4ade80;
+  --yellow:#facc15;
+  --red:#fb7185;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%,#12345a 0,transparent 28%),
+    radial-gradient(circle at 100% 20%,#281b50 0,transparent 24%),
+    var(--bg);
+  color:var(--text);
+  line-height:1.85;
+}
+
+a{color:var(--blue)}
+
+.container{
+  width:min(100% - 28px,1080px);
+  margin:auto;
+}
+
+header{
+  padding:18px 0;
+  border-bottom:1px solid var(--line);
+}
+
+.brand{
+  font-weight:900;
+  color:var(--blue);
+  text-decoration:none;
+}
+
+.hero{
+  max-width:850px;
+  margin:auto;
+  padding:58px 0 34px;
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border:1px solid #35547a;
+  border-radius:999px;
+  color:#b9ddff;
+  background:#0c1c31;
+  font-size:.8rem;
+}
+
+h1{
+  font-size:clamp(1.9rem,6vw,3.3rem);
+  line-height:1.3;
+  margin:18px 0;
+}
+
+.gradient{
+  background:linear-gradient(90deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.lead{
+  color:#c5d2e3;
+  max-width:720px;
+  margin:auto;
+}
+
+.answer{
+  margin:28px auto 0;
+  max-width:760px;
+  text-align:left;
+  padding:22px;
+  background:linear-gradient(135deg,#102a46,#211c45);
+  border:1px solid #3b5d87;
+  border-radius:18px;
+}
+
+.answer strong{
+  color:#7dd3fc;
+  font-size:1.05rem;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:28px;
+  align-items:start;
+}
+
+article{
+  min-width:0;
+}
+
+section{
+  margin:0 0 48px;
+}
+
+h2{
+  margin-top:0;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+  font-size:1.55rem;
+}
+
+h3{
+  margin:0 0 8px;
+}
+
+.muted{color:var(--muted)}
+
+.toc,.box,.job,.step,.warning,.faq{
+  background:rgba(15,29,49,.94);
+  border:1px solid var(--line);
+  border-radius:16px;
+}
+
+.toc{
+  padding:20px 24px;
+  margin-bottom:42px;
+}
+
+.toc a{
+  color:#d9e8fa;
+  text-decoration:none;
+}
+
+.toc ol{
+  padding-left:22px;
+  margin-bottom:0;
+}
+
+.quick{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.quick div{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:16px;
+  border-radius:14px;
+}
+
+.quick b{
+  display:block;
+  color:var(--blue);
+  margin-bottom:5px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+  border-radius:14px;
+  border:1px solid var(--line);
+}
+
+table{
+  width:100%;
+  min-width:650px;
+  border-collapse:collapse;
+  background:#0d192b;
+}
+
+th,td{
+  padding:13px;
+  text-align:left;
+  border-bottom:1px solid #243650;
+  font-size:.9rem;
+}
+
+th{
+  background:#152944;
+  color:#bae6fd;
+}
+
+.jobs{
+  display:grid;
+  gap:18px;
+}
+
+.job{
+  padding:22px;
+}
+
+.job-number{
+  color:var(--purple);
+  font-size:.8rem;
+  font-weight:800;
+}
+
+.tags{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin:12px 0;
+}
+
+.tag{
+  font-size:.75rem;
+  padding:4px 9px;
+  border-radius:999px;
+  background:#192d49;
+  color:#c8dcf5;
+}
+
+.point{
+  margin-top:14px;
+  padding:13px 15px;
+  background:#091626;
+  border-left:3px solid var(--blue);
+  border-radius:8px;
+  color:#c8d6e8;
+}
+
+.route{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:15px;
+}
+
+.route span{
+  background:#172942;
+  border:1px solid #2d4565;
+  border-radius:9px;
+  padding:7px 10px;
+  font-size:.8rem;
+}
+
+.arrow{color:var(--blue)}
+
+.steps{
+  counter-reset:step;
+  display:grid;
+  gap:13px;
+}
+
+.step{
+  padding:18px 18px 18px 68px;
+  position:relative;
+}
+
+.step:before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute;
+  left:18px;
+  top:18px;
+  width:34px;
+  height:34px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  color:white;
+  font-weight:900;
+}
+
+.warning{
+  padding:20px;
+  border-color:#67444d;
+  background:#24151d;
+}
+
+.warning h3{color:#fda4af}
+
+.checklist{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+}
+
+.check{
+  padding:13px;
+  background:#101e31;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+
+.good{color:var(--green)}
+.caution{color:var(--yellow)}
+
+.faq{
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.faq strong{color:#bae6fd}
+
+.sources{
+  font-size:.86rem;
+  color:var(--muted);
+}
+
+.sources a{
+  word-break:break-all;
+}
+
+.side{
+  position:sticky;
+  top:15px;
+}
+
+.sidebox{
+  background:#0d192b;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:18px;
+  margin-bottom:15px;
+}
+
+.sidebox h3{
+  font-size:1rem;
+}
+
+.sidebox a{
+  display:block;
+  color:#c9d9ed;
+  padding:6px 0;
+  text-decoration:none;
+}
+
+.cta{
+  padding:25px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#102c47,#261e50);
+  border:1px solid #416187;
+}
+
+footer{
+  margin-top:60px;
+  border-top:1px solid var(--line);
+  padding:28px 10px 45px;
+  text-align:center;
+  color:#8fa3bb;
+  font-size:.82rem;
+  line-height:2;
+}
+
+footer a{color:#9db2ca}
+
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static}
+  .quick{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+  .hero{padding-top:38px}
+  .checklist{grid-template-columns:1fr}
+  .job{padding:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container">
+<a class="brand" href="index.html">KOROPOP GAMES</a>
+</div>
+</header>
+
+<div class="container">
+
+<div class="hero">
+
+<span class="badge">🔰 IT業界が初めての人向け</span>
+
+<h1>
+未経験からIT転職するなら<br>
+<span class="gradient">何から始める？</span>
+</h1>
+
+<p class="lead">
+「プログラミングできないと無理？」
+「資格を取ってから応募するべき？」
+そんな人向けに、未経験から検討しやすいIT職種と
+求人選びのポイントを一から整理します。
+</p>
+
+<div class="answer">
+<strong>先に結論</strong><br>
+未経験からIT業界を目指すなら、いきなり高度な開発職だけを見る必要はありません。
+ヘルプデスク、IT運用・監視、テクニカルサポートなど、
+これまでの接客・営業・事務・設備管理などで身につけた
+「説明する」「確認する」「手順通り進める」「トラブルに対応する」
+といった経験を活かしやすい仕事から探す方法があります。
+</div>
+
+</div>
+
+<div class="layout">
+
+<article>
+
+<nav class="toc">
+<strong>この記事で分かること</strong>
+<ol>
+<li><a href="#first">未経験IT転職で最初に考えること</a></li>
+<li><a href="#comparison">7職種の比較</a></li>
+<li><a href="#jobs">職種ごとの仕事内容</a></li>
+<li><a href="#qualification">資格は必要？</a></li>
+<li><a href="#roadmap">転職までの5ステップ</a></li>
+<li><a href="#jobcheck">求人の見分け方</a></li>
+<li><a href="#faq">よくある疑問</a></li>
+</ol>
+</nav>
+
+<section id="first">
+<h2>未経験IT転職で最初に考えること</h2>
+
+<p>
+「IT業界に入りたい」だけでは、求人を絞るのが難しくなります。
+ITには開発、インフラ、運用、サポート、セキュリティなど複数の仕事があるからです。
+</p>
+
+<div class="quick">
+<div>
+<b>💬 人と話すのが得意</b>
+ヘルプデスクやテクニカルサポートを候補に。
+</div>
+
+<div>
+<b>🖥 コツコツ確認が得意</b>
+運用・監視やインフラ系を候補に。
+</div>
+
+<div>
+<b>⚙ 作ることが好き</b>
+Web制作や開発職も学習しながら検討。
+</div>
+</div>
+
+<p>
+厚生労働省の職業情報提供サイト「job tag」では、
+ITの運用・管理について、サーバー等のシステムを安定稼働させるため、
+監視やログ確認、トラブル対応などを行う仕事として紹介しています。
+また、IT業界で基礎となる知識・経験を得る入口になり得る仕事とも説明されています。
+</p>
+</section>
+
+<section id="comparison">
+
+<h2>未経験から検討したいIT職種7選</h2>
+
+<p class="muted">
+「誰でも簡単に就職できる」という意味ではありません。
+求人ごとに必要経験・スキルは異なるため、仕事内容と応募条件を必ず確認してください。
+</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>職種</th>
+<th>主な仕事</th>
+<th>特に活かしやすい経験</th>
+<th>次のキャリア例</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>ITヘルプデスク</td>
+<td>問い合わせ・トラブル対応</td>
+<td>接客・営業・事務</td>
+<td>社内SE・IT運用</td>
+</tr>
+
+<tr>
+<td>IT運用・監視</td>
+<td>システム監視・障害対応</td>
+<td>確認・報告・夜勤経験</td>
+<td>インフラエンジニア</td>
+</tr>
+
+<tr>
+<td>テクニカルサポート</td>
+<td>製品・サービスの技術支援</td>
+<td>顧客対応・説明</td>
+<td>専門サポート・SE</td>
+</tr>
+
+<tr>
+<td>キッティング</td>
+<td>PC・端末の設定</td>
+<td>PC操作・手順作業</td>
+<td>ITサポート・運用</td>
+</tr>
+
+<tr>
+<td>インフラエンジニア補助</td>
+<td>サーバー・NW運用補助</td>
+<td>機械・設備への興味</td>
+<td>サーバー・NW・クラウド</td>
+</tr>
+
+<tr>
+<td>Web制作アシスタント</td>
+<td>サイト更新・制作補助</td>
+<td>デザイン・文章・PC</td>
+<td>Web制作・ディレクター</td>
+</tr>
+
+<tr>
+<td>セキュリティ運用補助</td>
+<td>監視・一次対応</td>
+<td>確認・分析・報告</td>
+<td>SOC・セキュリティ</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section id="jobs">
+
+<h2>7職種をもう少し詳しく見る</h2>
+
+<div class="jobs">
+
+<div class="job">
+<div class="job-number">JOB 01</div>
+<h3>ITヘルプデスク</h3>
+
+<div class="tags">
+<span class="tag">問い合わせ対応</span>
+<span class="tag">PC</span>
+<span class="tag">コミュニケーション</span>
+</div>
+
+<p>
+社員や顧客から「ログインできない」「PCが動かない」
+「このシステムの使い方が分からない」といった問い合わせを受け、
+状況を確認して解決を支援する仕事です。
+</p>
+
+<p>
+厚生労働省job tagでは、電話・メールでの問い合わせ対応、
+問題の一次切り分け、必要に応じた専門担当へのエスカレーションなどが
+業務として示されています。
+</p>
+
+<div class="point">
+<strong>向いている人：</strong>
+相手の話を聞き、分からないことを整理して説明するのが苦にならない人。
+</div>
+
+<div class="route">
+<span>ヘルプデスク</span>
+<b class="arrow">→</b>
+<span>IT運用</span>
+<b class="arrow">→</b>
+<span>社内SEなど</span>
+</div>
+</div>
+
+<div class="job">
+<div class="job-number">JOB 02</div>
+<h3>IT運用・監視</h3>
+
+<div class="tags">
+<span class="tag">サーバー</span>
+<span class="tag">監視</span>
+<span class="tag">障害対応</span>
+</div>
+
+<p>
+サーバーやネットワークなどが正常に動いているか監視し、
+異常が起きたときに手順書に沿って確認・報告・対応します。
+</p>
+
+<p>
+24時間動くシステムでは交代勤務の求人もあります。
+そのため、勤務時間や夜勤の有無まで求人票で確認することが重要です。
+</p>
+
+<div class="point">
+<strong>注目ポイント：</strong>
+「監視だけ」なのか、設定変更・障害対応・サーバー操作まで経験できるのかを確認。
+</div>
+
+<div class="route">
+<span>運用監視</span>
+<b class="arrow">→</b>
+<span>サーバー/NW運用</span>
+<b class="arrow">→</b>
+<span>設計・クラウド</span>
+</div>
+</div>
+
+<div class="job">
+<div class="job-number">JOB 03</div>
+<h3>テクニカルサポート</h3>
+
+<p>
+ソフトウェア、クラウドサービス、通信機器などについて、
+利用者の技術的な疑問や不具合に対応します。
+</p>
+
+<div class="point">
+接客・営業経験がある人は、
+「相手の状況を聞く」「分かりやすく説明する」という経験を整理してアピールしやすい分野です。
+</div>
+</div>
+
+<div class="job">
+<div class="job-number">JOB 04</div>
+<h3>PCキッティング・ITサポート</h3>
+
+<p>
+会社で使うPCやスマートフォンに必要な設定を行い、
+アカウント設定、ソフト導入、端末管理などを担当します。
+</p>
+
+<p>
+求人を見る際は、短期の端末設定作業だけなのか、
+その後ヘルプデスク・運用などへ仕事を広げられるのかも確認しましょう。
+</p>
+</div>
+
+<div class="job">
+<div class="job-number">JOB 05</div>
+<h3>インフラエンジニア補助</h3>
+
+<p>
+ネットワーク、サーバー、クラウドなど、
+ITサービスを動かす土台を扱う仕事です。
+最初は運用や保守、設定補助などから経験を積む求人もあります。
+</p>
+
+<div class="point">
+<strong>学習候補：</strong>
+ネットワークの基礎、Linux、クラウド、CCNAなど。
+ただし資格名だけで求人を選ばず、実務内容を見ることが重要です。
+</div>
+</div>
+
+<div class="job">
+<div class="job-number">JOB 06</div>
+<h3>Web制作・更新アシスタント</h3>
+
+<p>
+Webサイトの文章や画像の更新、HTML/CSSの修正、
+CMSへの入稿などを担当する仕事があります。
+</p>
+
+<p>
+自分で小さなWebサイトを作って公開すると、
+「勉強しています」だけでなく実際に作ったものを見せられるのが強みです。
+</p>
+</div>
+
+<div class="job">
+<div class="job-number">JOB 07</div>
+<h3>セキュリティ運用・SOC補助</h3>
+
+<p>
+システムやネットワークを監視し、
+不審な通信やアラートを確認して対応する仕事です。
+</p>
+
+<p>
+厚生労働省job tagでは、セキュリティオペレーションについて、
+情報システム・ネットワークを監視し、
+攻撃や不正アクセスへの対応を行う仕事として紹介されています。
+</p>
+
+<div class="point">
+セキュリティは専門知識が必要な分野です。
+「完全未経験からいきなり高度な分析担当」と考えるより、
+IT基礎→運用・インフラ→セキュリティという道も検討できます。
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="qualification">
+
+<h2>資格は取ってから転職するべき？</h2>
+
+<p>
+資格がなければIT業界に応募できない、というわけではありません。
+一方で未経験者の場合、基礎学習を始めていることを示す材料にはなります。
+</p>
+
+<div class="box" style="padding:20px">
+
+<h3>まず候補にしやすい：ITパスポート</h3>
+
+<p>
+IPA（情報処理推進機構）はITパスポートを、
+職業人やこれから職業人となる人が備えるべき
+「ITに関する共通的な基礎知識」を対象とする国家試験としています。
+</p>
+
+<p>
+ITそのものだけでなく、セキュリティ、システム、企業活動など
+幅広い基礎を学ぶ入口として使えます。
+</p>
+
+</div>
+
+<br>
+
+<div class="checklist">
+
+<div class="check">
+<span class="good">● 基礎から始めたい</span><br>
+ITパスポート
+</div>
+
+<div class="check">
+<span class="good">● ネットワーク志望</span><br>
+ネットワーク基礎・CCNAなど
+</div>
+
+<div class="check">
+<span class="good">● インフラ志望</span><br>
+Linux・ネットワーク・クラウド基礎
+</div>
+
+<div class="check">
+<span class="good">● 開発志望</span><br>
+HTML/CSS・JavaScript等＋制作物
+</div>
+
+</div>
+
+<p class="muted">
+資格取得だけを長期間続け、応募を先延ばしにする必要はありません。
+求人を見ながら「応募」と「学習」を並行する方法もあります。
+</p>
+
+</section>
+
+<section id="roadmap">
+
+<h2>未経験からIT転職までの5ステップ</h2>
+
+<div class="steps">
+
+<div class="step">
+<strong>興味のある職種を2〜3個に絞る</strong><br>
+「ITなら何でもいい」ではなく、サポート・インフラ・開発など方向を決めます。
+</div>
+
+<div class="step">
+<strong>実際の求人を20件ほど見る</strong><br>
+必要資格、勤務時間、未経験可の条件、仕事内容で何が共通しているか確認します。
+</div>
+
+<div class="step">
+<strong>足りない基礎を勉強する</strong><br>
+ITパスポート、PC、ネットワークなど、志望職種に合わせます。
+</div>
+
+<div class="step">
+<strong>前職経験をIT向けに言い換える</strong><br>
+「営業→顧客対応」「設備管理→障害対応・点検」
+「事務→PC・調整業務」のように使える経験を整理します。
+</div>
+
+<div class="step">
+<strong>応募しながら求人を比較する</strong><br>
+仕事内容だけでなく、研修後の配属、夜勤、勤務地、給与体系、キャリアまで確認します。
+</div>
+
+</div>
+</section>
+
+<section id="jobcheck">
+
+<h2>「未経験歓迎」求人で必ず見るポイント</h2>
+
+<div class="warning">
+
+<h3>⚠ 「未経験歓迎」の4文字だけで決めない</h3>
+
+<p>
+同じ「IT未経験歓迎」でも仕事内容はかなり違います。
+入社後に何をするのかまで読んで比較しましょう。
+</p>
+
+</div>
+
+<br>
+
+<div class="checklist">
+
+<div class="check">
+<span class="caution">01</span><br>
+<strong>研修後の配属先</strong><br>
+何の仕事に配属されるか具体的か。
+</div>
+
+<div class="check">
+<span class="caution">02</span><br>
+<strong>実際の業務</strong><br>
+IT業務の範囲が具体的に書かれているか。
+</div>
+
+<div class="check">
+<span class="caution">03</span><br>
+<strong>夜勤・シフト</strong><br>
+24時間監視なら勤務形態を確認。
+</div>
+
+<div class="check">
+<span class="caution">04</span><br>
+<strong>勤務地</strong><br>
+客先常駐の可能性や転勤範囲も確認。
+</div>
+
+<div class="check">
+<span class="caution">05</span><br>
+<strong>給与の内訳</strong><br>
+基本給・固定残業代・各種手当を分けて見る。
+</div>
+
+<div class="check">
+<span class="caution">06</span><br>
+<strong>1〜3年後の仕事</strong><br>
+経験を積むと担当範囲が広がる環境か。
+</div>
+
+</div>
+</section>
+
+<section>
+
+<h2>前職は意外と無駄にならない</h2>
+
+<p>
+IT未経験だからといって、それまでの職歴がゼロになるわけではありません。
+</p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>これまでの経験</th>
+<th>IT職で言い換えられる強みの例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>営業</td>
+<td>顧客対応・ヒアリング・説明・調整</td>
+</tr>
+<tr>
+<td>接客</td>
+<td>問い合わせ対応・コミュニケーション</td>
+</tr>
+<tr>
+<td>事務</td>
+<td>PC操作・正確性・文書作成</td>
+</tr>
+<tr>
+<td>設備管理</td>
+<td>監視・点検・異常時対応・報告</td>
+</tr>
+<tr>
+<td>製造</td>
+<td>手順遵守・品質確認・改善</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>
+職務経歴書では「IT経験がありません」で終わらず、
+前職で何を確認し、誰と調整し、どんな問題を解決してきたかまで書くと整理しやすくなります。
+</p>
+
+</section>
+
+<section id="faq">
+
+<h2>よくある質問</h2>
+
+<div class="faq">
+<strong>Q. プログラミングが苦手でもIT業界に入れる？</strong>
+<p>
+IT＝プログラマーだけではありません。
+ヘルプデスク、運用、サポート、インフラなどコードを書くことが中心ではない仕事もあります。
+ただしITの基礎学習は必要です。
+</p>
+</div>
+
+<div class="faq">
+<strong>Q. パソコンに詳しくない状態でも大丈夫？</strong>
+<p>
+応募先によります。まず基本的なPC操作やIT用語を学び、
+実際の求人に書かれている必要スキルとの差を確認しましょう。
+</p>
+</div>
+
+<div class="faq">
+<strong>Q. 資格を取れば必ず転職できる？</strong>
+<p>
+資格だけで採用が決まるわけではありません。
+学習、これまでの経験、応募先との適性などを含めて判断されます。
+</p>
+</div>
+
+<div class="faq">
+<strong>Q. いきなり社内SEを目指してもいい？</strong>
+<p>
+求人によっては可能ですが、社内SEは会社によって仕事内容が大きく異なります。
+ヘルプデスク、アカウント管理、ネットワーク、ベンダー調整など
+何を担当する求人なのか確認しましょう。
+</p>
+</div>
+
+</section>
+
+<section>
+
+<div class="cta">
+
+<h2 style="border:0;margin-bottom:5px">次にやること</h2>
+
+<p>
+まず求人サイトで気になるIT職種を2〜3個検索して、
+仕事内容を比べてみてください。
+</p>
+
+<p>
+「未経験歓迎」という言葉ではなく、
+<strong>入社後に何を経験できるか</strong>を見るのがポイントです。
+</p>
+
+<p>
+<a href="20s-mikeiken-tenshoku.html">→ 20代・未経験からの転職ガイドも読む</a>
+</p>
+
+<p>
+<a href="jobs.html">→ 収入アップを目指せる仕事20選を見る</a>
+</p>
+
+</div>
+
+</section>
+
+<section class="sources">
+
+<h2>参考情報</h2>
+
+<p>
+本記事は、厚生労働省「職業情報提供サイト（job tag）」、
+独立行政法人情報処理推進機構（IPA）の公開情報等を参考に、
+未経験者向けに内容を整理しています。
+</p>
+
+<p>
+仕事内容・応募条件・勤務形態等は企業や求人によって異なります。
+応募時は必ず各求人の最新情報をご確認ください。
+</p>
+
+<p>
+参考：厚生労働省 職業情報提供サイト（job tag）「運用・管理（IT）」「ヘルプデスク（IT）」「セキュリティエキスパート（オペレーション）」<br>
+参考：IPA「ITパスポート試験」
+</p>
+
+</section>
+
+</article>
+
+<aside class="side">
+
+<div class="sidebox">
+<h3>📌 この記事の要点</h3>
+<p class="muted">
+未経験なら「IT業界」ではなく、まず具体的な職種を選ぶ。
+</p>
+</div>
+
+<div class="sidebox">
+<h3>💻 関連記事</h3>
+<a href="20s-mikeiken-tenshoku.html">20代・未経験転職ガイド</a>
+<a href="jobs.html">収入アップを目指せる仕事20選</a>
+<a href="tedori.html">手取り・残業代計算</a>
+</div>
+
+<div class="sidebox">
+<h3>🔰 最初の候補</h3>
+<p class="muted">
+ITヘルプデスク<br>
+IT運用・監視<br>
+テクニカルサポート
+</p>
+</div>
+
+</aside>
+
+</div>
+
+<footer>
+<a href="index.html">トップ</a> ・
+<a href="about.html">このサイトについて</a> ・
+<a href="privacy.html">プライバシーポリシー</a> ・
+<a href="contact.html">お問い合わせ</a>
+<br>
+© 2026 KOROPOP GAMES
+</footer>
+
+</div>
+</body>
+</html>
