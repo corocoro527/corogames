@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://koropopgames.com/</loc></url>
-  <url><loc>https://koropopgames.com/shindan.html</loc></url>
-  <url><loc>https://koropopgames.com/tedori.html</loc></url>
-  <url><loc>https://koropopgames.com/jobs.html</loc></url>
-  <url><loc>https://koropopgames.com/20s-mikeiken-tenshoku.html</loc></url>
+
+  <url>
+    <loc>https://koropopgames.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/shindan.html</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/tedori.html</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/jobs.html</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/20s-mikeiken-tenshoku.html</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://koropopgames.com/contact.html</loc>
+  </url>
+
 </urlset>
