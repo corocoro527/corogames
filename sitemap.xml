@@ -1,40 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://koropopgames.com/</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/shindan.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/tedori.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/jobs.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/20s-mikeiken-tenshoku.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/mikeiken-it-tenshoku.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/about.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/privacy.html</loc>
-  </url>
-
-  <url>
-    <loc>https://koropopgames.com/contact.html</loc>
-  </url>
-
+  <url><loc>https://koropopgames.com/</loc></url>
+  <url><loc>https://koropopgames.com/shindan.html</loc></url>
+  <url><loc>https://koropopgames.com/tedori.html</loc></url>
+  <url><loc>https://koropopgames.com/jobs.html</loc></url>
+  <url><loc>https://koropopgames.com/20s-mikeiken-tenshoku.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-it-tenshoku.html</loc></url>
+  <url><loc>https://koropopgames.com/it-mikeiken-shikaku.html</loc></url>
+  <url><loc>https://koropopgames.com/programming-nigate-it-job.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-it-kyujin-miwakekata.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-infra-engineer.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-network-engineer.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-cloud-engineer.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-soc-security.html</loc></url>
+  <url><loc>https://koropopgames.com/mikeiken-it-helpdesk.html</loc></url>
+  <url><loc>https://koropopgames.com/about.html</loc></url>
+  <url><loc>https://koropopgames.com/privacy.html</loc></url>
+  <url><loc>https://koropopgames.com/contact.html</loc></url>
 </urlset>
