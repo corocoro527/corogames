@@ -1,0 +1,85 @@
+name: Add GA4 to all pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-ga4:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Add GA4
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          GA_ID = "G-8NWPD2QBCQ"
+
+          TAG = """<!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8NWPD2QBCQ');
+          </script>
+          """
+
+          changed = 0
+          skipped = 0
+
+          for file in Path(".").rglob("*.html"):
+
+              text = file.read_text(encoding="utf-8")
+
+              # すでにGA4が入っているページは触らない
+              if GA_ID in text:
+                  print("SKIP:", file)
+                  skipped += 1
+                  continue
+
+              if "<head>" in text:
+                  text = text.replace(
+                      "<head>",
+                      "<head>\n" + TAG,
+                      1
+                  )
+
+              elif "<head " in text:
+                  pos = text.find(">", text.find("<head "))
+                  if pos != -1:
+                      text = text[:pos+1] + "\n" + TAG + text[pos+1:]
+                  else:
+                      print("HEAD ERROR:", file)
+                      continue
+              else:
+                  print("NO HEAD:", file)
+                  continue
+
+              file.write_text(text, encoding="utf-8")
+              print("UPDATED:", file)
+              changed += 1
+
+          print("Changed:", changed)
+          print("Already installed:", skipped)
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add '*.html'
+
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Add GA4 tracking to all HTML pages"
+            git push
+          fi
