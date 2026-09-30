@@ -1,0 +1,280 @@
+name: Auto Finish Articles
+
+on:
+  workflow_run:
+    workflows:
+      - "Build Career Hub"
+    types:
+      - completed
+
+  push:
+    paths:
+      - ".github/workflows/auto-article-finish.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finish:
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Finish articles
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import subprocess
+
+          BASE = "https://koropopgames.com"
+
+          SKIP = {
+              "index.html",
+              "career.html",
+              "shindan.html",
+              "tedori.html",
+              "about.html",
+              "privacy.html",
+              "contact.html",
+              "contact-thanks.html",
+          }
+
+
+          def lastmod(filename):
+
+              try:
+
+                  result = subprocess.check_output(
+                      [
+                          "git",
+                          "log",
+                          "-1",
+                          "--format=%cs",
+                          "--",
+                          filename
+                      ],
+                      text=True
+                  ).strip()
+
+                  return result
+
+              except Exception:
+
+                  return ""
+
+
+          def add_before_head(source, code):
+
+              pos = source.lower().find(
+                  "</head>"
+              )
+
+              if pos == -1:
+                  return source
+
+              return (
+                  source[:pos]
+                  + code
+                  + "\n"
+                  + source[pos:]
+              )
+
+
+          def add_before_body(source, code):
+
+              pos = source.lower().rfind(
+                  "</body>"
+              )
+
+              if pos == -1:
+                  return source
+
+              return (
+                  source[:pos]
+                  + "\n"
+                  + code
+                  + "\n"
+                  + source[pos:]
+              )
+
+
+          changed = []
+
+
+          for path in sorted(
+              Path(".").glob("*.html")
+          ):
+
+              if path.name in SKIP:
+                  continue
+
+
+              source = path.read_text(
+                  encoding="utf-8",
+                  errors="replace"
+              )
+
+              original = source
+
+
+              # -------------------------
+              # robots
+              # -------------------------
+
+              if not re.search(
+                  r'<meta[^>]+name=["\']robots["\']',
+                  source,
+                  re.I
+              ):
+
+                  source = add_before_head(
+                      source,
+                      '<meta name="robots" '
+                      'content="index,follow,max-image-preview:large">'
+                  )
+
+
+              # -------------------------
+              # canonical
+              # -------------------------
+
+              expected = (
+                  f"{BASE}/{path.name}"
+              )
+
+              canonical_patterns = [
+                  r'(<link[^>]+rel=["\']canonical["\'][^>]+href=["\'])([^"\']+)(["\'])',
+                  r'(<link[^>]+href=["\'])([^"\']+)(["\'][^>]+rel=["\']canonical["\'])'
+              ]
+
+              canonical_found = False
+
+
+              for pattern in canonical_patterns:
+
+                  if re.search(
+                      pattern,
+                      source,
+                      re.I
+                  ):
+
+                      canonical_found = True
+
+                      source = re.sub(
+                          pattern,
+                          lambda m:
+                              m.group(1)
+                              + expected
+                              + m.group(3),
+                          source,
+                          count=1,
+                          flags=re.I
+                      )
+
+                      break
+
+
+              if not canonical_found:
+
+                  source = add_before_head(
+                      source,
+                      f'<link rel="canonical" '
+                      f'href="{expected}">'
+                  )
+
+
+              # -------------------------
+              # Reader用 更新日
+              # -------------------------
+
+              if (
+                  'name="koropop-updated"'
+                  not in source
+              ):
+
+                  date = lastmod(
+                      path.name
+                  )
+
+                  if date:
+
+                      source = add_before_head(
+                          source,
+                          '<meta '
+                          'name="koropop-updated" '
+                          f'content="{date}">'
+                      )
+
+
+              # -------------------------
+              # KOROPOP Reader
+              # -------------------------
+
+              if (
+                  "koropop-reader.js"
+                  not in source
+              ):
+
+                  source = add_before_body(
+                      source,
+                      '<script defer '
+                      'src="koropop-reader.js">'
+                      '</script>'
+                  )
+
+
+              # -------------------------
+              # 保存
+              # -------------------------
+
+              if source != original:
+
+                  path.write_text(
+                      source,
+                      encoding="utf-8"
+                  )
+
+                  changed.append(
+                      path.name
+                  )
+
+
+          print(
+              f"Finished {len(changed)} pages"
+          )
+
+          for filename in changed:
+              print(
+                  "✓",
+                  filename
+              )
+
+          PY
+
+
+      - name: Commit finished articles
+        run: |
+          git config user.name "KOROPOP Article Bot"
+          git config user.email "actions@github.com"
+
+          git add *.html
+
+          if git diff --cached --quiet; then
+            echo "All articles already finished."
+            exit 0
+          fi
+
+          git commit -m "Auto finish article pages"
+          git push
