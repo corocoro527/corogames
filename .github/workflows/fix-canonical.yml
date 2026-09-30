@@ -1,0 +1,95 @@
+name: Fix canonical tags
+
+on:
+  push:
+    paths:
+      - ".github/workflows/fix-canonical.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add missing canonical tags
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = [
+              "20s-it-tenshoku-nenshu.html",
+              "20s-mikeiken-tenshoku.html",
+              "30s-mikeiken-it-tenshoku.html",
+              "infra-engineer-yametoke.html",
+              "it-engineer-muiteiru.html",
+              "it-engineer-nenshu-suii.html",
+              "it-engineer-remote.html",
+              "it-job-nenshu-hikaku.html",
+              "it-mikeiken-shikaku.html",
+              "it-tenshoku-shikaku-nashi.html",
+              "mikeiken-cloud-engineer.html",
+              "mikeiken-infra-engineer.html",
+              "mikeiken-it-helpdesk.html",
+              "mikeiken-it-kyujin-miwakekata.html",
+              "mikeiken-it-shibodoki.html",
+              "mikeiken-it-tenshoku.html",
+              "mikeiken-it-yametoke.html",
+              "mikeiken-network-engineer.html",
+              "mikeiken-shanai-se.html",
+              "mikeiken-soc-security.html",
+              "programming-nigate-it-job.html",
+              "shanai-se-raku-kitsui.html",
+          ]
+
+          changed = []
+
+          for name in pages:
+              p = Path(name)
+              if not p.exists():
+                  continue
+
+              html = p.read_text(encoding="utf-8")
+
+              if re.search(
+                  r'<link[^>]+rel=["\']canonical["\']',
+                  html,
+                  re.I
+              ):
+                  continue
+
+              canonical = (
+                  f'<link rel="canonical" '
+                  f'href="https://koropopgames.com/{name}">'
+              )
+
+              html = html.replace(
+                  "</head>",
+                  canonical + "\n</head>",
+                  1
+              )
+
+              p.write_text(html, encoding="utf-8")
+              changed.append(name)
+
+          print("Updated:", len(changed))
+          print("\n".join(changed))
+          PY
+
+      - name: Commit
+        run: |
+          git config user.name "KOROPOP SEO Bot"
+          git config user.email "actions@github.com"
+          git add *.html
+
+          if git diff --cached --quiet; then
+            echo "Nothing to change"
+            exit 0
+          fi
+
+          git commit -m "Add canonical tags to articles"
+          git push
