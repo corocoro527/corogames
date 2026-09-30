@@ -1,122 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-<!-- Google tag (gtag.js) -->
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8NWPD2QBCQ');
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-8NWPD2QBCQ');
 </script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>未経験からIT転職するなら何から？おすすめ職種7選・資格・求人の見分け方｜KOROPOP GAMES</title>
+<title>未経験からIT転職するには？職種・資格・求人の見分け方・ロードマップ【2026年版】｜KOROPOP GAMES</title>
 
-<meta name="description" content="未経験からIT転職を目指す人向けに、ITヘルプデスク、運用監視、インフラなど7職種を比較。必要な資格、求人の見分け方、転職までのロードマップを初心者向けに解説します。">
+<meta name="description" content="未経験からIT転職を目指す人向けに、ITヘルプデスク、社内SE、インフラ、ネットワーク、クラウドなどの職種比較、資格、求人の見分け方、転職までのロードマップを2026年版で解説します。">
+
+<link rel="canonical" href="https://koropopgames.com/mikeiken-it-tenshoku.html">
+<link rel="stylesheet" href="koropop-theme.css">
+
+<meta name="robots" content="index,follow,max-image-preview:large">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="未経験からIT転職するには？職種・資格・求人の見分け方・ロードマップ【2026年版】">
+<meta property="og:description" content="未経験IT転職で何から始めるか、職種選び・資格・求人の見方・学習順をまとめて解説。">
+<meta property="og:url" content="https://koropopgames.com/mikeiken-it-tenshoku.html">
+<meta property="og:site_name" content="KOROPOP GAMES">
+<meta name="twitter:card" content="summary">
 
 <style>
-:root{
-  --bg:#07111f;
-  --card:#0f1d31;
-  --card2:#13243c;
-  --line:#263b59;
-  --text:#f8fafc;
-  --muted:#a9b8cc;
-  --blue:#38bdf8;
-  --purple:#a78bfa;
-  --green:#4ade80;
-  --yellow:#facc15;
-  --red:#fb7185;
-}
-
 *{box-sizing:border-box}
 
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans JP",sans-serif;
-  background:
-    radial-gradient(circle at 20% 0%,#12345a 0,transparent 28%),
-    radial-gradient(circle at 100% 20%,#281b50 0,transparent 24%),
-    var(--bg);
-  color:var(--text);
-  line-height:1.85;
-}
-
-a{color:var(--blue)}
-
 .container{
-  width:min(100% - 28px,1080px);
+  width:min(100% - 28px,1100px);
   margin:auto;
 }
 
 header{
   padding:18px 0;
-  border-bottom:1px solid var(--line);
 }
 
 .brand{
   font-weight:900;
-  color:var(--blue);
   text-decoration:none;
 }
 
 .hero{
-  max-width:850px;
-  margin:auto;
-  padding:58px 0 34px;
-  text-align:center;
+  max-width:900px;
+  margin:24px auto 30px;
+  padding:44px 34px;
+}
+
+.hero h1{
+  font-size:clamp(2rem,6vw,3.3rem);
+  line-height:1.35;
+  margin:17px 0 12px;
 }
 
 .badge{
   display:inline-block;
-  padding:6px 12px;
-  border:1px solid #35547a;
+  padding:5px 11px;
   border-radius:999px;
-  color:#b9ddff;
-  background:#0c1c31;
   font-size:.8rem;
-}
-
-h1{
-  font-size:clamp(1.9rem,6vw,3.3rem);
-  line-height:1.3;
-  margin:18px 0;
-}
-
-.gradient{
-  background:linear-gradient(90deg,var(--blue),var(--purple));
-  -webkit-background-clip:text;
-  color:transparent;
+  font-weight:800;
 }
 
 .lead{
-  color:#c5d2e3;
-  max-width:720px;
-  margin:auto;
+  max-width:760px;
+}
+
+.updated{
+  font-size:.82rem;
 }
 
 .answer{
-  margin:28px auto 0;
-  max-width:760px;
-  text-align:left;
-  padding:22px;
-  background:linear-gradient(135deg,#102a46,#211c45);
-  border:1px solid #3b5d87;
-  border-radius:18px;
-}
-
-.answer strong{
-  color:#7dd3fc;
-  font-size:1.05rem;
+  margin-top:24px;
+  padding:19px 21px;
+  border-radius:14px;
 }
 
 .layout{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 280px;
-  gap:28px;
+  grid-template-columns:minmax(0,1fr) 270px;
+  gap:26px;
   align-items:start;
 }
 
@@ -125,269 +92,291 @@ article{
 }
 
 section{
-  margin:0 0 48px;
-}
-
-h2{
-  margin-top:0;
-  padding-bottom:10px;
-  border-bottom:1px solid var(--line);
-  font-size:1.55rem;
-}
-
-h3{
-  margin:0 0 8px;
-}
-
-.muted{color:var(--muted)}
-
-.toc,.box,.job,.step,.warning,.faq{
-  background:rgba(15,29,49,.94);
-  border:1px solid var(--line);
-  border-radius:16px;
+  margin-bottom:46px;
 }
 
 .toc{
-  padding:20px 24px;
-  margin-bottom:42px;
-}
-
-.toc a{
-  color:#d9e8fa;
-  text-decoration:none;
+  padding:20px 23px;
+  margin-bottom:38px;
+  border-radius:14px;
 }
 
 .toc ol{
-  padding-left:22px;
   margin-bottom:0;
+  padding-left:22px;
 }
 
-.quick{
+.toc a{
+  text-decoration:none;
+}
+
+.figure{
+  padding:22px;
+  margin-bottom:30px;
+  border-radius:16px;
+}
+
+.figure-title{
+  font-size:1.25rem;
+  font-weight:900;
+  color:#173c66;
+}
+
+.figure-sub{
+  margin:3px 0 18px;
+  color:#667085;
+  font-size:.9rem;
+}
+
+.route-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:12px;
-  margin:20px 0;
 }
 
-.quick div{
-  background:var(--card);
-  border:1px solid var(--line);
-  padding:16px;
+.route-card{
+  padding:18px;
   border-radius:14px;
 }
 
-.quick b{
-  display:block;
-  color:var(--blue);
-  margin-bottom:5px;
+.route-card h3{
+  margin:6px 0;
+  font-size:1rem;
 }
 
-.table-wrap{
+.route-card p{
+  margin:0;
+  font-size:.9rem;
+}
+
+.route-card:nth-child(1){border-top:4px solid #2698e8}
+.route-card:nth-child(2){border-top:4px solid #6e56cf}
+.route-card:nth-child(3){border-top:4px solid #16845a}
+
+.compare{
   overflow-x:auto;
-  border-radius:14px;
-  border:1px solid var(--line);
+  border:1px solid #dfe5ec;
+  border-radius:13px;
 }
 
 table{
   width:100%;
-  min-width:650px;
+  min-width:760px;
   border-collapse:collapse;
-  background:#0d192b;
 }
 
 th,td{
   padding:13px;
   text-align:left;
-  border-bottom:1px solid #243650;
+  vertical-align:top;
+  border-bottom:1px solid #dfe5ec;
   font-size:.9rem;
-}
-
-th{
-  background:#152944;
-  color:#bae6fd;
 }
 
 .jobs{
   display:grid;
-  gap:18px;
+  gap:14px;
 }
 
 .job{
-  padding:22px;
+  padding:20px;
+  background:#fff;
+  border:1px solid #dfe5ec;
+  border-radius:14px;
 }
 
-.job-number{
-  color:var(--purple);
-  font-size:.8rem;
-  font-weight:800;
+.job:nth-child(4n+1){border-left:5px solid #2698e8}
+.job:nth-child(4n+2){border-left:5px solid #6e56cf}
+.job:nth-child(4n+3){border-left:5px solid #16845a}
+.job:nth-child(4n){border-left:5px solid #d39a00}
+
+.job h3{
+  margin-top:0;
 }
 
 .tags{
   display:flex;
-  gap:7px;
   flex-wrap:wrap;
-  margin:12px 0;
+  gap:7px;
+  margin:8px 0 12px;
 }
 
 .tag{
-  font-size:.75rem;
   padding:4px 9px;
   border-radius:999px;
-  background:#192d49;
-  color:#c8dcf5;
+  background:#eaf3fc;
+  color:#24547f;
+  border:1px solid #d4e5f5;
+  font-size:.76rem;
 }
 
 .point{
-  margin-top:14px;
-  padding:13px 15px;
-  background:#091626;
-  border-left:3px solid var(--blue);
-  border-radius:8px;
-  color:#c8d6e8;
+  padding:16px 18px;
+  margin:18px 0;
+  border-radius:12px;
 }
-
-.route{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.route span{
-  background:#172942;
-  border:1px solid #2d4565;
-  border-radius:9px;
-  padding:7px 10px;
-  font-size:.8rem;
-}
-
-.arrow{color:var(--blue)}
 
 .steps{
-  counter-reset:step;
   display:grid;
-  gap:13px;
+  gap:11px;
+  counter-reset:step;
 }
 
 .step{
-  padding:18px 18px 18px 68px;
   position:relative;
+  padding:17px 18px 17px 65px;
+  border-radius:13px;
 }
 
 .step:before{
   counter-increment:step;
   content:counter(step);
   position:absolute;
-  left:18px;
-  top:18px;
-  width:34px;
-  height:34px;
+  left:17px;
+  top:17px;
+  width:32px;
+  height:32px;
   display:grid;
   place-items:center;
   border-radius:50%;
-  background:linear-gradient(135deg,var(--blue),var(--purple));
-  color:white;
+  color:#fff;
   font-weight:900;
+  background:linear-gradient(135deg,#1677df,#6e56cf);
 }
 
-.warning{
-  padding:20px;
-  border-color:#67444d;
-  background:#24151d;
-}
-
-.warning h3{color:#fda4af}
-
-.checklist{
+.check-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:10px;
+  gap:11px;
 }
 
 .check{
-  padding:13px;
-  background:#101e31;
-  border:1px solid var(--line);
-  border-radius:10px;
+  padding:16px;
+  border-radius:13px;
 }
 
-.good{color:var(--green)}
-.caution{color:var(--yellow)}
+.check strong{
+  display:block;
+  margin-bottom:3px;
+}
 
 .faq{
   padding:18px;
   margin-bottom:12px;
-}
-
-.faq strong{color:#bae6fd}
-
-.sources{
-  font-size:.86rem;
-  color:var(--muted);
-}
-
-.sources a{
-  word-break:break-all;
+  border-radius:13px;
 }
 
 .side{
   position:sticky;
-  top:15px;
+  top:16px;
 }
 
 .sidebox{
-  background:#0d192b;
-  border:1px solid var(--line);
-  border-radius:14px;
   padding:18px;
-  margin-bottom:15px;
+  margin-bottom:14px;
+  border-radius:14px;
 }
 
 .sidebox h3{
+  margin-top:0;
   font-size:1rem;
 }
 
 .sidebox a{
   display:block;
-  color:#c9d9ed;
-  padding:6px 0;
+  padding:5px 0;
   text-decoration:none;
 }
 
 .cta{
-  padding:25px;
-  border-radius:18px;
-  background:linear-gradient(135deg,#102c47,#261e50);
-  border:1px solid #416187;
+  padding:24px;
+  border-radius:16px;
+}
+
+.sources{
+  font-size:.9rem;
 }
 
 footer{
-  margin-top:60px;
-  border-top:1px solid var(--line);
-  padding:28px 10px 45px;
+  margin-top:45px;
+  padding:30px 15px;
   text-align:center;
-  color:#8fa3bb;
   font-size:.82rem;
   line-height:2;
 }
 
-footer a{color:#9db2ca}
-
 @media(max-width:850px){
   .layout{grid-template-columns:1fr}
   .side{position:static}
-  .quick{grid-template-columns:1fr}
+  .route-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:600px){
-  .hero{padding-top:38px}
-  .checklist{grid-template-columns:1fr}
-  .job{padding:18px}
+  .hero{padding:32px 18px}
+  .check-grid{grid-template-columns:1fr}
 }
 </style>
-<link rel="stylesheet" href="koropop-theme.css">
-<link rel="canonical" href="https://koropopgames.com/mikeiken-it-tenshoku.html">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"Article",
+      "headline":"未経験からIT転職するには？職種・資格・求人の見分け方・ロードマップ【2026年版】",
+      "description":"未経験からIT転職を目指す人向けに、職種比較、資格、求人の見分け方、転職ロードマップを解説。",
+      "datePublished":"2026-09-24",
+      "dateModified":"2026-09-30",
+      "mainEntityOfPage":"https://koropopgames.com/mikeiken-it-tenshoku.html",
+      "author":{
+        "@type":"Organization",
+        "name":"KOROPOP GAMES編集部"
+      },
+      "publisher":{
+        "@type":"Organization",
+        "name":"KOROPOP GAMES"
+      }
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"未経験からIT業界に転職できますか？",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"求人によっては可能です。ヘルプデスク、ITサポート、運用など、前職の接客・営業・事務等の経験を活かしやすい仕事もあります。"
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"IT転職では資格を取ってから応募した方がいいですか？",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"資格取得だけを待つ必要はありません。志望職種を決め、求人を確認しながら必要な基礎学習と応募を並行する方法があります。"
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"プログラミングが苦手でもIT転職できますか？",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"ITにはプログラミングが中心ではない職種もあります。ヘルプデスク、ITサポート、インフラ運用、社内ITなどが例です。"
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"未経験IT求人で何を確認すればいいですか？",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"仕事内容、研修後の配属、勤務時間、客先常駐の有無、給与内訳、将来担当できる業務などを確認します。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -402,27 +391,26 @@ footer a{color:#9db2ca}
 
 <div class="hero">
 
-<span class="badge">🔰 IT業界が初めての人向け</span>
+<span class="badge">🔰 IT未経験者向け・2026年版</span>
 
 <h1>
-未経験からIT転職するなら<br>
-<span class="gradient">何から始める？</span>
+未経験からIT転職するには？<br>
+<span class="gradient">職種・資格・求人選びを完全ガイド</span>
 </h1>
 
 <p class="lead">
-「プログラミングできないと無理？」
-「資格を取ってから応募するべき？」
-そんな人向けに、未経験から検討しやすいIT職種と
-求人選びのポイントを一から整理します。
+「IT業界に興味はあるけど何から始めればいい？」
+「プログラミングができないと無理？」
+そんな人向けに、職種選びから勉強、求人比較、応募まで順番に整理します。
 </p>
+
+<p class="updated">最終更新：2026年9月30日</p>
 
 <div class="answer">
 <strong>先に結論</strong><br>
-未経験からIT業界を目指すなら、いきなり高度な開発職だけを見る必要はありません。
-ヘルプデスク、IT運用・監視、テクニカルサポートなど、
-これまでの接客・営業・事務・設備管理などで身につけた
-「説明する」「確認する」「手順通り進める」「トラブルに対応する」
-といった経験を活かしやすい仕事から探す方法があります。
+未経験からIT転職を目指すなら、
+<span class="marker">資格を片っ端から取るより、まず自分に合いそうな職種を2〜3個に絞り、実際の求人から必要なスキルを逆算する</span>
+方が進めやすいです。
 </div>
 
 </div>
@@ -431,344 +419,400 @@ footer a{color:#9db2ca}
 
 <article>
 
+<div class="figure">
+
+<div class="figure-title">
+未経験IT転職は「職種選び → 基礎学習 → 求人比較」の順
+</div>
+
+<div class="figure-sub">
+最初から1職種に決め切れなくてもOK。まず3方向で考えます。
+</div>
+
+<div class="route-grid">
+
+<div class="route-card">
+<div style="font-size:1.7rem">💬</div>
+<h3>人を支える</h3>
+<p>
+ITヘルプデスク<br>
+ITサポート<br>
+社内IT
+</p>
+</div>
+
+<div class="route-card">
+<div style="font-size:1.7rem">🖥️</div>
+<h3>仕組みを支える</h3>
+<p>
+インフラ<br>
+ネットワーク<br>
+クラウド
+</p>
+</div>
+
+<div class="route-card">
+<div style="font-size:1.7rem">🔐</div>
+<h3>専門性を伸ばす</h3>
+<p>
+セキュリティ<br>
+クラウド<br>
+設計・構築
+</p>
+</div>
+
+</div>
+
+</div>
+
 <nav class="toc">
+
 <strong>この記事で分かること</strong>
+
 <ol>
-<li><a href="#first">未経験IT転職で最初に考えること</a></li>
-<li><a href="#comparison">7職種の比較</a></li>
-<li><a href="#jobs">職種ごとの仕事内容</a></li>
-<li><a href="#qualification">資格は必要？</a></li>
-<li><a href="#roadmap">転職までの5ステップ</a></li>
-<li><a href="#jobcheck">求人の見分け方</a></li>
-<li><a href="#faq">よくある疑問</a></li>
+<li><a href="#start">未経験IT転職で最初にやること</a></li>
+<li><a href="#compare">主要IT職種を比較</a></li>
+<li><a href="#jobs">職種別の詳しい選び方</a></li>
+<li><a href="#qualification">資格・勉強は何から？</a></li>
+<li><a href="#roadmap">転職までのロードマップ</a></li>
+<li><a href="#jobcheck">未経験求人の見分け方</a></li>
+<li><a href="#faq">よくある質問</a></li>
 </ol>
+
 </nav>
 
-<section id="first">
-<h2>未経験IT転職で最初に考えること</h2>
+<section id="start">
+
+<h2>未経験IT転職で最初にやること</h2>
 
 <p>
-「IT業界に入りたい」だけでは、求人を絞るのが難しくなります。
-ITには開発、インフラ、運用、サポート、セキュリティなど複数の仕事があるからです。
+最初にやるのは「資格を決めること」ではなく、
+<strong>どんな仕事を候補にするか整理すること</strong>です。
 </p>
 
-<div class="quick">
-<div>
-<b>💬 人と話すのが得意</b>
-ヘルプデスクやテクニカルサポートを候補に。
-</div>
+<p>
+IT業界には開発だけでなく、
+問い合わせ対応、社内IT、サーバー・ネットワーク運用、
+クラウド、セキュリティなど複数の仕事があります。
+</p>
 
-<div>
-<b>🖥 コツコツ確認が得意</b>
-運用・監視やインフラ系を候補に。
-</div>
-
-<div>
-<b>⚙ 作ることが好き</b>
-Web制作や開発職も学習しながら検討。
-</div>
+<div class="point">
+<b>プログラミングが苦手でも選択肢はあります。</b><br>
+コードを書く量が少ないIT職種については、
+<a href="programming-nigate-it-job.html">プログラミングが苦手でも目指せるIT職種7選</a>
+で詳しく比較しています。
 </div>
 
 <p>
-厚生労働省の職業情報提供サイト「job tag」では、
-ITの運用・管理について、サーバー等のシステムを安定稼働させるため、
-監視やログ確認、トラブル対応などを行う仕事として紹介しています。
-また、IT業界で基礎となる知識・経験を得る入口になり得る仕事とも説明されています。
+まず求人サイトで興味のある職種を数種類検索し、
+「どんな仕事内容が多いか」
+「何のスキルを求められるか」
+を見るだけでも方向がかなり見えます。
 </p>
+
 </section>
 
-<section id="comparison">
+<section id="compare">
 
-<h2>未経験から検討したいIT職種7選</h2>
+<h2>未経験から検討したいIT職種を比較</h2>
 
-<p class="muted">
-「誰でも簡単に就職できる」という意味ではありません。
-求人ごとに必要経験・スキルは異なるため、仕事内容と応募条件を必ず確認してください。
-</p>
+<div class="compare">
 
-<div class="table-wrap">
 <table>
+
 <thead>
 <tr>
 <th>職種</th>
-<th>主な仕事</th>
-<th>特に活かしやすい経験</th>
+<th>主な仕事内容</th>
+<th>入口で必要な知識</th>
 <th>次のキャリア例</th>
 </tr>
 </thead>
 
 <tbody>
+
 <tr>
-<td>ITヘルプデスク</td>
-<td>問い合わせ・トラブル対応</td>
-<td>接客・営業・事務</td>
-<td>社内SE・IT運用</td>
+<td><a href="mikeiken-it-helpdesk.html">ITヘルプデスク</a></td>
+<td>問い合わせ、PC・アカウント対応</td>
+<td>PC・IT基礎</td>
+<td>社内SE、インフラ</td>
 </tr>
 
 <tr>
-<td>IT運用・監視</td>
-<td>システム監視・障害対応</td>
-<td>確認・報告・夜勤経験</td>
-<td>インフラエンジニア</td>
+<td><a href="mikeiken-shanai-se.html">社内SE・社内IT</a></td>
+<td>社内IT全般、システム運用</td>
+<td>PC、NW、業務理解</td>
+<td>IT企画、インフラ</td>
 </tr>
 
 <tr>
-<td>テクニカルサポート</td>
-<td>製品・サービスの技術支援</td>
-<td>顧客対応・説明</td>
-<td>専門サポート・SE</td>
-</tr>
-
-<tr>
-<td>キッティング</td>
-<td>PC・端末の設定</td>
-<td>PC操作・手順作業</td>
-<td>ITサポート・運用</td>
-</tr>
-
-<tr>
-<td>インフラエンジニア補助</td>
-<td>サーバー・NW運用補助</td>
-<td>機械・設備への興味</td>
+<td><a href="mikeiken-infra-engineer.html">インフラ</a></td>
 <td>サーバー・NW・クラウド</td>
+<td>NW、Linux</td>
+<td>構築、設計、クラウド</td>
 </tr>
 
 <tr>
-<td>Web制作アシスタント</td>
-<td>サイト更新・制作補助</td>
-<td>デザイン・文章・PC</td>
-<td>Web制作・ディレクター</td>
+<td><a href="mikeiken-network-engineer.html">ネットワーク</a></td>
+<td>通信環境の運用・構築</td>
+<td>IP、DNS、NW基礎</td>
+<td>NW設計、クラウド</td>
 </tr>
 
 <tr>
-<td>セキュリティ運用補助</td>
-<td>監視・一次対応</td>
-<td>確認・分析・報告</td>
-<td>SOC・セキュリティ</td>
+<td><a href="mikeiken-cloud-engineer.html">クラウド</a></td>
+<td>AWS等の環境運用・構築</td>
+<td>Linux、NW、クラウド</td>
+<td>クラウド設計</td>
 </tr>
+
+<tr>
+<td><a href="mikeiken-soc-security.html">SOC・セキュリティ</a></td>
+<td>監視、分析、インシデント対応</td>
+<td>NW、OS、セキュリティ</td>
+<td>専門セキュリティ職</td>
+</tr>
+
 </tbody>
+
 </table>
+
 </div>
+
+<p class="muted">
+職種名が同じでも、実際の担当範囲は企業によって異なります。
+求人票の仕事内容まで確認してください。
+</p>
+
 </section>
 
 <section id="jobs">
 
-<h2>7職種をもう少し詳しく見る</h2>
+<h2>職種別｜未経験からの入り方</h2>
 
 <div class="jobs">
 
 <div class="job">
-<div class="job-number">JOB 01</div>
+
 <h3>ITヘルプデスク</h3>
 
 <div class="tags">
 <span class="tag">問い合わせ対応</span>
 <span class="tag">PC</span>
-<span class="tag">コミュニケーション</span>
+<span class="tag">説明力</span>
 </div>
 
 <p>
-社員や顧客から「ログインできない」「PCが動かない」
-「このシステムの使い方が分からない」といった問い合わせを受け、
-状況を確認して解決を支援する仕事です。
+PCやシステムの問い合わせに対応する仕事です。
+接客・営業・事務で培ったヒアリングや説明力を活かしやすい職種の一つです。
 </p>
 
 <p>
-厚生労働省job tagでは、電話・メールでの問い合わせ対応、
-問題の一次切り分け、必要に応じた専門担当へのエスカレーションなどが
-業務として示されています。
+ただし、受付だけなのか、
+PC設定・アカウント管理・SaaS管理まで経験できるのかで
+身につくスキルは変わります。
 </p>
 
-<div class="point">
-<strong>向いている人：</strong>
-相手の話を聞き、分からないことを整理して説明するのが苦にならない人。
-</div>
+<p>
+<a href="mikeiken-it-helpdesk.html">
+→ ITヘルプデスクの仕事内容・求人の見分け方
+</a>
+</p>
 
-<div class="route">
-<span>ヘルプデスク</span>
-<b class="arrow">→</b>
-<span>IT運用</span>
-<b class="arrow">→</b>
-<span>社内SEなど</span>
-</div>
 </div>
 
 <div class="job">
-<div class="job-number">JOB 02</div>
-<h3>IT運用・監視</h3>
+
+<h3>社内SE・社内IT</h3>
 
 <div class="tags">
+<span class="tag">社内IT</span>
+<span class="tag">PC管理</span>
+<span class="tag">調整</span>
+</div>
+
+<p>
+自社社員が使うPC、アカウント、システム、ネットワークなどを支えます。
+</p>
+
+<p>
+会社によって
+「ヘルプデスク中心」
+「インフラ中心」
+「システム企画中心」
+など仕事内容が大きく異なります。
+</p>
+
+<p>
+<a href="mikeiken-shanai-se.html">
+→ 未経験から社内SEになる方法
+</a>
+</p>
+
+</div>
+
+<div class="job">
+
+<h3>インフラエンジニア</h3>
+
+<div class="tags">
+<span class="tag">Linux</span>
 <span class="tag">サーバー</span>
+<span class="tag">ネットワーク</span>
+</div>
+
+<p>
+システムを動かすサーバー、ネットワーク、クラウドなどの土台を扱います。
+</p>
+
+<p>
+未経験求人では監視・運用などから始まる場合があります。
+大事なのは、そこから設定変更・構築へ担当を広げられるかです。
+</p>
+
+<p>
+<a href="mikeiken-infra-engineer.html">
+→ 未経験からインフラエンジニアになる方法
+</a>
+</p>
+
+</div>
+
+<div class="job">
+
+<h3>ネットワークエンジニア</h3>
+
+<div class="tags">
+<span class="tag">TCP/IP</span>
+<span class="tag">DNS</span>
+<span class="tag">CCNA</span>
+</div>
+
+<p>
+社内・データセンター・クラウドなどで使われる通信環境を支える仕事です。
+</p>
+
+<p>
+IPアドレスやDNSなど、
+ネットワークの基礎から始めると仕事内容を理解しやすくなります。
+</p>
+
+<p>
+<a href="mikeiken-network-engineer.html">
+→ 未経験からネットワークエンジニアを目指す方法
+</a>
+</p>
+
+</div>
+
+<div class="job">
+
+<h3>クラウドエンジニア</h3>
+
+<div class="tags">
+<span class="tag">AWS</span>
+<span class="tag">Linux</span>
+<span class="tag">クラウド</span>
+</div>
+
+<p>
+AWSなどのクラウドサービスを使って
+システム環境を運用・構築します。
+</p>
+
+<p>
+いきなりサービス名だけ覚えるより、
+ネットワークやLinuxなど土台を学ぶと理解しやすくなります。
+</p>
+
+<p>
+<a href="mikeiken-cloud-engineer.html">
+→ 未経験からクラウドエンジニアを目指す方法
+</a>
+</p>
+
+</div>
+
+<div class="job">
+
+<h3>SOC・セキュリティ</h3>
+
+<div class="tags">
 <span class="tag">監視</span>
-<span class="tag">障害対応</span>
+<span class="tag">ログ</span>
+<span class="tag">セキュリティ</span>
 </div>
 
 <p>
-サーバーやネットワークなどが正常に動いているか監視し、
-異常が起きたときに手順書に沿って確認・報告・対応します。
+セキュリティアラートやログを確認し、
+不審な通信・攻撃の可能性などを調査する分野です。
 </p>
 
 <p>
-24時間動くシステムでは交代勤務の求人もあります。
-そのため、勤務時間や夜勤の有無まで求人票で確認することが重要です。
-</p>
-
-<div class="point">
-<strong>注目ポイント：</strong>
-「監視だけ」なのか、設定変更・障害対応・サーバー操作まで経験できるのかを確認。
-</div>
-
-<div class="route">
-<span>運用監視</span>
-<b class="arrow">→</b>
-<span>サーバー/NW運用</span>
-<b class="arrow">→</b>
-<span>設計・クラウド</span>
-</div>
-</div>
-
-<div class="job">
-<div class="job-number">JOB 03</div>
-<h3>テクニカルサポート</h3>
-
-<p>
-ソフトウェア、クラウドサービス、通信機器などについて、
-利用者の技術的な疑問や不具合に対応します。
-</p>
-
-<div class="point">
-接客・営業経験がある人は、
-「相手の状況を聞く」「分かりやすく説明する」という経験を整理してアピールしやすい分野です。
-</div>
-</div>
-
-<div class="job">
-<div class="job-number">JOB 04</div>
-<h3>PCキッティング・ITサポート</h3>
-
-<p>
-会社で使うPCやスマートフォンに必要な設定を行い、
-アカウント設定、ソフト導入、端末管理などを担当します。
+ネットワークやOSの基礎が重要なので、
+インフラ運用などから経験を積んで進む方法もあります。
 </p>
 
 <p>
-求人を見る際は、短期の端末設定作業だけなのか、
-その後ヘルプデスク・運用などへ仕事を広げられるのかも確認しましょう。
-</p>
-</div>
-
-<div class="job">
-<div class="job-number">JOB 05</div>
-<h3>インフラエンジニア補助</h3>
-
-<p>
-ネットワーク、サーバー、クラウドなど、
-ITサービスを動かす土台を扱う仕事です。
-最初は運用や保守、設定補助などから経験を積む求人もあります。
+<a href="mikeiken-soc-security.html">
+→ 未経験からSOC・セキュリティ職を目指す方法
+</a>
 </p>
 
-<div class="point">
-<strong>学習候補：</strong>
-ネットワークの基礎、Linux、クラウド、CCNAなど。
-ただし資格名だけで求人を選ばず、実務内容を見ることが重要です。
-</div>
-</div>
-
-<div class="job">
-<div class="job-number">JOB 06</div>
-<h3>Web制作・更新アシスタント</h3>
-
-<p>
-Webサイトの文章や画像の更新、HTML/CSSの修正、
-CMSへの入稿などを担当する仕事があります。
-</p>
-
-<p>
-自分で小さなWebサイトを作って公開すると、
-「勉強しています」だけでなく実際に作ったものを見せられるのが強みです。
-</p>
-</div>
-
-<div class="job">
-<div class="job-number">JOB 07</div>
-<h3>セキュリティ運用・SOC補助</h3>
-
-<p>
-システムやネットワークを監視し、
-不審な通信やアラートを確認して対応する仕事です。
-</p>
-
-<p>
-厚生労働省job tagでは、セキュリティオペレーションについて、
-情報システム・ネットワークを監視し、
-攻撃や不正アクセスへの対応を行う仕事として紹介されています。
-</p>
-
-<div class="point">
-セキュリティは専門知識が必要な分野です。
-「完全未経験からいきなり高度な分析担当」と考えるより、
-IT基礎→運用・インフラ→セキュリティという道も検討できます。
-</div>
 </div>
 
 </div>
+
 </section>
 
 <section id="qualification">
 
-<h2>資格は取ってから転職するべき？</h2>
+<h2>資格・勉強は何から始める？</h2>
 
 <p>
-資格がなければIT業界に応募できない、というわけではありません。
-一方で未経験者の場合、基礎学習を始めていることを示す材料にはなります。
+資格は転職そのもののゴールではなく、
+<strong>必要な基礎知識を身につける手段</strong>として使うのがおすすめです。
 </p>
 
-<div class="box" style="padding:20px">
+<div class="check-grid">
 
-<h3>まず候補にしやすい：ITパスポート</h3>
+<div class="check">
+<strong>IT全体の基礎</strong>
+ITパスポートなど
+</div>
+
+<div class="check">
+<strong>ネットワーク</strong>
+TCP/IP、DNS、CCNAなど
+</div>
+
+<div class="check">
+<strong>インフラ</strong>
+Linux、ネットワーク、サーバー
+</div>
+
+<div class="check">
+<strong>クラウド</strong>
+AWS等＋Linux・NW基礎
+</div>
+
+</div>
+
+<div class="point">
+<b>資格を全部取ってから応募する必要はありません。</b><br>
+求人を見て、目標職種でよく求められている知識から学ぶ方が無駄を減らせます。
+</div>
 
 <p>
-IPA（情報処理推進機構）はITパスポートを、
-職業人やこれから職業人となる人が備えるべき
-「ITに関する共通的な基礎知識」を対象とする国家試験としています。
+<a href="it-mikeiken-shikaku.html">
+→ IT未経験者向け資格5選・職種別の選び方
+</a>
 </p>
 
 <p>
-ITそのものだけでなく、セキュリティ、システム、企業活動など
-幅広い基礎を学ぶ入口として使えます。
-</p>
-
-</div>
-
-<br>
-
-<div class="checklist">
-
-<div class="check">
-<span class="good">● 基礎から始めたい</span><br>
-ITパスポート
-</div>
-
-<div class="check">
-<span class="good">● ネットワーク志望</span><br>
-ネットワーク基礎・CCNAなど
-</div>
-
-<div class="check">
-<span class="good">● インフラ志望</span><br>
-Linux・ネットワーク・クラウド基礎
-</div>
-
-<div class="check">
-<span class="good">● 開発志望</span><br>
-HTML/CSS・JavaScript等＋制作物
-</div>
-
-</div>
-
-<p class="muted">
-資格取得だけを長期間続け、応募を先延ばしにする必要はありません。
-求人を見ながら「応募」と「学習」を並行する方法もあります。
+<a href="it-tenshoku-shikaku-nashi.html">
+→ IT転職は資格なしでもできる？
+</a>
 </p>
 
 </section>
@@ -780,136 +824,129 @@ HTML/CSS・JavaScript等＋制作物
 <div class="steps">
 
 <div class="step">
-<strong>興味のある職種を2〜3個に絞る</strong><br>
-「ITなら何でもいい」ではなく、サポート・インフラ・開発など方向を決めます。
+<strong>候補職種を2〜3個決める</strong><br>
+ヘルプデスク、社内IT、インフラなどから興味がある分野を絞ります。
 </div>
 
 <div class="step">
-<strong>実際の求人を20件ほど見る</strong><br>
-必要資格、勤務時間、未経験可の条件、仕事内容で何が共通しているか確認します。
+<strong>実際の求人を見る</strong><br>
+20件程度見ると、仕事内容や求められるスキルの共通点が見えます。
 </div>
 
 <div class="step">
-<strong>足りない基礎を勉強する</strong><br>
-ITパスポート、PC、ネットワークなど、志望職種に合わせます。
+<strong>足りない基礎を学ぶ</strong><br>
+IT全般、ネットワーク、Linuxなど志望職種に必要な知識を学習します。
 </div>
 
 <div class="step">
-<strong>前職経験をIT向けに言い換える</strong><br>
-「営業→顧客対応」「設備管理→障害対応・点検」
-「事務→PC・調整業務」のように使える経験を整理します。
+<strong>前職経験をIT向けに整理する</strong><br>
+接客、営業、事務、設備管理などで身につけた経験を具体化します。
 </div>
 
 <div class="step">
-<strong>応募しながら求人を比較する</strong><br>
-仕事内容だけでなく、研修後の配属、夜勤、勤務地、給与体系、キャリアまで確認します。
+<strong>応募と学習を並行する</strong><br>
+資格取得だけを待たず、求人の反応を見ながら必要な学習を追加します。
 </div>
 
 </div>
+
 </section>
 
 <section id="jobcheck">
 
-<h2>「未経験歓迎」求人で必ず見るポイント</h2>
-
-<div class="warning">
-
-<h3>⚠ 「未経験歓迎」の4文字だけで決めない</h3>
+<h2>未経験IT求人の見分け方</h2>
 
 <p>
-同じ「IT未経験歓迎」でも仕事内容はかなり違います。
-入社後に何をするのかまで読んで比較しましょう。
+「未経験歓迎」という言葉だけでは、
+良い求人かどうかは判断できません。
 </p>
 
-</div>
-
-<br>
-
-<div class="checklist">
+<div class="check-grid">
 
 <div class="check">
-<span class="caution">01</span><br>
-<strong>研修後の配属先</strong><br>
-何の仕事に配属されるか具体的か。
+<strong>① 入社直後の業務</strong>
+具体的に何をするか。
 </div>
 
 <div class="check">
-<span class="caution">02</span><br>
-<strong>実際の業務</strong><br>
-IT業務の範囲が具体的に書かれているか。
+<strong>② 研修後の配属</strong>
+配属先が明確か。
 </div>
 
 <div class="check">
-<span class="caution">03</span><br>
-<strong>夜勤・シフト</strong><br>
-24時間監視なら勤務形態を確認。
+<strong>③ 勤務時間</strong>
+夜勤・シフト・オンコール。
 </div>
 
 <div class="check">
-<span class="caution">04</span><br>
-<strong>勤務地</strong><br>
-客先常駐の可能性や転勤範囲も確認。
+<strong>④ 勤務地</strong>
+客先常駐・転勤の有無。
 </div>
 
 <div class="check">
-<span class="caution">05</span><br>
-<strong>給与の内訳</strong><br>
-基本給・固定残業代・各種手当を分けて見る。
+<strong>⑤ 給与内訳</strong>
+基本給、固定残業、各種手当。
 </div>
 
 <div class="check">
-<span class="caution">06</span><br>
-<strong>1〜3年後の仕事</strong><br>
-経験を積むと担当範囲が広がる環境か。
+<strong>⑥ 教育体制</strong>
+OJT・質問先・チーム人数。
+</div>
+
+<div class="check">
+<strong>⑦ 次のキャリア</strong>
+運用から構築などへ進めるか。
+</div>
+
+<div class="check">
+<strong>⑧ 実務で使う技術</strong>
+Linux、NW、AWS等に触れるか。
 </div>
 
 </div>
+
+<div class="point">
+<b>求人タイトルより仕事内容を見る。</b><br>
+同じ「インフラエンジニア」でも、
+監視だけの求人と構築まで経験できる求人では身につくものが違います。
+</div>
+
+<p>
+<a href="mikeiken-it-kyujin-miwakekata.html">
+→ 未経験IT求人の見分け方を詳しく見る
+</a>
+</p>
+
 </section>
 
 <section>
 
-<h2>前職は意外と無駄にならない</h2>
+<h2>「やめとけ」と言われるIT求人も確認しておく</h2>
 
 <p>
-IT未経験だからといって、それまでの職歴がゼロになるわけではありません。
+IT業界そのものが悪いという話ではありませんが、
+仕事内容を確認せず入社すると
+「思っていた仕事と違う」と感じるケースはあります。
 </p>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>これまでの経験</th>
-<th>IT職で言い換えられる強みの例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>営業</td>
-<td>顧客対応・ヒアリング・説明・調整</td>
-</tr>
-<tr>
-<td>接客</td>
-<td>問い合わせ対応・コミュニケーション</td>
-</tr>
-<tr>
-<td>事務</td>
-<td>PC操作・正確性・文書作成</td>
-</tr>
-<tr>
-<td>設備管理</td>
-<td>監視・点検・異常時対応・報告</td>
-</tr>
-<tr>
-<td>製造</td>
-<td>手順遵守・品質確認・改善</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p>
+特に、
+仕事内容が極端に曖昧、
+配属先が説明されない、
+将来担当できる業務が見えない求人は
+事前に確認したいところです。
+</p>
 
 <p>
-職務経歴書では「IT経験がありません」で終わらず、
-前職で何を確認し、誰と調整し、どんな問題を解決してきたかまで書くと整理しやすくなります。
+<a href="mikeiken-it-yametoke.html">
+→ 未経験IT転職はやめとけと言われる理由
+</a>
+</p>
+
+<p>
+<a href="mikeiken-it-shibodoki.html">
+→ IT転職の志望動機の作り方
+</a>
 </p>
 
 </section>
@@ -919,37 +956,63 @@ IT未経験だからといって、それまでの職歴がゼロになるわけ
 <h2>よくある質問</h2>
 
 <div class="faq">
-<strong>Q. プログラミングが苦手でもIT業界に入れる？</strong>
+
+<strong>Q. 未経験からIT業界に転職できますか？</strong>
+
 <p>
-IT＝プログラマーだけではありません。
-ヘルプデスク、運用、サポート、インフラなどコードを書くことが中心ではない仕事もあります。
-ただしITの基礎学習は必要です。
+求人によっては可能です。
+ヘルプデスク、ITサポート、運用など、
+前職経験を活かしやすい仕事もあります。
 </p>
+
 </div>
 
 <div class="faq">
-<strong>Q. パソコンに詳しくない状態でも大丈夫？</strong>
+
+<strong>Q. プログラミングができなくても大丈夫？</strong>
+
 <p>
-応募先によります。まず基本的なPC操作やIT用語を学び、
-実際の求人に書かれている必要スキルとの差を確認しましょう。
+プログラミングが中心ではないIT職もあります。
+ただしPC、ネットワーク、セキュリティなど
+担当業務に必要なIT基礎は学ぶ必要があります。
 </p>
+
 </div>
 
 <div class="faq">
-<strong>Q. 資格を取れば必ず転職できる？</strong>
+
+<strong>Q. 資格は取ってから応募するべき？</strong>
+
 <p>
-資格だけで採用が決まるわけではありません。
-学習、これまでの経験、応募先との適性などを含めて判断されます。
+必ずしも資格取得を待つ必要はありません。
+求人を確認しながら学習と応募を並行する方法があります。
 </p>
+
 </div>
 
 <div class="faq">
-<strong>Q. いきなり社内SEを目指してもいい？</strong>
+
+<strong>Q. 最初からクラウドを目指してもいい？</strong>
+
 <p>
-求人によっては可能ですが、社内SEは会社によって仕事内容が大きく異なります。
-ヘルプデスク、アカウント管理、ネットワーク、ベンダー調整など
-何を担当する求人なのか確認しましょう。
+クラウド学習自体は可能ですが、
+Linuxやネットワークなどの基礎も一緒に学ぶと
+仕事内容を理解しやすくなります。
 </p>
+
+</div>
+
+<div class="faq">
+
+<strong>Q. 社内SEは未経験でも目指せる？</strong>
+
+<p>
+求人によります。
+完全未経験ならヘルプデスク、PC・アカウント管理、
+システム運用などを含む求人から比較すると
+入口を見つけやすくなります。
+</p>
+
 </div>
 
 </section>
@@ -958,24 +1021,34 @@ IT＝プログラマーだけではありません。
 
 <div class="cta">
 
-<h2 style="border:0;margin-bottom:5px">次にやること</h2>
+<h2 style="background:none;border:0;padding:0">
+次に読む記事
+</h2>
 
 <p>
-まず求人サイトで気になるIT職種を2〜3個検索して、
-仕事内容を比べてみてください。
+まだ職種が決まっていないなら、まずこの2本から。
 </p>
 
 <p>
-「未経験歓迎」という言葉ではなく、
-<strong>入社後に何を経験できるか</strong>を見るのがポイントです。
+<a href="programming-nigate-it-job.html">
+→ プログラミングが苦手でも目指せるIT職種7選
+</a>
 </p>
 
 <p>
-<a href="20s-mikeiken-tenshoku.html">→ 20代・未経験からの転職ガイドも読む</a>
+<a href="mikeiken-it-kyujin-miwakekata.html">
+→ 未経験IT求人の見分け方
+</a>
 </p>
 
 <p>
-<a href="jobs.html">→ 収入アップを目指せる仕事20選を見る</a>
+20代ならこちらも。
+</p>
+
+<p>
+<a href="20s-mikeiken-tenshoku.html">
+→ 20代・未経験から転職するなら？
+</a>
 </p>
 
 </div>
@@ -987,20 +1060,29 @@ IT＝プログラマーだけではありません。
 <h2>参考情報</h2>
 
 <p>
-本記事は、厚生労働省「職業情報提供サイト（job tag）」、
-独立行政法人情報処理推進機構（IPA）の公開情報等を参考に、
+本記事は公的機関の公開情報を参考に、
 未経験者向けに内容を整理しています。
+仕事内容・応募条件は企業によって異なるため、
+応募時は各求人の最新情報をご確認ください。
 </p>
 
-<p>
-仕事内容・応募条件・勤務形態等は企業や求人によって異なります。
-応募時は必ず各求人の最新情報をご確認ください。
-</p>
+<ul>
 
-<p>
-参考：厚生労働省 職業情報提供サイト（job tag）「運用・管理（IT）」「ヘルプデスク（IT）」「セキュリティエキスパート（オペレーション）」<br>
-参考：IPA「ITパスポート試験」
-</p>
+<li>
+<a href="https://shigoto.mhlw.go.jp/User/Search/Result?keyword=IT"
+target="_blank" rel="noopener">
+厚生労働省 職業情報提供サイト（job tag）
+</a>
+</li>
+
+<li>
+<a href="https://www.ipa.go.jp/shiken/kubun/ip.html"
+target="_blank" rel="noopener">
+IPA ITパスポート試験
+</a>
+</li>
+
+</ul>
 
 </section>
 
@@ -1009,41 +1091,85 @@ IT＝プログラマーだけではありません。
 <aside class="side">
 
 <div class="sidebox">
-<h3>📌 この記事の要点</h3>
+
+<h3>📌 このページの役割</h3>
+
 <p class="muted">
-未経験なら「IT業界」ではなく、まず具体的な職種を選ぶ。
+未経験IT転職の総合入口。
+ここから各職種の詳しい記事へ進めます。
 </p>
+
 </div>
 
 <div class="sidebox">
-<h3>💻 関連記事</h3>
-<a href="20s-mikeiken-tenshoku.html">20代・未経験転職ガイド</a>
-<a href="jobs.html">収入アップを目指せる仕事20選</a>
-<a href="tedori.html">手取り・残業代計算</a>
+
+<h3>💻 職種別ガイド</h3>
+
+<a href="mikeiken-it-helpdesk.html">
+ITヘルプデスク
+</a>
+
+<a href="mikeiken-shanai-se.html">
+社内SE
+</a>
+
+<a href="mikeiken-infra-engineer.html">
+インフラ
+</a>
+
+<a href="mikeiken-network-engineer.html">
+ネットワーク
+</a>
+
+<a href="mikeiken-cloud-engineer.html">
+クラウド
+</a>
+
+<a href="mikeiken-soc-security.html">
+セキュリティ
+</a>
+
 </div>
 
 <div class="sidebox">
-<h3>🔰 最初の候補</h3>
-<p class="muted">
-ITヘルプデスク<br>
-IT運用・監視<br>
-テクニカルサポート
-</p>
+
+<h3>📚 転職準備</h3>
+
+<a href="it-mikeiken-shikaku.html">
+未経験向け資格
+</a>
+
+<a href="mikeiken-it-kyujin-miwakekata.html">
+求人の見分け方
+</a>
+
+<a href="mikeiken-it-shibodoki.html">
+志望動機
+</a>
+
 </div>
 
 </aside>
 
 </div>
 
+</div>
+
 <footer>
-<a href="index.html">トップ</a> ・
-<a href="about.html">このサイトについて</a> ・
-<a href="privacy.html">プライバシーポリシー</a> ・
+
+<a href="index.html">トップ</a>
+・
+<a href="about.html">このサイトについて</a>
+・
+<a href="privacy.html">プライバシーポリシー</a>
+・
 <a href="contact.html">お問い合わせ</a>
+
 <br>
+
 © 2026 KOROPOP GAMES
+
 </footer>
 
-</div>
 </body>
 </html>
