@@ -981,3 +981,32 @@ ready(() => {
 });
 
 })();
+
+
+/* KOROPOP_RELATED_LOADER */
+(() => {
+
+  if(
+    document.querySelector(
+      'script[src*="koropop-related.js"]'
+    )
+  ){
+    return;
+  }
+
+  const script =
+    document.createElement(
+      "script"
+    );
+
+  script.src =
+    "koropop-related.js";
+
+  script.async = true;
+
+  document.head.appendChild(
+    script
+  );
+
+})();
+
