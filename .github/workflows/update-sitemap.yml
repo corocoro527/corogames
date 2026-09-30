@@ -1,0 +1,123 @@
+name: Auto Update Sitemap
+
+on:
+  push:
+    paths:
+      - "*.html"
+      - ".github/workflows/update-sitemap.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate sitemap
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          import html
+
+          base = "https://koropopgames.com"
+
+          exclude = {
+              "index.html",
+              "contact-thanks.html",
+          }
+
+          pages = sorted(
+              p.name
+              for p in Path(".").glob("*.html")
+              if p.name not in exclude
+          )
+
+          def lastmod(filename):
+              try:
+                  result = subprocess.check_output(
+                      [
+                          "git",
+                          "log",
+                          "-1",
+                          "--format=%cs",
+                          "--",
+                          filename,
+                      ],
+                      text=True,
+                  ).strip()
+
+                  return result or None
+
+              except Exception:
+                  return None
+
+          urls = []
+
+          # トップページ
+          index_date = lastmod("index.html")
+
+          urls.append(
+              (
+                  base + "/",
+                  index_date
+              )
+          )
+
+          # その他のページ
+          for filename in pages:
+              urls.append(
+                  (
+                      f"{base}/{filename}",
+                      lastmod(filename)
+                  )
+              )
+
+          lines = [
+              '<?xml version="1.0" encoding="UTF-8"?>',
+              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+          ]
+
+          for url, date in urls:
+              lines.append("  <url>")
+              lines.append(
+                  f"    <loc>{html.escape(url)}</loc>"
+              )
+
+              if date:
+                  lines.append(
+                      f"    <lastmod>{date}</lastmod>"
+                  )
+
+              lines.append("  </url>")
+
+          lines.append("</urlset>")
+
+          Path("sitemap.xml").write_text(
+              "\n".join(lines) + "\n",
+              encoding="utf-8"
+          )
+
+          print("URLs:", len(urls))
+          PY
+
+      - name: Commit sitemap
+        run: |
+          git config user.name "KOROPOP SEO Bot"
+          git config user.email "actions@github.com"
+
+          git add sitemap.xml
+
+          if git diff --cached --quiet; then
+            echo "Sitemap already up to date."
+            exit 0
+          fi
+
+          git commit -m "Auto update sitemap"
+          git push
