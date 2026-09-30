@@ -21,6 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - name: Build career hub
@@ -45,15 +46,33 @@ jobs:
               "tedori.html",
           }
 
+
           def text_from(pattern, source):
-              m = re.search(pattern, source, re.I | re.S)
-              if not m:
+              match = re.search(
+                  pattern,
+                  source,
+                  re.I | re.S
+              )
+
+              if not match:
                   return ""
-              value = re.sub(r"<[^>]+>", "", m.group(1))
-              return html.unescape(value).strip()
+
+              value = re.sub(
+                  r"<[^>]+>",
+                  "",
+                  match.group(1)
+              )
+
+              return html.unescape(
+                  value
+              ).strip()
+
 
           def get_title(source):
-              title = text_from(r"<title[^>]*>(.*?)</title>", source)
+              title = text_from(
+                  r"<title[^>]*>(.*?)</title>",
+                  source
+              )
 
               title = re.sub(
                   r"\s*[｜|-]\s*KOROPOP GAMES.*$",
@@ -64,6 +83,7 @@ jobs:
 
               return title.strip()
 
+
           def get_description(source):
               patterns = [
                   r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']',
@@ -71,15 +91,23 @@ jobs:
               ]
 
               for pattern in patterns:
-                  m = re.search(pattern, source, re.I)
-                  if m:
-                      return html.unescape(m.group(1)).strip()
+                  match = re.search(
+                      pattern,
+                      source,
+                      re.I
+                  )
+
+                  if match:
+                      return html.unescape(
+                          match.group(1)
+                      ).strip()
 
               return ""
 
+
           def lastmod(filename):
               try:
-                  out = subprocess.check_output(
+                  result = subprocess.check_output(
                       [
                           "git",
                           "log",
@@ -91,46 +119,185 @@ jobs:
                       text=True
                   ).strip()
 
-                  return out or str(date.today())
+                  return result or str(
+                      date.today()
+                  )
 
               except Exception:
-                  return str(date.today())
+                  return str(
+                      date.today()
+                  )
+
 
           def category(filename, title, description):
-              text = f"{filename} {title} {description}"
 
-              it_words = [
-                  "IT",
+              filename_lower = filename.lower()
+              title_lower = title.lower()
+
+              # -------------------------
+              # 仕事選び
+              # -------------------------
+
+              work_markers = [
+                  "楽な仕事",
+                  "しんどくない仕事",
+                  "人と関わらない",
+                  "収入アップを目指せる仕事",
+                  "資格なし・未経験から目指せる仕事",
+              ]
+
+              if (
+                  filename == "jobs.html"
+                  or any(
+                      marker.lower()
+                      in title_lower
+                      for marker
+                      in work_markers
+                  )
+              ):
+                  return "work"
+
+
+              # -------------------------
+              # 転職準備
+              # -------------------------
+
+              career_markers = [
+                  "辞めたい",
+                  "次が決まってない",
+                  "退職理由",
+                  "転職理由",
+                  "志望動機",
+                  "面接",
+                  "職務経歴書",
+                  "履歴書",
+                  "転職活動",
+              ]
+
+              career_files = {
+                  "20s-mikeiken-tenshoku.html",
+                  "shigoto-yametai-tsugi-kimattenai.html",
+              }
+
+              if (
+                  filename in career_files
+                  or any(
+                      marker.lower()
+                      in title_lower
+                      for marker
+                      in career_markers
+                  )
+              ):
+                  return "career"
+
+
+              # -------------------------
+              # IT転職
+              # -------------------------
+
+              filename_is_it = (
+                  "-it-" in filename_lower
+                  or filename_lower.startswith("it-")
+                  or filename_lower.endswith("-it.html")
+                  or "infra" in filename_lower
+                  or "network" in filename_lower
+                  or "cloud" in filename_lower
+                  or "shanai-se" in filename_lower
+                  or "helpdesk" in filename_lower
+                  or "soc-" in filename_lower
+              )
+
+              it_markers = [
+                  "it転職",
+                  "itエンジニア",
                   "エンジニア",
-                  "社内SE",
+                  "社内se",
                   "ヘルプデスク",
                   "インフラ",
                   "ネットワーク",
                   "クラウド",
-                  "SOC",
+                  "soc",
+                  "セキュリティ",
                   "プログラミング",
-                  "リモート"
               ]
 
-              work_words = [
-                  "仕事",
-                  "職種",
-                  "楽な",
-                  "関わらない",
-                  "収入アップ"
-              ]
-
-              if any(word.lower() in text.lower() for word in it_words):
+              if (
+                  filename_is_it
+                  or any(
+                      marker.lower()
+                      in title_lower
+                      for marker
+                      in it_markers
+                  )
+              ):
                   return "it"
 
-              if any(word in text for word in work_words):
+
+              # -------------------------
+              # その他仕事系
+              # -------------------------
+
+              generic_work = [
+                  "仕事",
+                  "職種",
+              ]
+
+              if any(
+                  marker in title
+                  for marker
+                  in generic_work
+              ):
                   return "work"
 
               return "career"
 
+
+          def is_career_article(
+              filename,
+              title,
+              description
+          ):
+
+              if filename == "jobs.html":
+                  return True
+
+              text = (
+                  title
+                  + " "
+                  + description
+              ).lower()
+
+              words = [
+                  "仕事",
+                  "転職",
+                  "職種",
+                  "年収",
+                  "資格",
+                  "退職",
+                  "面接",
+                  "履歴書",
+                  "職務経歴書",
+                  "エンジニア",
+                  "社内se",
+                  "ヘルプデスク",
+                  "インフラ",
+                  "ネットワーク",
+                  "クラウド",
+                  "soc",
+              ]
+
+              return any(
+                  word.lower() in text
+                  for word in words
+              )
+
+
           articles = []
 
-          for path in sorted(Path(".").glob("*.html")):
+
+          for path in sorted(
+              Path(".").glob("*.html")
+          ):
 
               if path.name in EXCLUDE:
                   continue
@@ -140,45 +307,31 @@ jobs:
                   errors="replace"
               )
 
-              title = get_title(source)
+              title = get_title(
+                  source
+              )
 
               if not title:
                   continue
 
-              description = get_description(source)
-
-              career_words = [
-                  "仕事",
-                  "転職",
-                  "職種",
-                  "年収",
-                  "資格",
-                  "エンジニア",
-                  "社内SE",
-                  "ヘルプデスク",
-                  "インフラ",
-                  "ネットワーク",
-                  "クラウド",
-                  "SOC"
-              ]
-
-              searchable = (
-                  path.name == "jobs.html"
-                  or any(
-                      word.lower() in
-                      f"{title} {description}".lower()
-                      for word in career_words
-                  )
+              description = get_description(
+                  source
               )
 
-              if not searchable:
+              if not is_career_article(
+                  path.name,
+                  title,
+                  description
+              ):
                   continue
 
               articles.append({
                   "file": path.name,
                   "title": title,
                   "description": description,
-                  "date": lastmod(path.name),
+                  "date": lastmod(
+                      path.name
+                  ),
                   "category": category(
                       path.name,
                       title,
@@ -186,13 +339,15 @@ jobs:
                   )
               })
 
+
           articles.sort(
-              key=lambda x: (
-                  x["date"],
-                  x["title"]
+              key=lambda item: (
+                  item["date"],
+                  item["title"]
               ),
               reverse=True
           )
+
 
           def esc(value):
               return html.escape(
@@ -200,34 +355,73 @@ jobs:
                   quote=True
               )
 
+
           def card(article):
-              desc = article["description"]
 
-              if len(desc) > 115:
-                  desc = desc[:112].rstrip() + "…"
-
-              return f'''
-          <a class="article-card" href="{esc(article["file"])}">
-            <h3>{esc(article["title"])}</h3>
-            <p>{esc(desc)}</p>
-            <span class="date">更新：{esc(article["date"])}</span>
-          </a>'''
-
-          def cards(category_name):
-              items = [
-                  x for x in articles
-                  if x["category"] == category_name
-              ]
-
-              if not items:
-                  return '<p class="empty">記事を準備中です。</p>'
-
-              return "\n".join(
-                  card(x)
-                  for x in items
+              description = (
+                  article["description"]
               )
 
-          career_count = len(articles)
+              if len(description) > 115:
+                  description = (
+                      description[:112]
+                      .rstrip()
+                      + "…"
+                  )
+
+              return f'''
+          <a
+            class="article-card"
+            href="{esc(article["file"])}"
+          >
+
+            <h3>
+            {esc(article["title"])}
+            </h3>
+
+            <p>
+            {esc(description)}
+            </p>
+
+            <span class="date">
+            更新：{esc(article["date"])}
+            </span>
+
+          </a>
+          '''
+
+
+          def cards(category_name):
+
+              items = [
+                  article
+                  for article in articles
+                  if article["category"]
+                  == category_name
+              ]
+
+              return "\n".join(
+                  card(article)
+                  for article in items
+              )
+
+
+          work_cards = cards(
+              "work"
+          )
+
+          career_cards = cards(
+              "career"
+          )
+
+          it_cards = cards(
+              "it"
+          )
+
+          career_count = len(
+              articles
+          )
+
 
           output = f'''<!doctype html>
           <html lang="ja">
@@ -235,14 +429,30 @@ jobs:
           <head>
 
           <!-- Google tag -->
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"
+          ></script>
 
           <script>
-          window.dataLayer=window.dataLayer||[];
-          function gtag(){{dataLayer.push(arguments);}}
-          gtag('js',new Date());
-          gtag('config','G-8NWPD2QBCQ');
+          window.dataLayer =
+            window.dataLayer || [];
+
+          function gtag(){{
+            dataLayer.push(arguments);
+          }}
+
+          gtag(
+            'js',
+            new Date()
+          );
+
+          gtag(
+            'config',
+            'G-8NWPD2QBCQ'
+          );
           </script>
+
 
           <meta charset="utf-8">
 
@@ -260,6 +470,11 @@ jobs:
             content="未経験転職、資格なしで目指せる仕事、人と関わらない仕事、楽な仕事、収入アップ、20代・30代転職、未経験IT転職までまとめた仕事・転職総合ガイドです。"
           >
 
+          <meta
+            name="robots"
+            content="index,follow,max-image-preview:large"
+          >
+
           <link
             rel="canonical"
             href="{BASE}/career.html"
@@ -270,10 +485,6 @@ jobs:
             href="koropop-theme.css"
           >
 
-          <meta
-            name="robots"
-            content="index,follow,max-image-preview:large"
-          >
 
           <meta
             property="og:type"
@@ -287,7 +498,7 @@ jobs:
 
           <meta
             property="og:description"
-            content="仕事選び・未経験転職・年収・IT転職の記事を目的別に探せます。"
+            content="仕事選び・転職準備・未経験IT転職の記事を目的別に探せます。"
           >
 
           <meta
@@ -300,6 +511,7 @@ jobs:
             content="KOROPOP GAMES"
           >
 
+
           <style>
 
           *{{
@@ -311,7 +523,10 @@ jobs:
           }}
 
           .container{{
-            width:min(100% - 28px,1120px);
+            width:min(
+              100% - 28px,
+              1120px
+            );
             margin:auto;
           }}
 
@@ -339,7 +554,11 @@ jobs:
 
           .hero h1{{
             margin:15px 0 13px;
-            font-size:clamp(2rem,6vw,3.4rem);
+            font-size:clamp(
+              2rem,
+              6vw,
+              3.4rem
+            );
             line-height:1.3;
           }}
 
@@ -366,7 +585,9 @@ jobs:
 
           .stat{{
             background:#fff;
-            border:1px solid #dfe5ec;
+            border:
+              1px solid
+              #dfe5ec;
             border-radius:999px;
             padding:7px 12px;
             color:#475467;
@@ -375,7 +596,8 @@ jobs:
 
           .quick{{
             display:grid;
-            grid-template-columns:repeat(4,1fr);
+            grid-template-columns:
+              repeat(4,1fr);
             gap:11px;
             margin:25px 0 48px;
           }}
@@ -383,7 +605,9 @@ jobs:
           .quick a{{
             display:block;
             background:#fff;
-            border:1px solid #dfe5ec;
+            border:
+              1px solid
+              #dfe5ec;
             border-radius:14px;
             padding:17px;
             text-decoration:none;
@@ -404,27 +628,36 @@ jobs:
 
           .start-grid{{
             display:grid;
-            grid-template-columns:repeat(3,1fr);
+            grid-template-columns:
+              repeat(3,1fr);
             gap:12px;
           }}
 
           .start{{
             padding:19px;
             background:#fff;
-            border:1px solid #dfe5ec;
+            border:
+              1px solid
+              #dfe5ec;
             border-radius:15px;
           }}
 
           .start:nth-child(1){{
-            border-top:4px solid #1677df;
+            border-top:
+              4px solid
+              #1677df;
           }}
 
           .start:nth-child(2){{
-            border-top:4px solid #6e56cf;
+            border-top:
+              4px solid
+              #6e56cf;
           }}
 
           .start:nth-child(3){{
-            border-top:4px solid #16845a;
+            border-top:
+              4px solid
+              #16845a;
           }}
 
           .start h3{{
@@ -433,7 +666,8 @@ jobs:
 
           .section-head{{
             display:flex;
-            justify-content:space-between;
+            justify-content:
+              space-between;
             align-items:end;
             gap:16px;
             margin-bottom:16px;
@@ -451,7 +685,8 @@ jobs:
 
           .article-grid{{
             display:grid;
-            grid-template-columns:repeat(2,1fr);
+            grid-template-columns:
+              repeat(2,1fr);
             gap:13px;
           }}
 
@@ -459,7 +694,9 @@ jobs:
             display:block;
             background:#fff;
             color:inherit;
-            border:1px solid #dfe5ec;
+            border:
+              1px solid
+              #dfe5ec;
             border-radius:15px;
             padding:19px;
             text-decoration:none;
@@ -469,10 +706,16 @@ jobs:
           }}
 
           .article-card:hover{{
-            transform:translateY(-2px);
+            transform:
+              translateY(-2px);
             box-shadow:
               0 8px 24px
-              rgba(16,24,40,.07);
+              rgba(
+                16,
+                24,
+                40,
+                .07
+              );
           }}
 
           .article-card h3{{
@@ -495,9 +738,18 @@ jobs:
             font-size:.74rem;
           }}
 
-          .tip{{
-            padding:19px;
-            border-radius:14px;
+          .trust{{
+            margin-top:42px;
+            padding:20px;
+            border:
+              1px solid
+              #dfe5ec;
+            border-radius:15px;
+            background:#fff;
+          }}
+
+          .trust h2{{
+            margin-top:0;
           }}
 
           footer{{
@@ -506,19 +758,27 @@ jobs:
             font-size:.84rem;
           }}
 
-          @media(max-width:820px){{
+
+          @media(
+            max-width:820px
+          ){{
 
             .quick{{
-              grid-template-columns:1fr 1fr;
+              grid-template-columns:
+                1fr 1fr;
             }}
 
             .start-grid{{
-              grid-template-columns:1fr;
+              grid-template-columns:
+                1fr;
             }}
 
           }}
 
-          @media(max-width:620px){{
+
+          @media(
+            max-width:620px
+          ){{
 
             .hero{{
               padding:32px 19px;
@@ -526,7 +786,8 @@ jobs:
 
             .quick,
             .article-grid{{
-              grid-template-columns:1fr;
+              grid-template-columns:
+                1fr;
             }}
 
             .section-head{{
@@ -541,22 +802,41 @@ jobs:
 
           </style>
 
-          <script type="application/ld+json">
+
+          <script
+            type="application/ld+json"
+          >
           {{
-            "@context":"https://schema.org",
-            "@type":"CollectionPage",
-            "name":"仕事・転職ガイド",
-            "url":"{BASE}/career.html",
-            "description":"KOROPOP GAMESの仕事・転職関連記事を目的別にまとめた総合ページです。",
+            "@context":
+              "https://schema.org",
+
+            "@type":
+              "CollectionPage",
+
+            "name":
+              "仕事・転職ガイド",
+
+            "url":
+              "{BASE}/career.html",
+
+            "description":
+              "KOROPOP GAMESの仕事・転職関連記事を目的別にまとめた総合ページです。",
+
             "isPartOf":{{
-              "@type":"WebSite",
-              "name":"KOROPOP GAMES",
-              "url":"{BASE}/"
+              "@type":
+                "WebSite",
+
+              "name":
+                "KOROPOP GAMES",
+
+              "url":
+                "{BASE}/"
             }}
           }}
           </script>
 
           </head>
+
 
           <body>
 
@@ -580,7 +860,7 @@ jobs:
           </header>
 
 
-          <div class="container">
+          <main class="container">
 
           <div class="hero">
 
@@ -594,36 +874,39 @@ jobs:
 
           <p>
           「何の仕事が合う？」
-          「未経験でもいける？」
-          「収入を上げたい」
+          「今の仕事を辞めたい」
+          「未経験でも転職できる？」
           「ITも気になる」。
-          目的から必要な記事へ
-          すぐ移動できるようにまとめています。
+          状況に合わせて
+          必要な記事を探せます。
           </p>
+
 
           <div class="answer">
 
           <strong>
-          迷ったらここから。
+          迷ったら、
+          まず今の悩みを整理。
           </strong>
 
           <br>
 
-          まず
-          「今の仕事で減らしたいもの」と
-          「次の仕事で増やしたいもの」を
-          1つずつ決めてみてください。
+          仕事選び、
+          転職準備、
+          IT転職の3つに分けて
+          読めるようにしています。
 
           </div>
+
 
           <div class="stats">
 
           <span class="stat">
-          📚 転職関連記事 {career_count} 本
+          📚 関連記事 {career_count} 本
           </span>
 
           <span class="stat">
-          🔄 記事追加時に自動更新
+          🔄 新記事追加時に自動更新
           </span>
 
           </div>
@@ -637,43 +920,38 @@ jobs:
           >
 
           <a href="#work">
-
           🔎 仕事を探す
 
           <small>
           条件・働き方から探す
           </small>
-
           </a>
 
-          <a href="#career">
 
+          <a href="#career">
           🧭 転職を考える
 
           <small>
-          未経験・年代別
+          退職・転職準備
           </small>
-
           </a>
 
-          <a href="#it">
 
+          <a href="#it">
           💻 ITを目指す
 
           <small>
           職種・資格・年収
           </small>
-
           </a>
 
-          <a href="tedori.html">
 
+          <a href="tedori.html">
           🧮 手取りを計算
 
           <small>
           給与をシミュレーション
           </small>
-
           </a>
 
           </nav>
@@ -690,30 +968,36 @@ jobs:
           <div class="start">
 
           <h3>
-          ① 何を減らしたい？
+          ① 何がしんどい？
           </h3>
 
           <p>
-          人間関係、体力、ノルマ、
+          人間関係、
+          体力、
+          ノルマ、
           夜勤など、
-          今特にしんどいものを決めます。
+          今の負担を整理します。
           </p>
 
           </div>
+
 
           <div class="start">
 
           <h3>
-          ② 何を増やしたい？
+          ② 次に何が欲しい？
           </h3>
 
           <p>
-          収入、休日、専門性、
+          給与、
+          休日、
+          専門性、
           一人時間など、
-          次の仕事で欲しいものを決めます。
+          優先順位を決めます。
           </p>
 
           </div>
+
 
           <div class="start">
 
@@ -723,7 +1007,9 @@ jobs:
 
           <p>
           職種名だけでなく、
-          仕事内容、給与、勤務時間、
+          仕事内容、
+          給与、
+          勤務時間、
           将来の経験まで確認します。
           </p>
 
@@ -745,15 +1031,13 @@ jobs:
           </div>
 
           <p>
-          条件から仕事候補を探したい人向け
+          自分に合う仕事を探したい人向け
           </p>
 
           </div>
 
           <div class="article-grid">
-
-          {cards("work")}
-
+          {work_cards}
           </div>
 
           </section>
@@ -765,20 +1049,18 @@ jobs:
 
           <div>
           <h2>
-          未経験転職・転職準備
+          転職準備・退職
           </h2>
           </div>
 
           <p>
-          転職の進め方を知りたい人向け
+          辞める判断や転職活動を進めたい人向け
           </p>
 
           </div>
 
           <div class="article-grid">
-
-          {cards("career")}
-
+          {career_cards}
           </div>
 
           </section>
@@ -801,34 +1083,36 @@ jobs:
           </div>
 
           <div class="article-grid">
-
-          {cards("it")}
-
+          {it_cards}
           </div>
 
           </section>
 
 
-          <section>
+          <section class="trust">
 
-          <div class="tip">
+          <h2>
+          掲載情報について
+          </h2>
 
-          <strong>
-          この一覧は自動更新されます。
-          </strong>
+          <p>
+          仕事・資格・給与・制度などの情報は、
+          厚生労働省、
+          職業情報提供サイト job tag、
+          各制度の公式情報などを確認しながら
+          記事ごとに整理しています。
+          </p>
 
-          <br>
-
-          今後KOROPOP GAMESへ
-          仕事・転職系の記事を追加すると、
-          このページの記事一覧も
-          自動で作り直されます。
-
-          </div>
+          <p>
+          求人条件や制度は
+          企業・地域・時期によって異なるため、
+          実際に応募・手続きする際は
+          最新の公式情報もご確認ください。
+          </p>
 
           </section>
 
-          </div>
+          </main>
 
 
           <footer>
@@ -865,12 +1149,18 @@ jobs:
           </html>
           '''
 
-          Path("career.html").write_text(
+
+          Path(
+              "career.html"
+          ).write_text(
               output,
               encoding="utf-8"
           )
 
-          index = Path("index.html")
+
+          index = Path(
+              "index.html"
+          )
 
           if index.exists():
 
@@ -879,7 +1169,10 @@ jobs:
                   errors="replace"
               )
 
-              if 'href="career.html"' not in source:
+              if (
+                  'href="career.html"'
+                  not in source
+              ):
 
                   block = '''
           <section class="section">
@@ -895,7 +1188,7 @@ jobs:
           </h3>
 
           <p>
-          仕事選び・未経験転職・年収・IT転職を
+          仕事選び・転職準備・年収・IT転職を
           目的別にまとめた総合ページです。
           </p>
 
@@ -904,19 +1197,26 @@ jobs:
           </section>
           '''
 
-                  marker = '<section class="about">'
+                  marker = (
+                      '<section class="about">'
+                  )
 
                   if marker in source:
+
                       source = source.replace(
                           marker,
-                          block + "\n" + marker,
+                          block
+                          + "\n"
+                          + marker,
                           1
                       )
 
                   else:
+
                       source = source.replace(
                           "</main>",
-                          block + "\n</main>",
+                          block
+                          + "\n</main>",
                           1
                       )
 
@@ -925,22 +1225,34 @@ jobs:
                       encoding="utf-8"
                   )
 
+
           print(
               f"Career hub built with {career_count} articles"
           )
+
           PY
+
 
       - name: Commit generated hub
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config \
+            user.name \
+            "github-actions[bot]"
 
-          git add career.html index.html
+          git config \
+            user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add \
+            career.html \
+            index.html
 
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
 
-          git commit -m "Auto update career hub"
+          git commit \
+            -m "Auto update career hub"
+
           git push
