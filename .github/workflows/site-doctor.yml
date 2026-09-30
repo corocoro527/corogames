@@ -1,0 +1,245 @@
+name: KOROPOP Site Doctor
+
+on:
+  workflow_run:
+    workflows: ["Auto Update Sitemap"]
+    types: [completed]
+
+  schedule:
+    - cron: "17 3 * * *"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Check site
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import xml.etree.ElementTree as ET
+
+          BASE = "https://koropopgames.com"
+          GA = "G-8NWPD2QBCQ"
+
+          files = sorted(Path(".").glob("*.html"))
+          errors = []
+
+          for p in files:
+              html = p.read_text(encoding="utf-8", errors="replace")
+
+              if not re.search(r"<title[^>]*>.+?</title>", html, re.I | re.S):
+                  errors.append(f"{p.name}: titleなし")
+
+              if p.name != "contact-thanks.html":
+                  if not re.search(
+                      r'<meta[^>]+name=["\']description["\']',
+                      html,
+                      re.I
+                  ):
+                      errors.append(f"{p.name}: descriptionなし")
+
+              if not re.search(
+                  r'<meta[^>]+name=["\']viewport["\']',
+                  html,
+                  re.I
+              ):
+                  errors.append(f"{p.name}: viewportなし")
+
+              is_article = "koropop-theme.css" in html
+
+              if is_article:
+
+                  if GA not in html:
+                      errors.append(f"{p.name}: GA4なし")
+
+                  if len(re.findall(r"<h1\b", html, re.I)) != 1:
+                      errors.append(f"{p.name}: H1異常")
+
+                  if not re.search(
+                      r'<meta[^>]+name=["\']robots["\']',
+                      html,
+                      re.I
+                  ):
+                      errors.append(f"{p.name}: robotsなし")
+
+                  expected = f"{BASE}/{p.name}"
+
+                  m = re.search(
+                      r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)',
+                      html,
+                      re.I
+                  )
+
+                  if not m:
+                      m = re.search(
+                          r'<link[^>]+href=["\']([^"\']+)["\'][^>]+rel=["\']canonical',
+                          html,
+                          re.I
+                      )
+
+                  if not m:
+                      errors.append(f"{p.name}: canonicalなし")
+                  elif m.group(1) != expected:
+                      errors.append(f"{p.name}: canonical不一致")
+
+              for href in re.findall(
+                  r'href=["\']([^"\']+)["\']',
+                  html,
+                  re.I
+              ):
+
+                  if (
+                      not href
+                      or href.startswith("#")
+                      or href.startswith("http")
+                      or href.startswith("mailto:")
+                      or href.startswith("tel:")
+                  ):
+                      continue
+
+                  target = href.split("#")[0].split("?")[0]
+
+                  if target == "/":
+                      target = "index.html"
+
+                  target = target.lstrip("/")
+
+                  if target and not Path(target).exists():
+                      errors.append(
+                          f"{p.name}: リンク切れ → {href}"
+                      )
+
+          sitemap = Path("sitemap.xml")
+
+          if not sitemap.exists():
+              errors.append("sitemap.xmlなし")
+
+          else:
+              tree = ET.parse(sitemap)
+
+              ns = {
+                  "sm":"http://www.sitemaps.org/schemas/sitemap/0.9"
+              }
+
+              urls = {
+                  x.text.strip()
+                  for x in tree.findall(".//sm:loc", ns)
+                  if x.text
+              }
+
+              for p in files:
+
+                  if p.name in {
+                      "index.html",
+                      "contact-thanks.html"
+                  }:
+                      continue
+
+                  expected = f"{BASE}/{p.name}"
+
+                  if expected not in urls:
+                      errors.append(
+                          f"sitemap漏れ: {p.name}"
+                      )
+
+          print(
+              f"Checked {len(files)} HTML files"
+          )
+
+          if errors:
+
+              print("\n=== ERRORS ===")
+
+              for e in errors:
+                  print("-", e)
+
+              raise SystemExit(1)
+
+          print("KOROPOP Site Doctor: ALL OK")
+          PY
+
+      - name: Check live site
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          python3 - <<'PY'
+          import urllib.request
+          import xml.etree.ElementTree as ET
+
+          sitemap = "https://koropopgames.com/sitemap.xml"
+
+          def get(url):
+              req = urllib.request.Request(
+                  url,
+                  headers={
+                      "User-Agent":
+                      "KOROPOP-Site-Doctor"
+                  }
+              )
+
+              with urllib.request.urlopen(
+                  req,
+                  timeout=20
+              ) as r:
+                  return r.status, r.read()
+
+          status, body = get(sitemap)
+
+          if status != 200:
+              raise SystemExit(
+                  f"Sitemap HTTP {status}"
+              )
+
+          root = ET.fromstring(body)
+
+          ns = {
+              "sm":
+              "http://www.sitemaps.org/schemas/sitemap/0.9"
+          }
+
+          urls = [
+              x.text.strip()
+              for x in root.findall(".//sm:loc", ns)
+              if x.text
+          ]
+
+          bad = []
+
+          for url in urls:
+
+              try:
+                  status, _ = get(url)
+
+                  if status != 200:
+                      bad.append(
+                          f"{url} -> {status}"
+                      )
+
+              except Exception as e:
+                  bad.append(
+                      f"{url} -> {e}"
+                  )
+
+          print(
+              f"Live checked {len(urls)} URLs"
+          )
+
+          if bad:
+
+              for x in bad:
+                  print("-", x)
+
+              raise SystemExit(1)
+
+          print("Live site: ALL OK")
+          PY
