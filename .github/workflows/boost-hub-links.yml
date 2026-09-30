@@ -1,0 +1,115 @@
+name: Boost IT Hub Links
+
+on:
+  push:
+    paths:
+      - ".github/workflows/boost-hub-links.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  boost-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add links to IT hub
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          hub = "mikeiken-it-tenshoku.html"
+
+          pages = [
+              "20s-it-tenshoku-nenshu.html",
+              "20s-mikeiken-tenshoku.html",
+              "30s-mikeiken-it-tenshoku.html",
+              "infra-engineer-yametoke.html",
+              "it-engineer-muiteiru.html",
+              "it-engineer-nenshu-suii.html",
+              "it-engineer-remote.html",
+              "it-job-nenshu-hikaku.html",
+              "it-mikeiken-shikaku.html",
+              "it-tenshoku-shikaku-nashi.html",
+              "mikeiken-cloud-engineer.html",
+              "mikeiken-infra-engineer.html",
+              "mikeiken-it-helpdesk.html",
+              "mikeiken-it-kyujin-miwakekata.html",
+              "mikeiken-it-shibodoki.html",
+              "mikeiken-it-yametoke.html",
+              "mikeiken-network-engineer.html",
+              "mikeiken-shanai-se.html",
+              "mikeiken-soc-security.html",
+              "programming-nigate-it-job.html",
+              "shanai-se-raku-kitsui.html",
+          ]
+
+          block = '''
+          <div class="point">
+            <strong>🔰 未経験IT転職の全体像を確認したい人へ</strong><br>
+            職種選び・資格・勉強順・求人の見分け方をまとめて確認するなら、
+            <a href="mikeiken-it-tenshoku.html">
+              未経験からIT転職するための総合ガイド
+            </a>
+            もあわせてどうぞ。
+          </div>
+          '''
+
+          changed = []
+
+          for name in pages:
+              p = Path(name)
+
+              if not p.exists():
+                  continue
+
+              html = p.read_text(encoding="utf-8")
+
+              # すでに総合ガイドへのリンクがある記事は重複させない
+              if 'href="mikeiken-it-tenshoku.html"' in html:
+                  continue
+
+              if "</article>" in html:
+                  html = html.replace(
+                      "</article>",
+                      block + "\n</article>",
+                      1
+                  )
+
+              elif "</main>" in html:
+                  html = html.replace(
+                      "</main>",
+                      block + "\n</main>",
+                      1
+                  )
+
+              else:
+                  html = html.replace(
+                      "</body>",
+                      block + "\n</body>",
+                      1
+                  )
+
+              p.write_text(html, encoding="utf-8")
+              changed.append(name)
+
+          print("Updated:", len(changed))
+          print("\n".join(changed))
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "KOROPOP SEO Bot"
+          git config user.email "actions@github.com"
+
+          git add *.html
+
+          if git diff --cached --quiet; then
+            echo "No changes needed."
+            exit 0
+          fi
+
+          git commit -m "Strengthen internal links to IT transfer hub"
+          git push
