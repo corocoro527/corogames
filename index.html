@@ -5,47 +5,322 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8NWPD2QBCQ');
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-8NWPD2QBCQ');
 </script>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>KOROPOP GAMES｜無料診断・仕事情報・便利ツール</title>
+<title>KOROPOP GAMES｜無料診断・仕事・転職・便利ツール</title>
 
-<meta name="description" content="KOROPOP GAMESは、性格診断、給与シミュレーター、未経験IT転職・仕事情報など、無料で使えるWebコンテンツを提供するサイトです。">
+<meta name="description"
+content="KOROPOP GAMESは、性格診断、手取り計算、仕事選び、20代・30代の転職、未経験IT転職などを無料で提供するWebサイトです。">
+
+<meta name="robots" content="index,follow,max-image-preview:large">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:#f5f7fb;color:#1f2937;line-height:1.7}
-header{background:linear-gradient(135deg,#111827,#2563eb);color:#fff;text-align:center;padding:55px 20px}
-header h1{margin:0;font-size:2.2rem}
-header p{color:#e5e7eb}
-main{max-width:1050px;margin:auto;padding:40px 18px}
-.intro{text-align:center;margin-bottom:35px}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.card{display:block;background:#fff;color:#1f2937;text-decoration:none;border-radius:16px;padding:25px;box-shadow:0 6px 20px rgba(0,0,0,.06);border:1px solid #e5e7eb}
-.card h2{margin-top:0;color:#1d4ed8}
-.card p{margin-bottom:0;color:#4b5563}
-.it{margin-top:45px;padding:28px;background:#07111f;color:#f8fafc;border-radius:18px}
-.it h2{margin-top:0}
-.it h3{margin:28px 0 10px;color:#e0f2fe}
-.it p{color:#cbd5e1}
-.itgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.it a{display:block;padding:14px 16px;background:#0f1d31;border:1px solid #263b59;border-radius:12px;color:#bae6fd;text-decoration:none}
-.it a:hover{border-color:#38bdf8}
-.about{margin-top:45px;padding:28px;background:#fff;border-radius:16px;border:1px solid #e5e7eb}
-footer{text-align:center;padding:30px 15px 40px;color:#6b7280}
-footer a{color:#4b5563;margin:0 6px}
-@media(max-width:700px){
-header{padding:40px 16px}
-header h1{font-size:1.8rem}
-.cards,.itgrid{grid-template-columns:1fr}
-main{padding:28px 14px}
+
+*{
+box-sizing:border-box;
 }
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
+background:
+linear-gradient(
+180deg,
+#edf4fb 0,
+#f7f9fc 320px,
+#f3f6fa 100%
+);
+color:#172033;
+line-height:1.75;
+}
+
+a{
+color:#1677df;
+}
+
+header{
+background:
+linear-gradient(
+135deg,
+#0b1f3a,
+#12345b
+);
+color:#fff;
+text-align:center;
+padding:56px 20px 52px;
+border-bottom:4px solid #2e9df4;
+}
+
+header h1{
+margin:0;
+font-size:clamp(2rem,7vw,3rem);
+}
+
+header p{
+margin:12px 0 0;
+color:#dbeafe;
+}
+
+main{
+width:min(100% - 28px,1080px);
+margin:auto;
+padding:38px 0 55px;
+}
+
+.intro{
+text-align:center;
+margin-bottom:34px;
+}
+
+.intro h2{
+font-size:1.65rem;
+margin-bottom:8px;
+}
+
+.intro p{
+color:#667085;
+margin-top:0;
+}
+
+.section{
+margin-top:44px;
+}
+
+.section-head{
+margin-bottom:18px;
+}
+
+.section-head h2{
+margin:0 0 5px;
+font-size:1.55rem;
+}
+
+.section-head p{
+margin:0;
+color:#667085;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+}
+
+.card{
+display:block;
+background:#fff;
+color:#172033;
+text-decoration:none;
+border:1px solid #dfe5ec;
+border-radius:18px;
+padding:24px;
+box-shadow:
+0 7px 24px
+rgba(16,24,40,.04);
+transition:
+transform .15s ease,
+box-shadow .15s ease;
+}
+
+.card:hover{
+transform:translateY(-2px);
+box-shadow:
+0 10px 28px
+rgba(16,24,40,.08);
+}
+
+.card h3{
+margin:0 0 10px;
+font-size:1.3rem;
+color:#174a7e;
+}
+
+.card p{
+margin:0;
+color:#667085;
+}
+
+.tools .card:nth-child(1){
+border-top:5px solid #6e56cf;
+}
+
+.tools .card:nth-child(2){
+border-top:5px solid #16845a;
+}
+
+.work{
+background:#fff;
+border:1px solid #dfe5ec;
+border-radius:22px;
+padding:28px;
+box-shadow:
+0 8px 28px
+rgba(16,24,40,.04);
+}
+
+.work-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
+}
+
+.work-card{
+display:block;
+padding:20px;
+border-radius:15px;
+text-decoration:none;
+border:1px solid #dce5ef;
+background:
+linear-gradient(
+135deg,
+#f8fbff,
+#fff
+);
+}
+
+.work-card:nth-child(1){
+border-left:5px solid #d39a00;
+}
+
+.work-card:nth-child(2){
+border-left:5px solid #1677df;
+}
+
+.work-card:nth-child(3){
+border-left:5px solid #6e56cf;
+}
+
+.work-card:nth-child(4){
+border-left:5px solid #16845a;
+}
+
+.work-card h3{
+margin:0 0 7px;
+font-size:1.15rem;
+color:#183a61;
+}
+
+.work-card p{
+margin:0;
+color:#667085;
+font-size:.93rem;
+}
+
+.it{
+margin-top:24px;
+padding:26px;
+background:
+linear-gradient(
+135deg,
+#edf7ff,
+#fafcff 62%,
+#f2efff
+);
+border:1px solid #cfdff0;
+border-radius:20px;
+}
+
+.it h2{
+margin:0 0 5px;
+color:#183a61;
+}
+
+.it > p{
+color:#667085;
+margin-top:0;
+}
+
+.it h3{
+margin:28px 0 10px;
+font-size:1rem;
+color:#344054;
+}
+
+.itgrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+}
+
+.itgrid a{
+display:block;
+padding:14px 15px;
+background:#fff;
+border:1px solid #d7e2ee;
+border-radius:12px;
+color:#1769b0;
+text-decoration:none;
+font-weight:600;
+}
+
+.itgrid a:hover{
+border-color:#7dbbea;
+background:#f9fcff;
+}
+
+.about{
+margin-top:45px;
+padding:25px;
+background:#fff;
+border:1px solid #dfe5ec;
+border-left:5px solid #1677df;
+border-radius:16px;
+}
+
+.about strong{
+color:#183a61;
+font-size:1.08rem;
+}
+
+.about p{
+color:#667085;
+margin-bottom:0;
+}
+
+footer{
+margin-top:45px;
+padding:30px 15px 10px;
+text-align:center;
+color:#667085;
+font-size:.85rem;
+}
+
+footer a{
+color:#475467;
+margin:0 5px;
+}
+
+@media(max-width:700px){
+
+header{
+padding:42px 16px;
+}
+
+.grid,
+.work-grid,
+.itgrid{
+grid-template-columns:1fr;
+}
+
+.work,
+.it{
+padding:21px 18px;
+}
+
+main{
+width:min(100% - 24px,1080px);
+padding-top:28px;
+}
+
+}
+
 </style>
 
 </head>
@@ -53,49 +328,147 @@ main{padding:28px 14px}
 <body>
 
 <header>
+
 <h1>🎮 KOROPOP GAMES</h1>
-<p>ちょっと楽しく、日常に役立つWebコンテンツ</p>
+
+<p>
+ちょっと楽しく、日常に役立つWebコンテンツ
+</p>
+
 </header>
 
 <main>
 
 <section class="intro">
+
 <h2>無料で使えるコンテンツ</h2>
-<p>診断・給与計算・仕事選び・未経験IT転職の情報を公開しています。</p>
+
+<p>
+診断・計算ツール・仕事選び・転職情報を公開しています。
+</p>
+
 </section>
 
-<section class="cards">
+
+<!-- 無料ツール -->
+
+<section class="section tools">
+
+<div class="section-head">
+
+<h2>🧰 無料ツール</h2>
+
+<p>
+すぐ使える診断・シミュレーター。
+</p>
+
+</div>
+
+<div class="grid">
 
 <a href="shindan.html" class="card">
-<h2>🧠 裏・16コア性格診断</h2>
-<p>質問から16タイプに分類。考え方や行動傾向をチェック。</p>
+
+<h3>🧠 裏・16コア性格診断</h3>
+
+<p>
+質問から16タイプに分類。
+考え方や行動傾向をチェック。
+</p>
+
 </a>
 
 <a href="tedori.html" class="card">
-<h2>💰 手取り・残業代シミュレーター</h2>
-<p>月給や残業時間から手取り額・残業代の目安を計算。</p>
+
+<h3>💰 手取り・残業代シミュレーター</h3>
+
+<p>
+月給や残業時間から
+手取り額・残業代の目安を計算。
+</p>
+
 </a>
 
-<a href="jobs.html" class="card">
-<h2>💼 収入アップを目指せる仕事20選</h2>
-<p>転職先候補の特徴と確認ポイントをまとめています。</p>
-</a>
-
-<a href="20s-mikeiken-tenshoku.html" class="card">
-<h2>🧭 20代・未経験からの転職</h2>
-<p>未経験転職の仕事候補と求人選びを解説。</p>
-</a>
+</div>
 
 </section>
 
-<section class="it">
 
-<h2>💻 未経験からIT転職</h2>
+<!-- 仕事・転職 -->
+
+<section class="section">
+
+<div class="work">
+
+<div class="section-head">
+
+<h2>💼 仕事・転職</h2>
 
 <p>
-総合ガイドから、職種・年収・適性・応募準備まで
-気になるテーマを掘り下げられます。
+仕事選びから未経験転職までまとめてチェックできます。
 </p>
+
+</div>
+
+<div class="work-grid">
+
+<a href="jobs.html" class="work-card">
+
+<h3>収入アップを目指せる仕事20選</h3>
+
+<p>
+転職先候補の仕事内容や
+確認ポイントを比較。
+</p>
+
+</a>
+
+<a href="20s-mikeiken-tenshoku.html" class="work-card">
+
+<h3>20代・未経験からの転職</h3>
+
+<p>
+20代の仕事選びや
+未経験求人の見方を解説。
+</p>
+
+</a>
+
+<a href="30s-mikeiken-it-tenshoku.html" class="work-card">
+
+<h3>30代・未経験からIT転職</h3>
+
+<p>
+前職経験を活かして
+ITを目指す方法を解説。
+</p>
+
+</a>
+
+<a href="mikeiken-it-tenshoku.html" class="work-card">
+
+<h3>未経験からIT転職</h3>
+
+<p>
+職種・資格・求人選びをまとめた
+総合ガイド。
+</p>
+
+</a>
+
+</div>
+
+
+<!-- IT -->
+
+<div class="it">
+
+<h2>💻 未経験IT転職を詳しく見る</h2>
+
+<p>
+ITに興味がある人は、
+ここから職種・年収・資格・働き方を掘り下げられます。
+</p>
+
 
 <h3>まず読む</h3>
 
@@ -110,22 +483,54 @@ main{padding:28px 14px}
 </a>
 
 <a href="it-engineer-muiteiru.html">
-ITエンジニアに向いてる人・向いてない人
-</a>
-
-<a href="30s-mikeiken-it-tenshoku.html">
-30代未経験からIT転職
+ITエンジニアに向いてる人
 </a>
 
 <a href="programming-nigate-it-job.html">
-プログラミングが苦手でもできるIT職種7選
+プログラミングが苦手でもできるIT職
 </a>
 
 <a href="mikeiken-it-kyujin-miwakekata.html">
 未経験IT求人の見分け方
 </a>
 
+<a href="it-tenshoku-shikaku-nashi.html">
+IT転職は資格なしでもできる？
+</a>
+
 </div>
+
+
+<h3>職種を知る</h3>
+
+<div class="itgrid">
+
+<a href="mikeiken-it-helpdesk.html">
+ITヘルプデスク
+</a>
+
+<a href="mikeiken-shanai-se.html">
+社内SE
+</a>
+
+<a href="mikeiken-infra-engineer.html">
+インフラエンジニア
+</a>
+
+<a href="mikeiken-network-engineer.html">
+ネットワークエンジニア
+</a>
+
+<a href="mikeiken-cloud-engineer.html">
+クラウドエンジニア
+</a>
+
+<a href="mikeiken-soc-security.html">
+SOC・セキュリティ
+</a>
+
+</div>
+
 
 <h3>年収・働き方</h3>
 
@@ -149,43 +554,6 @@ ITエンジニアはリモートできる？
 
 </div>
 
-<h3>職種を知る</h3>
-
-<div class="itgrid">
-
-<a href="mikeiken-it-helpdesk.html">
-ITヘルプデスク
-</a>
-
-<a href="mikeiken-infra-engineer.html">
-インフラエンジニア
-</a>
-
-<a href="infra-engineer-yametoke.html">
-インフラエンジニアはやめとけ？
-</a>
-
-<a href="mikeiken-network-engineer.html">
-ネットワークエンジニア
-</a>
-
-<a href="mikeiken-cloud-engineer.html">
-クラウドエンジニア
-</a>
-
-<a href="mikeiken-soc-security.html">
-SOC・セキュリティ
-</a>
-
-<a href="mikeiken-shanai-se.html">
-未経験から社内SE
-</a>
-
-<a href="shanai-se-raku-kitsui.html">
-社内SEは楽？きつい？
-</a>
-
-</div>
 
 <h3>資格・応募準備</h3>
 
@@ -195,17 +563,26 @@ SOC・セキュリティ
 IT未経験におすすめの資格5選
 </a>
 
-<a href="it-tenshoku-shikaku-nashi.html">
-IT転職は資格なしでもできる？
-</a>
-
 <a href="mikeiken-it-shibodoki.html">
 未経験IT転職の志望動機
 </a>
 
+<a href="infra-engineer-yametoke.html">
+インフラエンジニアはやめとけ？
+</a>
+
+<a href="shanai-se-raku-kitsui.html">
+社内SEは楽？きつい？
+</a>
+
+</div>
+
+</div>
+
 </div>
 
 </section>
+
 
 <section class="about">
 
@@ -213,16 +590,17 @@ IT転職は資格なしでもできる？
 
 <p>
 「ちょっと楽しく、日常に役立つ」をテーマに、
-診断・シミュレーター・仕事情報などを公開しています。
+診断・便利ツール・仕事・転職情報などを公開しています。
 </p>
 
 </section>
 
+
 <footer>
 
-<a href="index.html">トップ</a>・
-<a href="about.html">このサイトについて</a>・
-<a href="privacy.html">プライバシーポリシー</a>・
+<a href="index.html">トップ</a> ・
+<a href="about.html">このサイトについて</a> ・
+<a href="privacy.html">プライバシーポリシー</a> ・
 <a href="contact.html">お問い合わせ</a>
 
 <br><br>
