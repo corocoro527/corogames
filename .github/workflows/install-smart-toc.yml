@@ -1,0 +1,541 @@
+name: Install Smart TOC
+
+on:
+  push:
+    paths:
+      - ".github/workflows/install-smart-toc.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Create smart TOC and install on articles
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          script = r'''(() => {
+
+          function initKoropopTOC(){
+
+            /* すでに手作り目次がある記事はそのまま使う */
+            const existing =
+              document.querySelector(
+                ".toc, [data-koropop-toc], nav[aria-label='目次']"
+              );
+
+            if(existing){
+              return;
+            }
+
+
+            /* 記事本文を探す */
+            const root =
+              document.querySelector("article") ||
+              document.querySelector(".wrap main") ||
+              document.querySelector("main.card") ||
+              document.querySelector("main") ||
+              document.querySelector(".card");
+
+            if(!root){
+              return;
+            }
+
+
+            let headings =
+              [...root.querySelectorAll("h2,h3")]
+              .filter(h => {
+
+                if(!h.textContent.trim()){
+                  return false;
+                }
+
+                if(
+                  h.closest(
+                    ".side,.sidebox,.toc,nav,header,footer"
+                  )
+                ){
+                  return false;
+                }
+
+                return true;
+
+              });
+
+
+            if(headings.length < 2){
+              return;
+            }
+
+
+            /*
+             * 見出しが多すぎる記事は
+             * H2だけにして目次が長くなりすぎないようにする
+             */
+            if(headings.length > 18){
+
+              headings =
+                headings.filter(
+                  h => h.tagName.toLowerCase() === "h2"
+                );
+
+            }
+
+
+            if(headings.length < 2){
+              return;
+            }
+
+
+            /* IDを自動付与 */
+            const used =
+              new Set(
+                [...document.querySelectorAll("[id]")]
+                .map(el => el.id)
+              );
+
+
+            headings.forEach((heading,index) => {
+
+              if(heading.id){
+                return;
+              }
+
+              let id =
+                "section-" + (index + 1);
+
+              let count = 2;
+
+              while(used.has(id)){
+
+                id =
+                  "section-" +
+                  (index + 1) +
+                  "-" +
+                  count;
+
+                count++;
+
+              }
+
+              heading.id = id;
+              used.add(id);
+
+            });
+
+
+            /* 目次 */
+            const nav =
+              document.createElement("nav");
+
+            nav.className =
+              "koropop-auto-toc";
+
+            nav.setAttribute(
+              "aria-label",
+              "目次"
+            );
+
+            nav.setAttribute(
+              "data-koropop-toc",
+              "auto"
+            );
+
+
+            const details =
+              document.createElement("details");
+
+            details.open = true;
+
+
+            const summary =
+              document.createElement("summary");
+
+            summary.innerHTML = `
+              <span class="koropop-toc-title">
+                📑 目次
+              </span>
+
+              <span class="koropop-toc-note">
+                気になる項目へジャンプ
+              </span>
+            `;
+
+            details.appendChild(summary);
+
+
+            const list =
+              document.createElement("ol");
+
+
+            headings.forEach(heading => {
+
+              const item =
+                document.createElement("li");
+
+              if(
+                heading.tagName.toLowerCase() === "h3"
+              ){
+                item.className =
+                  "koropop-toc-sub";
+              }
+
+
+              const link =
+                document.createElement("a");
+
+              link.href =
+                "#" + heading.id;
+
+              link.textContent =
+                heading.textContent.trim();
+
+
+              item.appendChild(link);
+              list.appendChild(item);
+
+            });
+
+
+            details.appendChild(list);
+            nav.appendChild(details);
+
+
+            /* 最初の見出しの直前へ */
+            const first =
+              headings[0];
+
+            first.parentNode.insertBefore(
+              nav,
+              first
+            );
+
+
+            /* スタイル */
+            const style =
+              document.createElement("style");
+
+            style.textContent = `
+
+            html{
+              scroll-behavior:smooth;
+            }
+
+            h2[id],
+            h3[id]{
+              scroll-margin-top:24px;
+            }
+
+            .koropop-auto-toc{
+              margin:
+                12px 0
+                38px;
+
+              padding:
+                0;
+
+              border:
+                1px solid
+                #d6e1ec;
+
+              border-radius:
+                16px;
+
+              background:
+                linear-gradient(
+                  135deg,
+                  #f7fbff,
+                  #ffffff 55%,
+                  #f7f4ff
+                );
+
+              box-shadow:
+                0 7px 24px
+                rgba(16,24,40,.045);
+
+              overflow:hidden;
+            }
+
+            .koropop-auto-toc details{
+              padding:0;
+            }
+
+            .koropop-auto-toc summary{
+              display:flex;
+              justify-content:
+                space-between;
+              align-items:center;
+              gap:12px;
+
+              cursor:pointer;
+
+              padding:
+                17px 20px;
+
+              list-style:none;
+
+              background:
+                #eef6fd;
+
+              border-bottom:
+                1px solid
+                #dae6f0;
+            }
+
+            .koropop-auto-toc summary::-webkit-details-marker{
+              display:none;
+            }
+
+            .koropop-auto-toc summary:after{
+              content:"−";
+
+              width:26px;
+              height:26px;
+
+              display:grid;
+              place-items:center;
+
+              flex:0 0 auto;
+
+              border-radius:50%;
+
+              background:#fff;
+
+              color:#1769b0;
+
+              font-weight:900;
+
+              border:
+                1px solid
+                #d4e2ef;
+            }
+
+            .koropop-auto-toc details:not([open]) summary:after{
+              content:"+";
+            }
+
+            .koropop-toc-title{
+              font-size:1.05rem;
+              font-weight:900;
+              color:#183a61;
+            }
+
+            .koropop-toc-note{
+              margin-left:auto;
+              color:#667085;
+              font-size:.78rem;
+            }
+
+            .koropop-auto-toc ol{
+              margin:0;
+              padding:
+                18px 24px
+                21px 46px;
+            }
+
+            .koropop-auto-toc li{
+              padding:
+                5px 0;
+
+              color:#667085;
+            }
+
+            .koropop-auto-toc a{
+              color:#1769b0;
+              text-decoration:none;
+              font-weight:650;
+              line-height:1.55;
+            }
+
+            .koropop-auto-toc a:hover{
+              text-decoration:underline;
+            }
+
+            .koropop-auto-toc
+            .koropop-toc-sub{
+              margin-left:15px;
+              font-size:.9rem;
+            }
+
+            .koropop-auto-toc
+            .koropop-toc-sub a{
+              color:#50657a;
+              font-weight:550;
+            }
+
+            @media(max-width:600px){
+
+              .koropop-auto-toc{
+                margin-bottom:30px;
+                border-radius:14px;
+              }
+
+              .koropop-auto-toc summary{
+                padding:
+                  15px 16px;
+              }
+
+              .koropop-toc-note{
+                display:none;
+              }
+
+              .koropop-auto-toc ol{
+                padding:
+                  15px 17px
+                  18px 38px;
+              }
+
+              .koropop-auto-toc li{
+                padding:
+                  6px 0;
+              }
+
+            }
+
+            `;
+
+            document.head.appendChild(style);
+
+          }
+
+
+          if(
+            document.readyState ===
+            "loading"
+          ){
+
+            document.addEventListener(
+              "DOMContentLoaded",
+              initKoropopTOC
+            );
+
+          }else{
+
+            initKoropopTOC();
+
+          }
+
+          })();
+          '''
+
+
+          Path(
+              "koropop-toc.js"
+          ).write_text(
+              script,
+              encoding="utf-8"
+          )
+
+
+          skip = {
+              "index.html",
+              "career.html",
+              "shindan.html",
+              "tedori.html",
+              "about.html",
+              "privacy.html",
+              "contact.html",
+              "contact-thanks.html",
+          }
+
+
+          changed = []
+
+
+          for path in sorted(
+              Path(".").glob("*.html")
+          ):
+
+              if path.name in skip:
+                  continue
+
+
+              source =
+                  path.read_text(
+                      encoding="utf-8",
+                      errors="replace"
+                  )
+
+
+              tag = (
+                  '<script defer '
+                  'src="koropop-toc.js">'
+                  '</script>'
+              )
+
+
+              if (
+                  "koropop-toc.js"
+                  in source
+              ):
+                  continue
+
+
+              if "</body>" not in source.lower():
+                  continue
+
+
+              pos =
+                  source.lower().rfind(
+                      "</body>"
+                  )
+
+
+              source = (
+                  source[:pos]
+                  + "\n"
+                  + tag
+                  + "\n"
+                  + source[pos:]
+              )
+
+
+              path.write_text(
+                  source,
+                  encoding="utf-8"
+              )
+
+
+              changed.append(
+                  path.name
+              )
+
+
+          print(
+              "Installed TOC on:",
+              len(changed),
+              "pages"
+          )
+
+          for name in changed:
+              print("-",name)
+
+          PY
+
+
+      - name: Commit TOC system
+        run: |
+          git config user.name "KOROPOP UI Bot"
+          git config user.email "actions@github.com"
+
+          git add koropop-toc.js *.html
+
+          if git diff --cached --quiet; then
+            echo "TOC already installed."
+            exit 0
+          fi
+
+          git commit -m "Add smart table of contents"
+          git push
