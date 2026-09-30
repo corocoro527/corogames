@@ -1,36 +1,156 @@
-          def category(filename, title, description):
+name: Build Related Articles
 
-              text = (
-                  filename
-                  + " "
-                  + title
-                  + " "
-                  + description
-              ).lower()
+on:
+  workflow_run:
+    workflows:
+      - "Auto Finish Articles"
+    types:
+      - completed
 
-              filename_lower = filename.lower()
+  push:
+    paths:
+      - ".github/workflows/build-related-articles.yml"
 
-              it_words = [
-                  "エンジニア",
-                  "社内se",
-                  "ヘルプデスク",
-                  "インフラ",
-                  "ネットワーク",
-                  "クラウド",
-                  "soc",
-                  "プログラミング",
-                  "リモート",
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Update related article data
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import html
+          import json
+
+          EXCLUDE = {
+              "index.html",
+              "career.html",
+              "about.html",
+              "contact.html",
+              "contact-thanks.html",
+              "privacy.html",
+              "shindan.html",
+              "tedori.html",
+          }
+
+          TAG_WORDS = [
+              "未経験",
+              "20代",
+              "30代",
+              "転職",
+              "仕事",
+              "年収",
+              "資格",
+              "辞めたい",
+              "退職",
+              "楽",
+              "人と関わらない",
+              "IT",
+              "社内SE",
+              "ヘルプデスク",
+              "インフラ",
+              "ネットワーク",
+              "クラウド",
+              "SOC",
+              "プログラミング",
+              "リモート",
+              "求人",
+              "向いている",
+          ]
+
+
+          def get_title(source):
+              match = re.search(
+                  r"<title[^>]*>(.*?)</title>",
+                  source,
+                  re.I | re.S
+              )
+
+              if not match:
+                  return ""
+
+              value = re.sub(
+                  r"<[^>]+>",
+                  "",
+                  match.group(1)
+              )
+
+              value = html.unescape(value)
+
+              value = re.sub(
+                  r"\s*[｜|-]\s*KOROPOP GAMES.*$",
+                  "",
+                  value,
+                  flags=re.I
+              )
+
+              return re.sub(
+                  r"\s+",
+                  " ",
+                  value
+              ).strip()
+
+
+          def get_description(source):
+              patterns = [
+                  r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']',
+                  r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']description["\']',
               ]
 
-              work_words = [
+              for pattern in patterns:
+                  match = re.search(
+                      pattern,
+                      source,
+                      re.I
+                  )
+
+                  if match:
+                      return html.unescape(
+                          match.group(1)
+                      ).strip()
+
+              return ""
+
+
+          def category(filename, title, description):
+
+              filename_lower = filename.lower()
+              title_lower = title.lower()
+
+              work_markers = [
                   "楽な仕事",
+                  "しんどくない仕事",
+                  "人と関わらない",
+                  "人と関わらない・少ない仕事",
                   "仕事15選",
                   "仕事12選",
                   "仕事20選",
-                  "関わらない",
-                  "資格なし",
-                  "職種",
+                  "資格なし・未経験から目指せる仕事",
               ]
+
+              if any(
+                  marker.lower() in title_lower
+                  for marker in work_markers
+              ):
+                  return "work"
+
 
               filename_is_it = (
                   "-it-" in filename_lower
@@ -38,19 +158,167 @@
                   or filename_lower.endswith("-it.html")
               )
 
+              it_markers = [
+                  "it転職",
+                  "itエンジニア",
+                  "エンジニア",
+                  "社内se",
+                  "ヘルプデスク",
+                  "インフラ",
+                  "ネットワーク",
+                  "クラウド",
+                  "soc",
+                  "セキュリティ",
+                  "プログラミング",
+              ]
+
               if (
                   filename_is_it
                   or any(
-                      word.lower() in text
-                      for word in it_words
+                      marker.lower() in title_lower
+                      for marker in it_markers
                   )
               ):
                   return "it"
 
-              if any(
-                  word.lower() in text
-                  for word in work_words
-              ):
-                  return "work"
-
               return "career"
+
+
+          articles = []
+
+
+          for path in sorted(
+              Path(".").glob("*.html")
+          ):
+
+              if path.name in EXCLUDE:
+                  continue
+
+              source = path.read_text(
+                  encoding="utf-8",
+                  errors="replace"
+              )
+
+              if "koropop-theme.css" not in source:
+                  continue
+
+              title = get_title(source)
+
+              if not title:
+                  continue
+
+              description = get_description(
+                  source
+              )
+
+              searchable = (
+                  title
+                  + " "
+                  + description
+              )
+
+              tags = [
+                  word
+                  for word in TAG_WORDS
+                  if word.lower()
+                  in searchable.lower()
+              ]
+
+              articles.append({
+                  "url": path.name,
+                  "title": title,
+                  "description": description,
+                  "category": category(
+                      path.name,
+                      title,
+                      description
+                  ),
+                  "tags": tags
+              })
+
+
+          Path(
+              "koropop-articles.json"
+          ).write_text(
+              json.dumps(
+                  articles,
+                  ensure_ascii=False,
+                  indent=2
+              ),
+              encoding="utf-8"
+          )
+
+
+          reader = Path(
+              "koropop-reader.js"
+          )
+
+          if reader.exists():
+
+              source = reader.read_text(
+                  encoding="utf-8",
+                  errors="replace"
+              )
+
+              marker = "KOROPOP_RELATED_LOADER"
+
+              if marker not in source:
+
+                  loader = r'''
+
+          /* KOROPOP_RELATED_LOADER */
+          (() => {
+
+            if(
+              document.querySelector(
+                'script[src*="koropop-related.js"]'
+              )
+            ){
+              return;
+            }
+
+            const script =
+              document.createElement("script");
+
+            script.src =
+              "koropop-related.js";
+
+            script.async = true;
+
+            document.head.appendChild(
+              script
+            );
+
+          })();
+
+          '''
+
+                  reader.write_text(
+                      source + loader,
+                      encoding="utf-8"
+                  )
+
+
+          print(
+              f"Related article index updated: {len(articles)} articles"
+          )
+
+          PY
+
+
+      - name: Commit related article data
+        run: |
+          git config user.name "KOROPOP Related Bot"
+          git config user.email "actions@github.com"
+
+          git add \
+            koropop-articles.json \
+            koropop-reader.js
+
+          if git diff --cached --quiet; then
+            echo "Related articles already up to date."
+            exit 0
+          fi
+
+          git commit -m "Auto update related articles"
+          git push
