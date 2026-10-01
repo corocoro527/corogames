@@ -1,0 +1,410 @@
+name: Add Editorial Trust
+
+on:
+  workflow_run:
+    workflows:
+      - "Auto Finish Articles"
+    types:
+      - completed
+
+  push:
+    paths:
+      - ".github/workflows/editorial-trust.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+
+  trust:
+
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+
+      - name: Add editorial trust blocks
+        run: |
+
+          python3 - <<'PY'
+
+          from pathlib import Path
+          import re
+          import subprocess
+
+
+          SKIP = {
+              "index.html",
+              "career.html",
+              "shindan.html",
+              "tedori.html",
+              "about.html",
+              "privacy.html",
+              "contact.html",
+              "contact-thanks.html",
+          }
+
+
+          STYLE_START = "<!-- KOROPOP_EDITORIAL_STYLE_START -->"
+          STYLE_END = "<!-- KOROPOP_EDITORIAL_STYLE_END -->"
+
+          CARD_START = "<!-- KOROPOP_EDITORIAL_TRUST_START -->"
+          CARD_END = "<!-- KOROPOP_EDITORIAL_TRUST_END -->"
+
+
+          STYLE = r'''
+          <!-- KOROPOP_EDITORIAL_STYLE_START -->
+          <style id="koropop-editorial-trust-style">
+
+          .koropop-editorial-trust{
+            margin:16px 0 22px;
+            padding:15px 17px;
+            background:
+              linear-gradient(
+                135deg,
+                #f7fbff,
+                #fff 60%,
+                #f7f4ff
+              );
+            border:1px solid #d7e3ee;
+            border-radius:14px;
+            color:#475467;
+            font-size:.82rem;
+            line-height:1.65;
+          }
+
+          .koropop-editorial-head{
+            display:flex;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:7px;
+            margin-bottom:7px;
+          }
+
+          .koropop-editorial-label{
+            display:inline-block;
+            padding:3px 7px;
+            border-radius:999px;
+            background:#e7f3ff;
+            border:1px solid #c8e1f7;
+            color:#1769b0;
+            font-size:.7rem;
+            font-weight:850;
+          }
+
+          .koropop-editorial-head strong{
+            color:#243b53 !important;
+          }
+
+          .koropop-editorial-meta{
+            display:flex;
+            flex-wrap:wrap;
+            gap:6px 13px;
+            color:#667085;
+          }
+
+          .koropop-editorial-links{
+            display:flex;
+            flex-wrap:wrap;
+            gap:8px;
+            margin-top:8px;
+          }
+
+          .koropop-editorial-links a{
+            font-size:.78rem;
+            font-weight:750;
+            text-decoration:none;
+          }
+
+          @media(max-width:600px){
+
+            .koropop-editorial-trust{
+              padding:13px 14px;
+            }
+
+          }
+
+          </style>
+          <!-- KOROPOP_EDITORIAL_STYLE_END -->
+          '''
+
+
+          def git_date(filename):
+
+              try:
+
+                  result = subprocess.check_output(
+                      [
+                          "git",
+                          "log",
+                          "-1",
+                          "--format=%cs",
+                          "--",
+                          filename
+                      ],
+                      text=True
+                  ).strip()
+
+                  return result
+
+              except Exception:
+
+                  return ""
+
+
+          def updated_date(source, filename):
+
+              match = re.search(
+                  r'<meta[^>]+name=["\']koropop-updated["\'][^>]+content=["\']([^"\']+)["\']',
+                  source,
+                  re.I
+              )
+
+              if not match:
+
+                  match = re.search(
+                      r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']koropop-updated["\']',
+                      source,
+                      re.I
+                  )
+
+              value = (
+                  match.group(1).strip()
+                  if match
+                  else git_date(filename)
+              )
+
+              date_match = re.search(
+                  r'(\d{4})-(\d{2})-(\d{2})',
+                  value
+              )
+
+              if date_match:
+
+                  return (
+                      f"{date_match.group(1)}/"
+                      f"{int(date_match.group(2))}/"
+                      f"{int(date_match.group(3))}"
+                  )
+
+              return value
+
+
+          def remove_between(
+              source,
+              start,
+              end
+          ):
+
+              pattern = (
+                  re.escape(start)
+                  + r'.*?'
+                  + re.escape(end)
+              )
+
+              return re.sub(
+                  pattern,
+                  "",
+                  source,
+                  flags=re.S
+              )
+
+
+          def add_before_head(
+              source,
+              code
+          ):
+
+              pos = source.lower().find(
+                  "</head>"
+              )
+
+              if pos == -1:
+                  return source
+
+              return (
+                  source[:pos]
+                  + "\n"
+                  + code.strip()
+                  + "\n"
+                  + source[pos:]
+              )
+
+
+          def add_after_h1(
+              source,
+              code
+          ):
+
+              match = re.search(
+                  r'</h1\s*>',
+                  source,
+                  re.I
+              )
+
+              if not match:
+                  return source
+
+              pos = match.end()
+
+              return (
+                  source[:pos]
+                  + "\n"
+                  + code
+                  + "\n"
+                  + source[pos:]
+              )
+
+
+          changed = []
+
+
+          for path in sorted(
+              Path(".").glob("*.html")
+          ):
+
+              if path.name in SKIP:
+                  continue
+
+
+              source = path.read_text(
+                  encoding="utf-8",
+                  errors="replace"
+              )
+
+              original = source
+
+
+              source = remove_between(
+                  source,
+                  STYLE_START,
+                  STYLE_END
+              )
+
+              source = remove_between(
+                  source,
+                  CARD_START,
+                  CARD_END
+              )
+
+
+              date = updated_date(
+                  source,
+                  path.name
+              )
+
+
+              card = f'''
+          <!-- KOROPOP_EDITORIAL_TRUST_START -->
+          <div
+            class="koropop-editorial-trust"
+            aria-label="記事の編集情報"
+          >
+
+            <div class="koropop-editorial-head">
+
+              <span class="koropop-editorial-label">
+                執筆・編集
+              </span>
+
+              <strong>
+                KOROPOP GAMES編集部
+              </strong>
+
+            </div>
+
+            <div class="koropop-editorial-meta">
+
+              <span>
+                🔄 最終更新 {date}
+              </span>
+
+              <span>
+                🔎 制度・資格・給与などは
+                公的機関・公式情報を優先して確認
+              </span>
+
+            </div>
+
+            <div class="koropop-editorial-links">
+
+              <a href="about.html#editorial-policy">
+                編集方針
+              </a>
+
+              <a href="about.html#sources">
+                情報源について
+              </a>
+
+              <a href="contact.html">
+                誤りを報告
+              </a>
+
+            </div>
+
+          </div>
+          <!-- KOROPOP_EDITORIAL_TRUST_END -->
+          '''
+
+
+              source = add_before_head(
+                  source,
+                  STYLE
+              )
+
+              source = add_after_h1(
+                  source,
+                  card
+              )
+
+
+              if source != original:
+
+                  path.write_text(
+                      source,
+                      encoding="utf-8"
+                  )
+
+                  changed.append(
+                      path.name
+                  )
+
+
+          print(
+              f"Editorial trust updated: "
+              f"{len(changed)} pages"
+          )
+
+          for filename in changed:
+              print("✓", filename)
+
+          PY
+
+
+      - name: Commit editorial trust
+        run: |
+
+          git config user.name "KOROPOP Editorial Bot"
+          git config user.email "actions@github.com"
+
+          git add *.html
+
+          if git diff --cached --quiet; then
+            echo "Editorial trust is already up to date."
+            exit 0
+          fi
+
+          git commit -m "Add editorial trust to articles"
+          git push
