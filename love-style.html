@@ -11,204 +11,225 @@ gtag('config','G-8NWPD2QBCQ');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="48問で恋愛のクセを64タイプに分類。性格4軸と恋愛2軸から、依存度・恋愛スコア・相性までわかるKOROPOPオリジナル恋愛診断。">
-<title>恋愛64タイプ診断｜48問でわかる恋のクセ｜KOROPOP</title>
+<meta name="description" content="48問で恋愛のクセを64タイプに分類。16の性格ベースと4つの恋愛スタイルから、依存度・距離感・相性・連絡傾向までわかる無料恋愛診断。">
+<title>恋タイプ64｜48問でわかる恋愛・相性診断</title>
 <style>
 :root{
- --bg:#fff8fb;--ink:#2f2430;--muted:#7d6f79;--pink:#ec4f87;--pink2:#ff7aa7;
- --soft:#fff0f5;--card:#fff;--line:#f0dbe4;--violet:#8466c8;--mint:#63b9a7;
- --shadow:0 16px 44px rgba(128,72,96,.12);
+ --ink:#171826;--muted:#767987;--pink:#ff4f75;--pink2:#ff748f;--blue:#6670f4;--purple:#8c36e8;
+ --line:#ececf2;--soft:#fff4f6;--soft2:#f7f7fb;--card:#fff;--shadow:0 10px 30px rgba(26,28,46,.08);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:linear-gradient(180deg,#fff8fb 0,#fff 46%,#fff9fc 100%)}
-button{font:inherit}
-a{color:inherit}
-.wrap{width:min(100% - 28px,980px);margin:auto}
-.topbar{height:58px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:950;letter-spacing:.04em}
-.brand span{color:var(--pink)}
-.badge{font-size:.72rem;font-weight:900;color:#a54970;background:#ffe6f0;border:1px solid #ffd2e2;border-radius:999px;padding:7px 10px}
-.hero{padding:44px 0 30px;text-align:center}
-.kicker{display:inline-block;color:#aa486f;background:#ffeaf2;border:1px solid #ffd5e4;padding:7px 12px;border-radius:999px;font-size:.75rem;font-weight:900;margin-bottom:14px}
-.hero h1{font-size:clamp(2rem,8vw,4.1rem);line-height:1.08;margin:0;font-weight:1000;letter-spacing:-.04em}
+body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:#fff;padding-bottom:98px}
+button{font:inherit;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(100% - 32px,980px);margin:auto}
+.site-head{height:82px;display:flex;align-items:center;border-bottom:1px solid #f0f0f3;background:#fff}
+.logo{font-size:1.48rem;font-weight:1000;letter-spacing:-.07em;color:var(--purple)}
+.logo b{color:var(--pink)}
+.logo small{font-size:.55rem;letter-spacing:.08em;color:#b4a9bb;margin-left:8px;font-weight:900}
+.hero{padding:42px 0 34px;text-align:center}
+.proof{display:inline-flex;align-items:center;gap:7px;border:1px solid #ffd2dd;background:#fff9fa;color:#e64166;border-radius:999px;padding:9px 15px;font-size:.78rem;font-weight:950}
+.hero h1{font-size:clamp(2rem,7.6vw,3.45rem);line-height:1.28;letter-spacing:-.045em;margin:24px auto 16px;max-width:760px}
 .hero h1 em{font-style:normal;color:var(--pink)}
-.hero .lead{max-width:680px;margin:18px auto 0;color:var(--muted);line-height:1.9;font-weight:650}
-.hero-visual{width:min(100%,650px);margin:30px auto 18px;background:linear-gradient(135deg,#fff,#fff0f5);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:24px}
-.type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.type-dot{border-radius:18px;padding:16px 6px;background:#fff;border:1px solid var(--line);font-weight:950}
-.type-dot b{display:block;font-size:1.45rem;color:var(--pink);margin-bottom:3px}
-.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:min(100%,620px);margin:20px auto 8px}
-.start-btn{border:0;border-radius:17px;padding:17px 14px;font-weight:950;color:#fff;cursor:pointer;box-shadow:0 10px 24px rgba(236,79,135,.2)}
-.start-btn.f{background:linear-gradient(100deg,#ec4f87,#ff7aa7)}
-.start-btn.m{background:linear-gradient(100deg,#7065d6,#8b7ae4)}
-.start-other{border:0;background:transparent;color:#8b7680;text-decoration:underline;cursor:pointer;font-weight:800;padding:10px}
-.micro{font-size:.76rem;color:#8b7b84;margin-top:8px}
-.section{padding:58px 0}
-.section h2{text-align:center;font-size:clamp(1.5rem,5vw,2.3rem);margin:0 0 10px}
-.section .sub{text-align:center;color:var(--muted);line-height:1.8;margin:0 auto 30px;max-width:680px}
-.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.feature{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 30px rgba(128,72,96,.06)}
-.feature .icon{font-size:1.7rem}
-.feature h3{font-size:1rem;margin:10px 0 7px}
-.feature p{margin:0;color:var(--muted);line-height:1.75;font-size:.87rem}
-.axes{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.axis{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
-.axis .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.axis .left,.axis .right{font-weight:950}
-.axis .left{color:var(--pink)} .axis .right{color:var(--violet)}
-.axis p{color:var(--muted);font-size:.84rem;line-height:1.7;margin:10px 0 0}
-.subtypes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.subtype{padding:22px;border-radius:22px;border:1px solid var(--line);background:#fff}
-.subtype strong{display:block;font-size:1.05rem;margin-bottom:8px}
-.subtype small{color:var(--muted);line-height:1.7}
-.notice{background:#fff8e9;border:1px solid #f5e1ac;color:#715a21;border-radius:16px;padding:15px 17px;line-height:1.7;font-size:.82rem;margin:26px auto 0;max-width:760px}
+.hero .lead{font-size:clamp(.98rem,3.5vw,1.16rem);color:#5f6270;line-height:1.9;margin:0 auto;max-width:700px;font-weight:650}
+.start-caption{display:inline-block;color:#e64067;border:1px solid #ffcbd8;border-radius:999px;padding:8px 15px;margin:26px 0 14px;font-weight:950;background:#fff}
+.start-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:min(100%,620px);margin:0 auto}
+.start-btn{min-height:78px;border:0;border-radius:19px;color:#fff;font-size:1.14rem;font-weight:1000;cursor:pointer;box-shadow:0 12px 24px rgba(35,38,72,.08)}
+.start-btn.f{background:linear-gradient(135deg,#ff5e7c,#ff3e68)}
+.start-btn.m{background:linear-gradient(135deg,#7e80f7,#5964ee)}
+.micro{font-weight:900;color:#595d6b;margin-top:18px}
+.start-other{border:0;background:transparent;color:#8a8d99;text-decoration:underline;font-weight:800;margin-top:10px;cursor:pointer}
+.char-marquee{overflow:hidden;margin:54px calc(50% - 50vw) 0;padding:8px 0}
+.char-track{display:flex;gap:18px;width:max-content;animation:slide 34s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+.char-card{width:146px;flex:0 0 146px;text-align:center}
+.char-box{height:146px;border:1px solid #ffdbe3;border-radius:22px;background:linear-gradient(145deg,#fff7f9,#fff);display:grid;place-items:center;box-shadow:0 5px 16px rgba(255,79,117,.06)}
+.doll{--hair:#7acbb2;--cloth:#a7e7d4;position:relative;width:82px;height:112px}
+.doll .head{position:absolute;top:9px;left:20px;width:44px;height:44px;background:#ffd9c7;border:2px solid #3d3440;border-radius:48% 48% 45% 45%;z-index:3}
+.doll .hair{position:absolute;top:3px;left:15px;width:54px;height:34px;background:var(--hair);border:2px solid #3d3440;border-radius:55% 55% 36% 36%;z-index:4}
+.doll .hair:before,.doll .hair:after{content:"";position:absolute;width:15px;height:24px;background:var(--hair);border:2px solid #3d3440;border-radius:50%}
+.doll .hair:before{left:-9px;top:9px}.doll .hair:after{right:-9px;top:9px}
+.doll .face{position:absolute;top:27px;left:31px;z-index:6;font-size:17px;line-height:1}
+.doll .body{position:absolute;top:55px;left:21px;width:43px;height:39px;background:var(--cloth);border:2px solid #3d3440;border-radius:14px 14px 10px 10px}
+.doll .leg{position:absolute;top:89px;width:14px;height:22px;background:#fff;border:2px solid #3d3440;border-radius:9px;z-index:1}
+.doll .leg.l{left:25px}.doll .leg.r{right:24px}
+.doll .acc{position:absolute;right:2px;top:62px;font-size:26px;z-index:8;transform:rotate(-8deg)}
+.c2{--hair:#8c76d9;--cloth:#c9b6ff}.c3{--hair:#f4b928;--cloth:#ffe487}.c4{--hair:#7dbfe9;--cloth:#b8e4ff}
+.c5{--hair:#f08cb6;--cloth:#ffd0e1}.c6{--hair:#96c46d;--cloth:#caedac}.c7{--hair:#5ea8a0;--cloth:#aee0da}.c8{--hair:#a99074;--cloth:#e1c9aa}
+.char-label{font-size:.76rem;color:#8a8d99;margin-top:8px;white-space:nowrap}
+.char-label b{display:block;color:#4c4e5d;font-size:.85rem}
+.section{padding:62px 0}
+.section.alt{background:#fbfbfd;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:16px;padding-right:16px}
+.section-title{text-align:center;font-size:clamp(1.55rem,5.7vw,2.15rem);margin:0 0 10px;font-weight:1000;letter-spacing:-.03em}
+.section-sub{text-align:center;color:var(--muted);line-height:1.8;max-width:720px;margin:0 auto 30px}
+.info-card{max-width:760px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow);font-size:.96rem;line-height:2;color:#505362}
+.info-card strong{color:var(--ink);box-shadow:inset 0 -.45em #ffdbe3}
+.quad{max-width:760px;margin:28px auto 0;background:#fff;border:1px solid var(--line);border-radius:26px;padding:34px 28px;box-shadow:var(--shadow)}
+.quad-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;min-height:410px}
+.quad-grid:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;background:#ff6d8d}
+.quad-grid:after{content:"";position:absolute;top:50%;left:0;right:0;height:2px;background:#e5a244}
+.qcell{padding:25px 22px;position:relative;z-index:2}
+.qcell h3{margin:4px 0 8px;font-size:1.15rem}
+.qcell b{color:#ef486d}.qcell p{font-size:.82rem;line-height:1.65;color:#666977;margin:6px 0}
+.axis-label{position:absolute;font-size:.75rem;font-weight:950;z-index:4}
+.axis-top{top:-24px;left:50%;transform:translateX(-50%);color:#ef486d}
+.axis-bottom{bottom:-24px;left:50%;transform:translateX(-50%);color:#ef486d}
+.axis-left{left:-26px;top:50%;transform:translateY(-50%) rotate(-90deg);color:#b4691f}
+.axis-right{right:-31px;top:50%;transform:translateY(-50%) rotate(90deg);color:#b4691f}
+.type-preview{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:760px;margin:auto}
+.type-preview .preview-card{display:flex;align-items:center;gap:13px;padding:14px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:0 5px 18px rgba(40,42,66,.05)}
+.mini-char{width:74px;height:74px;border-radius:16px;background:#fff5f7;display:grid;place-items:center;flex:0 0 74px;overflow:hidden}
+.mini-char .doll{transform:scale(.6)}
+.preview-card strong{display:block;font-size:1rem}.preview-card span{color:#777a88;font-size:.78rem;line-height:1.5}
+.outline-btn{display:block;width:min(100%,640px);margin:26px auto 0;border:1.5px solid #ff9db1;background:#fff;color:#e9466b;border-radius:999px;padding:16px;text-align:center;font-weight:1000}
+.groups{max-width:760px;margin:auto;display:grid;gap:28px}
+.group h3{font-size:1.2rem;margin:0 0 5px}.group p{font-size:.82rem;line-height:1.65;color:#6e7180;margin:0 0 12px}
+.type-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.type-pill{background:#fff;border:1px solid var(--line);border-radius:15px;padding:14px 15px;font-weight:900;box-shadow:0 4px 10px rgba(28,30,50,.04)}
+.article-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:800px;margin:auto}
+.article-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:0 6px 20px rgba(40,42,70,.05)}
+.article-thumb{aspect-ratio:16/9;padding:18px;display:flex;align-items:flex-end;font-weight:1000;font-size:1.2rem;color:#4c2440;background:linear-gradient(135deg,#ffe3eb,#f2ddff)}
+.article-card:nth-child(2) .article-thumb{background:linear-gradient(135deg,#f5dcff,#dfe4ff)}
+.article-card:nth-child(3) .article-thumb{background:linear-gradient(135deg,#fff3ca,#ffe0e9)}
+.article-card:nth-child(4) .article-thumb{background:linear-gradient(135deg,#dbf6eb,#e4f0ff)}
+.article-body{padding:16px}.article-body h3{font-size:1rem;margin:0 0 8px}.article-body p{font-size:.8rem;line-height:1.65;color:#7b7e8b;margin:0}
 .faq{display:grid;gap:10px;max-width:760px;margin:auto}
-details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 17px}
-summary{cursor:pointer;font-weight:900}
-details p{color:var(--muted);line-height:1.8;font-size:.86rem}
-.footer{padding:38px 0 60px;text-align:center;color:#9a8992;font-size:.75rem}
-.footer a{margin:0 8px}
+details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 17px}
+summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;font-size:.86rem}
+.footer{padding:34px 0 36px;text-align:center;color:#999ca6;font-size:.74rem}.footer a{margin:0 8px}.operator{margin-top:12px;font-size:.68rem}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid #ececf1;padding:12px max(16px,env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center}
+.sticky-cta button{width:min(46vw,310px);min-height:56px;border:0;border-radius:16px;color:#fff;font-weight:1000;cursor:pointer}
+.sticky-cta .female{background:linear-gradient(135deg,#ff5e7c,#ff3e68)}.sticky-cta .male{background:linear-gradient(135deg,#7e80f7,#5964ee)}
 #quizScreen,#resultScreen{display:none}
-.quiz-head{padding:24px 0 8px;text-align:center}
-.quiz-head h1{font-size:clamp(1.7rem,6vw,2.7rem);margin:6px 0}
-.progress-wrap{position:sticky;top:0;z-index:30;background:rgba(255,248,251,.92);backdrop-filter:blur(12px);padding:11px 0 12px;border-bottom:1px solid rgba(240,219,228,.7)}
-.progress-meta{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);font-weight:850;margin-bottom:7px}
-.progress{height:9px;background:#f5dfe8;border-radius:99px;overflow:hidden}
-.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--pink),#ff9cbd);transition:.2s}
-.q-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:21px 18px;margin:14px 0;box-shadow:0 8px 26px rgba(128,72,96,.055)}
-.q-num{font-size:.68rem;color:#b1929f;font-weight:950;letter-spacing:.12em}
-.q-title{font-size:1rem;font-weight:900;line-height:1.65;margin:8px 0 18px}
-.scale-labels{display:flex;justify-content:space-between;font-size:.74rem;font-weight:900;color:#91616f;margin-bottom:10px}
-.scale{display:flex;justify-content:space-between;align-items:center;gap:5px}
-.scale button{border-radius:50%;background:#fff;cursor:pointer;transition:.16s;border:3px solid #e2cbd5;padding:0}
-.scale button:nth-child(1),.scale button:nth-child(7){width:46px;height:46px}
-.scale button:nth-child(2),.scale button:nth-child(6){width:40px;height:40px}
-.scale button:nth-child(3),.scale button:nth-child(5){width:34px;height:34px}
-.scale button:nth-child(4){width:29px;height:29px}
-.scale button:nth-child(-n+3){border-color:#ef6b99}
-.scale button:nth-child(n+5){border-color:#8b7ae4}
-.scale button.selected:nth-child(-n+3){background:#ef6b99;box-shadow:0 0 0 5px rgba(239,107,153,.11);transform:scale(1.07)}
-.scale button.selected:nth-child(4){background:#bbb0b6;box-shadow:0 0 0 5px rgba(187,176,182,.12)}
-.scale button.selected:nth-child(n+5){background:#8b7ae4;box-shadow:0 0 0 5px rgba(139,122,228,.11);transform:scale(1.07)}
-.submit{width:100%;border:0;border-radius:16px;background:linear-gradient(100deg,#ec4f87,#ff7aa7);color:#fff;font-weight:1000;font-size:1.03rem;padding:17px;cursor:pointer;box-shadow:0 12px 30px rgba(236,79,135,.22);margin:12px 0 30px}
-.error{display:none;background:#fff1f3;border:1px solid #ffcbd2;color:#9b4053;border-radius:14px;padding:12px 14px;font-size:.84rem;margin-top:12px}
-.result-hero{text-align:center;padding:38px 0 18px}
-.result-hero .over{color:#ab8090;font-size:.74rem;font-weight:950;letter-spacing:.13em}
-.result-code{font-size:clamp(2.6rem,12vw,5.4rem);font-weight:1000;line-height:1;margin:10px 0 4px;color:var(--pink)}
-.result-name{font-size:clamp(1.5rem,7vw,2.5rem);font-weight:1000}
-.result-sub{color:var(--violet);font-weight:950;margin-top:6px}
-.result-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 10px 30px rgba(128,72,96,.06)}
-.result-card h2{font-size:1.03rem;margin:0 0 12px}
-.result-card p{color:#655661;line-height:1.85;font-size:.9rem;margin:0}
-.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.score{background:linear-gradient(145deg,#fff5f9,#fff);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}
-.score small{display:block;color:#927d87;font-weight:800;font-size:.69rem}
-.score b{display:block;font-size:1.6rem;margin-top:3px}
-.bars{display:grid;gap:16px}
-.bar-head{display:flex;justify-content:space-between;font-size:.82rem;font-weight:900}
-.bar{height:9px;background:#f1e2e8;border-radius:99px;overflow:hidden;margin-top:7px}
-.bar span{display:block;height:100%;background:linear-gradient(90deg,#ec4f87,#8b7ae4);border-radius:99px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-.tag{border:1px solid #e4cfda;background:#fff5f9;border-radius:999px;padding:7px 10px;font-size:.78rem;font-weight:900}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.actions button{border:1px solid var(--line);border-radius:13px;background:#fff;padding:12px;font-weight:900;cursor:pointer}
-.actions .x{background:#111;color:#fff;border-color:#111}.actions .again{background:var(--pink);color:#fff;border-color:var(--pink)}
-.result-note{font-size:.72rem!important;color:#9a8992!important;margin-top:12px!important}
-@media(max-width:700px){
- .feature-grid{grid-template-columns:1fr}.axes{grid-template-columns:1fr}.subtypes{grid-template-columns:1fr 1fr}
- .type-grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}
-}
-@media(max-width:480px){
- .start-grid{grid-template-columns:1fr}.subtypes{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr 1fr}
- .hero{padding-top:28px}.hero-visual{padding:17px}
- .scale button:nth-child(1),.scale button:nth-child(7){width:40px;height:40px}
- .scale button:nth-child(2),.scale button:nth-child(6){width:35px;height:35px}
- .scale button:nth-child(3),.scale button:nth-child(5){width:30px;height:30px}
-}
+.quiz-head{padding:30px 0 12px;text-align:center}.quiz-head .quiz-logo{font-weight:1000;color:var(--purple);font-size:.88rem}.quiz-head h1{font-size:clamp(1.7rem,6vw,2.6rem);margin:7px 0}
+.progress-wrap{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.93);backdrop-filter:blur(12px);padding:11px 0 12px;border-bottom:1px solid var(--line)}
+.progress-meta{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);font-weight:850;margin-bottom:7px}.progress{height:9px;background:#f3e4e9;border-radius:99px;overflow:hidden}.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--pink),#ff9cbd);transition:.2s}
+.q-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:21px 18px;margin:14px 0;box-shadow:0 7px 24px rgba(40,42,66,.05)}.q-num{font-size:.68rem;color:#af929d;font-weight:950;letter-spacing:.12em}.q-title{font-size:1rem;font-weight:900;line-height:1.65;margin:8px 0 18px}
+.scale-labels{display:flex;justify-content:space-between;font-size:.74rem;font-weight:900;color:#91616f;margin-bottom:10px}.scale{display:flex;justify-content:space-between;align-items:center;gap:5px}.scale button{border-radius:50%;background:#fff;cursor:pointer;transition:.16s;border:3px solid #e2cbd5;padding:0}.scale button:nth-child(1),.scale button:nth-child(7){width:46px;height:46px}.scale button:nth-child(2),.scale button:nth-child(6){width:40px;height:40px}.scale button:nth-child(3),.scale button:nth-child(5){width:34px;height:34px}.scale button:nth-child(4){width:29px;height:29px}.scale button:nth-child(-n+3){border-color:#ef6b99}.scale button:nth-child(n+5){border-color:#777cf4}.scale button.selected:nth-child(-n+3){background:#ef6b99;box-shadow:0 0 0 5px rgba(239,107,153,.11);transform:scale(1.07)}.scale button.selected:nth-child(4){background:#bbb0b6}.scale button.selected:nth-child(n+5){background:#777cf4;box-shadow:0 0 0 5px rgba(119,124,244,.11);transform:scale(1.07)}
+.submit{width:100%;border:0;border-radius:16px;background:linear-gradient(100deg,#ec4f87,#ff6f8b);color:#fff;font-weight:1000;font-size:1.03rem;padding:17px;cursor:pointer;box-shadow:0 12px 30px rgba(236,79,135,.2);margin:12px 0 30px}.error{display:none;background:#fff1f3;border:1px solid #ffcbd2;color:#9b4053;border-radius:14px;padding:12px 14px;font-size:.84rem;margin-top:12px}
+.result-hero{text-align:center;padding:38px 0 18px}.result-hero .over{color:#ab8090;font-size:.74rem;font-weight:950;letter-spacing:.13em}.result-code{font-size:clamp(2.5rem,12vw,5.2rem);font-weight:1000;line-height:1;margin:10px 0 4px;color:var(--pink)}.result-name{font-size:clamp(1.45rem,7vw,2.4rem);font-weight:1000}.result-sub{color:var(--purple);font-weight:950;margin-top:6px}
+.result-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 8px 26px rgba(40,42,66,.05)}.result-card h2{font-size:1.03rem;margin:0 0 12px}.result-card p{color:#655661;line-height:1.85;font-size:.9rem;margin:0}.score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.score{background:linear-gradient(145deg,#fff5f9,#fff);border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center}.score small{display:block;color:#927d87;font-weight:800;font-size:.69rem}.score b{display:block;font-size:1.55rem;margin-top:3px}.bars{display:grid;gap:16px}.bar-head{display:flex;justify-content:space-between;font-size:.82rem;font-weight:900}.bar{height:9px;background:#f1e2e8;border-radius:99px;overflow:hidden;margin-top:7px}.bar span{display:block;height:100%;background:linear-gradient(90deg,#ec4f87,#777cf4);border-radius:99px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.tag{border:1px solid #e4cfda;background:#fff5f9;border-radius:999px;padding:7px 10px;font-size:.78rem;font-weight:900}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions button{border:1px solid var(--line);border-radius:13px;background:#fff;padding:12px;font-weight:900;cursor:pointer}.actions .x{background:#111;color:#fff;border-color:#111}.actions .again{background:var(--pink);color:#fff;border-color:var(--pink)}.result-note{font-size:.72rem!important;color:#9a8992!important;margin-top:12px!important}
+@media(max-width:700px){.article-grid{gap:12px}.quad{padding:30px 16px}.qcell{padding:21px 12px}.two{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{width:min(100% - 28px,760px)}.site-head{height:68px}.logo{font-size:1.2rem}.logo small{display:none}.hero{padding-top:32px}.start-grid{gap:10px}.start-btn{min-height:68px;font-size:1rem}.type-preview{gap:10px}.preview-card{min-width:0}.mini-char{width:64px;height:64px;flex-basis:64px}.type-list{gap:9px}.type-pill{padding:13px 10px;font-size:.88rem}.article-grid{grid-template-columns:1fr 1fr}.article-thumb{padding:12px;font-size:.9rem}.article-body{padding:12px}.article-body p{display:none}.quad-grid{min-height:370px}.qcell h3{font-size:.98rem}.qcell p{font-size:.74rem}.score-grid{grid-template-columns:repeat(3,1fr)}.scale button:nth-child(1),.scale button:nth-child(7){width:40px;height:40px}.scale button:nth-child(2),.scale button:nth-child(6){width:35px;height:35px}.scale button:nth-child(3),.scale button:nth-child(5){width:30px;height:30px}}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="topbar">
- <div class="brand">KOROPOP <span>TYPE</span></div>
- <div class="badge">β版・無料</div>
+<header class="site-head">
+ <div class="wrap"><div class="logo">恋タイプ<b>64</b><small>LOVE TYPE TEST</small></div></div>
 </header>
-</div>
 
 <main id="landing">
 <div class="wrap">
 <section class="hero">
- <div class="kicker">48 QUESTIONS × 64 LOVE TYPES</div>
- <h1>恋をすると出てくる<br><em>「本当のあなた」</em>を診断。</h1>
- <p class="lead">性格4軸と恋愛専用2軸を組み合わせて、あなたの恋愛パターンを64タイプに分類。依存度・距離感・連絡スタイル・相性までまとめて見える、KOROPOPのオリジナル恋愛診断です。</p>
- <div class="hero-visual">
-  <div class="type-grid">
-   <div class="type-dot"><b>16</b>性格ベース</div>
-   <div class="type-dot"><b>4</b>恋愛サブタイプ</div>
-   <div class="type-dot"><b>64</b>恋愛タイプ</div>
-   <div class="type-dot"><b>48</b>質問</div>
+ <div class="proof">🎉 無料・登録不要・48問</div>
+ <h1>16の性格 × 4つの恋愛スタイルでわかる、<br><em>あなたの恋愛・相性診断</em></h1>
+ <p class="lead">好きになると追う？待つ？　離れていても平気？　不安になりやすい？<br>性格と恋愛でしか出ない2つの軸を重ねて、あなたの「恋のクセ」を64タイプに分類します。</p>
+ <div class="start-caption">無料で診断する 👇</div>
+ <div class="start-grid">
+  <button class="start-btn f" onclick="startQuiz('female')">♡ 女性で始める</button>
+  <button class="start-btn m" onclick="startQuiz('male')">♢ 男性で始める</button>
+ </div>
+ <div class="micro">無料 / 登録不要 / 約5分</div>
+ <button class="start-other" onclick="startQuiz('none')">性別を指定せず始める</button>
+
+ <div class="char-marquee" aria-label="恋愛タイプのキャラクタープレビュー">
+  <div class="char-track">
+   
+   <div class="char-card"><div class="char-box"><div class="doll c1"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c2"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c3"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c5"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c6"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c7"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c1"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c2"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c3"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c5"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c6"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c7"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
   </div>
  </div>
- <div class="start-grid">
-  <button class="start-btn f" onclick="startQuiz('female')">♡ 女性として始める</button>
-  <button class="start-btn m" onclick="startQuiz('male')">♢ 男性として始める</button>
- </div>
- <button class="start-other" onclick="startQuiz('none')">性別を指定せず始める</button>
- <div class="micro">無料・登録不要・約5分</div>
 </section>
 
 <section class="section">
- <h2>この診断でわかること</h2>
- <p class="sub">単に「○○タイプ」で終わらず、恋愛で繰り返しやすい行動まで分解します。</p>
- <div class="feature-grid">
-  <div class="feature"><div class="icon">💞</div><h3>64タイプの恋愛傾向</h3><p>16の性格ベースと4つの恋愛サブタイプを組み合わせて、距離感やアプローチのクセを言語化。</p></div>
-  <div class="feature"><div class="icon">📊</div><h3>依存度と6軸バランス</h3><p>人との距離・計画性・感情優先度などをパーセント表示。強い傾向と中間地点がひと目でわかります。</p></div>
-  <div class="feature"><div class="icon">💬</div><h3>連絡・喧嘩・相性</h3><p>好きになった時、返信が遅い時、すれ違った時に出やすい行動を具体的にまとめます。</p></div>
+ <h2 class="section-title">💘 恋タイプ64とは？</h2>
+ <p class="section-sub">性格だけでは見えにくい「恋をした時の変化」まで見るための、恋愛特化型64タイプ診断です。</p>
+ <div class="info-card">
+  16タイプの性格傾向に、恋愛で出やすい <strong>「安心 ↔ 不安」</strong> と <strong>「自分から動く ↔ 相手を待つ」</strong> の2軸を追加。
+  4つの恋愛スタイル × 16タイプで、同じ性格タイプでも違って見える恋愛のクセ、連絡の取り方、すれ違い方まで読み解きます。
+ </div>
+ <div class="quad">
+  <div class="quad-grid">
+   <span class="axis-label axis-top">↑ 安心しやすい</span><span class="axis-label axis-bottom">↓ 不安になりやすい</span><span class="axis-label axis-left">リード型</span><span class="axis-label axis-right">フォロー型</span>
+   <div class="qcell"><div style="font-size:1.65rem">☀️</div><h3>直球リーダー</h3><b>安心 × リード</b><p>好意を行動にしやすい、頼れる前進タイプ。</p></div>
+   <div class="qcell"><div style="font-size:1.65rem">🌿</div><h3>安心サポーター</h3><b>安心 × フォロー</b><p>温かく見守りながら、長く関係を育てる。</p></div>
+   <div class="qcell"><div style="font-size:1.65rem">🔥</div><h3>全力チェイサー</h3><b>不安 × リード</b><p>好きになるほど熱量も行動量も上がる。</p></div>
+   <div class="qcell"><div style="font-size:1.65rem">🌙</div><h3>静かな待ち人</h3><b>不安 × フォロー</b><p>気持ちは深いが、相手の反応を見て動く。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section alt">
+ <div class="wrap">
+  <h2 class="section-title">📖 64タイプ図鑑</h2>
+  <p class="section-sub">あなたはどのタイプ？　まずは8タイプをピックアップ。</p>
+  <div class="type-preview">
+   <div class="preview-card"><div class="mini-char"><div class="doll c1"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🧸</span></div></div><div><strong>ENFP</strong><span>× 全力チェイサー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c2"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">📖</span></div></div><div><strong>INTJ</strong><span>× 直球リーダー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c5"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">💌</span></div></div><div><strong>INFJ</strong><span>× 直球リーダー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c7"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🎧</span></div></div><div><strong>ENFJ</strong><span>× 全力チェイサー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c6"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌿</span></div></div><div><strong>ISFJ</strong><span>× 安心サポーター</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🔧</span></div></div><div><strong>ISTP</strong><span>× 静かな待ち人</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c3"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌼</span></div></div><div><strong>ESFP</strong><span>× 静かな待ち人</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">☕</span></div></div><div><strong>ISTJ</strong><span>× 安心サポーター</span></div></div>
+  </div>
+  <div class="outline-btn">全64タイプを見る → <small style="font-weight:700;color:#a68b94">（詳細図鑑は準備中）</small></div>
  </div>
 </section>
 
 <section class="section">
- <h2>6つの判定軸</h2>
- <p class="sub">4つの性格軸に、恋愛で特に出やすい「安心感」と「アプローチ」を重ねます。</p>
- <div class="axes">
-  <div class="axis"><div class="row"><span class="left">E 外向</span><span class="right">I 内向</span></div><p>恋愛中、誰かと関わることでエネルギーが増えるか、一人で整える時間が必要か。</p></div>
-  <div class="axis"><div class="row"><span class="left">R 現実</span><span class="right">V 想像</span></div><p>目の前の事実を重視するか、言葉の裏や未来の意味まで想像するか。</p></div>
-  <div class="axis"><div class="row"><span class="left">L 論理</span><span class="right">H 共感</span></div><p>問題が起きた時に解決策を優先するか、気持ちの共有を優先するか。</p></div>
-  <div class="axis"><div class="row"><span class="left">P 計画</span><span class="right">F 自由</span></div><p>関係を計画的に進めたいか、その時の流れや気分に合わせたいか。</p></div>
-  <div class="axis"><div class="row"><span class="left">S 安心</span><span class="right">A 不安</span></div><p>相手と離れていても信頼を保ちやすいか、反応の変化に心が揺れやすいか。</p></div>
-  <div class="axis"><div class="row"><span class="left">D リード</span><span class="right">W 待つ</span></div><p>好きなら自分から動きやすいか、相手の様子を見てから動くことが多いか。</p></div>
+ <h2 class="section-title">📚 16タイプ一覧</h2>
+ <p class="section-sub">性格ベースごとの恋愛傾向も、あとから個別に詳しく読めるようにしていきます。</p>
+ <div class="groups">
+  <div class="group"><h3>外交官（NF）</h3><p>気持ちの共有や理想を大切にしやすい4タイプ。</p><div class="type-list"><div class="type-pill">✨ ENFP</div><div class="type-pill">🌸 INFP</div><div class="type-pill">🌟 ENFJ</div><div class="type-pill">🔮 INFJ</div></div></div>
+  <div class="group"><h3>分析家（NT）</h3><p>恋愛でも考えて理解したくなる、論理派の4タイプ。</p><div class="type-list"><div class="type-pill">💡 ENTP</div><div class="type-pill">🧩 INTP</div><div class="type-pill">👑 ENTJ</div><div class="type-pill">🏰 INTJ</div></div></div>
+  <div class="group"><h3>番人（SJ）</h3><p>誠実さと安心感を重視し、関係を丁寧に育てる4タイプ。</p><div class="type-list"><div class="type-pill">🌿 ISFJ</div><div class="type-pill">🤝 ESFJ</div><div class="type-pill">🛡️ ISTJ</div><div class="type-pill">⚡ ESTJ</div></div></div>
+  <div class="group"><h3>探検家（SP）</h3><p>今この瞬間の相性と、一緒に楽しめる感覚を大切にする4タイプ。</p><div class="type-list"><div class="type-pill">🎉 ESFP</div><div class="type-pill">🎨 ISFP</div><div class="type-pill">🔥 ESTP</div><div class="type-pill">🔧 ISTP</div></div></div>
+ </div>
+ <div class="outline-btn">64タイプ図鑑をすべて見る → <small style="font-weight:700;color:#a68b94">（詳細ページは後日追加）</small></div>
+</section>
+
+<section class="section alt">
+ <div class="wrap">
+  <h2 class="section-title">💡 もっと詳しく知りたい方へ</h2>
+  <p class="section-sub">診断だけで終わらず、恋愛タイプを深掘りできる読みものも増やしていきます。</p>
+  <div class="article-grid">
+   <div class="article-card"><div class="article-thumb">恋愛64タイプとは？<br>仕組みを徹底解説</div><div class="article-body"><h3>16タイプ×4恋愛スタイルの見方</h3><p>診断の軸と結果の読み方をわかりやすく解説。</p></div></div>
+   <div class="article-card"><div class="article-thumb">相性ランキング<br>16タイプ早見表</div><div class="article-body"><h3>タイプ別の相性を比較</h3><p>恋愛・友人・仕事での噛み合いやすさを整理。</p></div></div>
+   <div class="article-card"><div class="article-thumb">モテるタイプは？<br>恋愛傾向ランキング</div><div class="article-body"><h3>短期モテ・長期モテの違い</h3><p>人気だけでなく、関係が続きやすい強みも解説。</p></div></div>
+   <div class="article-card"><div class="article-thumb">ENFPの恋愛<br>好きになった時のクセ</div><div class="article-body"><h3>タイプ別・恋愛深掘り</h3><p>連絡、嫉妬、喧嘩、相性までタイプごとに整理。</p></div></div>
+  </div>
  </div>
 </section>
 
 <section class="section">
- <h2>4つの恋愛サブタイプ</h2>
- <p class="sub">最後の2軸から、恋愛での動き方を4つに分けます。</p>
- <div class="subtypes">
-  <div class="subtype"><strong>☀️ 直球リーダー</strong><small>安心 × リード。好意を隠しすぎず、関係を前に進めるのが得意。</small></div>
-  <div class="subtype"><strong>🌿 安心サポーター</strong><small>安心 × 待つ。相手を尊重しながら、長く安定した関係を育てる。</small></div>
-  <div class="subtype"><strong>🔥 全力チェイサー</strong><small>不安 × リード。好きになるほど行動量と熱量が一気に上がりやすい。</small></div>
-  <div class="subtype"><strong>🌙 静かな待ち人</strong><small>不安 × 待つ。気持ちは深いが、拒絶を避けて様子を見続けやすい。</small></div>
- </div>
- <div class="notice">この診断は医療・心理検査ではなく、自己理解を楽しむためのオリジナル診断です。「依存度」などの数値は診断回答から算出する相対スコアで、医学的な判定ではありません。</div>
-</section>
-
-<section class="section">
- <h2>よくある質問</h2>
+ <h2 class="section-title">よくある質問</h2>
  <div class="faq">
   <details><summary>診断は無料？</summary><p>基本診断と結果表示は無料です。登録も不要です。</p></details>
-  <details><summary>既存の裏・16コア性格診断とは何が違う？</summary><p>裏・16コアは性格全体を見る診断。このページは恋愛中の距離感・連絡・不安・アプローチに重点を置いた別診断です。</p></details>
-  <details><summary>「上位○％相当」は実際の人口比？</summary><p>いいえ。現在は診断ロジック上のレア度表示です。実ユーザーの統計が十分に蓄積した段階で、実測データへ切り替える予定です。</p></details>
+  <details><summary>裏・16コア性格診断とは何が違う？</summary><p>裏・16コアは性格全体を見る診断。恋タイプ64は恋愛時の距離感・不安・連絡・アプローチを重視した別診断です。</p></details>
+  <details><summary>「上位○％相当」は実際の人口比？</summary><p>現在は回答パターンから算出する診断内の目安です。利用データが十分に蓄積した段階で、実測統計への切り替えを検討します。</p></details>
  </div>
 </section>
 </div>
 </main>
 
+<div class="sticky-cta" id="stickyCta">
+ <button class="female" onclick="startQuiz('female')">♡ 女性で始める</button>
+ <button class="male" onclick="startQuiz('male')">♢ 男性で始める</button>
+</div>
+
 <main id="quizScreen">
 <div class="wrap">
  <section class="quiz-head">
-  <div class="kicker">KOROPOP LOVE TYPE</div>
+  <div class="quiz-logo">恋タイプ64</div>
   <h1>恋愛64タイプ診断</h1>
   <p class="micro">直感で答えてください。正解・不正解はありません。</p>
  </section>
@@ -268,7 +289,7 @@ details p{color:var(--muted);line-height:1.8;font-size:.86rem}
  <a href="privacy.html">プライバシーポリシー</a>
  <a href="contact.html">お問い合わせ</a>
  <a href="about.html">運営情報</a>
- <div style="margin-top:12px">© KOROPOP TYPE</div>
+ <div style="margin-top:12px">© 恋タイプ64<div class="operator">運営：KOROPOP</div></div>
 </div>
 
 <script>
@@ -350,6 +371,7 @@ function startQuiz(g){
  document.getElementById('landing').style.display='none';
  document.getElementById('resultScreen').style.display='none';
  document.getElementById('quizScreen').style.display='block';
+ var sc=document.getElementById('stickyCta'); if(sc)sc.style.display='none';
  renderQuiz();
  window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -486,7 +508,7 @@ function makeCompat(r){
 }
 
 function shareX(){
- var t='私の恋愛64タイプは「'+document.getElementById('resultName').textContent+'」でした！ 依存度'+document.getElementById('dependency').textContent+' #KOROPOP恋愛診断';
+ var t='私の恋愛64タイプは「'+document.getElementById('resultName').textContent+'」でした！ 依存度'+document.getElementById('dependency').textContent+' #恋タイプ64';
  var u=location.href.split('#')[0];
  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u),'_blank');
 }
@@ -498,6 +520,7 @@ function restart(){
  answers={};
  document.getElementById('resultScreen').style.display='none';
  document.getElementById('landing').style.display='block';
+ var sc=document.getElementById('stickyCta'); if(sc)sc.style.display='flex';
  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
