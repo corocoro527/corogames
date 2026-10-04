@@ -234,6 +234,20 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
  #articles .article-grid{grid-template-columns:1fr 1fr}
 }
 
+
+.axis-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:980px;margin:auto}
+.axis-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 6px 20px rgba(40,42,70,.05)}
+.axis-card .axis-icon{font-size:1.7rem;margin-bottom:8px}.axis-card b{display:block;font-size:.8rem;color:#777a88;margin-bottom:6px}.axis-card strong{display:block;font-size:1rem}.axis-card p{font-size:.78rem;line-height:1.7;color:#6d7080;margin:10px 0 0}
+.feature-grid-love{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:900px;margin:auto}
+.feature-love{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;text-align:center;box-shadow:0 6px 20px rgba(40,42,70,.05)}
+.feature-love>span{font-size:1.9rem}.feature-love h3{margin:9px 0 7px;font-size:1rem}.feature-love p{font-size:.8rem;line-height:1.7;color:#737684;margin:0}
+.share-preview{max-width:860px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.share-preview>div{background:linear-gradient(145deg,#fff8fb,#fff);border:1px solid #f1dfe6;border-radius:18px;padding:18px}
+.share-preview b{display:block;margin-bottom:8px}.share-preview span{font-size:.78rem;line-height:1.7;color:#747785}
+.char-track.row2{margin-top:12px;animation-name:slideBack;animation-duration:34s}
+@keyframes slideBack{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(max-width:780px){.axis-cards{grid-template-columns:repeat(2,1fr)}.feature-grid-love{grid-template-columns:1fr}.share-preview{grid-template-columns:1fr}}
+@media(max-width:520px){.axis-cards{grid-template-columns:1fr 1fr;gap:10px}.axis-card{padding:15px 12px}.axis-card p{display:none}.char-track.row2{margin-top:10px}}
 </style>
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://koropopgames.com/love-style.html">
@@ -314,7 +328,25 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
  </div>
 
  <div class="char-marquee" aria-label="恋愛タイプのキャラクタープレビュー">
-  <div class="char-track">
+  <div class="char-track row1">
+   <div class="char-card"><div class="char-box"><div class="doll c1 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c2 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c3 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c5 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c6 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c7 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c1 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c2 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c3 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c5 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c6 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c7 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
+  </div>
+  <div class="char-track row2">
    <div class="char-card"><div class="char-box"><div class="doll c1 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
    <div class="char-card"><div class="char-box"><div class="doll c2 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
    <div class="char-card"><div class="char-box"><div class="doll c3 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
@@ -336,23 +368,62 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
 </section>
 
 <section class="section" id="about-love64">
-    <div class="intro-grid">
-      <div class="intro-copy">
-        <h2>💘 恋タイプ64とは？</h2>
-        <p>性格だけでは見えにくい「恋をした時の変化」を見るための恋愛特化診断。16の性格傾向に、<strong>安心↔不安</strong> と <strong>自分から動く↔相手を待つ</strong> の2軸を重ね、同じ性格でも違って見える恋のクセを読み解きます。</p>
-        <div class="intro-points"><span>64タイプ</span><span>依存度</span><span>連絡傾向</span><span>相性</span></div>
-      </div>
-      <div class="quad">
-       <div class="quad-grid">
-        <span class="axis-label axis-top">↑ 安心しやすい</span><span class="axis-label axis-bottom">↓ 不安になりやすい</span><span class="axis-label axis-left">リード型</span><span class="axis-label axis-right">フォロー型</span>
-        <div class="qcell"><div style="font-size:1.55rem">☀️</div><h3>直球リーダー</h3><b>安心 × リード</b><p>好意を行動にしやすい、頼れる前進タイプ。</p></div>
-        <div class="qcell"><div style="font-size:1.55rem">🌿</div><h3>安心サポーター</h3><b>安心 × フォロー</b><p>温かく見守りながら、長く関係を育てる。</p></div>
-        <div class="qcell"><div style="font-size:1.55rem">🔥</div><h3>全力チェイサー</h3><b>不安 × リード</b><p>好きになるほど熱量も行動量も上がる。</p></div>
-        <div class="qcell"><div style="font-size:1.55rem">🌙</div><h3>静かな待ち人</h3><b>不安 × フォロー</b><p>気持ちは深いが、相手の反応を見て動く。</p></div>
-       </div>
-      </div>
-    </div>
-  </section>
+  <h2 class="section-title">💘 恋愛版16タイプ診断とは？</h2>
+  <p class="section-sub">性格だけでは見えにくい「恋をした時の変化」まで見るための恋愛特化診断です。</p>
+  <div class="info-card">
+    16タイプの性格傾向に、恋愛で出やすい <strong>「安心 ↔ 不安」</strong> と <strong>「自分から動く ↔ 相手を待つ」</strong> の2軸を追加。
+    4つの恋愛スタイル × 16タイプで64タイプに分け、距離感・連絡・すれ違い方・相性まで読み解きます。
+  </div>
+</section>
+
+<section class="section alt" id="four-axes">
+ <div class="wrap">
+  <h2 class="section-title">🧭 性格を決める「4つの指標」</h2>
+  <p class="section-sub">まずは4つの性格軸から、あなたのベースタイプを判定します。</p>
+  <div class="axis-cards">
+   <div class="axis-card"><div class="axis-icon">⚡</div><b>エネルギーの向き</b><strong>E 外向 / I 内向</strong><p>人と関わると元気になるか、一人で整えてから会いたいか。</p></div>
+   <div class="axis-card"><div class="axis-icon">👀</div><b>ものの見方</b><strong>S 感覚 / N 直観</strong><p>目の前の事実を重視するか、意味や未来まで想像するか。</p></div>
+   <div class="axis-card"><div class="axis-icon">⚖️</div><b>判断のしかた</b><strong>T 思考 / F 感情</strong><p>問題を整理して解決したいか、まず気持ちを分かり合いたいか。</p></div>
+   <div class="axis-card"><div class="axis-icon">🗓️</div><b>進め方</b><strong>J 判断 / P 知覚</strong><p>予定を決めて進めたいか、その時の流れを大切にしたいか。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="love-axes">
+ <h2 class="section-title">💞 恋愛でしか出ない「2つの軸」</h2>
+ <p class="section-sub">さらに恋愛中の安心感とアプローチの仕方を重ねて、4つの恋愛スタイルを判定します。</p>
+ <div class="quad">
+  <div class="quad-grid">
+   <span class="axis-label axis-top">↑ 安心しやすい</span><span class="axis-label axis-bottom">↓ 不安になりやすい</span><span class="axis-label axis-left">リード型</span><span class="axis-label axis-right">フォロー型</span>
+   <div class="qcell"><div style="font-size:1.55rem">☀️</div><h3>直球リーダー</h3><b>安心 × リード</b><p>好意を行動にしやすい、頼れる前進タイプ。</p></div>
+   <div class="qcell"><div style="font-size:1.55rem">🌿</div><h3>安心サポーター</h3><b>安心 × フォロー</b><p>温かく見守りながら、長く関係を育てる。</p></div>
+   <div class="qcell"><div style="font-size:1.55rem">🔥</div><h3>全力チェイサー</h3><b>不安 × リード</b><p>好きになるほど熱量も行動量も上がる。</p></div>
+   <div class="qcell"><div style="font-size:1.55rem">🌙</div><h3>静かな待ち人</h3><b>不安 × フォロー</b><p>気持ちは深いが、相手の反応を見て動く。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section alt" id="features">
+ <div class="wrap">
+  <h2 class="section-title">💕 この診断でわかること</h2>
+  <p class="section-sub">タイプ名だけで終わらず、恋愛で繰り返しやすい行動まで分解します。</p>
+  <div class="feature-grid-love">
+   <div class="feature-love"><span>💕</span><h3>64タイプ恋愛診断</h3><p>16タイプ × 4つの恋愛スタイルで、あなたの恋のクセを細かく分類。</p></div>
+   <div class="feature-love"><span>🔄</span><h3>恋愛パターンを言語化</h3><p>連絡・距離感・不安・喧嘩・アプローチの傾向を具体的に表示。</p></div>
+   <div class="feature-love"><span>💑</span><h3>相性まで分析</h3><p>テンポや距離感が噛み合いやすいタイプを結果画面で確認できます。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="share">
+ <h2 class="section-title">💬 診断結果をシェアして楽しむ</h2>
+ <p class="section-sub">結果画面にはタイプ・依存度・相性・恋愛傾向をまとめて表示。友だちや恋人と比べても楽しめます。</p>
+ <div class="share-preview">
+   <div><b>「当たりすぎ」ポイントを比べる</b><span>連絡のクセや不安になりやすい場面まで見比べられます。</span></div>
+   <div><b>恋人との相性を見る</b><span>同じ性格でも恋愛スタイルが違うと結果が変わります。</span></div>
+   <div><b>SNSに結果をシェア</b><span>診断結果はX向けの共有ボタンからすぐ投稿できます。</span></div>
+ </div>
+</section>
 
 <section class="section alt" id="encyclopedia">
  <div class="wrap">
@@ -539,10 +610,10 @@ var questions=[
 ];
 
 var baseNames={
- ERLP:'現実派プロデューサー',ERLF:'瞬発ムードメーカー',ERHP:'世話焼きキャプテン',ERHF:'陽気な寄り添い人',
- EVLP:'未来設計ストラテジスト',EVLF:'刺激追求クリエイター',EVHP:'理想共有ナビゲーター',EVHF:'夢見るムードメーカー',
- IRLP:'静かな現実設計者',IRLF:'マイペース職人',IRHP:'献身バランサー',IRHF:'やさしい感覚派',
- IVLP:'深読みプランナー',IVLF:'自由な空想家',IVHP:'洞察サポーター',IVHF:'感情世界の旅人'
+ ENFP:'ひらめきムードメーカー',INFP:'やさしい理想家',ENFJ:'情熱ナビゲーター',INFJ:'静かな洞察家',
+ ENTP:'好奇心ストラテジスト',INTP:'思考の探究者',ENTJ:'未来を動かす指揮役',INTJ:'静かな戦略家',
+ ESFJ:'愛情サポーター',ISFJ:'献身バランサー',ESTJ:'現実派リーダー',ISTJ:'誠実プランナー',
+ ESFP:'陽気なムードメーカー',ISFP:'感性マイペース',ESTP:'行動派チャレンジャー',ISTP:'クールな職人肌'
 };
 
 var subtypeData={
@@ -603,9 +674,9 @@ function calc(){
  var score={EI:0,RV:0,LH:0,PF:0,SA:0,DW:0};
  questions.forEach(function(q,i){score[q[1]]+=answers[i]});
  function pct(v){return Math.max(0,Math.min(100,Math.round((v+24)/48*100)))}
- var p={E:pct(score.EI),R:pct(score.RV),L:pct(score.LH),P:pct(score.PF),S:pct(score.SA),D:pct(score.DW)};
- p.I=100-p.E;p.V=100-p.R;p.H=100-p.L;p.F=100-p.P;p.A=100-p.S;p.W=100-p.D;
- var base=(score.EI>=0?'E':'I')+(score.RV>=0?'R':'V')+(score.LH>=0?'L':'H')+(score.PF>=0?'P':'F');
+ var p={E:pct(score.EI),S:pct(score.RV),T:pct(score.LH),J:pct(score.PF),SEC:pct(score.SA),LEAD:pct(score.DW)};
+ p.I=100-p.E;p.N=100-p.S;p.F=100-p.T;p.P=100-p.J;p.ANX=100-p.SEC;p.FOLLOW=100-p.LEAD;
+ var base=(score.EI>=0?'E':'I')+(score.RV>=0?'S':'N')+(score.LH>=0?'T':'F')+(score.PF>=0?'J':'P');
  var sub=(score.SA>=0?'S':'A')+(score.DW>=0?'D':'W');
  return {score:score,p:p,base:base,sub:sub};
 }
@@ -613,9 +684,9 @@ function calc(){
 function axisSentence(r){
  var bits=[];
  bits.push(r.p.E>=50?'人と関わりながら気持ちを動かす':'一人で気持ちを整えてから深く関わる');
- bits.push(r.p.R>=50?'事実と行動を重視する':'言葉の裏や未来まで想像する');
- bits.push(r.p.L>=50?'問題は整理して解決したい':'まず気持ちを分かり合いたい');
- bits.push(r.p.P>=50?'関係の見通しを作りたい':'その時の流れを大切にしたい');
+ bits.push(r.p.S>=50?'事実と行動を重視する':'意味や未来まで想像する');
+ bits.push(r.p.T>=50?'問題は整理して解決したい':'まず気持ちを分かり合いたい');
+ bits.push(r.p.J>=50?'関係の見通しを作りたい':'その時の流れを大切にしたい');
  return bits.join('、')+'タイプです。';
 }
 
@@ -636,10 +707,10 @@ function diagnose(){
 function showResult(r){
  var sub=subtypeData[r.sub];
  var baseName=baseNames[r.base]||'恋愛探究タイプ';
- var dependency=r.p.A;
- var emotional=r.p.H;
- var initiative=r.p.D;
- var stability=r.p.S;
+ var dependency=r.p.ANX;
+ var emotional=r.p.F;
+ var initiative=r.p.LEAD;
+ var stability=r.p.SEC;
  var loveScore=Math.round(40+(emotional*0.08)+(initiative*0.08)+(stability*0.06));
  loveScore=Math.max(35,Math.min(68,loveScore));
  var extremity=Object.keys({E:1,R:1,L:1,P:1,S:1,D:1}).reduce(function(sum,k){return sum+Math.abs(r.p[k]-50)},0)/6;
@@ -662,11 +733,11 @@ function showResult(r){
 
  var axes=[
   ['外向 E','内向 I',r.p.E],
-  ['現実 R','想像 V',r.p.R],
-  ['論理 L','共感 H',r.p.L],
-  ['計画 P','自由 F',r.p.P],
-  ['安心 S','不安 A',r.p.S],
-  ['リード D','待つ W',r.p.D]
+  ['感覚 S','直観 N',r.p.S],
+  ['思考 T','感情 F',r.p.T],
+  ['判断 J','知覚 P',r.p.J],
+  ['安心','不安',r.p.SEC],
+  ['リード','フォロー',r.p.LEAD]
  ];
  var bars=document.getElementById('bars');bars.innerHTML='';
  axes.forEach(function(a){
@@ -684,12 +755,12 @@ function showResult(r){
 
 function makeCompat(r){
  var oppositeEI=r.base[0]==='E'?'I':'E';
- var sameRV=r.base[1],sameLH=r.base[2],samePF=r.base[3];
+ var second=r.base[1],third=r.base[2],fourth=r.base[3];
  var softSub=r.sub==='AD'?'SW':r.sub==='AW'?'SD':r.sub==='SD'?'SW':'SD';
  return [
   r.base+'-'+(r.sub==='AD'?'SW':'SD'),
-  oppositeEI+sameRV+sameLH+samePF+'-'+softSub,
-  r.base[0]+(sameRV==='R'?'V':'R')+sameLH+samePF+'-'+r.sub
+  oppositeEI+second+third+fourth+'-'+softSub,
+  r.base[0]+(second==='S'?'N':'S')+third+fourth+'-'+r.sub
  ];
 }
 
