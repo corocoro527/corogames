@@ -98,6 +98,22 @@ a{color:inherit;text-decoration:none}
 details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 17px}
 summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;font-size:.86rem}
 .footer{padding:34px 0 36px;text-align:center;color:#999ca6;font-size:.74rem}.footer a{margin:0 8px}.operator{margin-top:12px;font-size:.68rem}
+.micro-editorial{max-width:760px;margin:18px auto 0;padding:10px 12px;border-top:1px solid #f0edf1;color:#aaa0a8;font-size:.66rem;line-height:1.7;text-align:center}
+.micro-editorial a{color:#9b8e96;text-decoration:underline;text-underline-offset:2px}
+.doll .arm{position:absolute;top:61px;width:12px;height:31px;background:var(--cloth);border:2px solid #3d3440;border-radius:9px;z-index:2}
+.doll .arm.l{left:12px;transform:rotate(18deg)}.doll .arm.r{right:11px;transform:rotate(-18deg)}
+.doll .shoe{position:absolute;top:105px;width:17px;height:8px;background:#3d3440;border-radius:7px;z-index:5}
+.doll .shoe.l{left:22px}.doll .shoe.r{right:21px}
+.doll .blush{position:absolute;top:37px;width:8px;height:4px;background:#f6a5ae;border-radius:999px;z-index:7;opacity:.7}
+.doll .blush.l{left:25px}.doll .blush.r{right:24px}
+.doll.pose-wave .arm.r{top:49px;right:3px;transform:rotate(-52deg)}
+.doll.pose-hug .arm.l{left:20px;transform:rotate(-42deg)}.doll.pose-hug .arm.r{right:18px;transform:rotate(42deg)}
+.doll.pose-run{transform:rotate(-2deg)}.doll.pose-run .arm.l{transform:rotate(55deg)}.doll.pose-run .arm.r{transform:rotate(-55deg)}
+.char-box{position:relative;overflow:hidden}
+.char-box:after{content:"";position:absolute;width:92px;height:26px;border-radius:50%;background:radial-gradient(ellipse,rgba(75,55,66,.12),transparent 70%);bottom:5px;left:50%;transform:translateX(-50%)}
+.preview-card:hover,.article-card:hover,.type-pill:hover{transform:translateY(-2px);transition:.18s ease}
+.start-btn:active,.sticky-cta button:active{transform:scale(.985)}
+.section-title:after{content:"";display:block;width:44px;height:3px;border-radius:99px;background:linear-gradient(90deg,#ff5e7c,#777cf4);margin:12px auto 0;opacity:.55}
 .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-top:1px solid #ececf1;padding:12px max(16px,env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center}
 .sticky-cta button{width:min(46vw,310px);min-height:56px;border:0;border-radius:16px;color:#fff;font-weight:1000;cursor:pointer}
 .sticky-cta .female{background:linear-gradient(135deg,#ff5e7c,#ff3e68)}.sticky-cta .male{background:linear-gradient(135deg,#7e80f7,#5964ee)}
@@ -117,79 +133,6 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
 <link rel="canonical" href="https://koropopgames.com/love-style.html">
 <meta name="koropop-updated" content="2026-10-04">
 
-<!-- KOROPOP_EDITORIAL_STYLE_START -->
-<style id="koropop-editorial-trust-style">
-
-.koropop-editorial-trust{
-  margin:16px 0 22px;
-  padding:15px 17px;
-  background:
-    linear-gradient(
-      135deg,
-      #f7fbff,
-      #fff 60%,
-      #f7f4ff
-    );
-  border:1px solid #d7e3ee;
-  border-radius:14px;
-  color:#475467;
-  font-size:.82rem;
-  line-height:1.65;
-}
-
-.koropop-editorial-head{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-bottom:7px;
-}
-
-.koropop-editorial-label{
-  display:inline-block;
-  padding:3px 7px;
-  border-radius:999px;
-  background:#e7f3ff;
-  border:1px solid #c8e1f7;
-  color:#1769b0;
-  font-size:.7rem;
-  font-weight:850;
-}
-
-.koropop-editorial-head strong{
-  color:#243b53 !important;
-}
-
-.koropop-editorial-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px 13px;
-  color:#667085;
-}
-
-.koropop-editorial-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:8px;
-}
-
-.koropop-editorial-links a{
-  font-size:.78rem;
-  font-weight:750;
-  text-decoration:none;
-}
-
-@media(max-width:600px){
-
-  .koropop-editorial-trust{
-    padding:13px 14px;
-  }
-
-}
-
-</style>
-<!-- KOROPOP_EDITORIAL_STYLE_END -->
 </head>
 <body>
 <header class="site-head">
@@ -202,58 +145,7 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
  <div class="proof">🎉 無料・登録不要・48問</div>
  <h1>16の性格 × 4つの恋愛スタイルでわかる、<br><em>あなたの恋愛・相性診断</em></h1>
 
-<!-- KOROPOP_EDITORIAL_TRUST_START -->
-<div
-  class="koropop-editorial-trust"
-  aria-label="記事の編集情報"
->
-
-  <div class="koropop-editorial-head">
-
-    <span class="koropop-editorial-label">
-      執筆・編集
-    </span>
-
-    <strong>
-      KOROPOP GAMES編集部
-    </strong>
-
-  </div>
-
-  <div class="koropop-editorial-meta">
-
-    <span>
-      🔄 最終更新 2026/10/4
-    </span>
-
-    <span>
-      🔎 制度・資格・給与などは
-      公的機関・公式情報を優先して確認
-    </span>
-
-  </div>
-
-  <div class="koropop-editorial-links">
-
-    <a href="about.html#editorial-policy">
-      編集方針
-    </a>
-
-    <a href="about.html#sources">
-      情報源について
-    </a>
-
-    <a href="contact.html">
-      誤りを報告
-    </a>
-
-  </div>
-
-</div>
-<!-- KOROPOP_EDITORIAL_TRUST_END -->
-
-
- <p class="lead">好きになると追う？待つ？　離れていても平気？　不安になりやすい？<br>性格と恋愛でしか出ない2つの軸を重ねて、あなたの「恋のクセ」を64タイプに分類します。</p>
+<p class="lead">好きになると追う？待つ？　離れていても平気？　不安になりやすい？<br>性格と恋愛でしか出ない2つの軸を重ねて、あなたの「恋のクセ」を64タイプに分類します。</p>
  <div class="start-caption">無料で診断する 👇</div>
  <div class="start-grid">
   <button class="start-btn f" onclick="startQuiz('female')">♡ 女性で始める</button>
@@ -265,22 +157,22 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
  <div class="char-marquee" aria-label="恋愛タイプのキャラクタープレビュー">
   <div class="char-track">
    
-   <div class="char-card"><div class="char-box"><div class="doll c1"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c2"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c3"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c5"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c6"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c7"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c1"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c2"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c3"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c5"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c6"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c7"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
-   <div class="char-card"><div class="char-box"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c1 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c2 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c3 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c4 "><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c5 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c6 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c7 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c8 "><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c1 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🧸</span></div></div><div class="char-label"><b>ENFP</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c2 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">📖</span></div></div><div class="char-label"><b>INTJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c3 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌼</span></div></div><div class="char-label"><b>ESFP</b>× 静かな待ち人</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c4 "><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">☕</span></div></div><div class="char-label"><b>ISTJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c5 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">💌</span></div></div><div class="char-label"><b>INFJ</b>× 直球リーダー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c6 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌿</span></div></div><div class="char-label"><b>ISFJ</b>× 安心サポーター</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c7 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🎧</span></div></div><div class="char-label"><b>ENFJ</b>× 全力チェイサー</div></div>
+   <div class="char-card"><div class="char-box"><div class="doll c8 "><i class="hair"></i><i class="head"></i><span class="face">•‿•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🔧</span></div></div><div class="char-label"><b>ISTP</b>× 静かな待ち人</div></div>
   </div>
  </div>
 </section>
@@ -308,7 +200,7 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
   <h2 class="section-title">📖 64タイプ図鑑</h2>
   <p class="section-sub">あなたはどのタイプ？　まずは8タイプをピックアップ。</p>
   <div class="type-preview">
-   <div class="preview-card"><div class="mini-char"><div class="doll c1"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🧸</span></div></div><div><strong>ENFP</strong><span>× 全力チェイサー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c2"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">📖</span></div></div><div><strong>INTJ</strong><span>× 直球リーダー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c5"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">💌</span></div></div><div><strong>INFJ</strong><span>× 直球リーダー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c7"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🎧</span></div></div><div><strong>ENFJ</strong><span>× 全力チェイサー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c6"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌿</span></div></div><div><strong>ISFJ</strong><span>× 安心サポーター</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c8"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🔧</span></div></div><div><strong>ISTP</strong><span>× 静かな待ち人</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c3"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">🌼</span></div></div><div><strong>ESFP</strong><span>× 静かな待ち人</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c4"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="leg l"></i><i class="leg r"></i><span class="acc">☕</span></div></div><div><strong>ISTJ</strong><span>× 安心サポーター</span></div></div>
+   <div class="preview-card"><div class="mini-char"><div class="doll c1 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🧸</span></div></div><div><strong>ENFP</strong><span>× 全力チェイサー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c2 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">📖</span></div></div><div><strong>INTJ</strong><span>× 直球リーダー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c5 pose-hug"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">💌</span></div></div><div><strong>INFJ</strong><span>× 直球リーダー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c7 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🎧</span></div></div><div><strong>ENFJ</strong><span>× 全力チェイサー</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c6 pose-wave"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌿</span></div></div><div><strong>ISFJ</strong><span>× 安心サポーター</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c8 "><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🔧</span></div></div><div><strong>ISTP</strong><span>× 静かな待ち人</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c3 pose-run"><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">🌼</span></div></div><div><strong>ESFP</strong><span>× 静かな待ち人</span></div></div><div class="preview-card"><div class="mini-char"><div class="doll c4 "><i class="hair"></i><i class="head"></i><span class="face">•ᴗ•</span><i class="body"></i><i class="arm l"></i><i class="arm r"></i><i class="leg l"></i><i class="leg r"></i><i class="shoe l"></i><i class="shoe r"></i><i class="blush l"></i><i class="blush r"></i><span class="acc">☕</span></div></div><div><strong>ISTJ</strong><span>× 安心サポーター</span></div></div>
   </div>
   <div class="outline-btn">全64タイプを見る → <small style="font-weight:700;color:#a68b94">（詳細図鑑は準備中）</small></div>
  </div>
@@ -413,6 +305,12 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
  </div>
 </div>
 </main>
+
+<div class="wrap micro-editorial">
+  執筆・編集：KOROPOP編集部 ／ 最終更新 2026/10/4 ／
+  <a href="about.html#editorial-policy">編集方針</a> ・
+  <a href="contact.html">お問い合わせ</a>
+</div>
 
 <div class="wrap footer">
  <a href="privacy.html">プライバシーポリシー</a>
