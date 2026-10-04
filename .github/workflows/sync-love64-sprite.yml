@@ -1,0 +1,25 @@
+name: Sync Love64 Sprite
+on:
+  push:
+    paths:
+      - ".github/workflows/sync-love64-sprite.yml"
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download approved Love64 sprite
+        run: |
+          mkdir -p assets
+          curl -fL "https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/a242fb99-bc7d-4373-b0df-f8deb46afb5b.webp" -o assets/love64-character-sprite.webp
+          test -s assets/love64-character-sprite.webp
+      - name: Commit sprite
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/love64-character-sprite.webp
+          git diff --cached --quiet && exit 0
+          git commit -m "Update Love64 character sprite"
+          git push
