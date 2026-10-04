@@ -871,201 +871,80 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 </style>
 
 
-<style id="love64-user-fix-v9">
-/* User-requested refinement: real chibi CTA icons + high-resolution sprite + chart-first catalog */
-.v6-mini-girl,.v6-mini-boy,
-.cta-person.cta-girl,.cta-person.cta-boy{
-  position:relative!important;
-  display:inline-block!important;
-  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important;
-  background-size:800% 800%!important;
-  background-repeat:no-repeat!important;
-  border:0!important;
-  box-shadow:none!important;
-}
-.v6-mini-girl,.v6-mini-boy{width:48px!important;height:48px!important;flex:0 0 48px!important;border-radius:12px!important}
-.v6-mini-girl,.cta-person.cta-girl{background-position:0% 0%!important}
-.v6-mini-boy,.cta-person.cta-boy{background-position:0% 100%!important}
-.v6-mini-girl:before,.v6-mini-girl:after,.v6-mini-boy:before,.v6-mini-boy:after,
-.cta-person.cta-girl:before,.cta-person.cta-girl:after,.cta-person.cta-boy:before,.cta-person.cta-boy:after{
-  display:none!important;content:none!important
-}
-.cta-person.cta-girl,.cta-person.cta-boy{width:44px!important;height:44px!important;flex:0 0 44px!important;border-radius:11px!important}
-.cta-person i{display:none!important}
 
-/* High-res sheet can safely render larger without the previous 448px blur. */
-.v7-sprite{
-  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important;
-  image-rendering:auto!important;
-}
-.v6-characters .v6-pixel.v7-sprite{height:118px!important;border-radius:14px!important}
-.v6-catalog .v6-pixel.v7-sprite{height:132px!important;border-radius:14px!important}
-.result-character{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important}
-
-/* Make the supplied full 64-type chart the primary catalog visual. */
-.v9-main-chart{
-  display:block;max-width:980px;margin:0 auto 24px;padding:10px;
-  border-radius:20px;background:#fff;border:1px solid #f0e8ec;
-  box-shadow:0 10px 28px rgba(51,43,58,.07);text-decoration:none
-}
-.v9-main-chart img{display:block;width:100%;height:auto;border-radius:14px}
-.v9-main-chart span{display:block;text-align:center;margin-top:9px;color:#e84a6d;font-size:.76rem;font-weight:900}
-
-/* Bring CTA proportions closer to the reference. */
-.v6-start{gap:8px!important}
-.v6-start>span:last-child{transform:translateY(.5px)}
-.sticky-cta button{gap:7px!important}
-
-@media(max-width:560px){
-  .v6-mini-girl,.v6-mini-boy{width:42px!important;height:42px!important;flex-basis:42px!important;transform:none!important;margin:0!important}
-  .cta-person.cta-girl,.cta-person.cta-boy{width:39px!important;height:39px!important;flex-basis:39px!important}
-  .v6-characters .v6-pixel.v7-sprite{height:106px!important}
-  .v6-catalog .v6-pixel.v7-sprite{height:112px!important}
-  .v9-main-chart{margin-bottom:18px;padding:6px;border-radius:15px}
-  .v9-main-chart img{border-radius:10px}
-}
-</style>
-
-
-<style id="love64-exact-chart-v10">
-.v10-chart-section{background:#fff;padding:54px 0 62px;border-top:10px solid #f7f7f9;border-bottom:10px solid #f7f7f9;text-align:center}
-.v10-chart-kicker{display:inline-block;margin-bottom:9px;color:#ef4c72;font-size:.7rem;font-weight:1000;letter-spacing:.12em}
-.v10-chart-section h2{margin:0 0 8px;font-size:clamp(1.5rem,5vw,2.15rem);letter-spacing:-.04em}
-.v10-chart-section p{max-width:700px;margin:0 auto 22px;color:#767986;font-size:.88rem;line-height:1.8}
-.v10-chart-card{display:block;width:min(100%,1120px);margin:0 auto;padding:8px;border-radius:22px;background:#fff;border:1px solid #f0e3e8;box-shadow:0 16px 42px rgba(54,42,49,.09)}
-.v10-chart-card img{display:block;width:100%;height:auto;border-radius:15px;image-rendering:auto}
-.v10-chart-zoom{display:inline-flex;margin-top:14px;padding:10px 16px;border-radius:999px;border:1px solid #ffb0c2;color:#e74b6e;background:#fff;font-size:.78rem;font-weight:950}
-.v10-cta-avatar{display:inline-block!important;width:52px!important;height:52px!important;flex:0 0 52px!important;border-radius:13px!important;background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important;background-size:800% 800%!important;background-repeat:no-repeat!important;background-color:rgba(255,255,255,.92)!important;box-shadow:0 0 0 2px rgba(255,255,255,.45)!important}
-.v10-girl{background-position:0% 0%!important}
-.v10-boy{background-position:0% 28.5714285714%!important}
-.v6-start,.sticky-cta button{display:flex!important;align-items:center!important;justify-content:center!important}
-.v6-start{gap:8px!important}.sticky-cta button{gap:6px!important}
-.sticky-cta .v10-cta-avatar{width:44px!important;height:44px!important;flex-basis:44px!important;border-radius:11px!important}
-.v7-sprite{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important;background-size:800% 800%!important;background-repeat:no-repeat!important;image-rendering:auto!important}
-.v6-characters .v6-pixel.v7-sprite{height:126px!important;background-color:#fff!important;border-radius:16px!important;box-shadow:0 5px 16px rgba(43,39,47,.06)!important}
-.v6-characters .v6-card{width:132px!important;flex-basis:132px!important}
-.v6-characters .v6-pixel.v7-sprite:before,.v6-characters .v6-pixel.v7-sprite:after,.v6-catalog .v6-pixel.v7-sprite:before,.v6-catalog .v6-pixel.v7-sprite:after{display:none!important}
-.result-character{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important}
-.v6-mini-girl,.v6-mini-boy,.cta-person{display:none!important}
-@media(max-width:560px){
- .v10-chart-section{padding:42px 0 48px;border-top-width:9px;border-bottom-width:9px}
- .v10-chart-section h2{font-size:1.42rem}.v10-chart-section p{font-size:.8rem;margin-bottom:16px}
- .v10-chart-card{padding:4px;border-radius:14px}.v10-chart-card img{border-radius:10px}
- .v10-cta-avatar{width:46px!important;height:46px!important;flex-basis:46px!important;border-radius:11px!important}
- .sticky-cta .v10-cta-avatar{width:39px!important;height:39px!important;flex-basis:39px!important}
- .v6-characters .v6-pixel.v7-sprite{height:112px!important}.v6-characters .v6-card{width:118px!important;flex-basis:118px!important}
-}
-</style>
-
-
-
-<style id="love64-correct-assets-v12">
-.v12-chart-section{background:#fff;padding:48px 0 58px;border-top:10px solid #f7f7f9;border-bottom:10px solid #f7f7f9;text-align:center}
-.v12-kicker{color:#ec4c70;font-size:.68rem;font-weight:1000;letter-spacing:.14em;margin-bottom:7px}
-.v12-chart-section h2{margin:0 0 8px;font-size:clamp(1.5rem,5vw,2.1rem);letter-spacing:-.04em}
-.v12-chart-section p{max-width:720px;margin:0 auto 20px;color:#777a86;line-height:1.8;font-size:.86rem}
-.v12-chart{display:block;width:min(100%,1180px);margin:auto;padding:6px;background:#fff;border:1px solid #f0e5e9;border-radius:20px;box-shadow:0 15px 38px rgba(50,42,47,.08)}
-.v12-chart img{display:block;width:100%;height:auto;border-radius:14px;image-rendering:auto}
-.v12-chart-link{display:inline-block;margin-top:14px;padding:11px 17px;border:1px solid #ffadbf;border-radius:999px;color:#e74a6c;background:#fff;font-size:.78rem;font-weight:1000}
-
-/* Correct approved Love64 sprite — not the old 裏性格 assets. */
-.v10-cta-avatar,.v7-sprite,.result-character,.v6-pixel.v7-sprite{
-  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/1427ae38-cd22-4d27-b649-bfb6a5217788.jpg')!important;
-  background-size:800% 800%!important;
-  background-repeat:no-repeat!important;
-  image-rendering:auto!important;
-}
-.v10-cta-avatar{display:inline-block!important;width:52px!important;height:52px!important;flex:0 0 52px!important;border-radius:12px!important;background-color:#fff!important;box-shadow:none!important}
-.v10-girl{background-position:0% 0%!important}
-.v10-boy{background-position:0% 28.5714285714%!important}
-.v6-start,.sticky-cta button{display:flex!important;align-items:center!important;justify-content:center!important}
-.v6-start{gap:8px!important}.sticky-cta button{gap:7px!important}
-.sticky-cta .v10-cta-avatar{width:44px!important;height:44px!important;flex-basis:44px!important}
-.v6-mini-girl,.v6-mini-boy,.cta-person{display:none!important}
-.v6-characters{display:block!important;visibility:visible!important}
-.v6-characters .v6-pixel.v7-sprite{display:block!important;height:120px!important;border-radius:14px!important;background-color:#fff!important;box-shadow:0 4px 14px rgba(43,38,44,.06)!important}
-.v6-pixel.v7-sprite:before,.v6-pixel.v7-sprite:after{display:none!important;content:none!important}
-.v6-characters .v6-card{width:128px!important;flex-basis:128px!important}
-.v6-catalog .v6-pixel.v7-sprite{height:125px!important}
-.result-character{width:112px!important;height:112px!important}
-
-@media(max-width:560px){
- .v12-chart-section{padding:40px 0 46px;border-top-width:9px;border-bottom-width:9px}
- .v12-chart-section h2{font-size:1.4rem}.v12-chart-section p{font-size:.79rem;margin-bottom:14px}
- .v12-chart{padding:4px;border-radius:14px}.v12-chart img{border-radius:10px}
- .v10-cta-avatar{width:45px!important;height:45px!important;flex-basis:45px!important}
- .sticky-cta .v10-cta-avatar{width:38px!important;height:38px!important;flex-basis:38px!important}
- .v6-characters .v6-pixel.v7-sprite{height:108px!important}
- .v6-characters .v6-card{width:116px!important;flex-basis:116px!important}
- .v6-catalog .v6-pixel.v7-sprite{height:110px!important}
-}
-</style>
-
-
-<style id="love64-reference-layout-v14">
-/* Final reference-matched Love64 presentation. Uses the exact user-approved 5th image. */
-#landingV6 .v6-strip-head{display:none!important}
-
-#landingV6 .v7-sprite,
-#landingV6 .result-character,
-#landingV6 .v10-cta-avatar{
-  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/a3cdcad3-9db9-4819-be89-58693896cfb4.jpg')!important;
-  background-size:1600% 853.333333%!important;
-  background-repeat:no-repeat!important;
-  background-position:var(--x,0%) var(--y,4.977876%)!important;
-  image-rendering:auto!important;
-}
-
-/* Reference-like character strip: clean full characters on soft pink tiles, two moving rows. */
+<style id="love64-final-mockup-v15">
+/* Final UI based on the approved mockups. */
 #landingV6 .v6-characters{
   background:#fff!important;
-  padding:66px 0 54px!important;
+  padding:54px 0 48px!important;
   overflow:hidden!important;
 }
-#landingV6 .v6-rail{gap:18px!important}
-#landingV6 .v6-rail2{margin-top:20px!important}
+#landingV6 .v6-strip-head{
+  display:block!important;
+  margin:0 auto 16px!important;
+}
+#landingV6 .v6-strip-head b{font-size:1rem!important;color:#232632!important}
+#landingV6 .v6-strip-head span{font-size:.72rem!important;color:#9a9da8!important}
+
+/* Clean 16-MBTI avatar sprite made from the approved mockup. */
 #landingV6 .v6-card{
-  width:116px!important;
-  flex:0 0 116px!important;
-  text-align:center!important;
-  color:#9899a3!important;
+  width:118px!important;
+  flex:0 0 118px!important;
   background:transparent!important;
+  text-align:center!important;
 }
 #landingV6 .v6-card .v6-pixel{
-  width:102px!important;
-  height:122px!important;
+  width:112px!important;
+  height:108px!important;
   margin:0 auto!important;
+  border:0!important;
   border-radius:18px!important;
-  border:1px solid #f7d9e2!important;
-  background-color:#fff6f9!important;
-  box-shadow:0 3px 10px rgba(71,49,59,.04)!important;
+  box-shadow:none!important;
+  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/e1190952-6847-4a7d-90fa-a1aa2856c1eb.png')!important;
+  background-size:400% 400%!important;
+  background-repeat:no-repeat!important;
+  background-position:var(--sx,0%) var(--sy,0%)!important;
+  background-color:#fff3f7!important;
 }
 #landingV6 .v6-card b{
   display:block!important;
-  margin-top:10px!important;
-  font-size:.79rem!important;
+  margin-top:9px!important;
+  color:#666a75!important;
+  font-size:.78rem!important;
   line-height:1.2!important;
-  color:#6d6e78!important;
 }
 #landingV6 .v6-card span{
+  display:block!important;
   margin-top:3px!important;
+  color:#9a9da7!important;
   font-size:.65rem!important;
-  color:#a0a1aa!important;
+  line-height:1.3!important;
 }
+#landingV6 .v6-rail{gap:18px!important}
+#landingV6 .v6-rail2{margin-top:17px!important}
 
-/* CTA characters sit directly in the buttons like the reference. */
+/* CTA buttons: preserve red/blue fills, remove white image boxes. */
 #landingV6 .v10-cta-avatar{
-  width:42px!important;height:52px!important;flex:0 0 42px!important;
-  border:0!important;border-radius:0!important;background-color:transparent!important;
+  width:50px!important;
+  height:56px!important;
+  flex:0 0 50px!important;
+  border:0!important;
+  border-radius:0!important;
   box-shadow:none!important;
+  background-color:transparent!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:contain!important;
 }
-#landingV6 .sticky-cta .v10-cta-avatar{
-  width:31px!important;height:39px!important;flex-basis:31px!important;
-}
+#landingV6 .v10-girl{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/0121459c-e6cb-4a22-bab0-cafa853f0d88.png')!important}
+#landingV6 .v10-boy{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/d3f7fe33-2135-4320-b5ac-81f7616350e2.png')!important}
 #landingV6 .v6-start{gap:8px!important}
 #landingV6 .sticky-cta button{gap:7px!important}
+#landingV6 .sticky-cta .v10-cta-avatar{
+  width:40px!important;height:44px!important;flex-basis:40px!important;
+}
 
-/* Reference-like 64 type sample catalog. */
+/* Sample 64 catalog: no cropped source text, every card gets a clean character. */
 #landingV6 .v6-catalog{
   display:grid!important;
   grid-template-columns:1fr 1fr!important;
@@ -1077,85 +956,83 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   display:flex!important;
   align-items:center!important;
   gap:12px!important;
-  min-height:112px!important;
+  min-height:110px!important;
   padding:14px 16px!important;
+  border:1.5px solid #f3cfd8!important;
   border-radius:20px!important;
   background:#fff!important;
-  box-shadow:0 5px 15px rgba(45,40,50,.035)!important;
   text-align:left!important;
+  box-shadow:0 4px 14px rgba(50,42,48,.035)!important;
 }
-#landingV6 .v6-catalog article:nth-child(odd){
-  border:1.5px solid #f6cfd8!important;
+#landingV6 .v6-cat-avatar{
+  width:78px!important;
+  height:76px!important;
+  flex:0 0 78px!important;
+  border-radius:14px!important;
+  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/e1190952-6847-4a7d-90fa-a1aa2856c1eb.png')!important;
+  background-size:400% 400%!important;
+  background-repeat:no-repeat!important;
+  background-position:var(--sx,0%) var(--sy,0%)!important;
+  background-color:#fff2f6!important;
 }
-#landingV6 .v6-catalog article:nth-child(even){
-  border:1.5px solid #d5e3fa!important;
-}
-#landingV6 .v6-catalog .v6-pixel{
-  width:74px!important;height:92px!important;flex:0 0 74px!important;
-  border-radius:15px!important;border:0!important;
-  background-color:#fff3f7!important;
-  box-shadow:none!important;
-}
-#landingV6 .v6-cat-copy{min-width:0!important}
+#landingV6 .v6-cat-copy{min-width:0}
 #landingV6 .v6-cat-copy b{
   display:block!important;
   margin:0 0 3px!important;
-  font-size:1.02rem!important;
-  color:#fb4d70!important;
+  color:#202330!important;
+  font-size:1rem!important;
   line-height:1.15!important;
-}
-#landingV6 .v6-catalog article:nth-child(even) .v6-cat-copy b{
-  color:#5188e8!important;
 }
 #landingV6 .v6-cat-copy span{
   display:block!important;
   margin:0!important;
-  font-size:.76rem!important;
-  color:#7f818d!important;
+  color:#7f828d!important;
+  font-size:.74rem!important;
   line-height:1.35!important;
 }
 #landingV6 .v6-outline{
   display:block!important;
   max-width:760px!important;
   margin:18px auto 0!important;
-  background:#fff7f9!important;
-  border:1px solid #ffb5c5!important;
-  color:#e74769!important;
   padding:14px!important;
+  border:1px solid #ffb5c5!important;
   border-radius:18px!important;
+  background:#fff7f9!important;
+  color:#e74769!important;
+  text-align:center!important;
 }
 
-/* Result card uses the same clean character crop. */
+/* Result keeps subtype-specific art from the 64-type source, but with a clean white frame. */
 #landingV6 .result-character{
-  width:104px!important;height:130px!important;
-  border-radius:18px!important;
-  background-color:#fff5f8!important;
-  border:1px solid #f2dbe3!important;
+  width:108px!important;height:132px!important;
+  border:0!important;border-radius:16px!important;
+  box-shadow:none!important;background-color:#fff!important;
+  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/a3cdcad3-9db9-4819-be89-58693896cfb4.jpg')!important;
+  background-size:1600% 853.333333%!important;
+  background-repeat:no-repeat!important;
+  background-position:var(--x,0%) var(--y,4.977876%)!important;
 }
 
 @media(max-width:560px){
-  #landingV6 .v6-characters{padding:58px 0 48px!important}
-  #landingV6 .v6-rail{gap:15px!important}
-  #landingV6 .v6-card{width:104px!important;flex-basis:104px!important}
-  #landingV6 .v6-card .v6-pixel{width:92px!important;height:110px!important;border-radius:16px!important}
+  #landingV6 .v6-characters{padding:48px 0 42px!important}
+  #landingV6 .v6-card{width:106px!important;flex-basis:106px!important}
+  #landingV6 .v6-card .v6-pixel{width:100px!important;height:97px!important;border-radius:16px!important}
+  #landingV6 .v6-rail{gap:14px!important}
   #landingV6 .v6-card b{font-size:.74rem!important}
   #landingV6 .v6-card span{font-size:.61rem!important}
+  #landingV6 .v10-cta-avatar{width:44px!important;height:49px!important;flex-basis:44px!important}
+  #landingV6 .sticky-cta .v10-cta-avatar{width:34px!important;height:38px!important;flex-basis:34px!important}
 
   #landingV6 .v6-catalog{gap:9px!important}
   #landingV6 .v6-catalog article{
     min-height:98px!important;
-    gap:8px!important;
-    padding:10px 9px!important;
+    gap:9px!important;
+    padding:10px!important;
     border-radius:17px!important;
   }
-  #landingV6 .v6-catalog .v6-pixel{
-    width:58px!important;height:73px!important;flex-basis:58px!important;
-    border-radius:12px!important;
-  }
+  #landingV6 .v6-cat-avatar{width:64px!important;height:62px!important;flex-basis:64px!important;border-radius:12px!important}
   #landingV6 .v6-cat-copy b{font-size:.88rem!important}
   #landingV6 .v6-cat-copy span{font-size:.65rem!important}
-  #landingV6 .v10-cta-avatar{width:37px!important;height:46px!important;flex-basis:37px!important}
-  #landingV6 .sticky-cta .v10-cta-avatar{width:28px!important;height:35px!important;flex-basis:28px!important}
 }
 </style>
 </head>
@@ -1987,70 +1864,58 @@ function restart(){
 </script>
 
 
-<script id="love64-character-sprite-v7">
+
+<script id="love64-final-mockup-v15">
 (function(){
- const styleNames=['愛の先導者','包容の人','情熱の迷子','静かな渇望'];
- const types=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
- function pos(i){return {x:(i%8)/7*100,y:Math.floor(i/8)/7*100}}
- function sprite(i,extra){var p=pos(i);return '<div class="v6-pixel v7-sprite '+(extra||'')+'" style="--x:'+p.x+'%;--y:'+p.y+'%"></div>'}
- function render(){
-  var section=null;
-  var cat=document.querySelector('.v6-catalog');
-  if(cat){
-   var picks2=[0,5,10,15,16,25,50,63];
-   cat.innerHTML=picks2.map(function(i){var t=Math.floor(i/4),st=i%4;return '<article>'+sprite(i)+'<b>'+types[t]+'</b><span>× '+styleNames[st]+'</span></article>'}).join('');
+  var spriteOrder=['ISFP','ENTJ','INFP','ESFP','ISTJ','ESTP','ISTP','INTP','ENFP','INTJ','ENFJ','INFJ','ENTP','ISFJ','ESTJ','ESFJ'];
+  var styleNames=['愛の先導者','包容の人','情熱の迷子','静かな渇望'];
+  function pos16(mbti){
+    var i=spriteOrder.indexOf(mbti); if(i<0)i=0;
+    var col=i%4,row=Math.floor(i/4);
+    return {x:(col/3*100)+'%',y:(row/3*100)+'%'};
   }
- }
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
-})();
-</script>
+  function apply16(el,mbti){
+    if(!el)return; var p=pos16(mbti);
+    el.style.setProperty('--sx',p.x);
+    el.style.setProperty('--sy',p.y);
+  }
 
-<script id="love64-sprite-map-v8">
-window.LOVE64_SPRITE_ORDER=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
-window.LOVE64_SUB_ORDER=['SD','SW','AD','AW'];
-window.love64SpritePos=function(base,sub){
-  var bi=window.LOVE64_SPRITE_ORDER.indexOf(base),si=window.LOVE64_SUB_ORDER.indexOf(sub);
-  var idx=Math.max(0,bi)*4+Math.max(0,si),col=idx%8,row=Math.floor(idx/8);
-  return {x:(col/7*100)+'%',y:(row/7*100)+'%'};
-};
-</script>
+  function renderLanding(){
+    document.querySelectorAll('#landingV6 .v6-card').forEach(function(card){
+      var mbti=(card.querySelector('b')||{}).textContent||'';
+      apply16(card.querySelector('.v6-pixel'),mbti.trim());
+    });
 
+    var cat=document.querySelector('#landingV6 .v6-catalog');
+    if(cat){
+      var picks=[
+        ['ENFP','愛の先導者'],
+        ['INFP','包容の人'],
+        ['ENFJ','情熱の迷子'],
+        ['INFJ','静かな渇望'],
+        ['ENTP','愛の先導者'],
+        ['INTJ','静かな渇望'],
+        ['ESFP','情熱の迷子'],
+        ['ISTP','包容の人']
+      ];
+      cat.innerHTML=picks.map(function(p){
+        return '<article><div class="v6-cat-avatar" data-mbti="'+p[0]+'"></div><div class="v6-cat-copy"><b>'+p[0]+'</b><span>× '+p[1]+'</span></div></article>';
+      }).join('');
+      cat.querySelectorAll('.v6-cat-avatar').forEach(function(el){apply16(el,el.dataset.mbti)});
+    }
+  }
 
-
-
-
-<script id="love64-reference-layout-v14">
-(function(){
-  var order=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
-  var subMap={'愛の先導者':0,'包容の人':1,'情熱の迷子':2,'静かな渇望':3,SD:0,SW:1,AD:2,AW:3};
-  function chartPos(mbti,sub){
-    var ti=order.indexOf(mbti); if(ti<0)ti=0;
-    var si=(typeof sub==='number')?sub:(subMap[sub] ?? 0);
-    var blockCol=ti%4, blockRow=Math.floor(ti/4);
-    var globalCol=blockCol*4+si;
+  var subMap={SD:0,SW:1,AD:2,AW:3,'愛の先導者':0,'包容の人':1,'情熱の迷子':2,'静かな渇望':3};
+  var allOrder=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
+  window.love64SpritePos=function(base,sub){
+    var ti=allOrder.indexOf(base); if(ti<0)ti=0;
+    var si=(typeof sub==='number')?sub:(subMap[sub]??0);
+    var blockCol=ti%4,blockRow=Math.floor(ti/4),globalCol=blockCol*4+si;
     return {x:(globalCol/15*100).toFixed(6)+'%',y:((blockRow*256+45)/904*100).toFixed(6)+'%'};
-  }
-  function apply(el,mbti,sub){
-    if(!el)return; var p=chartPos(mbti,sub);
-    el.style.setProperty('--x',p.x); el.style.setProperty('--y',p.y);
-  }
+  };
 
-  document.querySelectorAll('#landingV6 .v6-card').forEach(function(card){
-    var mbti=(card.querySelector('b')||{}).textContent||'';
-    var st=((card.querySelector('span')||{}).textContent||'').replace('×','').trim();
-    apply(card.querySelector('.v7-sprite'),mbti,st);
-  });
-
-  document.querySelectorAll('#landingV6 .v6-catalog article').forEach(function(card){
-    var mbti=(card.querySelector('b')||{}).textContent||'';
-    var st=((card.querySelector('span')||{}).textContent||'').replace('×','').trim();
-    apply(card.querySelector('.v7-sprite'),mbti,st);
-  });
-
-  document.querySelectorAll('#landingV6 .v10-girl').forEach(function(el){apply(el,'ENFP',0)});
-  document.querySelectorAll('#landingV6 .v10-boy').forEach(function(el){apply(el,'ENTP',0)});
-
-  window.love64SpritePos=function(base,sub){return chartPos(base,sub)};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderLanding);
+  else renderLanding();
 })();
 </script>
 </body>
