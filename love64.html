@@ -1213,6 +1213,97 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   #landingV6 .v6-section h2{font-size:1.3rem!important}
 }
 </style>
+
+<style id="love64-polish-v17">
+/* Final mobile polish requested after visual QA. */
+
+/* 2-axis card: keep all axis labels horizontal and outside the matrix. */
+#landingV6 .v16-axis-wrap{
+  padding:62px 16px 32px!important;
+}
+#landingV6 .v16-axis-top,
+#landingV6 .v16-axis-bottom,
+#landingV6 .v16-axis-left,
+#landingV6 .v16-axis-right{
+  position:absolute!important;
+  transform:none!important;
+  writing-mode:horizontal-tb!important;
+  white-space:nowrap!important;
+  color:#e75578!important;
+  font-size:.68rem!important;
+  font-weight:950!important;
+  line-height:1!important;
+}
+#landingV6 .v16-axis-top{
+  top:10px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+}
+#landingV6 .v16-axis-left{
+  top:36px!important;
+  left:10px!important;
+  right:auto!important;
+}
+#landingV6 .v16-axis-right{
+  top:36px!important;
+  right:10px!important;
+  left:auto!important;
+}
+#landingV6 .v16-axis-bottom{
+  bottom:7px!important;
+  left:50%!important;
+  right:auto!important;
+  transform:translateX(-50%)!important;
+}
+
+/* Keep the grid itself clean and easy to scan. */
+#landingV6 .v16-axis-grid{
+  border-radius:16px!important;
+  overflow:hidden!important;
+  border-left:1.5px solid #ed6b88!important;
+  border-top:1.5px solid #ed6b88!important;
+  background:#fff!important;
+}
+#landingV6 .v16-axis-grid>div{
+  min-height:102px!important;
+  padding:10px 8px!important;
+}
+#landingV6 .v16-axis-grid b{
+  margin-bottom:3px!important;
+}
+#landingV6 .v16-axis-grid small{
+  color:#737680!important;
+}
+
+/* Avoid the sticky CTA eating the final content. */
+#landingV6{
+  padding-bottom:118px!important;
+}
+#landingV6 .v6-footer,
+#landingV6 #faq{
+  scroll-margin-bottom:120px!important;
+}
+
+/* Slightly tighter sample-catalog spacing. */
+#landingV6 .v6-cat-copy b{margin-bottom:2px!important}
+#landingV6 .v6-cat-copy span{line-height:1.25!important}
+#landingV6 .v6-catalog article{align-items:center!important}
+
+@media(max-width:760px){
+  #landingV6 .v16-axis-wrap{
+    padding:60px 12px 31px!important;
+  }
+  #landingV6 .v16-axis-left{left:7px!important}
+  #landingV6 .v16-axis-right{right:7px!important}
+  #landingV6 .v16-axis-grid>div{
+    min-height:90px!important;
+    padding:8px 5px!important;
+  }
+  #landingV6 .v16-axis-grid b{font-size:.75rem!important}
+  #landingV6 .v16-axis-grid small{font-size:.57rem!important}
+}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -1279,9 +1370,9 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
             <span class="v16-axis-left">← リード型</span>
             <span class="v16-axis-right">フォロー型 →</span>
             <div class="v16-axis-grid">
-              <div><span class="v16-axis-char c1"></span><b>愛の先導者</b><small>安心しながら<br>自分から動く</small></div>
-              <div><span class="v16-axis-char c2"></span><b>包容の人</b><small>相手を尊重し<br>ゆっくり育てる</small></div>
-              <div><span class="v16-axis-char c3"></span><b>情熱の迷子</b><small>好きほど熱く<br>確かめたくなる</small></div>
+              <div><span class="v16-axis-char c1"></span><b>愛の先導者</b><small>安心して<br>自分から動く</small></div>
+              <div><span class="v16-axis-char c2"></span><b>包容の人</b><small>相手を尊重して<br>育てる</small></div>
+              <div><span class="v16-axis-char c3"></span><b>情熱の迷子</b><small>好きほど熱く<br>不安になる</small></div>
               <div><span class="v16-axis-char c4"></span><b>静かな渇望</b><small>深く想って<br>反応を待つ</small></div>
             </div>
           </div>
