@@ -253,6 +253,16 @@ summary{cursor:pointer;font-weight:900} details p{color:#6f7280;line-height:1.8;
 <link rel="canonical" href="https://koropopgames.com/love64.html">
 <style id="love64-no-article-ui">
 .koropop-breadcrumb,.koropop-article-meta,.koropop-auto-toc,.koropop-reader-actions,#koropop-progress{display:none!important}
+
+.quiz-controls{display:grid;grid-template-columns:1fr 1.4fr;gap:12px;margin:12px 0 36px}
+.quiz-controls button{min-height:58px;border:1px solid #f1cbd5;border-radius:16px;background:#fff;color:#9b5268;font-weight:950;cursor:pointer}
+.quiz-controls button:last-child{border:0;background:linear-gradient(100deg,#ec4f87,#ff6f8b);color:#fff;box-shadow:0 10px 24px rgba(236,79,135,.18)}
+.quiz-controls button:disabled{opacity:.42;cursor:not-allowed}
+.question-enter{animation:questionIn .24s ease-out}
+@keyframes questionIn{from{opacity:.25;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.score-explainer{max-width:760px;margin:14px auto;text-align:center;line-height:1.7}
+.score span{display:block;margin-top:4px;color:#927d87;font-weight:750;font-size:.65rem}
+@media(prefers-reduced-motion:reduce){.question-enter{animation:none}}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded',function(){
@@ -495,14 +505,17 @@ document.addEventListener('DOMContentLoaded',function(){
 </div>
 <div class="progress-wrap">
  <div class="wrap">
-  <div class="progress-meta"><span id="progressText">0 / 48 回答済み</span><span id="progressPct">0%</span></div>
+  <div class="progress-meta"><span id="progressText">質問 1 / 48</span><span id="progressPct">回答済み 0 / 48</span></div>
   <div class="progress"><div id="progressBar"></div></div>
  </div>
 </div>
 <div class="wrap">
- <div id="quizArea"></div>
- <div class="error" id="error"></div>
- <button class="submit" onclick="diagnose()">診断結果を見る ♡</button>
+ <div id="quizArea"><article class="q-card" id="currentQuestion"></article></div>
+ <div class="error" id="error" role="status" aria-live="polite"></div>
+ <div class="quiz-controls">
+  <button type="button" id="previousQuestionBtn" onclick="previousQuestion()">← 前の質問</button>
+  <button type="button" id="nextQuestionBtn" onclick="nextQuestion()">次の質問 →</button>
+ </div>
 </div>
 </main>
 
@@ -516,10 +529,11 @@ document.addEventListener('DOMContentLoaded',function(){
  </section>
 
  <div class="score-grid">
-  <div class="score"><small>恋愛スコア</small><b id="loveScore">--</b></div>
-  <div class="score"><small>依存度</small><b id="dependency">--</b></div>
-  <div class="score"><small>レア度</small><b id="rarity">--</b></div>
+  <div class="score"><small>恋愛スコア</small><b id="loveScore">--</b><span>回答傾向</span></div>
+  <div class="score"><small>依存度</small><b id="dependency">--</b><span>安心感への敏感さ</span></div>
+  <div class="score"><small>レア度</small><b id="rarity">--</b><span>回答パターンの目安</span></div>
  </div>
+ <p class="result-note score-explainer">依存度は、恋愛中の不安や相手の反応への敏感さを回答から数値化した目安です。医療的な判定ではありません。レア度も実測の利用者順位ではなく、回答パターンから算出した診断内の目安です。</p>
 
  <div class="result-card"><h2>💘 30秒でわかるあなたの恋愛</h2><p id="summary"></p></div>
  <div class="result-card"><h2>📊 6軸バランス</h2><div class="bars" id="bars"></div><p class="result-note">％は回答から算出した診断内スコアです。</p></div>
@@ -560,6 +574,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <script>
 var selectedGender='none';
 var answers={};
+var currentQuestion=0;
 
 var questions=[
 ['好きな人ができると、会う予定を自分から作りたくなる。','EI'],
@@ -633,6 +648,7 @@ var subtypeData={
 
 function startQuiz(g){
  selectedGender=g;
+ currentQuestion=0;
  document.getElementById('landing').style.display='none';
  document.getElementById('resultScreen').style.display='none';
  document.getElementById('quizScreen').style.display='block';
@@ -642,40 +658,81 @@ function startQuiz(g){
 }
 
 function renderQuiz(){
- var area=document.getElementById('quizArea');
- area.innerHTML='';
- questions.forEach(function(q,i){
-  var card=document.createElement('article');
-  card.className='q-card';card.id='q'+i;
-  var html='<div class="q-num">QUESTION '+String(i+1).padStart(2,'0')+'</div>';
-  html+='<div class="q-title">'+q[0]+'</div>';
-  html+='<div class="scale-labels"><span>そう思う</span><span>そう思わない</span></div>';
-  html+='<div class="scale">';
-  [3,2,1,0,-1,-2,-3].forEach(function(v){
-   html+='<button type="button" aria-label="回答 '+v+'" data-i="'+i+'" data-v="'+v+'"></button>';
-  });
-  html+='</div>';
-  card.innerHTML=html;
-  area.appendChild(card);
+ answers={};
+ renderQuestion();
+ updateProgress();
+}
+
+function renderQuestion(){
+ var area=document.getElementById('currentQuestion');
+ var q=questions[currentQuestion];
+ area.classList.remove('question-enter');
+ void area.offsetWidth;
+ var html='<div class="q-num">QUESTION '+String(currentQuestion+1).padStart(2,'0')+' / '+questions.length+'</div>';
+ html+='<div class="q-title" id="currentQuestionTitle">'+q[0]+'</div>';
+ html+='<div class="scale-labels"><span>とてもそう思う</span><span>そう思わない</span></div>';
+ html+='<div class="scale" role="group" aria-labelledby="currentQuestionTitle">';
+ var choices=[{v:3,label:'かなりそう思う'},{v:2,label:'そう思う'},{v:1,label:'少しそう思う'},{v:0,label:'どちらともいえない'},{v:-1,label:'あまりそう思わない'},{v:-2,label:'そう思わない'},{v:-3,label:'まったくそう思わない'}];
+ choices.forEach(function(choice){
+  html+='<button type="button" aria-label="'+choice.label+'" data-v="'+choice.v+'"'+(answers[currentQuestion]===choice.v?' class="selected"':'')+'></button>';
  });
+ html+='</div>';
+ area.innerHTML=html;
+ area.classList.add('question-enter');
  area.querySelectorAll('.scale button').forEach(function(btn){
   btn.addEventListener('click',function(){
-   var i=Number(this.dataset.i),v=Number(this.dataset.v);
-   answers[i]=v;
-   document.querySelectorAll('#q'+i+' .scale button').forEach(function(b){b.classList.remove('selected')});
+   answers[currentQuestion]=Number(this.dataset.v);
+   area.querySelectorAll('.scale button').forEach(function(b){b.classList.remove('selected')});
    this.classList.add('selected');
    updateProgress();
+   var error=document.getElementById('error'); error.style.display='none'; error.textContent='';
   });
  });
- updateProgress();
+ document.getElementById('previousQuestionBtn').disabled=currentQuestion===0;
+ var next=document.getElementById('nextQuestionBtn');
+ next.textContent=currentQuestion===questions.length-1?'診断結果を見る ♡':'次の質問 →';
+ next.setAttribute('aria-label',currentQuestion===questions.length-1?'診断結果を見る':'次の質問へ');
 }
 
 function updateProgress(){
  var n=Object.keys(answers).length;
  var p=Math.round(n/questions.length*100);
- document.getElementById('progressText').textContent=n+' / '+questions.length+' 回答済み';
- document.getElementById('progressPct').textContent=p+'%';
+ document.getElementById('progressText').textContent='質問 '+(currentQuestion+1)+' / '+questions.length;
+ document.getElementById('progressPct').textContent='回答済み '+n+' / '+questions.length;
  document.getElementById('progressBar').style.width=p+'%';
+}
+
+function previousQuestion(){
+ if(currentQuestion<=0)return;
+ currentQuestion--;
+ renderQuestion();
+ updateProgress();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function nextQuestion(){
+ if(answers[currentQuestion]===undefined){
+  var e=document.getElementById('error');e.style.display='block';e.textContent='回答を選んでから次へ進んでな。';
+  return;
+ }
+ if(currentQuestion===questions.length-1){diagnose();return}
+ currentQuestion++;
+ renderQuestion();
+ updateProgress();
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function diagnose(){
+ var missing=questions.findIndex(function(_,i){return answers[i]===undefined});
+ if(missing!==-1){
+  currentQuestion=missing;renderQuestion();updateProgress();
+  var e=document.getElementById('error');e.style.display='block';e.textContent='未回答の質問へ戻りました。回答を選んでな。';
+  window.scrollTo({top:0,behavior:'smooth'});
+  return;
+ }
+ document.getElementById('error').style.display='none';
+ var r=calc();
+ showResult(r);
 }
 
 function calc(){
@@ -727,8 +784,8 @@ function showResult(r){
  document.getElementById('quizScreen').style.display='none';
  document.getElementById('resultScreen').style.display='block';
  document.getElementById('resultCode').textContent=r.base+'-'+r.sub;
- document.getElementById('resultName').textContent=sub.icon+' '+baseName;
- document.getElementById('resultSub').textContent='恋愛サブタイプ：'+sub.name;
+ document.getElementById('resultName').textContent=sub.icon+' '+baseName+' × '+sub.name;
+ document.getElementById('resultSub').textContent='恋愛スタイル：'+sub.name+' ／ 安心感 × アプローチ';
  document.getElementById('loveScore').textContent=loveScore;
  document.getElementById('dependency').textContent=dependency+'%';
  document.getElementById('rarity').textContent='上位'+rarity+'%相当';
