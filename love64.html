@@ -840,7 +840,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 
 
 <style id="love64-character-sprite-v7">
-.v7-sprite{background-image:url('assets/love64-character-sprite.webp')!important;background-size:800% 800%!important;background-position:var(--x) var(--y)!important;background-repeat:no-repeat!important}
+.v7-sprite{background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png')!important;background-size:800% 800%!important;background-position:var(--x) var(--y)!important;background-repeat:no-repeat!important}
 .v6-characters .v6-pixel.v7-sprite:before,.v6-characters .v6-pixel.v7-sprite:after,
 .v6-catalog .v6-pixel.v7-sprite:before,.v6-catalog .v6-pixel.v7-sprite:after{display:none!important}
 .v6-characters .v6-pixel.v7-sprite{height:108px;background-color:#fff!important;background-size:800% 800%!important}
@@ -870,6 +870,62 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 }
 </style>
 
+
+<style id="love64-user-fix-v9">
+/* User-requested refinement: real chibi CTA icons + high-resolution sprite + chart-first catalog */
+.v6-mini-girl,.v6-mini-boy,
+.cta-person.cta-girl,.cta-person.cta-boy{
+  position:relative!important;
+  display:inline-block!important;
+  background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png')!important;
+  background-size:800% 800%!important;
+  background-repeat:no-repeat!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.v6-mini-girl,.v6-mini-boy{width:48px!important;height:48px!important;flex:0 0 48px!important;border-radius:12px!important}
+.v6-mini-girl,.cta-person.cta-girl{background-position:0% 0%!important}
+.v6-mini-boy,.cta-person.cta-boy{background-position:0% 100%!important}
+.v6-mini-girl:before,.v6-mini-girl:after,.v6-mini-boy:before,.v6-mini-boy:after,
+.cta-person.cta-girl:before,.cta-person.cta-girl:after,.cta-person.cta-boy:before,.cta-person.cta-boy:after{
+  display:none!important;content:none!important
+}
+.cta-person.cta-girl,.cta-person.cta-boy{width:44px!important;height:44px!important;flex:0 0 44px!important;border-radius:11px!important}
+.cta-person i{display:none!important}
+
+/* High-res sheet can safely render larger without the previous 448px blur. */
+.v7-sprite{
+  background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png')!important;
+  image-rendering:auto!important;
+}
+.v6-characters .v6-pixel.v7-sprite{height:118px!important;border-radius:14px!important}
+.v6-catalog .v6-pixel.v7-sprite{height:132px!important;border-radius:14px!important}
+.result-character{background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png')!important}
+
+/* Make the supplied full 64-type chart the primary catalog visual. */
+.v9-main-chart{
+  display:block;max-width:980px;margin:0 auto 24px;padding:10px;
+  border-radius:20px;background:#fff;border:1px solid #f0e8ec;
+  box-shadow:0 10px 28px rgba(51,43,58,.07);text-decoration:none
+}
+.v9-main-chart img{display:block;width:100%;height:auto;border-radius:14px}
+.v9-main-chart span{display:block;text-align:center;margin-top:9px;color:#e84a6d;font-size:.76rem;font-weight:900}
+
+/* Bring CTA proportions closer to the reference. */
+.v6-start{gap:8px!important}
+.v6-start>span:last-child{transform:translateY(.5px)}
+.sticky-cta button{gap:7px!important}
+
+@media(max-width:560px){
+  .v6-mini-girl,.v6-mini-boy{width:42px!important;height:42px!important;flex-basis:42px!important;transform:none!important;margin:0!important}
+  .cta-person.cta-girl,.cta-person.cta-boy{width:39px!important;height:39px!important;flex-basis:39px!important}
+  .v6-characters .v6-pixel.v7-sprite{height:106px!important}
+  .v6-catalog .v6-pixel.v7-sprite{height:112px!important}
+  .v9-main-chart{margin-bottom:18px;padding:6px;border-radius:15px}
+  .v9-main-chart img{border-radius:10px}
+}
+</style>
+
 </head>
 <body>
 <header class="site-head">
@@ -891,7 +947,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   <section class="v6-hero">
     <div class="v6-shell">
       <div class="v6-badge">🎉 無料・登録不要・48問</div>
-      <h1>恋愛版16タイプでわかる、<br><em>あなたの恋愛・相性診断</em></h1>
+      <h1>恋愛版MBTIでわかる、<br><em>あなたの恋愛・相性診断</em></h1>
       <p class="v6-lead">16の性格タイプ × 4つの恋愛スタイルから、<br>あなただけの「恋のクセ」を64タイプで読み解きます。</p>
       <div class="v6-guide">無料で診断する 👇</div>
       <div class="v6-starts">
@@ -910,7 +966,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 
   <section class="v6-section">
     <div class="v6-shell v6-narrow">
-      <h2>💘 恋愛版16タイプとは？</h2>
+      <h2>💘 恋愛版MBTIとは？</h2>
       <p class="v6-sub">性格だけじゃなく、「好きになった時の変化」まで見る恋愛特化診断。</p>
       <div class="v6-copybox">
         4つの性格軸に、恋愛で出やすい <strong>「安心 ↔ 不安」</strong> と <strong>「自分から動く ↔ 相手を待つ」</strong> を追加。
@@ -921,7 +977,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 
   <section class="v6-section v6-soft">
     <div class="v6-shell">
-      <h2>🧭 恋愛版16タイプの「4つの指標」</h2>
+      <h2>🧭 恋愛版MBTIの「4つの指標」</h2>
       <p class="v6-sub">まずは性格のベースを4軸で判定します。</p>
       <div class="v6-four">
         <article><span>⚡</span><small>エネルギーの向き</small><b>E 外向 / I 内向</b><p>人と関わるほど元気になるか、一人で整えてから会いたいか。</p></article>
@@ -973,7 +1029,11 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   <section class="v6-section">
     <div class="v6-shell">
       <h2>📖 恋タイプ64図鑑</h2>
-      <p class="v6-sub">同じENFPでも恋愛スタイルが違えば、恋の出方は変わります。</p>
+      <p class="v6-sub">同じMBTIでも4つの恋愛スタイルで、表情も恋のクセも変わります。</p>
+      <a class="v9-main-chart" href="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" target="_blank" rel="noopener" aria-label="64タイプ早見表を拡大表示">
+        <img src="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" alt="16のMBTIと4つの恋愛スタイル、全64タイプのキャラクター早見表" loading="lazy">
+        <span>タップで拡大して見る</span>
+      </a>
       <div class="v6-catalog">
         <article><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></article>
         <article><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INFJ</b><span>× 愛の先導者</span></article>
@@ -1029,7 +1089,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
       <p class="v6-sub">恋タイプ64について、よくある疑問をまとめました。</p>
       <div class="v6-faq">
         <details open><summary>恋タイプ64は無料で診断できる？</summary><p>基本診断と結果表示は無料です。氏名・メールアドレスなどの登録も必要ありません。</p></details>
-        <details><summary>恋愛版16タイプ診断って何？</summary><p>4つの性格軸に、恋愛中の安定感とアプローチの2軸を加えて、恋のクセを64タイプに分ける診断です。</p></details>
+        <details><summary>恋愛版MBTI診断って何？</summary><p>4つの性格軸に、恋愛中の安定感とアプローチの2軸を加えて、恋のクセを64タイプに分ける診断です。</p></details>
         <details><summary>16タイプと4つの恋愛スタイルはどう違う？</summary><p>16タイプは性格のベース、4つの恋愛スタイルは恋愛中の安心感と動き方を表します。同じMBTIでも恋愛スタイルによって結果が変わります。</p></details>
         <details><summary>64タイプはどうやって決まる？</summary><p>16の性格タイプ × 「愛の先導者・包容の人・情熱の迷子・静かな渇望」の4スタイルで64通りです。</p></details>
         <details><summary>相性はどこまでわかる？</summary><p>性格4軸と恋愛2軸から、テンポ・距離感・安心感が噛み合いやすい候補を結果画面に表示します。</p></details>
