@@ -838,6 +838,20 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 }
 </style>
 
+
+<style id="love64-character-sprite-v7">
+.v7-sprite{background-image:url('assets/love64-character-sprite.webp')!important;background-size:800% 800%!important;background-position:var(--x) var(--y)!important;background-repeat:no-repeat!important}
+.v6-characters .v6-pixel.v7-sprite:before,.v6-characters .v6-pixel.v7-sprite:after,
+.v6-catalog .v6-pixel.v7-sprite:before,.v6-catalog .v6-pixel.v7-sprite:after{display:none!important}
+.v6-characters .v6-pixel.v7-sprite{height:108px;background-color:#fff!important;background-size:800% 800%!important}
+.v6-catalog .v6-pixel.v7-sprite{height:118px;background-color:#fff!important}
+.v6-card b{font-size:.8rem!important}.v6-card span{font-size:.64rem!important}
+.v6-outline{display:block;text-decoration:none}
+@media(min-width:850px){
+ #landingV6 .v6-hero{padding-top:52px}
+ #landingV6 .v6-hero .v6-shell{max-width:980px}
+}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -858,8 +872,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 <main id="landingV6">
   <section class="v6-hero">
     <div class="v6-shell">
-      <div class="v6-badge">🎉 無料・登録不要・約5分</div>
-      <h1>恋愛版16タイプでわかる、<br><em>あなたの恋愛・相性診断</em></h1>
+      <div class="v6-badge">💘 48問で恋のクセを64タイプに</div>
+      <h1>恋をすると出てくる、<br><em>あなたの恋愛・相性診断</em></h1>
       <p class="v6-lead">16の性格タイプ × 4つの恋愛スタイルから、<br>好きになった時に出やすい「恋のクセ」を64タイプで読み解きます。</p>
       <div class="v6-guide">無料で診断する 👇</div>
       <div class="v6-starts">
@@ -986,7 +1000,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
         <article><div class="v6-pixel p7"></div><b>ESFP</b><span>× 静かな待ち人</span></article>
         <article><div class="v6-pixel p8"></div><b>ISTJ</b><span>× 安心サポーター</span></article>
       </div>
-      <div class="v6-outline">全64タイプを見る → <small>（詳細図鑑は順次追加）</small></div>
+      <a class="v6-outline" href="love64-types.html">全64タイプを見る →</a>
     </div>
   </section>
 
@@ -1676,5 +1690,28 @@ function restart(){
 })();
 </script>
 
+
+<script id="love64-character-sprite-v7">
+(function(){
+ const styleNames=['愛の先導者','包容の人','情熱の迷子','静かな渇望'];
+ const types=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
+ function pos(i){return {x:(i%8)/7*100,y:Math.floor(i/8)/7*100}}
+ function sprite(i,extra){var p=pos(i);return '<div class="v6-pixel v7-sprite '+(extra||'')+'" style="--x:'+p.x+'%;--y:'+p.y+'%"></div>'}
+ function render(){
+  var section=document.querySelector('.v6-characters');
+  if(section){
+   var picks=[2,12,18,53,26,4,50,45,28,14,38,61,20,56,15,1];
+   var one=picks.map(function(i){var t=Math.floor(i/4),st=i%4;return '<div class="v6-card">'+sprite(i)+'<b>'+types[t]+'</b><span>× '+styleNames[st]+'</span></div>'}).join('');
+   section.innerHTML='<div class="v6-rail">'+one+one+'</div><div class="v6-rail v6-rail2">'+one.split('').join('')+'</div>';
+  }
+  var cat=document.querySelector('.v6-catalog');
+  if(cat){
+   var picks2=[0,5,10,15,16,25,50,63];
+   cat.innerHTML=picks2.map(function(i){var t=Math.floor(i/4),st=i%4;return '<article>'+sprite(i)+'<b>'+types[t]+'</b><span>× '+styleNames[st]+'</span></article>'}).join('');
+  }
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
+})();
+</script>
 </body>
 </html>
