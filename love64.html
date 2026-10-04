@@ -852,7 +852,25 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
  #landingV6 .v6-hero .v6-shell{max-width:980px}
 }
 </style>
-<style id="love64-ui-cleanup">.koropop-editorial-trust{display:none!important}</style>\n</head>
+<style id="love64-ui-cleanup">.koropop-editorial-trust{display:none!important}</style>\n
+<style id="love64-benchmark-v8">
+.v6-strip-head{width:min(100% - 32px,980px);margin:0 auto 14px;text-align:center}
+.v6-strip-head b{display:block;font-size:1rem}.v6-strip-head span{display:block;margin-top:3px;color:#9496a1;font-size:.72rem}
+.v6-compat-links{background:#fff;border-top:10px solid #f6f6f8;padding:28px 0}
+.v6-compat-links .v6-shell{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:760px}
+.v6-compat-links a{display:block;padding:14px 16px;border:1px solid #ffafc1;border-radius:999px;text-align:center;color:#e8496c;font-size:.82rem;font-weight:950;background:#fff}
+.result-character{width:112px;height:112px;margin:0 auto 12px;border-radius:22px;background-color:#fff;background-size:800% 800%!important;border:1px solid #f0e6ea;box-shadow:0 8px 22px rgba(51,43,58,.06)}
+@media(max-width:560px){
+ .v6-strip-head{margin-top:2px;margin-bottom:10px}
+ .v6-strip-head b{font-size:.9rem}.v6-strip-head span{font-size:.68rem}
+ .v6-compat-links{padding:22px 0;border-top-width:9px}
+ .v6-compat-links .v6-shell{grid-template-columns:1fr}
+ .v6-groups span{font-size:.64rem!important;line-height:1.35}
+ .result-character{width:96px;height:96px}
+}
+</style>
+
+</head>
 <body>
 <header class="site-head">
     <div class="wrap">
@@ -864,7 +882,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
         <a href="#articles">コラム</a>
         <a href="#faq">よくある質問</a>
       </nav>
-      <button class="head-cta" onclick="startQuiz('none')">診断を始める</button>
+      <button class="head-cta" onclick="document.querySelector('.v6-starts').scrollIntoView({behavior:'smooth',block:'center'})">診断を始める</button>
     </div>
   </header>
 
@@ -872,20 +890,20 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 <main id="landingV6">
   <section class="v6-hero">
     <div class="v6-shell">
-      <div class="v6-badge">💘 48問で恋のクセを64タイプに</div>
-      <h1>恋をすると出てくる、<br><em>あなたの恋愛・相性診断</em></h1>
-      <p class="v6-lead">16の性格タイプ × 4つの恋愛スタイルから、<br>好きになった時に出やすい「恋のクセ」を64タイプで読み解きます。</p>
+      <div class="v6-badge">🎉 無料・登録不要・48問</div>
+      <h1>恋愛版16タイプでわかる、<br><em>あなたの恋愛・相性診断</em></h1>
+      <p class="v6-lead">16の性格タイプ × 4つの恋愛スタイルから、<br>あなただけの「恋のクセ」を64タイプで読み解きます。</p>
       <div class="v6-guide">無料で診断する 👇</div>
       <div class="v6-starts">
         <button class="v6-start v6-f" onclick="startQuiz('female')"><span class="v6-mini-girl" aria-hidden="true"></span><span>女性で始める</span></button>
         <button class="v6-start v6-m" onclick="startQuiz('male')"><span class="v6-mini-boy" aria-hidden="true"></span><span>男性で始める</span></button>
       </div>
-      <div class="v6-micro">48問 / 登録不要 / 結果はすぐ表示</div>
-      <button class="v6-none" onclick="startQuiz('none')">性別を指定せず始める</button>
+      <div class="v6-micro">無料 / 登録不要 / 約5分</div>
     </div>
   </section>
 
   <section class="v6-characters" aria-label="恋タイプ64キャラクター例">
+    <div class="v6-strip-head"><b>どんな恋をするタイプ？</b><span>同じMBTIでも、恋の出方は4通り。</span></div>
   <div class="v6-rail"><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:0%"></div><b>INFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:57.14285714285714%"></div><b>ISFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:100%"></div><b>ISTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:28.57142857142857%"></div><b>INTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:100%"></div><b>ESTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:0%"></div><b>ENFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:0%"></div><b>INFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:57.14285714285714%"></div><b>ISFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:100%"></div><b>ISTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:28.57142857142857%"></div><b>INTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:100%"></div><b>ESTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:0%"></div><b>ENFP</b><span>× 包容の人</span></div></div>
   <div class="v6-rail v6-rail2"><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:0%"></div><b>ENFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:0%"></div><b>INFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:14.285714285714285%"></div><b>ENFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:100%"></div><b>ISTP</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:57.14285714285714%"></div><b>ESFJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:71.42857142857143%"></div><b>ESTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:100%"></div><b>ESTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:100%"></div><b>ISTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:28.57142857142857%"></div><b>INTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:0%"></div><b>ENFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:0%"></div><b>INFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:14.285714285714285%"></div><b>ENFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:100%"></div><b>ISTP</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:57.14285714285714%"></div><b>ESFJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:71.42857142857143%"></div><b>ESTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:100%"></div><b>ESTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:100%"></div><b>ISTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:28.57142857142857%"></div><b>INTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 包容の人</span></div></div>
 </section>
@@ -903,10 +921,10 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 
   <section class="v6-section v6-soft">
     <div class="v6-shell">
-      <h2>🧭 性格を決める「4つの指標」</h2>
+      <h2>🧭 恋愛版16タイプの「4つの指標」</h2>
       <p class="v6-sub">まずは性格のベースを4軸で判定します。</p>
       <div class="v6-four">
-        <article><span>⚡</span><small>エネルギー</small><b>E 外向 / I 内向</b><p>人と関わるほど元気になるか、一人で整えてから会いたいか。</p></article>
+        <article><span>⚡</span><small>エネルギーの向き</small><b>E 外向 / I 内向</b><p>人と関わるほど元気になるか、一人で整えてから会いたいか。</p></article>
         <article><span>👀</span><small>ものの見方</small><b>S 感覚 / N 直観</b><p>今ある事実を見るか、意味や未来まで想像するか。</p></article>
         <article><span>⚖️</span><small>判断のしかた</small><b>T 思考 / F 感情</b><p>解決を優先するか、まず気持ちを分かり合いたいか。</p></article>
         <article><span>🗓️</span><small>進め方</small><b>J 判断 / P 知覚</b><p>見通しを作りたいか、その時の流れを大切にするか。</p></article>
@@ -915,10 +933,10 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
       <div class="v6-lovehead">💞 恋愛でしか出ない「2つの軸」</div>
       <p class="v6-sub">安心感 × アプローチの組み合わせで、4つの恋愛スタイルに分かれます。</p>
       <div class="v6-matrix">
-        <span class="v6-top">↑ 安心しやすい</span><span class="v6-bottom">↓ 不安になりやすい</span>
+        <span class="v6-top">↑ 安定型</span><span class="v6-bottom">↓ 不安定型</span>
         <span class="v6-left">リード型</span><span class="v6-right">フォロー型</span>
-        <article><i>☀️</i><b>愛の先導者</b><strong>安心 × リード</strong><p>好意を行動にしやすい前進タイプ。</p></article>
-        <article><i>🌿</i><b>包容の人</b><strong>安心 × フォロー</strong><p>相手のペースも尊重できる安定タイプ。</p></article>
+        <article><i>💪</i><b>愛の先導者</b><strong>安定 × リード</strong><p>好意を行動にしやすい前進タイプ。</p></article>
+        <article><i>🌿</i><b>包容の人</b><strong>安定 × フォロー</strong><p>相手のペースも尊重できる安定タイプ。</p></article>
         <article><i>🔥</i><b>情熱の迷子</b><strong>不安 × リード</strong><p>好きになるほど熱量と行動量が上がる。</p></article>
         <article><i>🌙</i><b>静かな渇望</b><strong>不安 × フォロー</strong><p>気持ちは深く、相手の反応を見て動く。</p></article>
       </div>
@@ -942,48 +960,48 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 
   <section class="v6-section v6-soft">
     <div class="v6-shell">
-      <h2>💬 結果画面はここまで出る</h2>
-      <p class="v6-sub">SNS用の「当たった？」だけじゃなく、ちゃんと読み込める結果にします。</p>
+      <h2>💬 結果を比べて楽しめる</h2>
+      <p class="v6-sub">タイプ名だけじゃなく、連絡・距離感・不安・相性まで出るから、友だちや恋人と見比べやすい。</p>
       <div class="v6-result-samples">
-        <article><small>SAMPLE 01</small><b>「好き」が強くなるほど、確認したくなる</b><p>安心している時と不安な時で、連絡の仕方が変わりやすい。</p></article>
-        <article><small>SAMPLE 02</small><b>追う恋か、待つ恋か</b><p>自分から会いたいと言えるか、相手の反応を待ちやすいかを分析。</p></article>
-        <article><small>SAMPLE 03</small><b>相性が噛み合いやすい相手</b><p>性格だけでなく、恋愛テンポと安心感まで含めて候補を出します。</p></article>
+        <article><small>POINT 01</small><b>「当たりすぎ」ポイントを比べる</b><p>好きになった時の連絡や距離感のクセを見比べられます。</p></article>
+        <article><small>POINT 02</small><b>同じMBTIでも恋愛タイプが変わる</b><p>安定・不安とリード・フォローの違いで結果が分かれます。</p></article>
+        <article><small>POINT 03</small><b>SNSに結果をシェア</b><p>結果画面からXへのシェアとテキストコピーができます。</p></article>
       </div>
     </div>
   </section>
 
   <section class="v6-section">
     <div class="v6-shell">
-      <h2>📖 64タイプ図鑑</h2>
+      <h2>📖 恋タイプ64図鑑</h2>
       <p class="v6-sub">同じENFPでも恋愛スタイルが違えば、恋の出方は変わります。</p>
       <div class="v6-catalog">
-        <article><div class="v6-pixel p1"></div><b>ENFP</b><span>× 情熱の迷子</span></article>
-        <article><div class="v6-pixel p2"></div><b>INFJ</b><span>× 愛の先導者</span></article>
-        <article><div class="v6-pixel p3"></div><b>ENTP</b><span>× 静かな渇望</span></article>
-        <article><div class="v6-pixel p4"></div><b>ISFP</b><span>× 包容の人</span></article>
-        <article><div class="v6-pixel p5"></div><b>ENTJ</b><span>× 情熱の迷子</span></article>
-        <article><div class="v6-pixel p6"></div><b>INFP</b><span>× 愛の先導者</span></article>
-        <article><div class="v6-pixel p7"></div><b>ESFP</b><span>× 静かな渇望</span></article>
-        <article><div class="v6-pixel p8"></div><b>ISTJ</b><span>× 包容の人</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INFJ</b><span>× 愛の先導者</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:42.857142857142854%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 静かな渇望</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 包容の人</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 情熱の迷子</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:0%"></div><b>INFP</b><span>× 愛の先導者</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:42.857142857142854%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 静かな渇望</span></article>
+        <article><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 包容の人</span></article>
       </div>
       <a class="v6-outline" href="love64-types.html">全64タイプを見る →</a>
     </div>
   </section>
 
-  <section class="v6-section v6-soft">
+  <section class="v6-section v6-soft" id="types">
     <div class="v6-shell">
-      <h2>📚 16タイプ一覧</h2>
+      <h2>📚 MBTI16タイプ一覧</h2>
       <p class="v6-sub">気になるタイプから恋愛傾向をチェック。</p>
       <div class="v6-groups">
-        <article><h3>外交官（NF）</h3><p>共感・理想を大切にしやすい</p><div><span>✨ ENFP</span><span>🌸 INFP</span><span>🌟 ENFJ</span><span>🔮 INFJ</span></div></article>
-        <article><h3>分析家（NT）</h3><p>考えて理解したくなる合理派</p><div><span>💡 ENTP</span><span>🧩 INTP</span><span>👑 ENTJ</span><span>🏰 INTJ</span></div></article>
-        <article><h3>番人（SJ）</h3><p>誠実さと安心感を重視</p><div><span>🌿 ISFJ</span><span>🤝 ESFJ</span><span>🛡️ ISTJ</span><span>⚡ ESTJ</span></div></article>
-        <article><h3>探検家（SP）</h3><p>いまの相性と楽しさを重視</p><div><span>🎉 ESFP</span><span>🎨 ISFP</span><span>🔥 ESTP</span><span>🔧 ISTP</span></div></article>
+        <article><h3>外交官（NF）</h3><p>共感・理想を大切にしやすい</p><div><span>✨ ENFP（運動家）</span><span>🌸 INFP（仲介者）</span><span>🌟 ENFJ（主人公）</span><span>🔮 INFJ（提唱者）</span></div></article>
+        <article><h3>分析家（NT）</h3><p>考えて理解したくなる合理派</p><div><span>💡 ENTP（討論者）</span><span>🧩 INTP（論理学者）</span><span>👑 ENTJ（指揮官）</span><span>🏰 INTJ（建築家）</span></div></article>
+        <article><h3>番人（SJ）</h3><p>誠実さと安心感を重視</p><div><span>🌿 ISFJ（擁護者）</span><span>🤝 ESFJ（領事）</span><span>🛡️ ISTJ（管理者）</span><span>⚡ ESTJ（幹部）</span></div></article>
+        <article><h3>探検家（SP）</h3><p>いまの相性と楽しさを重視</p><div><span>🎉 ESFP（エンターテイナー）</span><span>🎨 ISFP（冒険家）</span><span>🔥 ESTP（起業家）</span><span>🔧 ISTP（巨匠）</span></div></article>
       </div>
     </div>
   </section>
 
-  <section class="v6-section">
+  <section class="v6-section" id="articles">
     <div class="v6-shell">
       <h2>💡 もっと詳しく知りたい方へ</h2>
       <p class="v6-sub">診断だけじゃなく、恋愛タイプを深掘りする読みものも追加していきます。</p>
@@ -998,19 +1016,26 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
     </div>
   </section>
 
-  <section class="v6-section v6-soft">
+  <section class="v6-compat-links">
+    <div class="v6-shell">
+      <a href="love64-types.html">64タイプ図鑑を見る →</a>
+      <a href="#types">タイプ別の恋愛傾向を見る →</a>
+    </div>
+  </section>
+
+  <section class="v6-section v6-soft" id="faq">
     <div class="v6-shell v6-narrow">
       <h2>❓ よくある質問</h2>
       <p class="v6-sub">恋タイプ64について、よくある疑問をまとめました。</p>
       <div class="v6-faq">
-        <details open><summary>診断は無料？</summary><p>基本診断と結果表示は無料です。登録も不要です。</p></details>
-        <details><summary>どのくらい時間がかかる？</summary><p>48問に直感で答える形式で、目安は約5分です。</p></details>
-        <details><summary>普通の16タイプ診断と何が違う？</summary><p>性格全体ではなく、恋愛中の距離感・不安・連絡・アプローチを重視しています。</p></details>
-        <details><summary>依存度はどうやって出している？</summary><p>不安、返信への敏感さ、相手への確認傾向に関する回答から算出する診断内スコアです。</p></details>
-        <details><summary>相性はどこまでわかる？</summary><p>性格4軸と恋愛2軸から、テンポや距離感が噛み合いやすい候補を表示します。</p></details>
+        <details open><summary>恋タイプ64は無料で診断できる？</summary><p>基本診断と結果表示は無料です。氏名・メールアドレスなどの登録も必要ありません。</p></details>
+        <details><summary>恋愛版16タイプ診断って何？</summary><p>4つの性格軸に、恋愛中の安定感とアプローチの2軸を加えて、恋のクセを64タイプに分ける診断です。</p></details>
+        <details><summary>16タイプと4つの恋愛スタイルはどう違う？</summary><p>16タイプは性格のベース、4つの恋愛スタイルは恋愛中の安心感と動き方を表します。同じMBTIでも恋愛スタイルによって結果が変わります。</p></details>
+        <details><summary>64タイプはどうやって決まる？</summary><p>16の性格タイプ × 「愛の先導者・包容の人・情熱の迷子・静かな渇望」の4スタイルで64通りです。</p></details>
+        <details><summary>相性はどこまでわかる？</summary><p>性格4軸と恋愛2軸から、テンポ・距離感・安心感が噛み合いやすい候補を結果画面に表示します。</p></details>
+        <details><summary>診断にはどのくらい時間がかかる？</summary><p>48問に直感で答える形式で、目安は約5分です。</p></details>
         <details><summary>結果はSNSでシェアできる？</summary><p>結果画面からXへのシェアと結果テキストのコピーができます。</p></details>
-        <details><summary>「上位○％相当」は実際の人口比？</summary><p>現在は回答パターンから算出する診断内の目安です。</p></details>
-        <details><summary>個人情報の入力は必要？</summary><p>診断そのものに氏名やメールアドレスの入力は必要ありません。</p></details>
+        <details><summary>個人情報の入力は必要？</summary><p>診断そのものに氏名・メールアドレスなどの入力は必要ありません。</p></details>
       </div>
     </div>
   </section>
@@ -1022,7 +1047,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
         <a href="#articles">恋愛コラムを見る →</a>
       </div>
       <div class="v6-foot-logo">恋タイプ64</div>
-      <div class="v6-foot-links"><a href="privacy.html">プライバシーポリシー</a><a href="contact.html">お問い合わせ</a><a href="about.html">運営情報</a></div>
+      <div class="v6-foot-links"><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="contact.html">お問い合わせ</a><a href="about.html">運営情報</a></div>
       <small>© KOROPOP</small>
     </div>
   </footer>
@@ -1276,6 +1301,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 <div class="wrap">
  <section class="result-hero">
   <div class="over">YOUR LOVE TYPE</div>
+  <div class="result-character v7-sprite" id="resultCharacter" aria-hidden="true"></div>
   <div class="result-code" id="resultCode"></div>
   <div class="result-name" id="resultName"></div>
   <div class="result-sub" id="resultSub"></div>
@@ -1538,7 +1564,9 @@ function showResult(r){
  document.getElementById('resultScreen').style.display='block';
  var greek={SD:'α',SW:'β',AD:'γ',AW:'δ'}; document.getElementById('resultCode').textContent=r.base+'-'+(greek[r.sub]||r.sub);
  document.getElementById('resultName').textContent=sub.icon+' '+baseName+' × '+sub.name;
- document.getElementById('resultSub').textContent='恋愛スタイル：'+sub.name+' ／ 安心感 × アプローチ';
+ document.getElementById('resultSub').textContent='恋愛スタイル：'+sub.name+' ／ 安定感 × アプローチ';
+ var rp=window.love64SpritePos?window.love64SpritePos(r.base,r.sub):{x:'0%',y:'0%'};
+ var rc=document.getElementById('resultCharacter'); if(rc){rc.style.setProperty('--x',rp.x);rc.style.setProperty('--y',rp.y);}
  document.getElementById('loveScore').textContent=loveScore;
  document.getElementById('dependency').textContent=dependency+'%';
  document.getElementById('rarity').textContent='上位'+rarity+'%相当';
@@ -1674,5 +1702,16 @@ function restart(){
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render);else render();
 })();
 </script>
+
+<script id="love64-sprite-map-v8">
+window.LOVE64_SPRITE_ORDER=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
+window.LOVE64_SUB_ORDER=['SD','SW','AD','AW'];
+window.love64SpritePos=function(base,sub){
+  var bi=window.LOVE64_SPRITE_ORDER.indexOf(base),si=window.LOVE64_SUB_ORDER.indexOf(sub);
+  var idx=Math.max(0,bi)*4+Math.max(0,si),col=idx%8,row=Math.floor(idx/8);
+  return {x:(col/7*100)+'%',y:(row/7*100)+'%'};
+};
+</script>
+
 </body>
 </html>
