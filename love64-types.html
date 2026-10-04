@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>恋タイプ64｜全64タイプ図鑑</title>
+<meta name="description" content="16の性格タイプ×4つの恋愛スタイル。恋タイプ64の全64タイプをキャラクターと恋愛キャッチで一覧できます。">
+<style>
+:root{--ink:#202330;--muted:#8b8e99;--pink:#f14f73;--line:#ececf1;--bg:#f7f7f9;--blue:#6370ef}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif}
+a{color:inherit;text-decoration:none}.shell{width:min(100% - 28px,1080px);margin:auto}
+header{background:#fff;border-bottom:1px solid #efeff3}.head{height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-size:1.28rem;font-weight:1000;letter-spacing:-.05em;background:linear-gradient(90deg,#9337e9,#ff4f73);-webkit-background-clip:text;color:transparent}
+nav{display:flex;gap:18px;font-size:.78rem;font-weight:850;color:#656875}.cta{padding:10px 16px;border-radius:999px;color:#fff;background:linear-gradient(135deg,#ff6a88,#ef456e);font-size:.76rem;font-weight:950}
+.hero{background:#fff;padding:42px 0 34px;text-align:center}.hero h1{font-size:clamp(1.9rem,7vw,3.15rem);letter-spacing:-.04em;margin:0 0 12px}.hero h1 em{font-style:normal;color:var(--pink)}.hero p{margin:0;color:#6d707c;line-height:1.85}
+.style-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px auto 0;max-width:820px}.style-legend div{background:#f8f8fa;border-radius:14px;padding:12px 8px}.style-legend b{display:block;font-size:.82rem}.style-legend span{font-size:.68rem;color:#888b96}
+main{padding:18px 0 80px}.family{background:#fff;border-radius:20px;padding:18px;margin:14px 0;border:1px solid #ededf2}.family-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.family-title{display:flex;align-items:baseline;gap:8px}.family-title b{font-size:1.22rem}.family-title span{font-size:.83rem;color:#8b8e98}.family-note{font-size:.72rem;color:#a0a2ab}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card{background:#fbfbfc;border:1px solid #f0f0f3;border-radius:16px;padding:12px;text-align:center;min-width:0}.chara{width:86px;height:86px;margin:0 auto 8px;background-image:url('assets/love64-character-sprite.webp');background-size:800% 800%;background-position:var(--x) var(--y);background-repeat:no-repeat;border-radius:14px}.sub{font-size:.82rem;font-weight:950}.greek{font-size:.64rem;color:#a0a3ad;margin-top:2px}.catch{font-size:.76rem;line-height:1.55;color:#ea4569;font-weight:900;margin-top:7px}
+.group-label{margin:34px 0 8px;font-size:1.22rem;font-weight:1000}.group-label small{font-size:.74rem;color:#91949f;margin-left:8px}
+.back{display:block;max-width:620px;margin:28px auto 0;text-align:center;padding:14px;border-radius:999px;background:#fff;color:#e64b6d;border:1px solid #ffb3c3;font-weight:950}
+footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
+@media(max-width:720px){nav{display:none}.head{height:60px}.hero{padding:32px 0 25px}.style-legend{grid-template-columns:1fr 1fr}.family{padding:14px 10px;border-radius:16px}.cards{grid-template-columns:1fr 1fr;gap:8px}.card{padding:11px 8px}.chara{width:76px;height:76px}.catch{font-size:.72rem}.family-note{display:none}}
+</style>
+</head>
+<body>
+<header><div class="shell head"><a class="logo" href="love64.html">恋タイプ64</a><nav><a href="love64.html">診断する</a><a href="#catalog">64タイプ図鑑</a><a href="love64.html#types">16タイプ一覧</a><a href="love64.html#articles">コラム</a></nav><a class="cta" href="love64.html#diagnose">診断を始める</a></div></header>
+<section class="hero"><div class="shell"><h1>あなたの恋は、<em>64通り。</em></h1><p>16の性格タイプそれぞれに、4つの恋愛スタイル。<br>同じMBTIでも、恋をした時の表情はちょっと違います。</p><div class="style-legend"><div><b>💪 愛の先導者</b><span>α・安定 × リード</span></div><div><b>🌿 包容の人</b><span>β・安定 × フォロー</span></div><div><b>🔥 情熱の迷子</b><span>γ・不安 × リード</span></div><div><b>🌙 静かな渇望</b><span>δ・不安 × フォロー</span></div></div></div></section>
+<main id="catalog"><div class="shell" id="catalogRoot"></div><a class="back" href="love64.html">← 診断トップへ戻る</a></main>
+<footer>© KOROPOP / 恋タイプ64</footer>
+<script>
+const styles=[{n:'愛の先導者',g:'α',i:'💪'},{n:'包容の人',g:'β',i:'🌿'},{n:'情熱の迷子',g:'γ',i:'🔥'},{n:'静かな渇望',g:'δ',i:'🌙'}];
+const data=[
+['ENFP','運動家','NF',['好意、わりと全部バレてる','自由人なのに、本命にはちゃんと帰る','返信ひとつで、恋の天気が変わる','友達には無敵、本命には急に不器用']],
+['INFP','仲介者','NF',['理想は高い、好きには意外と一直線','静かに寄り添って、気づけば一番近い','想像力豊か、恋だけ悪い方まで想像する','心の中では、もう何度も恋してる']],
+['ENFJ','主人公','NF',['愛情表現まで、段取りがうますぎる','気づけば相手の安心基地になってる','尽くし上手、でも本音は気づいてほしい','みんなには太陽、本命の前ではちょっと弱い']],
+['INFJ','提唱者','NF',['見抜くの得意、好きになったら先回り','言わなくても気づく、恋の避難所','深く愛するほど、考えすぎて迷子','相手は読める、自分の恋だけ読めない']],
+['ENTP','討論者','NT',['駆け引き上手、でも本命には正面突破','話は広げる、距離は焦らず縮める','返信待ちだけで、仮説が100個できる','口では余裕、脳内では恋愛会議中']],
+['INTP','論理学者','NT',['理屈派なのに、好きだけは隠しきれない','距離感ゆるめ、愛情はかなり深め','恋だけバグる、考えすぎてまた考える','感情は深海、表現は省エネ']],
+['ENTJ','指揮官','NT',['待つより動く、恋も主導権は自分','追わないのに、なぜか最後は選ばれる','強気に攻める、内心はかなり心配性','頼られるのは得意、甘えるのは苦手']],
+['INTJ','建築家','NT',['慎重に見極め、決めたら一途','追わない、でも見る目はかなり厳しい','問題は解ける、恋心だけ解けない','隙がないのは、本気ほど怖いから']],
+['ESFJ','領事','SJ',['世話焼き上手、恋ではちゃんと攻める','誰にでも優しい、本命にはもっと丁寧','両想いでも、好きの確認はしたくなる','みんなには明るい、本命には急に無口']],
+['ISFJ','擁護者','SJ',['気づいた時には、もう全部してあげてる','押さないけど、受け止める力は最強','尽くしすぎて、自分の心が後回し','言えないだけで、気持ちはずっと満タン']],
+['ESTJ','幹部','SJ',['恋も段取りよく、好きならすぐ動く','安心感は強め、恋はじっくり見極める','全力で愛す、でも評価はちゃんと欲しい','強く見えるけど、本当は安心したい']],
+['ISTJ','管理者','SJ',['甘い言葉より、約束を守る','進展はゆっくり、信頼は確実に増える','段取り完璧、恋だけ予定通りにいかない','準備はできてる、告白だけ延期しがち']],
+['ESFP','エンターテイナー','SP',['好きになった瞬間、毎日がイベントになる','明るく寄り添う、本命には意外と慎重','好きになったら、ブレーキより先にアクセル','笑ってるけど、好きな人には寂しがり']],
+['ISFP','冒険家','SP',['言葉よりセンスで、好きが全部伝わる','隣にいるだけで、ちゃんと安心させる','既読ひとつで、心が上がったり下がったり','静かに想う、脳内デートはかなり盛況']],
+['ESTP','起業家','SP',['気になったら即行動、恋に予告はいらない','自由人なのに、好きな人には自然と残る','軽そうに見えて、本命には一直線','余裕そうで、実はかなり甘えたい']],
+['ISTP','巨匠','SP',['口数少なめ、行動はちゃんと愛情多め','そっけないのに、なぜか一番落ち着く','クールな顔して、恋だけ前のめり','興味ないふり、態度だけは正直']]
+];
+const groupNames={NF:'💗 NF ― 外交官',NT:'💡 NT ― 分析家',SJ:'🛡️ SJ ― 番人',SP:'🧭 SP ― 探検家'};
+function pos(idx){const x=(idx%8)/7*100,y=Math.floor(idx/8)/7*100;return '--x:'+x+'%;--y:'+y+'%'}
+let html='',last='';
+data.forEach((d,di)=>{if(d[2]!==last){last=d[2];html+='<div class="group-label">'+groupNames[last]+'<small>4タイプ × 4恋愛スタイル</small></div>'}
+html+='<section class="family"><div class="family-head"><div class="family-title"><b>'+d[0]+'</b><span>'+d[1]+'</span></div><div class="family-note">同じ人物・表情と動きだけ変化</div></div><div class="cards">';
+styles.forEach((st,si)=>{const idx=di*4+si;html+='<article class="card"><div class="chara" style="'+pos(idx)+'"></div><div class="sub">'+st.i+' '+st.n+'</div><div class="greek">'+st.g+'</div><div class="catch">「'+d[3][si]+'」</div></article>'});
+html+='</div></section>'});
+document.getElementById('catalogRoot').innerHTML=html;
+</script>
+</body>
+</html>
