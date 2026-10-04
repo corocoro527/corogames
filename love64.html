@@ -926,6 +926,36 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 }
 </style>
 
+
+<style id="love64-exact-chart-v10">
+.v10-chart-section{background:#fff;padding:54px 0 62px;border-top:10px solid #f7f7f9;border-bottom:10px solid #f7f7f9;text-align:center}
+.v10-chart-kicker{display:inline-block;margin-bottom:9px;color:#ef4c72;font-size:.7rem;font-weight:1000;letter-spacing:.12em}
+.v10-chart-section h2{margin:0 0 8px;font-size:clamp(1.5rem,5vw,2.15rem);letter-spacing:-.04em}
+.v10-chart-section p{max-width:700px;margin:0 auto 22px;color:#767986;font-size:.88rem;line-height:1.8}
+.v10-chart-card{display:block;width:min(100%,1120px);margin:0 auto;padding:8px;border-radius:22px;background:#fff;border:1px solid #f0e3e8;box-shadow:0 16px 42px rgba(54,42,49,.09)}
+.v10-chart-card img{display:block;width:100%;height:auto;border-radius:15px;image-rendering:auto}
+.v10-chart-zoom{display:inline-flex;margin-top:14px;padding:10px 16px;border-radius:999px;border:1px solid #ffb0c2;color:#e74b6e;background:#fff;font-size:.78rem;font-weight:950}
+.v10-cta-avatar{display:inline-block!important;width:52px!important;height:52px!important;flex:0 0 52px!important;border-radius:13px!important;background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png?v=10')!important;background-size:800% 800%!important;background-repeat:no-repeat!important;background-color:rgba(255,255,255,.92)!important;box-shadow:0 0 0 2px rgba(255,255,255,.45)!important}
+.v10-girl{background-position:0% 0%!important}
+.v10-boy{background-position:0% 28.5714285714%!important}
+.v6-start,.sticky-cta button{display:flex!important;align-items:center!important;justify-content:center!important}
+.v6-start{gap:8px!important}.sticky-cta button{gap:6px!important}
+.sticky-cta .v10-cta-avatar{width:44px!important;height:44px!important;flex-basis:44px!important;border-radius:11px!important}
+.v7-sprite{background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png?v=10')!important;background-size:800% 800%!important;background-repeat:no-repeat!important;image-rendering:auto!important}
+.v6-characters .v6-pixel.v7-sprite{height:126px!important;background-color:#fff!important;border-radius:16px!important;box-shadow:0 5px 16px rgba(43,39,47,.06)!important}
+.v6-characters .v6-card{width:132px!important;flex-basis:132px!important}
+.v6-characters .v6-pixel.v7-sprite:before,.v6-characters .v6-pixel.v7-sprite:after,.v6-catalog .v6-pixel.v7-sprite:before,.v6-catalog .v6-pixel.v7-sprite:after{display:none!important}
+.result-character{background-image:url('images/7487888B-AEA6-4166-9773-A7258D90D298.png?v=10')!important}
+.v6-mini-girl,.v6-mini-boy,.cta-person{display:none!important}
+@media(max-width:560px){
+ .v10-chart-section{padding:42px 0 48px;border-top-width:9px;border-bottom-width:9px}
+ .v10-chart-section h2{font-size:1.42rem}.v10-chart-section p{font-size:.8rem;margin-bottom:16px}
+ .v10-chart-card{padding:4px;border-radius:14px}.v10-chart-card img{border-radius:10px}
+ .v10-cta-avatar{width:46px!important;height:46px!important;flex-basis:46px!important;border-radius:11px!important}
+ .sticky-cta .v10-cta-avatar{width:39px!important;height:39px!important;flex-basis:39px!important}
+ .v6-characters .v6-pixel.v7-sprite{height:112px!important}.v6-characters .v6-card{width:118px!important;flex-basis:118px!important}
+}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -951,8 +981,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
       <p class="v6-lead">16の性格タイプ × 4つの恋愛スタイルから、<br>あなただけの「恋のクセ」を64タイプで読み解きます。</p>
       <div class="v6-guide">無料で診断する 👇</div>
       <div class="v6-starts">
-        <button class="v6-start v6-f" onclick="startQuiz('female')"><span class="v6-mini-girl" aria-hidden="true"></span><span>女性で始める</span></button>
-        <button class="v6-start v6-m" onclick="startQuiz('male')"><span class="v6-mini-boy" aria-hidden="true"></span><span>男性で始める</span></button>
+        <button class="v6-start v6-f" onclick="startQuiz('female')"><span class="v10-cta-avatar v10-girl" aria-hidden="true"></span><span>女性で始める</span></button>
+        <button class="v6-start v6-m" onclick="startQuiz('male')"><span class="v10-cta-avatar v10-boy" aria-hidden="true"></span><span>男性で始める</span></button>
       </div>
       <div class="v6-micro">無料 / 登録不要 / 約5分</div>
     </div>
@@ -963,6 +993,17 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   <div class="v6-rail"><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:0%"></div><b>INFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:57.14285714285714%"></div><b>ISFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:100%"></div><b>ISTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:28.57142857142857%"></div><b>INTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:100%"></div><b>ESTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:0%"></div><b>ENFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:0%"></div><b>INFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:85.71428571428571%;--y:57.14285714285714%"></div><b>ISFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:100%"></div><b>ISTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:28.57142857142857%"></div><b>INTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:100%"></div><b>ESTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:0%"></div><b>ENFP</b><span>× 包容の人</span></div></div>
   <div class="v6-rail v6-rail2"><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:0%"></div><b>ENFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:0%"></div><b>INFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:14.285714285714285%"></div><b>ENFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:100%"></div><b>ISTP</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:57.14285714285714%"></div><b>ESFJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:71.42857142857143%"></div><b>ESTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:100%"></div><b>ESTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:100%"></div><b>ISTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:28.57142857142857%"></div><b>INTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:0%"></div><b>ENFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:0%"></div><b>INFP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:14.285714285714285%"></div><b>ENFJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:14.285714285714285%"></div><b>INFJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:0%;--y:28.57142857142857%"></div><b>ENTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:42.857142857142854%"></div><b>ENTJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:85.71428571428571%"></div><b>ESFP</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:100%"></div><b>ISTP</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:57.14285714285714%"></div><b>ESFJ</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:71.42857142857143%"></div><b>ESTJ</b><span>× 情熱の迷子</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:100%;--y:71.42857142857143%"></div><b>ISTJ</b><span>× 静かな渇望</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:85.71428571428571%"></div><b>ISFP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:14.285714285714285%;--y:100%"></div><b>ESTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:100%"></div><b>ISTP</b><span>× 愛の先導者</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:28.57142857142857%"></div><b>INTP</b><span>× 包容の人</span></div><div class="v6-card"><div class="v6-pixel v7-sprite" style="--x:71.42857142857143%;--y:42.857142857142854%"></div><b>INTJ</b><span>× 包容の人</span></div></div>
 </section>
+  <section class="v10-chart-section" id="loveMbtiMainChart">
+    <div class="v6-shell">
+      <div class="v10-chart-kicker">LOVE MBTI 64 TYPES</div>
+      <h2>16のMBTI × 4つの恋愛スタイル</h2>
+      <p>この64タイプ一覧を、恋タイプ64のキャラクター・分類・世界観の基準にしています。</p>
+      <a class="v10-chart-card" href="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" target="_blank" rel="noopener">
+        <img src="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" alt="恋愛MBTI 16タイプ×4恋愛スタイル 全64タイプ早見表" loading="eager" decoding="async">
+      </a>
+      <a class="v10-chart-zoom" href="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" target="_blank" rel="noopener">🔍 64タイプ早見表を大きく見る</a>
+    </div>
+  </section>
 
   <section class="v6-section">
     <div class="v6-shell v6-narrow">
@@ -1029,11 +1070,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   <section class="v6-section">
     <div class="v6-shell">
       <h2>📖 恋タイプ64図鑑</h2>
-      <p class="v6-sub">同じMBTIでも4つの恋愛スタイルで、表情も恋のクセも変わります。</p>
-      <a class="v9-main-chart" href="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" target="_blank" rel="noopener" aria-label="64タイプ早見表を拡大表示">
-        <img src="images/9F468F9D-325F-4A09-8E7A-BB164AE63F7C.png" alt="16のMBTIと4つの恋愛スタイル、全64タイプのキャラクター早見表" loading="lazy">
-        <span>タップで拡大して見る</span>
-      </a>
+      <p class="v6-sub">上の恋愛MBTI早見表と同じ64タイプ。MBTIごとに同一人物で、4スタイルは表情・ポーズ・仕草だけが変わります。</p>
+      
       <div class="v6-catalog">
         <article><div class="v6-pixel v7-sprite" style="--x:28.57142857142857%;--y:0%"></div><b>ENFP</b><span>× 情熱の迷子</span></article>
         <article><div class="v6-pixel v7-sprite" style="--x:57.14285714285714%;--y:42.857142857142854%"></div><b>INFJ</b><span>× 愛の先導者</span></article>
@@ -1329,8 +1367,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 </main>
 
 <div class="sticky-cta" id="stickyCta">
- <button class="female" onclick="startQuiz('female')"><span class="cta-person cta-girl" aria-hidden="true"><i></i></span><span>女性で始める</span></button>
- <button class="male" onclick="startQuiz('male')"><span class="cta-person cta-boy" aria-hidden="true"><i></i></span><span>男性で始める</span></button>
+ <button class="female" onclick="startQuiz('female')"><span class="v10-cta-avatar v10-girl" aria-hidden="true"></span><span>女性で始める</span></button>
+ <button class="male" onclick="startQuiz('male')"><span class="v10-cta-avatar v10-boy" aria-hidden="true"></span><span>男性で始める</span></button>
 </div>
 
 <main id="quizScreen">
