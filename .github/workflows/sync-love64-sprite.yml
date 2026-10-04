@@ -1,4 +1,5 @@
 name: Sync Love64 Sprite
+# approved-character-refresh 2026-10-04
 on:
   push:
     paths:
