@@ -1000,6 +1000,52 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
  .v6-catalog .v6-pixel.v7-sprite{height:110px!important}
 }
 </style>
+
+<style id="love64-crop-fix-v13">
+/* Exact chart-crop rendering from the user's approved 5th image.
+   No red grid, no cut-off heads, no dead white thumbnail boxes. */
+.v7-sprite,.result-character,.v10-cta-avatar{
+  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/895ad143-ce27-4818-9b5e-1bd632ae409e.jpg')!important;
+  background-size:1600% 853.333333%!important;
+  background-repeat:no-repeat!important;
+  background-position:var(--x,0%) var(--y,4.98%)!important;
+  image-rendering:auto!important;
+}
+.v6-characters .v6-pixel.v7-sprite,
+.v6-catalog .v6-pixel.v7-sprite{
+  aspect-ratio:4/5!important;
+  height:auto!important;
+  border-radius:16px!important;
+  border:1px solid #f2dfe6!important;
+  background-color:#fff5f8!important;
+  box-shadow:0 5px 16px rgba(50,42,48,.055)!important;
+}
+.v6-card{background:transparent!important}
+.v6-card b{margin-top:8px!important}
+.v6-catalog article{background:#fff8fa!important;border:1px solid #f4e6eb!important}
+.result-character{
+  width:108px!important;height:135px!important;border-radius:18px!important;
+  background-color:#fff6f8!important;border:1px solid #f0dfe5!important
+}
+.v10-cta-avatar{
+  width:44px!important;height:55px!important;flex:0 0 44px!important;
+  border-radius:10px!important;border:0!important;background-color:transparent!important;
+  box-shadow:none!important
+}
+.sticky-cta .v10-cta-avatar{width:36px!important;height:45px!important;flex-basis:36px!important}
+.v10-girl{--x:0%;--y:4.977876%!important}
+.v10-boy{--x:0%;--y:33.29646%!important}
+
+/* Softer reference-like card field instead of pure white. */
+.v6-characters{background:linear-gradient(180deg,#fff 0%,#fff8fb 100%)!important}
+.v6-catalog{gap:12px!important}
+@media(max-width:560px){
+  .v6-characters .v6-pixel.v7-sprite{aspect-ratio:4/5!important}
+  .v6-catalog .v6-pixel.v7-sprite{aspect-ratio:4/5!important}
+  .v10-cta-avatar{width:40px!important;height:50px!important;flex-basis:40px!important}
+  .sticky-cta .v10-cta-avatar{width:34px!important;height:42px!important;flex-basis:34px!important}
+}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -1042,8 +1088,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
       <div class="v12-kicker">LOVE MBTI 64 TYPES</div>
       <h2>恋愛MBTI 64タイプ早見表</h2>
       <p>16のMBTI × 4つの恋愛スタイル。<br>この一覧画像を恋タイプ64の正式なキャラクター・分類基準にしています。</p>
-      <a class="v12-chart" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/4a94d2de-de37-4aa6-848a-db3d0ca33250.jpg" target="_blank" rel="noopener">
-        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/4a94d2de-de37-4aa6-848a-db3d0ca33250.jpg" alt="恋愛MBTI 16タイプ×4恋愛スタイル 全64タイプ早見表" loading="eager" decoding="async">
+      <a class="v12-chart" href="https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/895ad143-ce27-4818-9b5e-1bd632ae409e.jpg" target="_blank" rel="noopener">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/895ad143-ce27-4818-9b5e-1bd632ae409e.jpg" alt="恋愛MBTI 16タイプ×4恋愛スタイル 全64タイプ早見表" loading="eager" decoding="async">
       </a>
       <a class="v12-chart-link" href="love64-types.html">各64タイプを詳しく見る →</a>
     </div>
@@ -1859,5 +1905,39 @@ window.love64SpritePos=function(base,sub){
 
 
 
+
+<script id="love64-crop-fix-v13">
+(function(){
+  var order=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
+  var subMap={'愛の先導者':0,'包容の人':1,'情熱の迷子':2,'静かな渇望':3,SD:0,SW:1,AD:2,AW:3};
+  function chartPos(mbti,sub){
+    var ti=order.indexOf(mbti); if(ti<0) ti=0;
+    var si=typeof sub==='number'?sub:(subMap[sub] ?? 0);
+    var blockCol=ti%4, blockRow=Math.floor(ti/4), globalCol=blockCol*4+si;
+    var x=(globalCol/15*100);
+    var y=((blockRow*256+45)/904*100);
+    return {x:x.toFixed(6)+'%',y:y.toFixed(6)+'%'};
+  }
+  window.love64SpritePos=function(base,sub){
+    var p=chartPos(base,sub); return p;
+  };
+  function apply(el,mbti,sub){
+    var p=chartPos(mbti,sub);
+    el.style.setProperty('--x',p.x); el.style.setProperty('--y',p.y);
+  }
+  document.querySelectorAll('.v6-card').forEach(function(card){
+    var mbti=(card.querySelector('b')||{}).textContent||'';
+    var st=((card.querySelector('span')||{}).textContent||'').replace('×','').trim();
+    var pic=card.querySelector('.v7-sprite'); if(pic) apply(pic,mbti,st);
+  });
+  document.querySelectorAll('.v6-catalog article').forEach(function(card){
+    var mbti=(card.querySelector('b')||{}).textContent||'';
+    var st=((card.querySelector('span')||{}).textContent||'').replace('×','').trim();
+    var pic=card.querySelector('.v7-sprite'); if(pic) apply(pic,mbti,st);
+  });
+  var g=document.querySelector('.v10-girl'); if(g) apply(g,'ENFP',0);
+  var b=document.querySelector('.v10-boy'); if(b) apply(b,'ENTP',0);
+})();
+</script>
 </body>
 </html>
