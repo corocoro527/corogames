@@ -212,6 +212,54 @@ footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
 
 
 
+
+
+
+<style id="love64-types-pure-white-v9">
+/* Catalog detail page: remove every visible card/frame around the character art. */
+#catalog .card{
+  background:#fff!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+}
+#catalog .chara{
+  position:relative!important;
+  background-color:#fff!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+  overflow:hidden!important;
+}
+/* Cover the pale rounded-corner frame baked into the sprite crop while keeping the character untouched. */
+#catalog .chara::before{
+  content:""!important;
+  display:block!important;
+  position:absolute!important;
+  inset:0!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(#fff,#fff) top/100% 9px no-repeat,
+    linear-gradient(#fff,#fff) bottom/100% 8px no-repeat,
+    linear-gradient(#fff,#fff) left/7px 100% no-repeat,
+    linear-gradient(#fff,#fff) right/7px 100% no-repeat!important;
+  z-index:2!important;
+}
+#catalog .chara::after{display:none!important;content:none!important}
+#catalog .family{background:#fff!important;box-shadow:none!important}
+@media(max-width:720px){
+  #catalog .card{padding:11px 8px!important}
+  #catalog .chara::before{
+    background:
+      linear-gradient(#fff,#fff) top/100% 8px no-repeat,
+      linear-gradient(#fff,#fff) bottom/100% 7px no-repeat,
+      linear-gradient(#fff,#fff) left/6px 100% no-repeat,
+      linear-gradient(#fff,#fff) right/6px 100% no-repeat!important;
+  }
+}
+</style>
+
 <!-- KOROPOP_EDITORIAL_STYLE_START -->
 <style id="koropop-editorial-trust-style">
 
@@ -285,52 +333,6 @@ footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
 
 </style>
 <!-- KOROPOP_EDITORIAL_STYLE_END -->
-
-
-<style id="love64-types-pure-white-v9">
-/* Catalog detail page: remove every visible card/frame around the character art. */
-#catalog .card{
-  background:#fff!important;
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-}
-#catalog .chara{
-  position:relative!important;
-  background-color:#fff!important;
-  border:0!important;
-  outline:0!important;
-  box-shadow:none!important;
-  border-radius:0!important;
-  overflow:hidden!important;
-}
-/* Cover the pale rounded-corner frame baked into the sprite crop while keeping the character untouched. */
-#catalog .chara::before{
-  content:""!important;
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  pointer-events:none!important;
-  background:
-    linear-gradient(#fff,#fff) top/100% 9px no-repeat,
-    linear-gradient(#fff,#fff) bottom/100% 8px no-repeat,
-    linear-gradient(#fff,#fff) left/7px 100% no-repeat,
-    linear-gradient(#fff,#fff) right/7px 100% no-repeat!important;
-  z-index:2!important;
-}
-#catalog .chara::after{display:none!important;content:none!important}
-#catalog .family{background:#fff!important;box-shadow:none!important}
-@media(max-width:720px){
-  #catalog .card{padding:11px 8px!important}
-  #catalog .chara::before{
-    background:
-      linear-gradient(#fff,#fff) top/100% 8px no-repeat,
-      linear-gradient(#fff,#fff) bottom/100% 7px no-repeat,
-      linear-gradient(#fff,#fff) left/6px 100% no-repeat,
-      linear-gradient(#fff,#fff) right/6px 100% no-repeat!important;
-  }
-}
-</style>
 </head>
 <body>
 <header><div class="shell head"><a class="logo" href="love64.html">恋タイプ64</a><nav><a href="love64.html">診断する</a><a href="#catalog">64タイプ図鑑</a><a href="love64.html#types">16タイプ一覧</a><a href="love64.html#articles">コラム</a></nav><a class="cta" href="love64.html#diagnose">診断を始める</a></div></header>
@@ -385,6 +387,10 @@ footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
 
 </div>
 <!-- KOROPOP_EDITORIAL_TRUST_END -->
+
+
+
+
 
 
 
