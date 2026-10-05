@@ -189,32 +189,6 @@ footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
 
 
 
-<style id="love64-types-white-v8">
-/* Full catalog: pure white character wells, no inner frame or tinted box. */
-#catalog .family{background:#fff!important;border:1px solid #ececf1!important;box-shadow:none!important}
-#catalog .card{background:#fff!important;border:1px solid #efedf0!important;box-shadow:none!important;padding:12px 10px!important}
-#catalog .chara{
-  width:98px!important;height:116px!important;margin:0 auto 7px!important;
-  border:0!important;outline:0!important;border-radius:0!important;box-shadow:none!important;
-  background-color:#fff!important;background-repeat:no-repeat!important;
-  image-rendering:auto!important;filter:brightness(1.035) contrast(1.02)!important;
-}
-#catalog .chara:before,#catalog .chara:after{display:none!important;content:none!important}
-#catalog .sub{margin-top:4px!important}
-#catalog .greek{margin-top:1px!important}
-#catalog .catch{margin-top:6px!important}
-@media(max-width:720px){
-  #catalog .family{padding:14px 10px!important}
-  #catalog .card{padding:11px 8px!important}
-  #catalog .chara{width:90px!important;height:108px!important}
-}
-</style>
-
-
-
-
-
-
 <style id="love64-types-pure-white-v9">
 /* Catalog detail page: remove every visible card/frame around the character art. */
 #catalog .card{
@@ -335,6 +309,50 @@ footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
 
 </style>
 <!-- KOROPOP_EDITORIAL_STYLE_END -->
+
+<style id="love64-types-white-v9">
+/* Final catalog character treatment: pure white, no inner frame, no baked pastel tile. */
+#catalog .family{
+  background:#fff!important;
+  border:1px solid #ececf1!important;
+  box-shadow:none!important;
+}
+#catalog .card{
+  background:#fff!important;
+  border:1px solid #efedf0!important;
+  box-shadow:none!important;
+  padding:12px 10px!important;
+}
+#catalog .chara{
+  width:104px!important;
+  height:104px!important;
+  margin:0 auto 8px!important;
+  border:0!important;
+  outline:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  background-color:#fff!important;
+  background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/df6c9577-b54a-4034-9a0e-f899f6306fe0.png')!important;
+  background-size:800% 800%!important;
+  background-repeat:no-repeat!important;
+  background-position:var(--x) var(--y)!important;
+  image-rendering:auto!important;
+  filter:none!important;
+}
+#catalog .chara:before,
+#catalog .chara:after{
+  display:none!important;
+  content:none!important;
+}
+#catalog .sub{margin-top:3px!important}
+#catalog .greek{margin-top:1px!important}
+#catalog .catch{margin-top:6px!important}
+@media(max-width:720px){
+  #catalog .family{padding:14px 10px!important}
+  #catalog .card{padding:11px 8px!important}
+  #catalog .chara{width:96px!important;height:96px!important;margin-bottom:7px!important}
+}
+</style>
 </head>
 <body>
 <header><div class="shell head"><a class="logo" href="love64.html">恋タイプ64</a><nav><a href="love64.html">診断する</a><a href="#catalog">64タイプ図鑑</a><a href="love64.html#types">16タイプ一覧</a><a href="love64.html#articles">コラム</a></nav><a class="cta" href="love64.html#diagnose">診断を始める</a></div></header>
@@ -500,7 +518,7 @@ const data=[
 ['ISTP','巨匠','SP',['口数少なめ、行動はちゃんと愛情多め','そっけないのに、なぜか一番落ち着く','クールな顔して、恋だけ前のめり','興味ないふり、態度だけは正直']]
 ];
 const groupNames={NF:'💗 NF ― 外交官',NT:'🧠 NT ― 分析家',SJ:'🛡️ SJ ― 番人',SP:'🧭 SP ― 探検家'}; const groupDesc={NF:'理想や想いで人とつながる、心の世界を大切にするタイプ',NT:'知的な視点で本質を見抜き、深くつながるタイプ',SJ:'大切な人を守り、誠実に愛を育てるタイプ',SP:'今を楽しみ、素直な気持ちで愛を育てるタイプ'};
-function pos(idx){const di=Math.floor(idx/4),si=idx%4,blockCol=di%4,blockRow=Math.floor(di/4),globalCol=blockCol*4+si,x=globalCol/15*100,y=(blockRow*256+45)/904*100;return '--x:'+x.toFixed(6)+'%;--y:'+y.toFixed(6)+'%'}
+function pos(idx){const col=idx%8,row=Math.floor(idx/8),x=col/7*100,y=row/7*100;return '--x:'+x.toFixed(6)+'%;--y:'+y.toFixed(6)+'%'}
 let html='',last='';
 data.forEach((d,di)=>{if(d[2]!==last){last=d[2];html+='<div class="group-label">'+groupNames[last]+'<small>'+groupDesc[last]+'</small></div>'}
 html+='<section class="family '+d[2].toLowerCase()+'"><div class="family-head"><div class="family-title"><b>'+d[0]+'</b><span>'+d[1]+'</span></div><div class="family-note">同じ人物・表情と動きだけ変化</div></div><div class="cards">';
