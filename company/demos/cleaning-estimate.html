@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>清掃業向け概算見積デモ｜KOROPOP LABS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f9fc;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.6}
+.wrap{width:min(680px,calc(100% - 24px));margin:34px auto}.demo{background:#fff;border:1px solid #dfe6ee;border-radius:22px;padding:24px;box-shadow:0 14px 36px rgba(15,47,89,.06)}
+.kicker{font-size:12px;font-weight:900;color:#2563eb;letter-spacing:.08em}.title{font-size:30px;line-height:1.2;color:#10233f;margin:8px 0}.note{font-size:12px;color:#64748b;margin-bottom:20px}
+.row{display:grid;grid-template-columns:1fr 120px;gap:12px;align-items:center;padding:14px 0;border-top:1px solid #edf1f5}.row strong{display:block}.row small{display:block;color:#64748b;margin-top:3px}
+select{width:100%;min-height:44px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;padding:8px;font-size:16px}
+.result{margin-top:18px;padding:18px;border-radius:16px;background:#eef5ff;color:#36516f}.result strong{display:block;font-size:30px;color:#102f55}
+.caption{font-size:11px;color:#64748b;margin-top:14px}.caption b{color:#172033}
+@media(max-width:520px){.row{grid-template-columns:1fr 105px}.demo{padding:18px}.title{font-size:26px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="demo">
+    <div class="kicker">KOROPOP LABS / DEMO</div>
+    <h1 class="title">清掃業向け概算見積シミュレーター</h1>
+    <p class="note">以下は機能確認用の架空デモです。実案件では事業者様が承認した料金・割引・例外条件のみを使用します。</p>
+    <div id="rows"></div>
+    <div id="result" class="result">メニューと数量を選択してください</div>
+    <p class="caption"><b>概算表示のみ</b>：正式料金は機種・現地状況・作業条件等を確認後に確定する想定です。</p>
+  </div>
+</main>
+<script>
+const menus=[
+  {id:"aircon_std",label:"壁掛けエアコン",unit:"台",price:13200,secondPrice:11000,max:5},
+  {id:"aircon_robot",label:"お掃除機能付きエアコン",unit:"台",price:19800,secondPrice:15400,max:5},
+  {id:"rangehood",label:"レンジフード",unit:"箇所",price:16500,max:3},
+  {id:"kitchen",label:"キッチン",unit:"箇所",price:18000,max:3},
+  {id:"bath",label:"浴室",unit:"箇所",price:16500,max:3},
+  {id:"toilet",label:"トイレ",unit:"箇所",price:11000,max:4},
+  {id:"washroom",label:"洗面所",unit:"箇所",price:11000,max:4}
+];
+const state={};
+const yen=n=>new Intl.NumberFormat("ja-JP").format(n)+"円";
+const calc=(m,q)=>q<=0?0:(m.secondPrice&&q>=2?m.price+m.secondPrice*(q-1):m.price*q);
+const rows=document.getElementById("rows");
+menus.forEach(m=>{
+  state[m.id]=0;
+  const row=document.createElement("div");row.className="row";
+  const info=document.createElement("div");
+  info.innerHTML="<strong>"+m.label+"</strong><small>"+yen(m.price)+(m.secondPrice?" / 2台目以降 "+yen(m.secondPrice):"")+"</small>";
+  const sel=document.createElement("select");
+  sel.setAttribute("aria-label",m.label+"数量");
+  for(let i=0;i<=m.max;i++){const o=document.createElement("option");o.value=i;o.textContent=i+m.unit;sel.appendChild(o);}
+  sel.addEventListener("change",()=>{state[m.id]=Number(sel.value);update();});
+  row.append(info,sel);rows.appendChild(row);
+});
+function update(){
+  const total=menus.reduce((s,m)=>s+calc(m,state[m.id]),0);
+  document.getElementById("result").innerHTML=total>0?"概算合計 <strong>"+yen(total)+"</strong>":"メニューと数量を選択してください";
+}
+</script>
+</body></html>
