@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>施設利用申込フォーム デモ｜KOROPOP LABS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f9fc;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.6}
+.wrap{width:min(760px,calc(100% - 24px));margin:30px auto}.demo{background:#fff;border:1px solid #dfe6ee;border-radius:22px;padding:24px;box-shadow:0 14px 36px rgba(15,47,89,.06)}
+.kicker{font-size:12px;font-weight:900;color:#2563eb;letter-spacing:.08em}.title{font-size:30px;line-height:1.2;color:#10233f;margin:8px 0}.note{font-size:12px;color:#64748b;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:block;font-weight:800;font-size:13px;color:#213751;margin-bottom:5px}.field{margin-bottom:14px}
+input,select,textarea{width:100%;min-height:44px;border:1px solid #cbd5e1;border-radius:10px;padding:9px 11px;background:#fff;font:inherit;font-size:16px}textarea{min-height:88px}
+.section{border-top:1px solid #edf1f5;padding-top:18px;margin-top:18px}.section h2{font-size:18px;color:#143052;margin:0 0 12px}
+.actions{display:flex;gap:10px;margin-top:18px}.btn{border:0;border-radius:11px;padding:12px 18px;font-weight:900;cursor:pointer}.primary{background:#2563eb;color:#fff}.ghost{background:#eef5ff;color:#1d4ed8}
+.result{display:none;margin-top:16px;background:#eef5ff;color:#36516f;border-radius:14px;padding:15px}.caption{font-size:11px;color:#64748b;margin-top:14px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.demo{padding:18px}.title{font-size:26px}}
+</style>
+</head>
+<body>
+<main class="wrap"><div class="demo">
+<div class="kicker">KOROPOP LABS / DEMO</div>
+<h1 class="title">施設利用申込フォーム</h1>
+<p class="note">紙・PDF申込書をWeb入力へ置き換える場合の機能サンプルです。送信は行わず、入力漏れチェックだけ体験できます。</p>
+<form id="demoForm" novalidate>
+  <div class="section">
+    <h2>申請者・団体</h2>
+    <div class="grid">
+      <div class="field"><label>利用団体名 *</label><input name="group" required></div>
+      <div class="field"><label>利用目的 *</label><input name="purpose" required></div>
+      <div class="field"><label>申請者名 *</label><input name="name" required></div>
+      <div class="field"><label>メール *</label><input name="email" type="email" required></div>
+      <div class="field"><label>電話 *</label><input name="phone" type="tel" required></div>
+      <div class="field"><label>住所</label><input name="address"></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>利用予定</h2>
+    <div class="grid">
+      <div class="field"><label>到着日 *</label><input name="arrival" type="date" required></div>
+      <div class="field"><label>出発日 *</label><input name="departure" type="date" required></div>
+      <div class="field"><label>大人人数 *</label><input name="adults" type="number" min="1" value="1" required></div>
+      <div class="field"><label>利用区分</label><select name="room"><option>研修室</option><option>宿泊</option><option>研修室＋宿泊</option></select></div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>備品・連絡事項</h2>
+    <div class="grid">
+      <div class="field"><label>PCプロジェクター</label><select><option>不要</option><option>希望</option></select></div>
+      <div class="field"><label>マイク</label><select><option>不要</option><option>希望</option></select></div>
+    </div>
+    <div class="field"><label>その他連絡事項</label><textarea></textarea></div>
+  </div>
+  <div class="actions">
+    <button class="btn primary" type="submit">入力漏れを確認</button>
+    <button class="btn ghost" type="reset">リセット</button>
+  </div>
+</form>
+<div id="result" class="result"></div>
+<p class="caption"><b>架空デモ</b>：実際の申込項目・保存先・送信先・同意文言は依頼元の現行運用と確認後に決定します。予約可否や料金確定を自動化するデモではありません。</p>
+</div></main>
+<script>
+const f=document.getElementById('demoForm'),r=document.getElementById('result');
+f.addEventListener('submit',e=>{
+  e.preventDefault();
+  const missing=[...f.querySelectorAll('[required]')].filter(x=>!x.checkValidity());
+  if(missing.length){
+    r.style.display='block';r.textContent='未入力・形式エラーが '+missing.length+' 件あります。';
+    missing[0].focus();return;
+  }
+  const a=new Date(f.arrival.value),d=new Date(f.departure.value);
+  if(d<a){r.style.display='block';r.textContent='出発日は到着日以降を指定してください。';return;}
+  r.style.display='block';r.innerHTML='<strong>入力チェックOK</strong><br>実案件では、このあと既存受付先への送信・確認メール・必要項目の保存等を要件に合わせて実装します。';
+});
+f.addEventListener('reset',()=>{r.style.display='none';r.textContent='';});
+</script>
+</body></html>
