@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8NWPD2QBCQ');</script>
 <meta name="robots" content="index,follow">
 <title>ホームページ制作・Web修正｜KOROPOP LABS</title>
 <meta name="description" content="中小企業・店舗向け。Web修正39,800円〜、1ページ会社サイト59,800円〜、3ページ小規模HP79,800円〜。必要な範囲だけ固定価格で対応します。">
@@ -103,5 +105,14 @@ ul{padding-left:20px;color:#52657a}.highlight{border:2px solid #93baf5}
   </section>
   <p class="small">KOROPOP LABS ／ 運営責任者 寺本 迅 ／ koropop.labs@gmail.com</p>
 </main>
+<script>
+document.addEventListener('click',function(e){
+  const link=e.target.closest('a');
+  if(!link||!window.gtag)return;
+  const href=link.getAttribute('href')||'';
+  if(href.includes('contact.html')) gtag('event','cta_click',{cta_type:'website_contact',cta_href:href});
+  else if(href.includes('../demos/')) gtag('event','demo_click',{demo_href:href});
+});
+</script>
 </body>
 </html>
