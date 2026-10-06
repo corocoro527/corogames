@@ -69,10 +69,11 @@
     .category:nth-child(3):before{background:#7c3aed}
     .miniList{margin:16px 0 0;padding:0;list-style:none}
     .miniList li{padding:9px 0;border-top:1px solid #edf1f5;font-size:14px;color:#45576d}
-    .recommend{background:#0f2f59;color:#fff}
-    .recommend h2,.recommend h3{color:#fff}
-    .recommend .sub,.recommend p{color:#c9d6e5}
-    .recommend .card{box-shadow:none}
+    .recommend{background:#eef3f8;color:var(--text)}
+    .recommend h2,.recommend h3{color:#142744}
+    .recommend .sub,.recommend p{color:#52657a}
+    .recommend .card{box-shadow:0 8px 24px rgba(15,47,89,.05)}
+    .recommend .kicker{color:#2563eb!important}
     .process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
     .step .n{font-size:12px;font-weight:950;color:#2563eb}
@@ -99,12 +100,31 @@
     }
     @media(max-width:620px){
       .wrap{width:min(100% - 24px,1120px)}
-      .hero{padding:58px 0 40px}
-      .trustgrid,.grid4,.process,.quick{grid-template-columns:1fr}
-      .trust{border-right:0;border-bottom:1px solid var(--line)}
-      .trust:last-child{border-bottom:0}
-      .cta{align-items:flex-start;flex-direction:column;padding:26px}
-      .card{padding:21px}
+      .navin{height:64px;gap:10px}
+      .brand{font-size:15px}
+      .brand small{display:none}
+      .navlinks .btn{min-height:42px;padding:0 15px;font-size:13px}
+      .hero{padding:44px 0 34px}
+      .hero h1{font-size:38px;line-height:1.12;margin:18px 0}
+      .lead{font-size:16px;line-height:1.7}
+      .heroBtns{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+      .heroBtns .btn{padding:0 10px;font-size:13px;min-height:46px}
+      .trustgrid{grid-template-columns:1fr 1fr}
+      .trust{padding:13px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+      .trust:nth-child(2n){border-right:0}
+      .trust:nth-last-child(-n+2){border-bottom:0}
+      .trust strong{font-size:13px}
+      .trust span{font-size:10px}
+      .grid4{grid-template-columns:1fr 1fr;gap:10px}
+      .recommend{padding:48px 0}
+      .recommend .card{padding:16px;border-radius:16px}
+      .recommend .card h3{font-size:16px;line-height:1.35;margin:8px 0 6px}
+      .recommend .amount{font-size:25px;margin:8px 0 4px}
+      .recommend .card p{font-size:12px;line-height:1.55}
+      .recommend .serviceLink{font-size:12px;margin-top:10px}
+      .process,.quick{grid-template-columns:1fr}
+      .cta{align-items:flex-start;flex-direction:column;padding:24px}
+      .card{padding:20px}
     }
   </style>
 </head>
@@ -208,7 +228,7 @@
 <section id="price" class="recommend">
   <div class="wrap">
     <div class="secHead">
-      <div class="kicker" style="color:#8fc4ff">Popular starting points</div>
+      <div class="kicker">Popular starting points</div>
       <h2>よくある入口は、この4つです。</h2>
       <p class="sub">最初から大きな制作や自動化を買う必要はありません。</p>
     </div>
