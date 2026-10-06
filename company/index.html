@@ -2,384 +2,350 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8NWPD2QBCQ');</script>
-  <title>KOROPOP LABS｜小さな会社の「面倒な仕事」を1つずつ減らす</title>
-  <meta name="description" content="中小企業・小規模事業者向け。問い合わせ整理、車両・物件情報の文章化、転記・集計・報告など、毎回くり返す1業務から固定価格で小さく改善します。">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>KOROPOP LABS｜小さな会社のWeb・集客・業務改善</title>
+  <meta name="description" content="中小企業・小規模事業者向け。ホームページ、Googleマップ、採用・問い合わせ導線、見積計算、業務改善を必要な範囲から固定価格で支援します。">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://koropopgames.com/company/">
   <style>
     :root{
-      --bg:#07111f;--panel:#0d1a2b;--panel2:#101f34;--text:#eef5ff;--muted:#9fb0c6;
-      --line:#20334d;--accent:#68e1fd;--accent2:#8f7cff;--white:#fff;--dark:#06101e;
-      --radius:22px;--shadow:0 20px 60px rgba(0,0,0,.28);
+      --bg:#f7f9fc;--surface:#ffffff;--surface2:#f1f5f9;--text:#172033;--muted:#64748b;
+      --line:#dfe6ee;--navy:#0f2f59;--blue:#2563eb;--blue2:#dbeafe;--green:#08745c;
+      --shadow:0 16px 45px rgba(15,47,89,.08);--radius:22px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:linear-gradient(180deg,#06101e 0,#091522 52%,#07111f 100%);color:var(--text);line-height:1.75}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
     a{color:inherit;text-decoration:none}
     .wrap{width:min(1120px,calc(100% - 36px));margin:auto}
-    .nav{position:sticky;top:0;z-index:10;background:rgba(6,16,30,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.07)}
-    .navin{height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-weight:900;letter-spacing:.08em}
-    .brand small{display:block;font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:-4px}
-    .navlinks{display:flex;align-items:center;gap:22px;font-size:14px;color:#c7d3e2}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:800;background:linear-gradient(135deg,var(--accent),#8fb4ff 48%,var(--accent2));color:#04101b;box-shadow:0 10px 30px rgba(104,225,253,.18)}
-    .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line);box-shadow:none}
-    .hero{padding:90px 0 64px;position:relative;overflow:hidden}
-    .hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(104,225,253,.18),transparent 70%);top:-210px;right:-140px;pointer-events:none}
-    .eyebrow{display:inline-flex;padding:7px 12px;border:1px solid #284465;border-radius:999px;color:#b9ddff;background:rgba(104,225,253,.05);font-size:13px;font-weight:700}
-    h1{font-size:clamp(42px,7vw,82px);line-height:1.08;letter-spacing:-.04em;margin:22px 0 24px}
-    .grad{background:linear-gradient(90deg,#fff,#74e5ff 45%,#a59aff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{max-width:760px;font-size:clamp(17px,2.3vw,22px);color:#b7c7d9;margin:0 0 34px}
+    .nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .navin{height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-weight:950;letter-spacing:.04em;color:var(--navy)}
+    .brand small{display:block;font-size:10px;letter-spacing:.16em;color:var(--muted);margin-top:-4px}
+    .navlinks{display:flex;align-items:center;gap:22px;font-size:14px;color:#475569}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:12px;font-weight:850;background:var(--blue);color:#fff;box-shadow:0 8px 24px rgba(37,99,235,.16)}
+    .btn:hover{filter:brightness(.96)}
+    .btn.ghost{background:#fff;color:var(--navy);border:1px solid #b9c8d8;box-shadow:none}
+    .hero{padding:78px 0 54px;background:linear-gradient(180deg,#fff 0%,#f7f9fc 100%)}
+    .heroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;background:#eef5ff;color:#1d4ed8;border:1px solid #d8e8ff;border-radius:999px;font-size:13px;font-weight:850}
+    h1{font-size:clamp(40px,6.5vw,72px);line-height:1.08;letter-spacing:-.045em;margin:20px 0 22px;color:#10233f}
+    .lead{font-size:clamp(17px,2vw,21px);color:#52657a;max-width:760px;margin:0 0 28px}
     .heroBtns{display:flex;gap:12px;flex-wrap:wrap}
-    .mini{margin-top:25px;color:#8297b0;font-size:13px}
+    .note{margin-top:18px;color:#64748b;font-size:13px}
+    .heroPanel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:var(--shadow)}
+    .heroPanel h3{margin:0 0 8px;font-size:18px}
+    .heroPanel p{margin:0 0 16px;color:var(--muted)}
+    .quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .quick a{display:block;padding:15px;border:1px solid var(--line);border-radius:14px;background:#fbfdff}
+    .quick strong{display:block;color:var(--navy)}
+    .quick span{font-size:12px;color:var(--muted)}
+    .trustbar{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .trustgrid{display:grid;grid-template-columns:repeat(4,1fr)}
+    .trust{padding:20px;text-align:center;border-right:1px solid var(--line)}
+    .trust:last-child{border-right:0}
+    .trust strong{display:block;color:#123b6b;font-size:15px}
+    .trust span{font-size:12px;color:var(--muted)}
     section{padding:68px 0}
-    .secHead{max-width:720px;margin-bottom:32px}
-    .kicker{color:#74ddfb;font-size:13px;letter-spacing:.14em;font-weight:900;text-transform:uppercase}
-    h2{font-size:clamp(30px,5vw,50px);line-height:1.18;margin:8px 0 14px;letter-spacing:-.03em}
+    .secHead{max-width:760px;margin-bottom:30px}
+    .kicker{color:#2563eb;font-size:12px;letter-spacing:.15em;font-weight:900;text-transform:uppercase}
+    h2{font-size:clamp(30px,4.5vw,48px);line-height:1.2;letter-spacing:-.035em;margin:8px 0 14px;color:#142744}
     .sub{color:var(--muted);margin:0}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .card{background:linear-gradient(180deg,rgba(16,31,52,.96),rgba(10,23,39,.96));border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow)}
-    .card h3{font-size:20px;margin:8px 0 8px}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:0 10px 28px rgba(15,47,89,.05)}
+    .card h3{font-size:21px;margin:10px 0 8px;color:#143052}
     .card p{color:var(--muted);margin:0}
-    .icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(104,225,253,.18),rgba(143,124,255,.18));border:1px solid rgba(117,206,255,.16);font-size:22px}
-    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .service{padding:20px;border-radius:18px;background:#0c1929;border:1px solid var(--line)}
-    .service strong{display:block;margin-bottom:5px}
-    .service span{font-size:14px;color:var(--muted)}
-    .priceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .price{position:relative}
-    .price.featured{border-color:#5bdcf8;transform:translateY(-8px)}
-    .tag{position:absolute;right:20px;top:18px;font-size:11px;font-weight:900;color:#06101e;background:#75e3fb;padding:5px 9px;border-radius:999px}
-    .amount{font-size:38px;font-weight:900;letter-spacing:-.03em;margin:13px 0 4px}
-    .amount small{font-size:14px;color:var(--muted);font-weight:600}
-    ul.clean{padding:0;margin:22px 0 0;list-style:none}
-    ul.clean li{padding:10px 0;border-top:1px solid rgba(255,255,255,.07);color:#c5d3e3;font-size:14px}
+    .icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:#eef5ff;color:#1d4ed8;font-size:22px}
+    .pill{display:inline-flex;padding:5px 9px;border-radius:999px;background:#eef5ff;color:#1d4ed8;font-size:11px;font-weight:850}
+    .amount{font-size:32px;font-weight:950;color:#102f55;margin:12px 0 5px;letter-spacing:-.03em}
+    .amount small{font-size:13px;color:var(--muted);font-weight:600}
+    .serviceLink{display:inline-block;margin-top:16px;color:#1d4ed8;font-weight:800;font-size:14px}
+    .category{position:relative;overflow:hidden}
+    .category:before{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:#2563eb}
+    .category:nth-child(2):before{background:#0f766e}
+    .category:nth-child(3):before{background:#7c3aed}
+    .miniList{margin:16px 0 0;padding:0;list-style:none}
+    .miniList li{padding:9px 0;border-top:1px solid #edf1f5;font-size:14px;color:#45576d}
+    .recommend{background:#0f2f59;color:#fff}
+    .recommend h2,.recommend h3{color:#fff}
+    .recommend .sub,.recommend p{color:#c9d6e5}
+    .recommend .card{box-shadow:none}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+    .step .n{font-size:12px;font-weight:950;color:#2563eb}
+    .step strong{display:block;margin:4px 0 4px;color:#143052}
+    .step span{font-size:13px;color:var(--muted)}
     .portfolio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .projectLabel{display:inline-block;font-size:11px;font-weight:800;color:#89dff6;margin-bottom:12px}
-    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    .step{padding:22px 16px;text-align:center;border-radius:18px;background:#0d1929;border:1px solid var(--line)}
-    .num{font-size:12px;color:#68e1fd;font-weight:900}
-    .step strong{display:block;margin:5px 0}
-    .step span{font-size:12px;color:var(--muted)}
+    .transparent{background:#f8fbff;border:1px dashed #9cb4cb}
     .faq{display:grid;gap:12px}
-    details{background:#0d1929;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
-    summary{font-weight:800;cursor:pointer}
+    details{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+    summary{font-weight:850;cursor:pointer;color:#143052}
     details p{color:var(--muted);margin:12px 0 0}
-    .cta{margin:32px 0 10px;padding:44px;border-radius:30px;background:linear-gradient(135deg,#dffaff,#c6e6ff 45%,#d8d0ff);color:#07111f;display:flex;align-items:center;justify-content:space-between;gap:30px}
-    .cta h2{margin:0 0 8px;color:#07111f}
-    .cta p{margin:0;color:#31455f}
-    footer{padding:35px 0 50px;border-top:1px solid rgba(255,255,255,.08);color:#71859d;font-size:13px}
-    .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-    @media(max-width:850px){
+    .cta{margin-top:32px;background:#eaf2ff;border:1px solid #cfe0fb;border-radius:26px;padding:36px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .cta h2{font-size:32px;margin:0 0 8px}
+    .cta p{margin:0;color:#52657a}
+    footer{background:#10233f;color:#cfdae7;padding:38px 0 52px}
+    .foot{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap}
+    .foot a{text-decoration:underline}
+    @media(max-width:900px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid4{grid-template-columns:1fr 1fr}
+      .grid3,.portfolio{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr 1fr}
       .navlinks a:not(.btn){display:none}
-      .grid3,.grid2,.priceGrid,.portfolio{grid-template-columns:1fr}
-      .services{grid-template-columns:1fr}
-      .flow{grid-template-columns:1fr 1fr}
-      .price.featured{transform:none}
-      .cta{align-items:flex-start;flex-direction:column}
     }
-    @media(max-width:520px){
+    @media(max-width:620px){
       .wrap{width:min(100% - 24px,1120px)}
-      .hero{padding:68px 0 46px}
-      .flow{grid-template-columns:1fr}
+      .hero{padding:58px 0 40px}
+      .trustgrid,.grid4,.process,.quick{grid-template-columns:1fr}
+      .trust{border-right:0;border-bottom:1px solid var(--line)}
+      .trust:last-child{border-bottom:0}
+      .cta{align-items:flex-start;flex-direction:column;padding:26px}
       .card{padding:21px}
-      .cta{padding:28px}
     }
   </style>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap navin">
-      <a class="brand" href="./">KOROPOP LABS<small>AI COMPANY / IT & AUTOMATION</small></a>
-      <nav class="navlinks">
-        <a href="#starter">お試しプラン</a>
-        <a href="#demo">デモ</a>
-        <a href="#price">継続プラン</a>
-        <a class="btn" href="./contact.html">無料相談</a>
-      </nav>
+<header class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="./">KOROPOP LABS<small>WEB / LOCAL / AUTOMATION</small></a>
+    <nav class="navlinks">
+      <a href="#services">サービス</a>
+      <a href="#price">料金</a>
+      <a href="#proof">デモ・自社開発</a>
+      <a href="./business-info.html">事業者情報</a>
+      <a class="btn" href="./contact.html?src=company-nav">無料相談</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap heroGrid">
+    <div>
+      <span class="eyebrow">中小企業・小規模事業者向け</span>
+      <h1>Web・集客・業務改善を、<br>必要なところから。</h1>
+      <p class="lead">ホームページ、Googleマップ、採用・問い合わせ導線、見積計算、定型業務。大きな契約ありきではなく、いま困っている1つから固定範囲で整えます。</p>
+      <div class="heroBtns">
+        <a class="btn" href="./service-check.html">30秒で最初の1つを診断</a>
+        <a class="btn ghost" href="./contact.html?src=company-hero">30分の無料相談</a>
+      </div>
+      <p class="note">19,800円〜の単発対応あり ／ 月額契約は必須ではありません ／ 神戸拠点・オンライン対応</p>
     </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <span class="eyebrow">中小企業・小規模事業者向け</span>
-        <h1>面倒な仕事を、<br><span class="grad">1つずつ減らす。</span></h1>
-        <p class="lead">「AIを導入しませんか？」ではなく、問い合わせ整理、Web改善、文章の書き直し、転記、集計、報告など、目の前の課題から改善します。19,800円〜の小さな整備からホームページ制作まで、必要な範囲だけ固定価格で始めます。</p>
-        <div class="heroBtns">
-          <a class="btn" href="#starter">19,800円〜から内容を見る</a>
-          <a class="btn ghost" href="./demos/inquiry-triage.html">実際のデモを見る</a>
-        </div>
-        <p class="mini">月額契約は前提ではありません。何を頼めばいいか分からない場合は、<a href="./service-check.html" style="text-decoration:underline">無料サービス診断</a>で最初の1つを整理できます。社内業務向けの<a href="./audit.html" style="text-decoration:underline">無料AI業務診断</a>も利用できます。</p>
+    <aside class="heroPanel">
+      <h3>何を頼むか決まっていなくても大丈夫です。</h3>
+      <p>今の状態に近いものから見てください。</p>
+      <div class="quick">
+        <a href="./solutions/website.html"><strong>HPがない・古い</strong><span>39,800円〜の修正 / 59,800円〜新規</span></a>
+        <a href="./solutions/google-maps.html"><strong>Googleマップを整えたい</strong><span>19,800円〜</span></a>
+        <a href="./solutions/recruit-flow.html"><strong>採用の応募導線が弱い</strong><span>29,800円〜</span></a>
+        <a href="./solutions/business-audit.html"><strong>何から直すか分からない</strong><span>業務改善診断 19,800円〜</span></a>
       </div>
-    </section>
+    </aside>
+  </div>
+</section>
 
-    <section>
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Why</div>
-          <h2>「AIを入れる」より、<br>仕事が楽になることを優先。</h2>
-          <p class="sub">生成AIが向く仕事、普通の自動化が向く仕事、人がやった方がいい仕事を切り分けて、必要なところだけ改善します。</p>
-        </div>
-        <div class="grid3">
-          <article class="card"><div class="icon">⚙️</div><h3>面倒な定型作業</h3><p>集計、転記、定型文作成、情報整理など、毎回同じ手間がかかる作業を減らします。</p></article>
-          <article class="card"><div class="icon">🌐</div><h3>Webが古い・弱い</h3><p>ホームページ、LP、求人ページ、問い合わせ導線などを必要な範囲から改善します。</p></article>
-          <article class="card"><div class="icon">🤖</div><h3>AIを使いこなせない</h3><p>ChatGPT等を「触って終わり」にせず、実際の業務で使える運用まで設計します。</p></article>
-        </div>
-      </div>
-    </section>
+<div class="trustbar">
+  <div class="wrap trustgrid">
+    <div class="trust"><strong>料金を先に公開</strong><span>始める前に範囲と費用を確認</span></div>
+    <div class="trust"><strong>単発からOK</strong><span>長期契約ありきにしません</span></div>
+    <div class="trust"><strong>小さい範囲から</strong><span>必要以上の作り直しを勧めません</span></div>
+    <div class="trust"><strong>重要箇所は人が確認</strong><span>価格・連絡先・公開内容を二重確認</span></div>
+  </div>
+</div>
 
-
-    <section id="starter">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Starter Offers</div>
-          <h2>最初に買うものを、5つに絞りました。</h2>
-          <p class="sub">「何を頼めばいいか分からない」をなくすため、入口は固定価格・小さな範囲から。業務に合わない場合は契約をおすすめしません。</p>
-        </div>
-        <div class="grid3">
-          <article class="card">
-            <span class="projectLabel">中古車販売・買取店向け</span>
-            <h3>車両情報・問い合わせ省力化</h3>
-            <div class="amount">49,800円〜</div>
-            <p>車両情報を一度整理し、自社サイト・SNS・Google向け文章や問い合わせ返信の下書きへ横展開。</p>
-            <div class="heroBtns" style="margin-top:18px"><a class="btn" href="./solutions/auto.html">内容を見る</a></div>
-          </article>
-          <article class="card">
-            <span class="projectLabel">不動産管理・賃貸会社向け</span>
-            <h3>問い合わせ整理・報告文補助</h3>
-            <div class="amount">49,800円〜</div>
-            <p>入居者問い合わせの分類・要約、確認事項、オーナー報告文の下書きまで。判断は人が行います。</p>
-            <div class="heroBtns" style="margin-top:18px"><a class="btn" href="./solutions/realestate.html">内容を見る</a></div>
-          </article>
-          <article class="card">
-            <span class="projectLabel">業種不問</span>
-            <h3>1業務だけ自動化</h3>
-            <div class="amount">39,800円〜</div>
-            <p>転記・集計・定型文・報告・フォーム整理など、毎回同じ手順で時間を使う1業務だけを改善。</p>
-            <div class="heroBtns" style="margin-top:18px"><a class="btn" href="./solutions/one-task.html">内容を見る</a></div>
-          </article>
-          <article class="card">
-            <span class="projectLabel">店舗・地域ビジネス向け</span>
-            <h3>Googleマップ・プロフィール整備</h3>
-            <div class="amount">19,800円〜</div>
-            <p>営業時間・カテゴリ・サービス・写真・口コミ導線など、Google検索やマップで最初に見られる情報を整理。</p>
-            <div class="heroBtns" style="margin-top:18px"><a class="btn" href="./solutions/google-maps.html">内容を見る</a></div>
-          </article>
-          <article class="card">
-            <span class="projectLabel">中小企業・店舗向け</span>
-            <h3>小規模ホームページ制作</h3>
-            <div class="amount">79,800円〜</div>
-            <p>3〜5ページを中心に、スマホ・基本SEO・問い合わせ導線まで含めて制作。既存サイトのリニューアルも対応。</p>
-            <div class="heroBtns" style="margin-top:18px"><a class="btn" href="./solutions/website.html">内容を見る</a></div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section id="demo">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Interactive Demo</div>
-          <h2>説明より先に、触って確認できます。</h2>
-          <p class="sub">以下は営業実績の数字ではなく、仕組みのイメージを確認するための自社デモです。入力内容はブラウザ内で処理され、送信されません。</p>
-        </div>
-        <div class="grid3">
-          <article class="card"><div class="icon">🏠</div><h3>問い合わせ整理デモ</h3><p>入居者問い合わせを分類・要約し、追加確認事項と返信下書きまで表示。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/inquiry-triage.html">試す</a></div></article>
-          <article class="card"><div class="icon">🚗</div><h3>車両文章デモ</h3><p>1回の車両入力から、自社サイト・SNS・Google向け文章を作り分け。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/vehicle-repurpose.html">試す</a></div></article>
-          <article class="card"><div class="icon">📝</div><h3>報告文デモ</h3><p>箇条書きの作業メモから、顧客向け報告・社内メモ・次回確認事項へ整理。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/report-generator.html">試す</a></div></article>
-          <article class="card"><div class="icon">📍</div><h3>Googleマップ無料診断</h3><p>営業時間・カテゴリ・サービス・写真・口コミ導線など、プロフィールの土台をセルフチェック。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/google-profile-audit.html">試す</a></div></article>
-        </div>
-      </div>
-    </section>
-    <section id="service">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Other Services</div>
-          <h2>入口商品以外も対応できます。</h2>
-          <p class="sub">まずは固定価格の商品をおすすめします。必要な場合のみ、Web制作・SEO・小型ツール等へ広げます。</p>
-        </div>
-        <div class="services">
-          <div class="service"><strong>AI・業務自動化</strong><span>定型メール、文章生成、集計、データ整理、社内FAQなど</span></div>
-          <div class="service"><strong>ホームページ・LP</strong><span>新規制作、修正、問い合わせ改善、求人・サービスページ</span><br><a href="./solutions/website.html" style="text-decoration:underline;font-size:13px">スポット修正19,800円〜 / 新規制作79,800円〜</a></div>
-          <div class="service"><strong>小型Webツール</strong><span>社内用フォーム、管理画面、簡易顧客管理、業務ツール</span></div>
-          <div class="service"><strong>SEO・コンテンツ</strong><span>記事企画、構成、制作、内部導線、既存記事の改善</span></div>
-          <div class="service"><strong>SNS・広報制作</strong><span>投稿企画、文章、画像案、キャンペーンページ</span></div>
-          <div class="service"><strong>データ整理・分析</strong><span>売上・問い合わせ等の集計、見える化、改善案の整理</span></div>
-          <div class="service"><strong>採用ページ・応募導線</strong><span>募集要項、スマホCTA、応募方法、選考フローの見直し</span><br><a href="./solutions/recruit-flow.html" style="text-decoration:underline;font-size:13px">29,800円〜の内容を見る</a></div>
-          <div class="service"><strong>問い合わせ導線ミニ改善</strong><span>フォーム項目、電話・LINE・メールCTA、送信後案内の整理</span><br><a href="./solutions/inquiry-flow.html" style="text-decoration:underline;font-size:13px">29,800円〜の内容を見る</a></div>
-          <div class="service"><strong>業務改善診断レポート</strong><span>最大5業務を棚卸しし、AI・自動化・Web改善の優先順位と30日ロードマップを整理</span><br><a href="./solutions/business-audit.html" style="text-decoration:underline;font-size:13px">19,800円〜の内容を見る</a></div>
-          <div class="service"><strong>制作会社・PR会社向け技術パートナー</strong><span>クライアント関係を保ったまま、Web・AI・自動化の技術実装を案件単位で支援</span><br><a href="./solutions/agency-partner.html" style="text-decoration:underline;font-size:13px">パートナー向け内容を見る</a></div>
-          <div class="service"><strong>料金・概算見積シミュレーター</strong><span>広さ・台数・プラン・オプション等から概算料金や料金帯をWeb上で表示</span><br><a href="./solutions/estimate-calculator.html" style="text-decoration:underline;font-size:13px">49,800円〜の内容を見る</a></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="policy">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Our Policy</div>
-          <h2>AIに、全部を任せるサービスではありません。</h2>
-          <p class="sub">便利さを優先するあまり、確認や判断まで自動化しすぎないことを大切にしています。</p>
-        </div>
-        <div class="grid3">
-          <article class="card">
-            <div class="icon">✓</div>
-            <h3>最終確認は人が行う</h3>
-            <p>対外的な文章、重要な判断、契約や金額に関わる内容は、人が確認する運用を基本とします。</p>
-          </article>
-          <article class="card">
-            <div class="icon">🔒</div>
-            <h3>機密情報は勝手に扱わない</h3>
-            <p>個人情報や社内機密を扱う場合は、対象範囲と運用方法を事前に確認します。相談段階でパスワード等を求めることはありません。</p>
-          </article>
-          <article class="card">
-            <div class="icon">↺</div>
-            <h3>小さく試してから広げる</h3>
-            <p>大規模な導入ありきではなく、まず1業務で効果を確認します。合わない場合は無理に広げません。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="price">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">After Trial</div>
-          <h2>月額は「続ける価値がある」と分かってから。</h2>
-          <p class="sub">最初から長期契約を前提にしません。固定価格の1業務改善を試した後、継続して改善する場合だけ月額プランをご案内します。</p>
-        </div>
-        <div class="priceGrid">
-          <article class="card price">
-            <h3>Lite</h3>
-            <p>小さく継続</p>
-            <div class="amount">39,800円<small> / 月</small></div>
-            <ul class="clean">
-              <li>月1回・60分の改善ミーティング</li>
-              <li>小規模な改善1件 / 月</li>
-              <li>軽微な修正2件まで / 月</li>
-              <li>メール・チャットでの簡易相談</li>
-            </ul>
-          </article>
-          <article class="card price featured">
-            <span class="tag">継続改善向け</span>
-            <h3>Standard</h3>
-            <p>複数テーマを順番に改善</p>
-            <div class="amount">69,800円<small> / 月</small></div>
-            <ul class="clean">
-              <li>月1回・60分の改善ミーティング</li>
-              <li>小規模な改善2件 / 月</li>
-              <li>Web・文章・自動化を横断対応</li>
-              <li>月次の優先順位整理</li>
-            </ul>
-          </article>
-          <article class="card price">
-            <h3>Custom</h3>
-            <p>開発を含む場合</p>
-            <div class="amount">個別見積</div>
-            <ul class="clean">
-              <li>小型Webツール・管理画面</li>
-              <li>複数業務をつなぐ自動化</li>
-              <li>既存システムとの連携調査</li>
-              <li>開始前に範囲・費用を明示</li>
-            </ul>
-          </article>
-        </div>
-        <div class="card" style="margin-top:18px">
-          <strong>基本方針：</strong> 月額契約より先に、必要な範囲だけ固定価格で試します。
-        </div>
-        <div class="card" style="margin-top:18px">
-          <strong>低額の継続ケア：</strong><br>
-          <a href="./solutions/local-care.html" style="text-decoration:underline">Googleマップ継続ケア 9,800円/月〜</a> ／
-          <a href="./solutions/web-care.html" style="text-decoration:underline">Web更新ケア 14,800円/月〜</a>
-          <p style="margin:8px 0 0;color:#9fb0c6">大きな改善契約が不要な場合は、更新・確認だけを小さく継続できます。</p>
-        </div>
-      </div>
-    </section>
-
-
-    <section id="website-samples">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Website Samples</div>
-          <h2>ホームページ制作も、先に見て判断できます。</h2>
-          <p class="sub">まだ受託実績を装うことはせず、業種別の架空デモで制作できる構成・導線を公開しています。</p>
-        </div>
-        <div class="portfolio">
-          <article class="card"><span class="projectLabel">AUTO / DEMO</span><h3>自動車整備・板金</h3><p>サービス整理、見積CTA、技術力・安心感の伝え方を重視したサンプル。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/website-auto.html">デモを見る</a></div></article>
-          <article class="card"><span class="projectLabel">REFORM / DEMO</span><h3>リフォーム・工務店</h3><p>施工事例、相談の流れ、初回問い合わせの不安解消を重視したサンプル。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/website-reform.html">デモを見る</a></div></article>
-          <article class="card"><span class="projectLabel">SALON / DEMO</span><h3>美容室・店舗</h3><p>料金・スタッフ・予約方法をスマホで迷わず確認できる構成サンプル。</p><div class="heroBtns" style="margin-top:18px"><a class="btn ghost" href="./demos/website-salon.html">デモを見る</a></div></article>
-        </div>
-        <p class="mini">※すべて架空デモであり、顧客の制作実績ではありません。<a href="./solutions/website.html" style="text-decoration:underline">ホームページ制作 79,800円〜の詳細</a></p>
-      </div>
-    </section>
-
-    <section id="works">
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">In-house Works</div>
-          <h2>自分たちでも、Webサービスを作って運用しています。</h2>
-          <p class="sub">受託だけでなく、自社サービスの企画・制作・改善を日常的に行っています。以下は自社開発・運用の一例です。</p>
-        </div>
-        <div class="portfolio">
-          <article class="card"><span class="projectLabel">WEB SERVICE</span><h3>MANGA ZERO</h3><p>オリジナル漫画を軸にしたWebサービス。作品導線、ランキング、閲覧体験などを継続開発。</p></article>
-          <article class="card"><span class="projectLabel">WEB APP / SEO</span><h3>性格診断・診断コンテンツ</h3><p>診断ロジック、結果ページ、キャラクター設計、SEOコンテンツまで一体で制作・運用。</p></article>
-          <article class="card"><span class="projectLabel">WEB GAME</span><h3>ブラウザゲーム開発</h3><p>企画、UI、ゲームロジック、改善検証までを行い、Web向け配信を前提に継続制作。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">Process</div>
-          <h2>何を頼めばいいかわからなくても大丈夫。</h2>
-        </div>
-        <div class="flow">
-          <div class="step"><span class="num">01</span><strong>無料相談</strong><span>困りごとを聞きます</span></div>
-          <div class="step"><span class="num">02</span><strong>整理</strong><span>改善候補を分けます</span></div>
-          <div class="step"><span class="num">03</span><strong>提案・見積</strong><span>始める前に確認</span></div>
-          <div class="step"><span class="num">04</span><strong>制作・設定</strong><span>実際に使える形へ</span></div>
-          <div class="step"><span class="num">05</span><strong>確認・改善</strong><span>運用して調整</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="secHead">
-          <div class="kicker">FAQ</div>
-          <h2>よくある質問</h2>
-        </div>
-        <div class="faq">
-          <details><summary>AIに詳しくなくても相談できますか？</summary><p>もちろんです。ツール名を決めてから相談する必要はありません。今の作業内容を聞いた上で、AI・自動化・Webのどれが向いているかを整理します。</p></details>
-          <details><summary>大きなシステムを導入するサービスですか？</summary><p>いいえ。むしろ小さな改善から始める方針です。費用対効果が合わない導入はおすすめしません。</p></details>
-          <details><summary>月額契約をしないと頼めませんか？</summary><p>いいえ。むしろ最初は19,800円〜の固定範囲の商品から、必要なものだけ試せます。大きな導入が必要な場合も、先に範囲と費用を確認してから進めます。</p></details>
-          <details><summary>どんな業種が対象ですか？</summary><p>不動産、工務店、設備、販売、EC、士業など、IT専任者を置きづらい小規模事業者を主な対象としています。内容によって対応可否を確認します。</p></details>
-        </div>
-
-        <div class="cta">
-          <div>
-            <h2>まず、毎回くり返している仕事を1つ教えてください。</h2>
-            <p>30分で対象業務を決め、固定価格で試せる範囲まで整理します。</p>
-          </div>
-          <a class="btn" href="./contact.html">無料相談へ</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap foot">
-      <div><strong>KOROPOP LABS</strong><br>AI COMPANY / IT & AUTOMATION<br><span style="font-size:12px">運営責任者：寺本 迅</span><br><a href="mailto:koropop.labs@gmail.com" style="font-size:12px;text-decoration:underline">koropop.labs@gmail.com</a></div>
-      <div><a href="./business-info.html" style="color:inherit;text-decoration:underline">事業者情報</a><br>© KOROPOP LABS</div>
+<section id="services">
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker">What we do</div>
+      <h2>サービスは、3つの目的で整理しています。</h2>
+      <p class="sub">できることを全部並べるのではなく、まず「何を良くしたいか」から選べる構成にしました。</p>
     </div>
-  </footer>
+    <div class="grid3">
+      <article class="card category">
+        <div class="icon">🌐</div>
+        <h3>Webを整える</h3>
+        <p>会社サイト、古いサイトの修正、採用ページ、問い合わせ導線。</p>
+        <ul class="miniList">
+          <li>Web Rescue Sprint 39,800円〜</li>
+          <li>Business Site STARTER 59,800円〜</li>
+          <li>小規模HP 79,800円〜</li>
+          <li>採用ページ改善 29,800円〜</li>
+        </ul>
+        <a class="serviceLink" href="./solutions/website.html">Web制作・改善を見る →</a>
+      </article>
+      <article class="card category">
+        <div class="icon">📍</div>
+        <h3>集客・問い合わせを整える</h3>
+        <p>Googleマップ、Web上の問い合わせ入口、概算料金の分かりにくさを改善。</p>
+        <ul class="miniList">
+          <li>Googleマップ整備 19,800円〜</li>
+          <li>問い合わせ導線改善 29,800円〜</li>
+          <li>概算見積シミュレーター 49,800円〜</li>
+          <li>必要時のみ月次ケア</li>
+        </ul>
+        <a class="serviceLink" href="./solutions/google-maps.html">Googleマップ整備を見る →</a>
+      </article>
+      <article class="card category">
+        <div class="icon">⚙️</div>
+        <h3>仕事の手間を減らす</h3>
+        <p>紙・FAX・転記・集計・定型文など、繰り返し作業を小さく整理。</p>
+        <ul class="miniList">
+          <li>業務改善診断 19,800円〜</li>
+          <li>PDF/FAX 1業務Web化 39,800円〜</li>
+          <li>見積・入力・文章生成の小型ツール</li>
+          <li>複雑な自動化は要件確認後に個別見積</li>
+        </ul>
+        <a class="serviceLink" href="./solutions/business-audit.html">まず業務を整理する →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="price" class="recommend">
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker" style="color:#8fc4ff">Popular starting points</div>
+      <h2>よくある入口は、この4つです。</h2>
+      <p class="sub">最初から大きな制作や自動化を買う必要はありません。</p>
+    </div>
+    <div class="grid4">
+      <article class="card">
+        <span class="pill">LOCAL</span>
+        <h3>Googleマップ整備</h3>
+        <div class="amount">19,800円〜</div>
+        <p>営業時間・カテゴリ・サービス・写真・口コミ導線などを整理。</p>
+        <a class="serviceLink" href="./solutions/google-maps.html">詳細 →</a>
+      </article>
+      <article class="card">
+        <span class="pill">REPAIR</span>
+        <h3>Web Rescue</h3>
+        <div class="amount">39,800円〜</div>
+        <p>古い情報、CTA、リンク、軽いスマホ崩れを作り直さず修正。</p>
+        <a class="serviceLink" href="./solutions/website.html">詳細 →</a>
+      </article>
+      <article class="card">
+        <span class="pill">WEBSITE</span>
+        <h3>1ページ会社サイト</h3>
+        <div class="amount">59,800円〜</div>
+        <p>HPがない会社・店舗向け。会社情報、サービス、問い合わせまで1ページに。</p>
+        <a class="serviceLink" href="./solutions/website.html">詳細 →</a>
+      </article>
+      <article class="card">
+        <span class="pill">ESTIMATE</span>
+        <h3>概算見積シミュレーター</h3>
+        <div class="amount">49,800円〜</div>
+        <p>料金・台数・オプション等を選ぶと概算をWeb上で表示。</p>
+        <a class="serviceLink" href="./solutions/estimate-calculator.html">詳細 →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker">Proof before promise</div>
+      <h2>「できます」だけでなく、見て判断できる材料を出します。</h2>
+      <p class="sub">顧客実績と架空デモを混同しません。現在は自社デモと自社開発・運用の実物を公開し、できることを先に確認できる形にしています。</p>
+    </div>
+    <div class="portfolio">
+      <article class="card transparent">
+        <span class="pill">DEMO</span>
+        <h3>ホームページ業種別デモ</h3>
+        <p>自動車整備・リフォーム・美容室の架空サンプル。構成・スマホ導線・CTAを確認できます。</p>
+        <a class="serviceLink" href="#website-samples">デモを見る →</a>
+      </article>
+      <article class="card transparent">
+        <span class="pill">DEMO</span>
+        <h3>Googleマップ無料診断</h3>
+        <p>プロフィールの基本項目をセルフチェックできるデモ。</p>
+        <a class="serviceLink" href="./demos/google-profile-audit.html">試す →</a>
+      </article>
+      <article class="card transparent">
+        <span class="pill">IN-HOUSE</span>
+        <h3>自社サービスの開発・運用</h3>
+        <p>MANGA ZERO、診断コンテンツ、Webゲームなどを自社で企画・制作・改善しています。</p>
+        <a class="serviceLink" href="#works">自社開発例を見る →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="website-samples">
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker">Website demos</div>
+      <h2>ホームページ制作は、先にサンプルを見られます。</h2>
+      <p class="sub">下記は顧客の制作実績ではなく、KOROPOP LABSが制作した架空デモです。</p>
+    </div>
+    <div class="portfolio">
+      <article class="card"><span class="pill">AUTO</span><h3>自動車整備・板金</h3><p>サービス整理、見積CTA、安心感の伝え方を重視。</p><a class="serviceLink" href="./demos/website-auto.html">見る →</a></article>
+      <article class="card"><span class="pill">REFORM</span><h3>リフォーム・工務店</h3><p>施工事例、相談の流れ、問い合わせ前の不安解消を重視。</p><a class="serviceLink" href="./demos/website-reform.html">見る →</a></article>
+      <article class="card"><span class="pill">SALON</span><h3>美容室・店舗</h3><p>料金・スタッフ・予約方法をスマホで迷わない構成に。</p><a class="serviceLink" href="./demos/website-salon.html">見る →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker">In-house works</div>
+      <h2>受託だけでなく、自分たちでも作って運用しています。</h2>
+      <p class="sub">机上の提案だけでなく、自社サービスを実際に作り、改善する経験を制作・業務改善へ還元します。</p>
+    </div>
+    <div class="grid3">
+      <article class="card"><h3>MANGA ZERO</h3><p>オリジナル漫画Webサービス。作品導線、ランキング、閲覧体験などを継続開発。</p></article>
+      <article class="card"><h3>診断コンテンツ</h3><p>診断ロジック、結果ページ、キャラクター、SEO導線まで一体で制作。</p></article>
+      <article class="card"><h3>Webゲーム</h3><p>企画、UI、ゲームロジック、改善検証まで行いWeb配信を前提に制作。</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker">How it works</div>
+      <h2>相談から納品まで、4ステップ。</h2>
+    </div>
+    <div class="process">
+      <div class="step"><span class="n">01</span><strong>無料相談・診断</strong><span>困っている箇所と公開情報を確認。</span></div>
+      <div class="step"><span class="n">02</span><strong>最小範囲を提案</strong><span>大きな制作より小修正で足りるなら、そちらを優先。</span></div>
+      <div class="step"><span class="n">03</span><strong>制作・設定・QA</strong><span>料金、連絡先、リンク等の重要箇所を二重確認。</span></div>
+      <div class="step"><span class="n">04</span><strong>納品・必要時だけ継続</strong><span>月額は継続価値がある場合だけ案内。</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="secHead">
+      <div class="kicker">FAQ</div>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq">
+      <details><summary>何を頼めばいいか分かりません。</summary><p>サービス名を決める必要はありません。公開情報と困りごとを見て、最小で十分な改善から整理します。</p></details>
+      <details><summary>月額契約は必要ですか？</summary><p>必須ではありません。単発の整備・制作だけでも対応します。継続作業が実際にある場合のみ月額ケアをご案内します。</p></details>
+      <details><summary>安いプランから頼むと、結局高額になりますか？</summary><p>範囲外が必要になった場合は、作業前に追加範囲と費用を確認します。安いプランへ複雑な作業を無理に詰め込むこともしません。</p></details>
+      <details><summary>実績はありますか？</summary><p>顧客制作実績と架空デモを分けて表示しています。公開できる顧客実績は今後、許可を得たものだけ掲載します。現在は自社開発例と架空デモで制作内容を確認できます。</p></details>
+    </div>
+    <div class="cta">
+      <div>
+        <h2>まず、1つだけ見せてください。</h2>
+        <p>今のホームページ、Googleマップ、採用ページ、紙の業務など。最初に直すべき箇所を一緒に整理します。</p>
+      </div>
+      <a class="btn" href="./contact.html?src=company-bottom">30分の無料相談</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><strong>KOROPOP LABS</strong><br>Web / Local / Automation<br>運営責任者：寺本 迅<br><a href="mailto:koropop.labs@gmail.com">koropop.labs@gmail.com</a></div>
+    <div><a href="./business-info.html">事業者情報</a><br><a href="../privacy.html">プライバシーポリシー</a><br>© KOROPOP LABS</div>
+  </div>
+</footer>
 </body>
 </html>
