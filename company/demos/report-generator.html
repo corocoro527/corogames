@@ -1,0 +1,23 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>報告文作成デモ｜KOROPOP LABS</title><style>
+:root{--bg:#07111f;--panel:#0d1a2b;--text:#eef5ff;--muted:#9fb0c6;--line:#20334d;--accent:#68e1fd;--accent2:#8f7cff;--good:#9ff3c8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06101e,#091522);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.7}.wrap{width:min(920px,calc(100% - 26px));margin:auto;padding:38px 0 70px}a{color:inherit}.brand{font-weight:900;letter-spacing:.08em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.18em}.back{display:inline-block;margin:18px 0;color:#a8b9cb;text-decoration:none}.badge{display:inline-block;padding:6px 10px;border:1px solid #315170;border-radius:999px;color:#bdefff;font-size:12px}h1{font-size:clamp(36px,7vw,60px);line-height:1.1;letter-spacing:-.04em;margin:16px 0}.lead{font-size:18px;color:#b9c9da;max-width:760px}.card{background:linear-gradient(180deg,rgba(16,31,52,.98),rgba(10,23,39,.98));border:1px solid var(--line);border-radius:22px;padding:24px;margin-top:16px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:7px;margin:12px 0}.field label{font-size:13px;color:#bdd0e1}.field input,.field textarea,.field select{width:100%;background:#071524;border:1px solid #29425f;border-radius:13px;color:#eef5ff;padding:12px 14px;font:inherit}.field textarea{min-height:120px;resize:vertical}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;font-weight:900;background:linear-gradient(135deg,var(--accent),#8fb4ff,var(--accent2));color:#06101e;border:0;cursor:pointer}.ghost{background:transparent;color:#eef5ff;border:1px solid var(--line)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.out{white-space:pre-wrap;background:#071524;border:1px solid #29425f;border-radius:14px;padding:15px;min-height:130px;color:#dbe9f6}.label{font-size:12px;color:#7f95ad;font-weight:900;letter-spacing:.08em;margin:18px 0 6px}.notice{padding:12px 14px;border-radius:14px;background:#10283b;color:#bcecff;font-size:13px}.cta{margin-top:22px;padding:26px;border-radius:22px;background:linear-gradient(135deg,#dffaff,#d4e9ff,#ddd7ff);color:#07111f}.cta p{color:#31455f}.cta .btn{background:#07111f;color:#fff;text-decoration:none}.small{font-size:12px;color:#7f93aa}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}.wrap{width:min(100% - 20px,920px)}}
+</style></head><body><main class="wrap">
+<a class="brand" href="../">KOROPOP LABS<small>INTERACTIVE DEMO</small></a><a class="back" href="../solutions/one-task.html">← 1業務自動化プランへ戻る</a>
+<span class="badge">デモ・入力内容は送信されません</span><h1>箇条書きメモから、<br>用途別の報告文へ。</h1>
+<p class="lead">現場メモ・対応履歴・点検内容などを、社内用と顧客向けで書き直す作業のイメージです。</p>
+<div class="card"><div class="field"><label>作業メモ</label><textarea id="memo">10/6 14:00 現地確認。共用廊下の照明1灯が不点灯。器具に外傷なし。予備LEDへ交換後、正常点灯を確認。ほかの照明は異常なし。次回定期点検時にも再確認予定。</textarea></div><button class="btn" id="run">報告文に整える</button></div>
+<div class="grid2"><div class="card"><div class="label">顧客向け報告</div><div class="out" id="client"></div><div class="label">社内メモ</div><div class="out" id="internal"></div></div>
+<div class="card"><div class="label">次回確認事項</div><div class="out" id="next"></div><div class="label">入力漏れチェック</div><div class="out" id="check"></div></div></div>
+<div class="notice">実運用では会社ごとの報告書フォーマット・必須項目・承認フローに合わせます。</div>
+<div class="cta"><h2>報告書以外でも「毎回同じ書き直し」に使えます。</h2><p>まず1業務だけ固定価格で試します。</p><a class="btn" href="../contact.html">30分の無料相談へ</a></div>
+</main><script>
+function run(){const m=document.getElementById('memo').value.trim();
+const date=(m.match(/\d{1,2}\/\d{1,2}\s+\d{1,2}:\d{2}/)||["日時記載あり"])[0];
+document.getElementById('client').textContent="【対応報告】\n"+date+"に現地確認を実施しました。共用廊下の照明1灯に不点灯を確認したため、予備LEDへ交換しました。交換後は正常点灯を確認しています。その他の照明には異常は見られませんでした。次回定期点検時にも状態を確認いたします。";
+document.getElementById('internal').textContent="・現地確認："+date+"\n・事象：共用廊下 照明1灯 不点灯\n・器具：外傷なし\n・対応：予備LEDへ交換\n・結果：正常点灯確認\n・他照明：異常なし";
+document.getElementById('next').textContent="・次回定期点検時に交換箇所を再確認\n・再発時は器具側不具合の有無を確認";
+let miss=[];if(!/\d{1,2}\/\d{1,2}/.test(m))miss.push("日時");if(!/確認|点検/.test(m))miss.push("確認内容");if(!/交換|対応|実施/.test(m))miss.push("対応内容");document.getElementById('check').textContent=miss.length?"要確認："+miss.join("、"):"基本項目は記載されています。※正式な必須項目は御社ルールに合わせます。";
+}
+document.getElementById('run').onclick=run;run();
+</script></body></html>

@@ -1,0 +1,35 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>不動産問い合わせ整理デモ｜KOROPOP LABS</title><style>
+:root{--bg:#07111f;--panel:#0d1a2b;--text:#eef5ff;--muted:#9fb0c6;--line:#20334d;--accent:#68e1fd;--accent2:#8f7cff;--good:#9ff3c8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06101e,#091522);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.7}.wrap{width:min(920px,calc(100% - 26px));margin:auto;padding:38px 0 70px}a{color:inherit}.brand{font-weight:900;letter-spacing:.08em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.18em}.back{display:inline-block;margin:18px 0;color:#a8b9cb;text-decoration:none}.badge{display:inline-block;padding:6px 10px;border:1px solid #315170;border-radius:999px;color:#bdefff;font-size:12px}h1{font-size:clamp(36px,7vw,60px);line-height:1.1;letter-spacing:-.04em;margin:16px 0}.lead{font-size:18px;color:#b9c9da;max-width:760px}.card{background:linear-gradient(180deg,rgba(16,31,52,.98),rgba(10,23,39,.98));border:1px solid var(--line);border-radius:22px;padding:24px;margin-top:16px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:7px;margin:12px 0}.field label{font-size:13px;color:#bdd0e1}.field input,.field textarea,.field select{width:100%;background:#071524;border:1px solid #29425f;border-radius:13px;color:#eef5ff;padding:12px 14px;font:inherit}.field textarea{min-height:120px;resize:vertical}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;font-weight:900;background:linear-gradient(135deg,var(--accent),#8fb4ff,var(--accent2));color:#06101e;border:0;cursor:pointer}.ghost{background:transparent;color:#eef5ff;border:1px solid var(--line)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.out{white-space:pre-wrap;background:#071524;border:1px solid #29425f;border-radius:14px;padding:15px;min-height:130px;color:#dbe9f6}.label{font-size:12px;color:#7f95ad;font-weight:900;letter-spacing:.08em;margin:18px 0 6px}.notice{padding:12px 14px;border-radius:14px;background:#10283b;color:#bcecff;font-size:13px}.cta{margin-top:22px;padding:26px;border-radius:22px;background:linear-gradient(135deg,#dffaff,#d4e9ff,#ddd7ff);color:#07111f}.cta p{color:#31455f}.cta .btn{background:#07111f;color:#fff;text-decoration:none}.small{font-size:12px;color:#7f93aa}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}.wrap{width:min(100% - 20px,920px)}}
+</style></head><body><main class="wrap">
+<a class="brand" href="../">KOROPOP LABS<small>INTERACTIVE DEMO</small></a><a class="back" href="../solutions/realestate.html">← 不動産向けプランへ戻る</a>
+<span class="badge">デモ・入力内容は送信されません</span><h1>入居者問い合わせを、<br>担当者が見やすい形に整理。</h1>
+<p class="lead">実際の導入では会社ごとの分類ルールに合わせます。このデモでは、ブラウザ内で簡易的に分類・要約・確認事項・返信下書きを作ります。</p>
+<div class="card"><div class="field"><label>問い合わせ内容</label><textarea id="q">昨日からキッチンの水道の下から水が漏れています。床も少し濡れていて、今日の18時以降なら在宅しています。できるだけ早めに見てもらえますか？</textarea></div>
+<div class="actions"><button class="btn" id="run">整理する</button><button class="btn ghost" id="sample">別サンプル</button></div></div>
+<div class="grid2">
+<div class="card"><div class="label">分類・優先度</div><div class="out" id="classOut">「整理する」を押してください。</div><div class="label">担当者向け要約</div><div class="out" id="summaryOut"></div></div>
+<div class="card"><div class="label">追加確認したい項目</div><div class="out" id="checkOut"></div><div class="label">返信下書き</div><div class="out" id="replyOut"></div></div>
+</div>
+<div class="notice">このデモは法的判断・契約判断・緊急性の最終判断を行いません。実運用では担当者確認を必須にします。</div>
+<div class="cta"><h2>御社の分類ルールに合わせて作れます。</h2><p>最初は1種類の問い合わせだけでOKです。</p><a class="btn" href="../contact.html">30分の無料相談へ</a></div>
+</main><script>
+const samples=[
+"昨日からキッチンの水道の下から水が漏れています。床も少し濡れていて、今日の18時以降なら在宅しています。できるだけ早めに見てもらえますか？",
+"来月で契約更新だと思うのですが、更新料と必要な手続きを教えてください。今月中に確認したいです。",
+"上の階の足音が深夜まで続いて困っています。昨日は1時頃まで聞こえました。どう対応したらいいでしょうか？"
+];let n=0;
+function clean(s){return s.replace(/\s+/g,' ').trim()}
+function run(){
+ const t=clean(document.getElementById('q').value); let cat="その他",pri="通常",checks=["物件名・部屋番号","連絡可能な時間帯"];
+ if(/水|漏|故障|壊|エアコン|給湯|設備/.test(t)){cat="設備・修繕";pri=/水漏|漏れ|止まら|床.*濡/.test(t)?"高め":"通常";checks.push("発生箇所と現在の状態","止水・電源OFF等の応急対応状況","写真の有無");}
+ else if(/更新|契約|解約|退去/.test(t)){cat="契約・更新";checks.push("契約満了日","更新/解約の希望","書類送付先");}
+ else if(/騒音|足音|うるさ|臭|迷惑/.test(t)){cat="生活トラブル";checks.push("発生日時・頻度","継続期間","相手住戸が特定できるか");}
+ document.getElementById('classOut').textContent="分類："+cat+"\n優先度："+pri+"\n※最終判断は担当者";
+ document.getElementById('summaryOut').textContent="【要約】\n"+t.slice(0,150)+(t.length>150?"…":"");
+ document.getElementById('checkOut').textContent=checks.map(x=>"・"+x).join("\n");
+ document.getElementById('replyOut').textContent="お問い合わせありがとうございます。内容を確認いたしました。\n\n担当者にて状況を確認のうえ、必要な対応をご案内いたします。差し支えなければ、"+checks.slice(2).join("、")+"についてもお知らせください。\n\n※実運用では御社の文体・対応ルールに合わせて調整します。";
+}
+document.getElementById('run').onclick=run;document.getElementById('sample').onclick=()=>{n=(n+1)%samples.length;document.getElementById('q').value=samples[n];run()};run();
+</script></body></html>
