@@ -51,6 +51,13 @@ jobs:
               if p.name not in exclude
           )
 
+          # Public pages in subdirectories that should also appear in the sitemap.
+          # Keep private/utility pages such as company/contact.html and
+          # company/thanks.html out of the sitemap.
+          extra_pages = [
+              ("company/index.html", base + "/company/"),
+          ]
+
           def lastmod(filename):
               try:
                   result = subprocess.check_output(
@@ -88,6 +95,15 @@ jobs:
                       lastmod(filename)
                   )
               )
+
+          for filename, url in extra_pages:
+              if Path(filename).exists():
+                  urls.append(
+                      (
+                          url,
+                          lastmod(filename)
+                      )
+                  )
 
           lines = [
               '<?xml version="1.0" encoding="UTF-8"?>',
