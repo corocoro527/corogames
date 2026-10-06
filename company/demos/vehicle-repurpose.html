@@ -1,0 +1,26 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>車両情報の文章横展開デモ｜KOROPOP LABS</title><style>
+:root{--bg:#07111f;--panel:#0d1a2b;--text:#eef5ff;--muted:#9fb0c6;--line:#20334d;--accent:#68e1fd;--accent2:#8f7cff;--good:#9ff3c8}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06101e,#091522);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.7}.wrap{width:min(920px,calc(100% - 26px));margin:auto;padding:38px 0 70px}a{color:inherit}.brand{font-weight:900;letter-spacing:.08em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.18em}.back{display:inline-block;margin:18px 0;color:#a8b9cb;text-decoration:none}.badge{display:inline-block;padding:6px 10px;border:1px solid #315170;border-radius:999px;color:#bdefff;font-size:12px}h1{font-size:clamp(36px,7vw,60px);line-height:1.1;letter-spacing:-.04em;margin:16px 0}.lead{font-size:18px;color:#b9c9da;max-width:760px}.card{background:linear-gradient(180deg,rgba(16,31,52,.98),rgba(10,23,39,.98));border:1px solid var(--line);border-radius:22px;padding:24px;margin-top:16px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:grid;gap:7px;margin:12px 0}.field label{font-size:13px;color:#bdd0e1}.field input,.field textarea,.field select{width:100%;background:#071524;border:1px solid #29425f;border-radius:13px;color:#eef5ff;padding:12px 14px;font:inherit}.field textarea{min-height:120px;resize:vertical}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:999px;font-weight:900;background:linear-gradient(135deg,var(--accent),#8fb4ff,var(--accent2));color:#06101e;border:0;cursor:pointer}.ghost{background:transparent;color:#eef5ff;border:1px solid var(--line)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.out{white-space:pre-wrap;background:#071524;border:1px solid #29425f;border-radius:14px;padding:15px;min-height:130px;color:#dbe9f6}.label{font-size:12px;color:#7f95ad;font-weight:900;letter-spacing:.08em;margin:18px 0 6px}.notice{padding:12px 14px;border-radius:14px;background:#10283b;color:#bcecff;font-size:13px}.cta{margin-top:22px;padding:26px;border-radius:22px;background:linear-gradient(135deg,#dffaff,#d4e9ff,#ddd7ff);color:#07111f}.cta p{color:#31455f}.cta .btn{background:#07111f;color:#fff;text-decoration:none}.small{font-size:12px;color:#7f93aa}
+@media(max-width:720px){.grid2{grid-template-columns:1fr}.wrap{width:min(100% - 20px,920px)}}
+</style></head><body><main class="wrap">
+<a class="brand" href="../">KOROPOP LABS<small>INTERACTIVE DEMO</small></a><a class="back" href="../solutions/auto.html">← 中古車向けプランへ戻る</a>
+<span class="badge">デモ・入力内容は送信されません</span><h1>車両情報を一度入れて、<br>3媒体の文章へ。</h1>
+<p class="lead">同じ車両情報を何度も書き直す手間を減らすイメージです。実導入では店舗の表現ルールや禁止表現に合わせて調整します。</p>
+<div class="card"><div class="grid2">
+<div><div class="field"><label>車種</label><input id="car" value="トヨタ プリウス"></div><div class="field"><label>年式</label><input id="year" value="2021年"></div><div class="field"><label>走行距離</label><input id="km" value="32,000km"></div></div>
+<div><div class="field"><label>価格</label><input id="price" value="198万円"></div><div class="field"><label>主な装備・特徴</label><textarea id="feat">純正ナビ、バックカメラ、ETC、禁煙車、車検2028年3月まで</textarea></div></div>
+</div><button class="btn" id="run">文章を作る</button></div>
+<div class="grid2"><div class="card"><div class="label">自社サイト向け</div><div class="out" id="siteOut"></div><div class="label">Instagram / SNS向け</div><div class="out" id="snsOut"></div></div>
+<div class="card"><div class="label">Google向け短文</div><div class="out" id="gOut"></div><div class="label">スタッフ確認ポイント</div><div class="out" id="cOut"></div></div></div>
+<div class="notice">価格・装備・修復歴・保証等は必ず元データと照合し、スタッフが最終確認する前提です。</div>
+<div class="cta"><h2>店舗の文章ルールに合わせて固定できます。</h2><p>媒体ごとの長さや文体も調整可能です。</p><a class="btn" href="../contact.html">30分の無料相談へ</a></div>
+</main><script>
+function v(id){return document.getElementById(id).value.trim()}
+function run(){const car=v('car'),year=v('year'),km=v('km'),price=v('price'),feat=v('feat');
+document.getElementById('siteOut').textContent=car+"（"+year+"）入庫しました。走行距離は"+km+"、車両価格は"+price+"です。\n\n主な装備・特徴：\n"+feat+"\n\n気になる点がございましたら、お気軽にお問い合わせください。※掲載内容はスタッフ確認後に公開します。";
+document.getElementById('snsOut').textContent="【入庫情報】"+car+" 🚗\n"+year+" / "+km+" / "+price+"\n"+feat+"\n\n詳細は店舗までお問い合わせください。\n#中古車 #入庫情報";
+document.getElementById('gOut').textContent=car+"が入庫しました。"+year+"、走行"+km+"、"+price+"。"+feat+"。詳細はお気軽にお問い合わせください。";
+document.getElementById('cOut').textContent="・車両価格の一致\n・走行距離の一致\n・装備の有無\n・修復歴/保証/諸費用の表記\n・各媒体の掲載ルール";
+}
+document.getElementById('run').onclick=run;run();
+</script></body></html>
