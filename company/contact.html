@@ -27,9 +27,9 @@ footer{margin-top:28px;color:#71859d;font-size:12px;text-align:center}
 <main class="w">
 <a class="back" href="./">← サービスページへ戻る</a>
 <h1>30分の無料相談</h1>
-<p class="lead">「何をAI化したらいいかわからない」でも大丈夫です。今の面倒な作業を教えてください。内容を確認して、改善できそうなところだけ整理します。</p>
+<p class="lead">ご希望のプランが決まっていれば選ぶだけでOKです。まだ決まっていない場合は、今いちばん面倒な作業を教えてください。対象を1業務に絞って整理します。</p>
 <div class="box">
-<div class="notice">営業電話や高額なシステム導入を前提にした相談ではありません。まずは状況確認から始めます。</div>
+<div class="notice">月額契約や大規模システム導入を前提にしていません。最初は39,800〜49,800円の固定価格スターター、または無料相談から始められます。</div>
 <form action="https://formsubmit.co/koropopgames.support@gmail.com" method="POST">
 <input type="hidden" name="_subject" value="【KOROPOP LABS】無料相談">
 <input type="hidden" name="_template" value="table">
@@ -37,6 +37,18 @@ footer{margin-top:28px;color:#71859d;font-size:12px;text-align:center}
 <input type="hidden" name="_url" value="https://koropopgames.com/company/contact.html">
 <input type="hidden" id="source" name="相談流入元" value="direct">
 <input type="text" name="_honey" style="display:none">
+
+
+<label for="plan">ご相談内容</label>
+<select id="plan" name="ご希望プラン">
+<option value="">まだ決めていない</option>
+<option value="1業務だけ自動化 39,800円〜">1業務だけ自動化 39,800円〜</option>
+<option value="不動産管理スターター 49,800円〜">不動産管理スターター 49,800円〜</option>
+<option value="中古車販売店スターター 49,800円〜">中古車販売店スターター 49,800円〜</option>
+<option value="Web・LP制作">Web・LP制作</option>
+<option value="その他">その他</option>
+</select>
+<p class="help">迷っている場合は「まだ決めていない」で大丈夫です。</p>
 
 <label for="company">会社名・屋号</label>
 <input id="company" name="会社名・屋号" autocomplete="organization">
@@ -62,7 +74,7 @@ footer{margin-top:28px;color:#71859d;font-size:12px;text-align:center}
 
 <label for="budget">ご予算のイメージ</label>
 <select id="budget" name="予算感">
-<option value="">まだ決めていない</option><option>〜5万円</option><option>5〜10万円</option><option>10〜30万円</option><option>30万円〜</option><option>月額で相談したい</option>
+<option value="">まだ決めていない</option><option>〜5万円</option><option>5〜10万円</option><option>10〜30万円</option><option>30万円〜</option><option>継続支援も検討したい</option>
 </select>
 
 <label for="detail">その他・補足</label>
@@ -88,6 +100,16 @@ footer{margin-top:28px;color:#71859d;font-size:12px;text-align:center}
   document.getElementById('source').value=src;
   const next=document.querySelector('input[name="_next"]');
   next.value='https://koropopgames.com/company/thanks.html?src='+encodeURIComponent(src);
+  const plan=document.getElementById('plan');
+  const srcMap={
+    'auto-solution':'中古車販売店スターター 49,800円〜',
+    'vehicle-demo':'中古車販売店スターター 49,800円〜',
+    'realestate-solution':'不動産管理スターター 49,800円〜',
+    'inquiry-demo':'不動産管理スターター 49,800円〜',
+    'one-task-solution':'1業務だけ自動化 39,800円〜',
+    'report-demo':'1業務だけ自動化 39,800円〜'
+  };
+  if(srcMap[src]) plan.value=srcMap[src];
   const form=document.querySelector('form');
   form.addEventListener('submit',()=>{if(window.gtag)gtag('event','lead_form_submit',{lead_source:src});});
 })();
