@@ -35,6 +35,7 @@ footer{margin-top:28px;color:#71859d;font-size:12px;text-align:center}
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_next" value="https://koropopgames.com/company/thanks.html">
 <input type="hidden" name="_url" value="https://koropopgames.com/company/contact.html">
+<input type="hidden" id="source" name="相談流入元" value="direct">
 <input type="text" name="_honey" style="display:none">
 
 <label for="company">会社名・屋号</label>
@@ -73,5 +74,23 @@ footer{margin-top:28px;color:#71859d;font-size:12px;text-align:center}
 </div>
 <footer>© 2026 KOROPOP LABS / AI COMPANY</footer>
 </main>
+<script>
+(function(){
+  const p=new URLSearchParams(location.search);
+  let src=p.get('src')||'';
+  if(!src){
+    try{
+      const r=document.referrer?new URL(document.referrer):null;
+      if(r && r.hostname===location.hostname) src=r.pathname.replace('/company/','').replace(/\/$/,'')||'company-home';
+    }catch(e){}
+  }
+  if(!src) src='direct';
+  document.getElementById('source').value=src;
+  const next=document.querySelector('input[name="_next"]');
+  next.value='https://koropopgames.com/company/thanks.html?src='+encodeURIComponent(src);
+  const form=document.querySelector('form');
+  form.addEventListener('submit',()=>{if(window.gtag)gtag('event','lead_form_submit',{lead_source:src});});
+})();
+</script>
 </body>
 </html>
