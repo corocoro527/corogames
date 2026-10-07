@@ -318,6 +318,8 @@ jobs:
                       if path.name in {
                           "index.html",
                           "contact-thanks.html",
+                "love-style.html",
+                "love64-v2.html",
                       }:
                           continue
 
