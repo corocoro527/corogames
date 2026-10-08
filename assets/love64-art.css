@@ -1,0 +1,53 @@
+/* Match each 192 x 220 source cell's aspect ratio; never stretch square crops. */
+html body :is(#catalog,#landingV6,#resultScreen) .love64-art.love64-art.love64-art {
+  background-image:url('love64-characters-approved.png')!important;
+  background-size:800% 800%!important;
+  background-position:var(--art-x) var(--art-y)!important;
+  background-repeat:no-repeat!important;
+  background-color:#fff!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  image-rendering:auto!important;
+  filter:none!important;
+  transform:none!important;
+}
+html body :is(#catalog,#landingV6,#resultScreen) .love64-art.love64-art.love64-art[data-mbti="ISTJ"] {
+  background-image:url('love64-reference-istj.jpeg')!important;
+  background-size:1723.809524% 1086%!important;
+}
+html body #catalog .chara.love64-art {width:104px!important;height:119.1667px!important;}
+html body #landingV6 .v6-card .v6-pixel.love64-art {width:104px!important;height:119.1667px!important;}
+html body #landingV6 .v6-cat-avatar.love64-art {width:72px!important;height:82.5px!important;flex:0 0 72px!important;}
+html body #resultCharacter.love64-art {width:144px!important;height:165px!important;margin:0 auto 12px!important;}
+html body .love64-art:before,html body .love64-art:after {content:none!important;display:none!important;}
+#catalog .catch {font-size:.875rem!important;line-height:1.65!important;color:#bf2855!important;}
+#catalog .sub {font-size:.9rem!important;}
+#catalog .greek,#catalog .family-title span,#catalog .group-label small {color:#616573!important;}
+#landingV6 .v6-card span,#landingV6 .v6-cat-copy span {color:#626574!important;}
+@media(max-width:560px){
+  html body #landingV6 .v6-catalog article {gap:8px!important;padding:12px 8px!important;min-width:0!important;}
+  html body #landingV6 .v6-cat-avatar.love64-art {width:56px!important;height:64.1667px!important;flex-basis:56px!important;}
+  #landingV6 .v6-cat-copy b {font-size:.95rem!important;}
+  #landingV6 .v6-cat-copy span {font-size:.75rem!important;line-height:1.6!important;}
+  #catalog .family-title {flex-wrap:wrap;}
+  #catalog .group-label small {display:block!important;margin:6px 0 0!important;line-height:1.6!important;}
+}
+@media(prefers-reduced-motion:reduce){
+  html {scroll-behavior:auto!important;}
+  #landingV6 .v6-rail {animation:none!important;overflow-x:auto;max-width:100%;}
+}
+
+html body #catalog .chara.love64-art[data-mbti="ISTJ"],
+html body #landingV6 .v6-card .v6-pixel.love64-art[data-mbti="ISTJ"] {width:100.1px!important;}
+html body #landingV6 .v6-cat-avatar.love64-art[data-mbti="ISTJ"] {width:69.3px!important;flex-basis:69.3px!important;}
+html body #resultCharacter.love64-art[data-mbti="ISTJ"] {width:138.6px!important;}
+@media(max-width:560px){
+html body #landingV6 .v6-cat-avatar.love64-art[data-mbti="ISTJ"] {width:53.9px!important;flex-basis:53.9px!important;}
+}
+
+html body #landingV6 .v16-axis-char.love64-art {width:52px!important;height:59.5833px!important;flex:0 0 52px!important;}
+html body #landingV6 .v16-hero-char.love64-art {width:112px!important;height:128.3333px!important;}
+html body #landingV6 .v16-hero-char.love64-art[data-mbti="ISTJ"] {width:107.8px!important;}
+
+html body :is(#catalog,#landingV6,#resultScreen) .love64-art.love64-art.love64-art[data-mbti="ISTJ"] {box-shadow:inset 2px 0 #fff,inset -2px 0 #fff!important;}

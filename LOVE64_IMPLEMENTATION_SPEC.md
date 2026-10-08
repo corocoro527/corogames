@@ -80,12 +80,15 @@
 - ただし全体の作画テイスト、頭身、線、塗り、背景トーンは統一する。
 
 ## 5. 現行キャラ資産
-- sprite: `assets/love64-character-sprite.webp`
+- 共通表示: `assets/love64-art.js` と `assets/love64-art.css`。トップ・図鑑・結果・2軸の説明で同じ対応表を使用。
+- 承認済み64セル画像: `assets/love64-characters-approved.png`（1536×1760、1セル192×220）。縦横比を維持する。
+- ISTJのみ: `assets/love64-reference-istj.jpeg` のユーザー指定白髪4カットをCSSで表示。画像は再描画せず原本を保存。
+- ISTJの原本は1カット約80×100pxのため、拡大時の精細さには原本の限界がある。
 - 並び順：
   ENFP, INFP, ENFJ, INFJ, ENTP, INTP, ENTJ, INTJ, ESFJ, ISFJ, ESTJ, ISTJ, ESFP, ISFP, ESTP, ISTP
 - 各MBTI内は α, β, γ, δ の順。
 - 8列 × 8行の64セルとして扱う。
-- `love64-types.html` と診断結果は同じspriteを参照し、別キャラ素材を混ぜない。
+- `love64-types.html` と診断結果は同じ共通表示処理を参照し、ISTJの差し替えを含め別キャラ素材を混ぜない。
 
 ## 6. キャッチコピー
 - 1カード1フレーズ。

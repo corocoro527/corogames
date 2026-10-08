@@ -936,8 +936,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   background-position:center!important;
   background-size:contain!important;
 }
-#landingV6 .v10-girl{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/0121459c-e6cb-4a22-bab0-cafa853f0d88.png')!important}
-#landingV6 .v10-boy{background-image:url('https://d2ol7oe51mr4n9.cloudfront.net/user_3IvcMvdSWcnjCeouL2Ydp82YVSF/d3f7fe33-2135-4320-b5ac-81f7616350e2.png')!important}
+#landingV6 .v10-girl{background-image:url('assets/love64-start-female.png')!important}
+#landingV6 .v10-boy{background-image:url('assets/love64-start-male.png')!important}
 #landingV6 .v6-start{gap:8px!important}
 #landingV6 .sticky-cta button{gap:7px!important}
 #landingV6 .sticky-cta .v10-cta-avatar{
@@ -1328,6 +1328,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   #landingV6 .v16-axis-char{border-radius:12px!important}
 }
 </style>
+<link rel="stylesheet" href="assets/love64-art.css?v=20261009">
 </head>
 <body>
 <header class="site-head">
@@ -1708,7 +1709,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
   <details><summary>依存度はどうやって出している？</summary><p>恋愛中の不安、返信や愛情表現への敏感さ、相手への確認傾向に関する回答から算出する診断内スコアです。</p></details>
   <details><summary>相性はどこまでわかる？</summary><p>性格4軸と恋愛2軸から、テンポや距離感が噛み合いやすいタイプ候補を表示します。</p></details>
   <details><summary>結果はSNSでシェアできる？</summary><p>結果画面からXへのシェアと結果テキストのコピーができます。</p></details>
-  <details><summary>「上位○％相当」は実際の人口比？</summary><p>現在は回答パターンから算出する診断内の目安です。利用データが十分に蓄積した段階で、実測統計への切り替えを検討します。</p></details>
+  <details><summary>結果の数値は何を表す？</summary><p>回答から算出した診断内スコアです。実際の人口比や利用者順位を表すものではありません。</p></details>
   <details><summary>個人情報の入力は必要？</summary><p>診断そのものに氏名・メールアドレスなどの入力は必要ありません。</p></details>
  </div>
 </section>
@@ -1757,9 +1758,9 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
  <div class="score-grid">
   <div class="score"><small>恋愛スコア</small><b id="loveScore">--</b><span>回答傾向</span></div>
   <div class="score"><small>依存度</small><b id="dependency">--</b><span>安心感への敏感さ</span></div>
-  <div class="score"><small>レア度</small><b id="rarity">--</b><span>回答パターンの目安</span></div>
+  <div class="score"><small>回答の傾向の強さ</small><b id="rarity">--</b><span>回答パターンの目安</span></div>
  </div>
- <p class="result-note score-explainer">依存度は、恋愛中の不安や相手の反応への敏感さを回答から数値化した目安です。医療的な判定ではありません。レア度も実測の利用者順位ではなく、回答パターンから算出した診断内の目安です。</p>
+ <p class="result-note score-explainer">依存度は、恋愛中の不安や相手の反応への敏感さを回答から数値化した目安です。医療的な判定ではありません。回答の傾向の強さは、各軸の中間からどれだけ離れた回答かを示す診断内スコアです。</p>
 
  <div class="result-card"><h2>💘 30秒でわかるあなたの恋愛</h2><p id="summary"></p></div>
  <div class="result-card"><h2>📊 6軸バランス</h2><div class="bars" id="bars"></div><p class="result-note">％は回答から算出した診断内スコアです。</p></div>
@@ -1779,7 +1780,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
    <button class="again" onclick="restart()">もう一度診断</button>
    <button onclick="location.href='shindan.html'">裏・16コア診断へ</button>
   </div>
-  <p class="result-note">※レア度は現在、実測人口比ではなく回答パターンから算出するβ版の目安です。</p>
+  <p class="result-note">※各スコアは診断内の目安で、能力・価値・利用者順位を表すものではありません。</p>
  </div>
 </div>
 </main>
@@ -2012,11 +2013,10 @@ function showResult(r){
  var greek={SD:'α',SW:'β',AD:'γ',AW:'δ'}; document.getElementById('resultCode').textContent=r.base+'-'+(greek[r.sub]||r.sub);
  document.getElementById('resultName').textContent=sub.icon+' '+baseName+' × '+sub.name;
  document.getElementById('resultSub').textContent='恋愛スタイル：'+sub.name+' ／ 安定感 × アプローチ';
- var rp=window.love64SpritePos?window.love64SpritePos(r.base,r.sub):{x:'0%',y:'0%'};
- var rc=document.getElementById('resultCharacter'); if(rc){rc.style.setProperty('--x',rp.x);rc.style.setProperty('--y',rp.y);}
+ var rc=document.getElementById('resultCharacter'); if(rc) Love64Art.apply(rc,r.base,r.sub);
  document.getElementById('loveScore').textContent=loveScore;
  document.getElementById('dependency').textContent=dependency+'%';
- document.getElementById('rarity').textContent='上位'+rarity+'%相当';
+ document.getElementById('rarity').textContent=Math.round(extremity*2)+'/100';
  document.getElementById('summary').textContent=axisSentence(r)+' '+sub.desc;
  document.getElementById('strength').textContent=sub.strength;
  document.getElementById('weakness').textContent=sub.weak;
@@ -2133,58 +2133,7 @@ function restart(){
 
 
 
-<script id="love64-final-mockup-v15">
-(function(){
-  var spriteOrder=['ISFP','ENTJ','INFP','ESFP','ISTJ','ESTP','ISTP','INTP','ENFP','INTJ','ENFJ','INFJ','ENTP','ISFJ','ESTJ','ESFJ'];
-  var styleNames=['愛の先導者','包容の人','情熱の迷子','静かな渇望'];
-  function pos16(mbti){
-    var i=spriteOrder.indexOf(mbti); if(i<0)i=0;
-    var col=i%4,row=Math.floor(i/4);
-    return {x:(col/3*100)+'%',y:(row/3*100)+'%'};
-  }
-  function apply16(el,mbti){
-    if(!el)return; var p=pos16(mbti);
-    el.style.setProperty('--sx',p.x);
-    el.style.setProperty('--sy',p.y);
-  }
 
-  function renderLanding(){
-    document.querySelectorAll('#landingV6 .v6-card').forEach(function(card){
-      var mbti=(card.querySelector('b')||{}).textContent||'';
-      apply16(card.querySelector('.v6-pixel'),mbti.trim());
-    });
-
-    var cat=document.querySelector('#landingV6 .v6-catalog');
-    if(cat){
-      var picks=[
-        ['ENFP','愛の先導者'],
-        ['INFP','包容の人'],
-        ['ENFJ','情熱の迷子'],
-        ['INFJ','静かな渇望'],
-        ['ENTP','愛の先導者'],
-        ['INTJ','静かな渇望'],
-        ['ESFP','情熱の迷子'],
-        ['ISTP','包容の人']
-      ];
-      cat.innerHTML=picks.map(function(p){
-        return '<article><div class="v6-cat-avatar" data-mbti="'+p[0]+'"></div><div class="v6-cat-copy"><b>'+p[0]+'</b><span>× '+p[1]+'</span></div></article>';
-      }).join('');
-      cat.querySelectorAll('.v6-cat-avatar').forEach(function(el){apply16(el,el.dataset.mbti)});
-    }
-  }
-
-  var subMap={SD:0,SW:1,AD:2,AW:3,'愛の先導者':0,'包容の人':1,'情熱の迷子':2,'静かな渇望':3};
-  var allOrder=['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
-  window.love64SpritePos=function(base,sub){
-    var ti=allOrder.indexOf(base); if(ti<0)ti=0;
-    var si=(typeof sub==='number')?sub:(subMap[sub]??0);
-    var blockCol=ti%4,blockRow=Math.floor(ti/4),globalCol=blockCol*4+si;
-    return {x:(globalCol/15*100).toFixed(6)+'%',y:((blockRow*256+45)/904*100).toFixed(6)+'%'};
-  };
-
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',renderLanding);
-  else renderLanding();
-})();
-</script>
+<script src="assets/love64-art.js?v=20261009"></script>
 </body>
 </html>
