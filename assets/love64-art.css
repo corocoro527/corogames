@@ -51,3 +51,11 @@ html body #landingV6 .v16-hero-char.love64-art {width:112px!important;height:128
 html body #landingV6 .v16-hero-char.love64-art[data-mbti="ISTJ"] {width:107.8px!important;}
 
 html body :is(#catalog,#landingV6,#resultScreen) .love64-art.love64-art.love64-art[data-mbti="ISTJ"] {box-shadow:inset 2px 0 #fff,inset -2px 0 #fff!important;}
+@media(max-width:360px){
+  #landingV6 .v6-hero h1 {font-size:1.5rem!important;line-height:1.45!important;}
+  #landingV6 .v6-hero p {font-size:.875rem!important;}
+  #landingV6 .v6-starts {gap:8px!important;}
+  #landingV6 .v6-start {padding:12px 8px!important;gap:6px!important;}
+  #landingV6 .v6-start>span:last-child {font-size:.9rem!important;white-space:nowrap;}
+  #landingV6 .v10-cta-avatar {width:32px!important;height:36px!important;flex-basis:32px!important;}
+}
