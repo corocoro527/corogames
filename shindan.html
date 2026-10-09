@@ -1518,10 +1518,15 @@ ${x} ${R[x].n}
 ).join("");
 
 
+if(current && current.isPreview){
+document.getElementById("bars").innerHTML = '<p role="status">図鑑プレビュー：回答に基づく傾向スコアは表示していません。</p>';
+document.getElementById("dynamicNote").textContent = "このタイプの説明を閲覧中です。自分の傾向を知るには診断を受けてください。";
+}else{
 renderBars(
 count,
 type
 );
+}
 
 
 renderAll(
