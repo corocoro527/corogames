@@ -1123,7 +1123,7 @@ id="q${i}"
 QUESTION ${String(i+1).padStart(2,"0")}
 </div>
 
-<div class="q-title">
+<div class="q-title" id="questionTitle${i}">
 ${q[0]}
 </div>
 
@@ -1132,7 +1132,7 @@ ${q[0]}
 <span>そう思わない</span>
 </div>
 
-<div class="scale">
+<div class="scale" role="group" aria-labelledby="questionTitle${i}">
 
 ${[3,2,1,0,-1,-2,-3].map(value=>`
 
@@ -1140,6 +1140,7 @@ ${[3,2,1,0,-1,-2,-3].map(value=>`
 type="button"
 class="scale-option"
 aria-label="${scaleLabel(value)}"
+aria-pressed="${answers[i] === value}"
 title="${scaleLabel(value)}"
 onclick="pick(${i},${value},this)"
 ></button>
@@ -1170,10 +1171,11 @@ answers[i] = value;
 document
 .querySelectorAll(`#q${i} .scale-option`)
 .forEach(
-b=>b.classList.remove("selected")
+b=>{ b.classList.remove("selected"); b.setAttribute("aria-pressed","false"); }
 );
 
 button.classList.add("selected");
+button.setAttribute("aria-pressed","true");
 
 updateProgress();
 
