@@ -1901,7 +1901,7 @@ function renderQuestion(){
  html+='<div class="scale" role="group" aria-labelledby="currentQuestionTitle">';
  var choices=[{v:3,label:'かなりそう思う'},{v:2,label:'そう思う'},{v:1,label:'少しそう思う'},{v:0,label:'どちらともいえない'},{v:-1,label:'あまりそう思わない'},{v:-2,label:'そう思わない'},{v:-3,label:'まったくそう思わない'}];
  choices.forEach(function(choice){
-  html+='<button type="button" aria-label="'+choice.label+'" data-v="'+choice.v+'"'+(answers[currentQuestion]===choice.v?' class="selected"':'')+'></button>';
+  html+='<button type="button" aria-label="'+choice.label+'" data-v="'+choice.v+'" aria-pressed="'+(answers[currentQuestion]===choice.v?'true':'false')+'"'+(answers[currentQuestion]===choice.v?' class="selected"':'')+'></button>';
  });
  html+='</div>';
  area.innerHTML=html;
@@ -1909,8 +1909,9 @@ function renderQuestion(){
  area.querySelectorAll('.scale button').forEach(function(btn){
   btn.addEventListener('click',function(){
    answers[currentQuestion]=Number(this.dataset.v);
-   area.querySelectorAll('.scale button').forEach(function(b){b.classList.remove('selected')});
+   area.querySelectorAll('.scale button').forEach(function(b){b.classList.remove('selected');b.setAttribute('aria-pressed','false')});
    this.classList.add('selected');
+   this.setAttribute('aria-pressed','true');
    updateProgress();
    var error=document.getElementById('error'); error.style.display='none'; error.textContent='';
   });
