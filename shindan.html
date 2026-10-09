@@ -1797,7 +1797,8 @@ current = {
 
 type:t,
 count:fake,
-data:R[t]
+data:R[t],
+isPreview:true
 
 };
 
@@ -1825,10 +1826,10 @@ current.data;
 
 return `【裏・16コア性格診断】
 
-私の裏タイプは……
+${current.isPreview ? '図鑑で見つけたタイプは……' : '私の裏タイプは……'}
 
 ${current.type}
-『${d.n}』でした🔥
+『${d.n}』${current.isPreview ? 'をチェック！' : 'でした🔥'}
 
 ${d.c}
 
