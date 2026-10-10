@@ -1419,6 +1419,26 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 </style>
 <link rel="canonical" href="https://koropopgames.com/love64.html">
 <link rel="stylesheet" href="assets/love64-story.css?v=20261010-results1">
+
+<style id="love64-compat-hero-discovery-20261010">
+#landingV6 .love64-compat-hero-link{
+  display:flex;align-items:center;justify-content:center;
+  gap:11px;width:min(100% - 36px,390px);min-height:62px;
+  margin:16px auto 0;padding:10px 16px;
+  border-radius:17px;border:1px solid #f8bfd5;
+  background:linear-gradient(110deg,#fff4f8,#f7f2ff);
+  box-shadow:0 5px 18px rgba(196,87,139,.06);
+  color:#af4278;text-decoration:none!important;text-align:left;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+#landingV6 .love64-compat-hero-icon{font-size:1.45rem;flex:0 0 32px;text-align:center;line-height:1}
+#landingV6 .love64-compat-hero-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+#landingV6 .love64-compat-hero-copy strong{font-size:clamp(.9rem,4vw,1.02rem);font-weight:950;color:#b53d7b;line-height:1.15}
+#landingV6 .love64-compat-hero-copy small{font-size:.74rem;font-weight:750;color:#8d6a83;line-height:1.25}
+#landingV6 .love64-compat-hero-link:focus-visible{outline:3px solid #7464e8;outline-offset:3px}
+@media(hover:hover){#landingV6 .love64-compat-hero-link:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(196,87,139,.13)}}
+@media(max-width:390px){#landingV6 .love64-compat-hero-link{min-height:56px;padding:9px 12px;margin-top:13px}}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -1427,6 +1447,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
       <nav class="site-nav" aria-label="ページ内ナビ">
         <a href="#diagnose">診断する</a>
         <a href="love64-types.html">64タイプ図鑑</a>
+        <a href="love64-compat.html">ふたりの相性</a>
         <a href="#types">16タイプ一覧</a>
         <a href="#articles">コラム</a>
         <a href="#faq">よくある質問</a>
@@ -1448,6 +1469,10 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
         <button class="v6-start v6-m" onclick="startQuiz('male')"><span class="v10-cta-avatar v10-boy" aria-hidden="true"></span><span>男性で始める</span></button>
       </div>
       <div class="v6-micro">無料 / 登録不要 / 約3〜4分</div>
+      <a class="love64-compat-hero-link" href="love64-compat.html" aria-label="ふたりの相性チェックへ。自分と相手のタイプを選んで比較できます">
+        <span class="love64-compat-hero-icon" aria-hidden="true">💞</span>
+        <span class="love64-compat-hero-copy"><strong>ふたりの相性チェック</strong><small>ふたりのタイプを選んで比較する →</small></span>
+      </a>
       <div class="v16-hero-art" aria-hidden="true">
         <div class="v16-hero-char girl"></div>
         <div class="v16-hero-char boy"></div>
