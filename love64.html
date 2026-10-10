@@ -1417,6 +1417,8 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 #landingV6 .shadow-promo-exact-banner{display:block!important;width:100%!important;max-width:100%!important;margin:0 auto!important;overflow:hidden!important;border-radius:20px!important;box-shadow:0 14px 34px #22102b33!important;line-height:0!important}
 #landingV6 .shadow-promo-exact-banner img{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important;clip-path:none!important;transform:none!important;filter:none!important}
 </style>
+<link rel="canonical" href="https://koropopgames.com/love64.html">
+<link rel="stylesheet" href="assets/love64-story.css?v=20261010-results1">
 </head>
 <body>
 <header class="site-head">
@@ -1875,6 +1877,27 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
  <p class="result-note score-explainer">依存度は、恋愛中の不安や相手の反応への敏感さを回答から数値化した目安です。医療的な判定ではありません。回答の傾向の強さは、各軸の中間からどれだけ離れた回答かを示す診断内スコアです。</p>
 
  <div class="result-card"><h2>💘 30秒でわかるあなたの恋愛</h2><p id="summary"></p></div>
+  <section id="love64Story" class="result-card love64-story" aria-label="あなたの恋愛トリセツ">
+   <h2>💗 あなたの恋愛トリセツ</h2>
+   <p class="love64-story-lead" id="love64-story-intro"></p>
+   <h3 class="love64-story-title">🥹 これ、あなたもある？ 恋愛あるある</h3>
+   <div class="love64-story-checks" id="love64-story-checklist"></div>
+   <p id="love64-story-match" role="status"></p>
+   <div class="love64-story-grid">
+    <div class="love64-story-spot"><h3>🫣 実はこんな本性</h3><p id="love64-story-secret"></p></div>
+    <div class="love64-story-spot"><h3>💬 いちばん言われたい一言</h3><p class="love64-quote" id="love64-story-words"></p></div>
+   </div>
+   <p class="love64-story-small"><strong>もうひとつのあるある：</strong><span id="love64-story-extra"></span></p>
+   <p class="love64-story-small"><strong>もっと心地よい恋のヒント：</strong><span id="love64-story-help"></span></p>
+   <h3 class="love64-story-title">📣 これ、友達にも見せたい！</h3>
+   <div class="love64-story-actions">
+    <button type="button" class="love64-primary" onclick="Love64Story.share()">📲 友達にシェア</button>
+    <button type="button" id="love64-story-save" onclick="Love64Story.saveCard()">🖼️ 結果を画像に</button>
+    <button type="button" onclick="Love64Story.copyMyResult()">📋 結果をコピー</button>
+    <a id="love64-partner-link" href="love64-compat.html">💑 ふたりの相性を見る</a>
+   </div>
+   <p id="love64-story-status" role="status" aria-live="polite"></p>
+  </section>
  <div class="result-card"><h2>📊 6軸バランス</h2><div class="bars" id="bars"></div><p class="result-note">％は回答から算出した診断内スコアです。</p></div>
  <div class="two">
   <div class="result-card"><h2>✨ 愛されポイント</h2><p id="strength"></p></div>
@@ -2104,6 +2127,7 @@ function showResult(r){
  document.getElementById('contact').textContent=sub.contact;
  document.getElementById('conflict').textContent=sub.conflict;
  document.getElementById('advice').textContent=sub.advice;
+  if(window.Love64Story)window.Love64Story.render(r);
 
  var axes=[
   ['外向 E','内向 I',r.p.E],
@@ -2138,15 +2162,8 @@ function makeCompat(r){
  ];
 }
 
-function shareX(){
- var t='私の恋愛64タイプは「'+document.getElementById('resultName').textContent+'」でした！ 依存度'+document.getElementById('dependency').textContent+' #恋タイプ64';
- var u=location.href.split('#')[0];
- window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(u),'_blank');
-}
-function copyResult(){
- var t='恋愛64タイプ診断：'+document.getElementById('resultCode').textContent+' '+document.getElementById('resultName').textContent+' / 依存度 '+document.getElementById('dependency').textContent+' / '+document.getElementById('rarity').textContent;
- if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){alert('結果をコピーしました')})}else{alert(t)}
-}
+function shareX(){if(window.Love64Story){window.Love64Story.shareX();return;}}
+function copyResult(){if(window.Love64Story){window.Love64Story.copyMyResult();return;}}
 function restart(){
  answers={};
  document.getElementById('resultScreen').style.display='none';
@@ -2262,5 +2279,6 @@ function restart(){
   }
 })();
 </script>
+<script src="assets/love64-story.js?v=20261010-results1"></script>
 </body>
 </html>

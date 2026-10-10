@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>恋タイプ64｜ふたりの相性チェック</title>
+<meta name="description" content="恋タイプ64で二人の恋愛傾向を比べよう。16MBTI×4スタイル、4,096通りの組み合わせから違いと付き合い方のヒントを表示。無料・登録不要。">
+<meta name="robots" content="index,follow"><link rel="canonical" href="https://koropopgames.com/love64-compat.html">
+<link rel="stylesheet" href="assets/love64-story.css?v=20261010-results1">
+</head>
+<body class="love64-extra-page">
+<header class="love64-extra-header"><a href="love64.html">♡ 恋タイプ64</a><a href="love64-types.html">64タイプ図鑑</a></header>
+<main class="love64-extra-main">
+ <section class="love64-extra-panel">
+  <p style="margin:0;color:#bf4a85;font-weight:900">TWO HEARTS</p>
+  <h1>💞 ふたりの恋愛相性チェック</h1>
+  <p>お互いのタイプを選んで、すれ違いやすいところと上手な付き合い方を見てみよう。</p>
+  <div class="love64-compat-form">
+   <label>あなたのタイプ<select id="compat-first" aria-label="あなたの恋タイプ"></select></label>
+   <label>気になる人のタイプ<select id="compat-second" aria-label="相手の恋タイプ"></select></label>
+  </div>
+  <div class="love64-extra-buttons"><button type="button" class="love64-extra-button" id="compat-go">相性ヒントを見る ♡</button></div>
+ </section>
+ <section class="love64-extra-panel" id="compat-out" hidden aria-live="polite">
+  <p style="text-align:center;font-weight:850;color:#8b6381">ふたりの相性ヒント</p>
+  <div class="love64-compat-score" id="compat-points"></div>
+  <h2 id="compat-heading" style="text-align:center"></h2>
+  <p id="compat-intro"></p>
+  <div class="love64-compat-advice"><strong>すれ違いを減らすコツ</strong><p id="compat-advice"></p></div>
+  <div class="love64-extra-buttons">
+   <button type="button" class="love64-extra-button secondary" id="compat-share">結果のリンクをコピー</button>
+   <a class="love64-extra-button" href="love64.html">別の人も診断する</a>
+  </div>
+  <p id="compat-status" role="status" style="color:#a4467a"></p>
+ </section>
+ <p style="font-size:.77rem;color:#7e778a;line-height:1.7">相性ヒントはタイプ分類をもとにした娯楽的な目安です。実際の恋人関係の相性や未来を数値で断定するものではありません。</p>
+</main>
+<script src="assets/love64-story.js?v=20261010-results1"></script>
+<script>
+(function(){
+'use strict';
+const all=window.Love64Story,keys=all.types,subs=all.subtypes;
+const first=document.getElementById('compat-first'),second=document.getElementById('compat-second'),go=document.getElementById('compat-go');
+for(const sel of [first,second])for(const base of keys)for(const sub of subs){
+ const d=all.details(base,sub);const option=document.createElement('option');
+ option.value=base+'-'+sub;option.textContent=base+'-'+d.greek+' '+d.style.label;sel.appendChild(option);
+}
+const p=new URLSearchParams(location.search);
+if(all.byCode(p.get('me')))first.value=p.get('me');
+if(all.byCode(p.get('other')))second.value=p.get('other');
+if(!p.get('other'))second.value='INFP-SW';
+function score(a,b){
+ // Deliberately modest nonclinical guidance; symmetric for either order.
+ let x=62;
+ for(let i=0;i<4;i++){
+ const same=a.base[i]===b.base[i];
+ x+=i===0?(same?2:5):i===1?(same?8:-5):i===2?(same?4:2):(same?7:1);
+ }
+ const typeStable=z=>z.sub==='SD'||z.sub==='SW';
+ if(typeStable(a)&&typeStable(b))x+=5;
+ else if(!typeStable(a)&&!typeStable(b))x-=8;
+ else x+=1;
+ if(a.sub===b.sub)x+=2;
+ return Math.min(93,Math.max(51,x));
+}
+function recommendation(a,b){
+ const modesA=a.sub,modesB=b.sub;
+ if(modesA===modesB)return '二人とも似た恋愛スタイル。心地よさは似ていても、意見がぶつかった時は「どちらが先に声をかける？」を決めておくと安心。';
+ if((modesA==='AD'||modesA==='AW')&&(modesB==='AD'||modesB==='AW'))return '気持ちが揺れやすい同士だから、返信の速さで愛情を測らず、安心できる約束を小さく決めると関係が落ち着きやすい。';
+ if((modesA==='SD'||modesA==='AD')&&(modesB==='SW'||modesB==='AW')||(modesB==='SD'||modesB==='AD')&&(modesA==='SW'||modesA==='AW'))return '動きたい人と待ちたい人の組み合わせ。誘う頻度や一人時間を先に話しておくと、すれ違いが減らせそう。';
+ return '好きの表現方法が違っても、優劣ではない。気持ちを受け取りやすい言葉や行動を互いに教え合うといい関係を作りやすい。';
+}
+function display(){
+ const a=all.byCode(first.value),b=all.byCode(second.value);if(!a||!b)return;
+ const points=score(a,b);
+ document.getElementById('compat-out').hidden=false;
+ document.getElementById('compat-points').textContent=points+' pt';
+ document.getElementById('compat-heading').textContent=points>=83?'お互いを伸ばし合える組み合わせ':points>=70?'じっくり育つ組み合わせ':'違いを楽しめる組み合わせ';
+ document.getElementById('compat-intro').textContent=a.base+'-'+a.greek+' '+a.style.label+' × '+b.base+'-'+b.greek+' '+b.style.label+'。'+(a.base[0]===b.base[0]?'元気の回復方法が似ている二人。':'元気の回復方法が違う二人。')+'『'+a.words+'』『'+b.words+'』という言葉がそれぞれの安心のヒントになるかも。';
+ document.getElementById('compat-advice').textContent=recommendation(a,b);
+ const url=new URL(location.href);url.searchParams.set('me',first.value);url.searchParams.set('other',second.value);history.replaceState({},'',url);
+ if(typeof gtag==='function')gtag('event','love64_compat_view',{first:first.value,second:second.value});
+}
+go.addEventListener('click',display);
+document.getElementById('compat-share').addEventListener('click',async()=>{
+ const url=location.href;try{await navigator.clipboard.writeText(url);document.getElementById('compat-status').textContent='共有リンクをコピーしたで！';}catch(e){document.getElementById('compat-status').textContent='このページのURLをコピーしてシェアしてな。';}
+});
+if(p.has('other')&&p.has('me'))display();
+})();
+</script>
+</body></html>
