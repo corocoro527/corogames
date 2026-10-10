@@ -439,3 +439,127 @@ footer a{
     padding:18px !important;
   }
 }
+
+
+/* Editorial refinement across KOROPOP CAREER articles — 2026-10-11.
+   Keep article tools, checklists, figures and layouts intact. */
+:root {
+ --kp-navy:#192f3d;
+ --kp-navy2:#192f3d;
+ --kp-blue:#26766e;
+ --kp-blue-soft:#f0f7f5;
+ --kp-purple:#5c7891;
+ --kp-green:#287967;
+ --kp-green-soft:#eff6f2;
+ --kp-ink:#20303d;
+ --kp-text:#485967;
+ --kp-muted:#697e8a;
+ --kp-line:#e0e7e9;
+ --kp-bg:#f8fafb;
+}
+html {scroll-padding-top:80px}
+body {
+ font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Noto Sans JP",Meiryo,sans-serif!important;
+ font-size:16px!important;
+ font-weight:400!important;
+ letter-spacing:normal!important;
+ line-height:1.85!important;
+ background:#f8fafb!important;
+}
+body h1,body h2,body h3,body h4,body h5,body p,body li {
+ font-family:inherit!important;
+ letter-spacing:normal!important;
+ overflow-wrap:anywhere;
+}
+body h1,body h2,body h3 {font-weight:750!important;line-height:1.47!important}
+body p,body li {line-height:1.95!important}
+body a{color:#206f66!important}
+header,.top{
+ background:#fff!important;
+ border-bottom:1px solid #e0e7e9!important;
+ box-shadow:none!important;
+}
+header a,header .brand,.top a{color:#1f3945!important}
+.hero{
+ background:#fff!important;
+ border:1px solid #e0e7e9!important;
+ border-radius:12px!important;
+ box-shadow:none!important;
+}
+.badge,.label{
+ background:#edf6f4!important;
+ border:1px solid #d2e5e0!important;
+ color:#266e65!important;
+}
+.gradient{
+ background:linear-gradient(90deg,#2b756d,#355a77)!important;
+ background-clip:text!important;
+ -webkit-background-clip:text!important;
+ color:transparent!important;
+}
+.answer{
+ background:#f0f7f5!important;
+ border:1px solid #d9e9e3!important;
+ border-left:3px solid #3a867c!important;
+ box-shadow:none!important;
+}
+.answer strong{color:#265c56!important}
+.layout > article{
+ border:1px solid #e0e7e9!important;
+ border-radius:12px!important;
+ box-shadow:none!important;
+}
+h1{color:#20303d!important}
+h2{
+ color:#203b48!important;
+ background:none!important;
+ border:0!important;
+ border-bottom:1px solid #dce6e7!important;
+ border-radius:0!important;
+ padding:0 0 12px!important;
+}
+h3{color:#253e4b!important}
+.toc{
+ background:#f5f8f9!important;
+ border:1px solid #e0e7e9!important;
+ border-left:3px solid #6bada3!important;
+}
+.toc strong,.toc a{color:#245c5b!important}
+.box,.faq,.route-card,.check,.step,.link,.sidebox{
+ background:#fff!important;
+ border:1px solid #e3e9eb!important;
+ border-left:1px solid #e3e9eb!important;
+ border-top:1px solid #e3e9eb!important;
+ box-shadow:none!important;
+ color:#263b46!important;
+}
+.box:nth-child(n),.sidebox:nth-child(n){border-left-color:#e3e9eb!important;border-top-color:#e3e9eb!important}
+.box h3,.faq strong,.check strong,.step strong,.sidebox h3{color:#254c54!important}
+.point,.point:nth-of-type(even){
+ background:#f0f7f5!important;
+ border:1px solid #dbe9e5!important;
+ border-left:3px solid #5b9f94!important;
+}
+.point b{color:#276f65!important}
+th{background:#f1f6f6!important;color:#284a52!important}
+tbody tr:nth-child(even) td{background:#fafcfc!important}
+.tag{background:#eef5f3!important;color:#35695f!important;border-color:#d9e8e4!important}
+.figure,.figure-card{
+ background:#f4f8f7!important;
+ border:1px solid #dce7e4!important;
+}
+.sidebox{border-radius:10px!important}
+.cta{background:#eef6f4!important;border-color:#d8e8e3!important}
+footer{
+ background:#192f3d!important;
+ border-top:1px solid #304958!important;
+ color:#c9d7dc!important;
+}
+footer a{color:#e3eded!important}
+@media(max-width:600px){
+ body{font-size:15px!important}
+ .layout > article{padding:19px!important;border-radius:9px!important}
+ body h1{font-size:clamp(1.65rem,7vw,2.2rem)!important}
+ body h2{font-size:1.27rem!important}
+ .hero{padding:25px 19px!important}
+}
