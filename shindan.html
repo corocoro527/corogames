@@ -544,7 +544,7 @@ h1{
   }
 }
 
-/* 24 questions split into 6 accessible screens of 4. */
+/* 24 questions split into 4 accessible screens of 6. */
 .quiz-page-info{margin:18px 2px 6px;color:#cbd5e1;font-weight:800;font-size:.92rem}
 .quiz-page-nav{display:flex;gap:12px;margin-top:16px}
 .quiz-page-nav button{flex:1;min-height:52px;border-radius:13px;border:1px solid #3c4c68;background:#18243a;color:#f8fafc;font-weight:800;cursor:pointer}
@@ -591,11 +591,11 @@ UNFILTERED PERSONALITY TEST
 
 </div>
 
-<div class="quiz-page-info" id="quizPageInfo" aria-live="polite">1 / 6 ページ</div>
+<div class="quiz-page-info" id="quizPageInfo" aria-live="polite">1 / 4 ページ</div>
 <div id="quizArea"></div>
 <div class="quiz-page-nav" id="quizPageNav">
 <button type="button" id="quizPrev" onclick="changeQuizPage(-1)">← 前へ</button>
-<button type="button" class="next" id="quizNext" onclick="changeQuizPage(1)">次の4問へ →</button>
+<button type="button" class="next" id="quizNext" onclick="changeQuizPage(1)">次の6問へ →</button>
 </div>
 
 <div class="error" id="error"></div>
@@ -1102,7 +1102,7 @@ h:["INTJ","ISTJ"]
 const answers = {};
 let current = null;
 let quizPage = 0;
-const QUIZ_PAGE_SIZE = 4;
+const QUIZ_PAGE_SIZE = 6;
 
 
 function scaleLabel(value){
