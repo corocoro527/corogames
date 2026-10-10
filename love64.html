@@ -1731,7 +1731,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 </div>
 <div class="progress-wrap">
  <div class="wrap">
-  <div class="progress-meta"><span id="progressText">質問 1 / 48</span><span id="progressPct">回答済み 0 / 48</span></div>
+  <div class="progress-meta"><span id="progressText">ページ 1 / 6</span><span id="progressPct">回答済み 0 / 36</span></div>
   <div class="progress"><div id="progressBar"></div></div>
  </div>
 </div>
@@ -1745,6 +1745,22 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 </div>
 </main>
 
+<style id="love64-batch-style">
+#quizScreen .batch-question{padding:26px 12px;border-bottom:1px solid #ece8ed}
+#quizScreen .batch-question:last-child{border-bottom:0}
+#quizScreen .batch-question .q-title{font-size:clamp(17px,4.5vw,22px);line-height:1.6;text-align:center;margin:0 0 18px}
+#quizScreen .batch-labels{display:flex;justify-content:space-between;font-size:12px;color:#747186;margin-bottom:12px}
+#quizScreen .batch-options{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(4px,1.3vw,12px)}
+#quizScreen .batch-option{display:flex;align-items:center;justify-content:center;min-width:0;min-height:48px;aspect-ratio:1;border:2px solid #b8b4c7;border-radius:50%;background:#fff;cursor:pointer;padding:4px}
+#quizScreen .batch-option:nth-child(-n+3){border-color:#8aa9eb;background:#f0f5ff}
+#quizScreen .batch-option:nth-child(n+5){border-color:#e9a0ba;background:#fff1f5}
+#quizScreen .batch-dot{display:block;width:35%;aspect-ratio:1;border-radius:50%;background:#b8b4c7}
+#quizScreen .batch-option:nth-child(-n+3) .batch-dot{background:#80a9ed}
+#quizScreen .batch-option:nth-child(n+5) .batch-dot{background:#ed8cae}
+#quizScreen .batch-option.selected{outline:3px solid #54466e;outline-offset:2px;transform:scale(1.04)}
+#quizScreen .batch-option:focus-visible{outline:3px solid #54466e;outline-offset:3px}
+@media(max-width:380px){#quizScreen .batch-question{padding:20px 0}#quizScreen .batch-option{min-height:40px}}
+</style>
 <main id="resultScreen">
 <div class="wrap">
  <section class="result-hero">
@@ -1869,81 +1885,66 @@ function startQuiz(g){
 
 function renderQuiz(){
  answers={};
+ currentQuestion=0;
  renderQuestion();
  updateProgress();
 }
-
 function renderQuestion(){
  var area=document.getElementById('currentQuestion');
- var q=questions[currentQuestion];
- area.classList.remove('question-enter');
- void area.offsetWidth;
- var html='<div class="q-num">QUESTION '+String(currentQuestion+1).padStart(2,'0')+' / '+questions.length+'</div>';
- html+='<div class="q-title" id="currentQuestionTitle">'+q[0]+'</div>';
- html+='<div class="scale-labels"><span>とてもそう思う</span><span>そう思わない</span></div>';
- html+='<div class="scale" role="group" aria-labelledby="currentQuestionTitle">';
- var choices=[{v:3,label:'かなりそう思う'},{v:2,label:'そう思う'},{v:1,label:'少しそう思う'},{v:0,label:'どちらともいえない'},{v:-1,label:'あまりそう思わない'},{v:-2,label:'そう思わない'},{v:-3,label:'まったくそう思わない'}];
- choices.forEach(function(choice){
-  html+='<button type="button" aria-label="'+choice.label+'" data-v="'+choice.v+'" aria-pressed="'+(answers[currentQuestion]===choice.v?'true':'false')+'"'+(answers[currentQuestion]===choice.v?' class="selected"':'')+'></button>';
- });
- html+='</div>';
+ var page=Math.floor(currentQuestion/6), start=page*6, end=Math.min(start+6,questions.length);
+ var labels=['強くそう思う','そう思う','ややそう思う','どちらでもない','ややそう思わない','そう思わない','強くそう思わない'];
+ var values=[3,2,1,0,-1,-2,-3];
+ var html='<div class="q-num">PAGE '+(page+1)+' / '+Math.ceil(questions.length/6)+'</div>';
+ for(var i=start;i<end;i++){
+  html+='<section class="batch-question" id="love-q-'+i+'"><div class="q-title" id="love-title-'+i+'">Q'+(i+1)+'. '+questions[i][0]+'</div>';
+  html+='<div class="batch-labels"><span>そう思う</span><span>そう思わない</span></div>';
+  html+='<div class="batch-options" role="group" aria-labelledby="love-title-'+i+'">';
+  for(var j=0;j<7;j++){
+   var active=answers[i]===values[j];
+   html+='<button type="button" class="batch-option'+(active?' selected':'')+'" data-q="'+i+'" data-v="'+values[j]+'" aria-label="'+labels[j]+'" aria-pressed="'+active+'"><span class="batch-dot" aria-hidden="true"></span></button>';
+  }
+  html+='</div></section>';
+ }
  area.innerHTML=html;
- area.classList.add('question-enter');
- area.querySelectorAll('.scale button').forEach(function(btn){
+ area.querySelectorAll('.batch-option').forEach(function(btn){
   btn.addEventListener('click',function(){
-   answers[currentQuestion]=Number(this.dataset.v);
-   area.querySelectorAll('.scale button').forEach(function(b){b.classList.remove('selected');b.setAttribute('aria-pressed','false')});
-   this.classList.add('selected');
-   this.setAttribute('aria-pressed','true');
+   var idx=Number(this.dataset.q);
+   answers[idx]=Number(this.dataset.v);
+   area.querySelectorAll('[data-q="'+idx+'"]').forEach(function(el){el.classList.remove('selected');el.setAttribute('aria-pressed','false')});
+   this.classList.add('selected');this.setAttribute('aria-pressed','true');
+   var error=document.getElementById('error');error.style.display='none';error.textContent='';
    updateProgress();
-   var error=document.getElementById('error'); error.style.display='none'; error.textContent='';
   });
  });
- document.getElementById('previousQuestionBtn').disabled=currentQuestion===0;
+ document.getElementById('previousQuestionBtn').disabled=page===0;
  var next=document.getElementById('nextQuestionBtn');
- next.textContent=currentQuestion===questions.length-1?'診断結果を見る ♡':'次の質問 →';
- next.setAttribute('aria-label',currentQuestion===questions.length-1?'診断結果を見る':'次の質問へ');
+ next.textContent=page===5?'診断結果を見る ♡':'次の6問へ →';
+ next.setAttribute('aria-label',page===5?'診断結果を見る':'次の6問へ');
 }
-
 function updateProgress(){
- var n=Object.keys(answers).length;
- var p=Math.round(n/questions.length*100);
- document.getElementById('progressText').textContent='質問 '+(currentQuestion+1)+' / '+questions.length;
+ var n=Object.keys(answers).filter(function(k){return answers[k]!==undefined}).length;
+ document.getElementById('progressText').textContent='ページ '+(Math.floor(currentQuestion/6)+1)+' / 6';
  document.getElementById('progressPct').textContent='回答済み '+n+' / '+questions.length;
- document.getElementById('progressBar').style.width=p+'%';
+ document.getElementById('progressBar').style.width=Math.round(n/questions.length*100)+'%';
 }
-
 function previousQuestion(){
- if(currentQuestion<=0)return;
- currentQuestion--;
- renderQuestion();
- updateProgress();
+ if(currentQuestion<6)return;
+ currentQuestion-=6;renderQuestion();updateProgress();
  window.scrollTo({top:0,behavior:'smooth'});
 }
-
 function nextQuestion(){
- if(answers[currentQuestion]===undefined){
-  var e=document.getElementById('error');e.style.display='block';e.textContent='回答を選んでから次へ進んでな。';
-  return;
- }
- if(currentQuestion===questions.length-1){diagnose();return}
- currentQuestion++;
- renderQuestion();
- updateProgress();
- window.scrollTo({top:0,behavior:'smooth'});
-}
-
-function diagnose(){
- var missing=questions.findIndex(function(_,i){return answers[i]===undefined});
+ var start=Math.floor(currentQuestion/6)*6;
+ var missing=-1;
+ for(var i=start;i<Math.min(start+6,questions.length);i++){if(answers[i]===undefined){missing=i;break}}
  if(missing!==-1){
-  currentQuestion=missing;renderQuestion();updateProgress();
-  var e=document.getElementById('error');e.style.display='block';e.textContent='未回答の質問へ戻りました。回答を選んでな。';
-  window.scrollTo({top:0,behavior:'smooth'});
+  var e=document.getElementById('error');e.style.display='block';e.textContent='このページに未回答の質問があります。';
+  var target=document.getElementById('love-q-'+missing);
+  if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
   return;
  }
- document.getElementById('error').style.display='none';
- var r=calc();
- showResult(r);
+ if(start+6>=questions.length){diagnose();return}
+ currentQuestion+=6;renderQuestion();updateProgress();
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 
 function calc(){
@@ -1972,7 +1973,7 @@ function diagnose(){
   questions.forEach(function(_,i){if(answers[i]===undefined)missing.push(i)});
   var e=document.getElementById('error');e.style.display='block';
   e.textContent='未回答があと '+missing.length+' 問あります。最初の未回答へ移動します。';
-  currentQuestion=missing[0]; renderQuestion(); updateProgress(); window.scrollTo({top:0,behavior:'smooth'});
+  currentQuestion=Math.floor(missing[0]/6)*6; renderQuestion(); updateProgress(); window.scrollTo({top:0,behavior:'smooth'});
   return;
  }
  document.getElementById('error').style.display='none';
