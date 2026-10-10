@@ -74,3 +74,27 @@ html body #landingV6 .v6-characters .v6-card .v6-pixel.intj-approved{
   background-size:auto 76%!important;
   background-repeat:no-repeat!important;
 }
+
+/* CTA character art uses the exact approved 16-character sheet.
+   Blend away its white paper background on the existing colored buttons. */
+html body #landingV6 .v10-cta-avatar.love64-art.love64-art.love64-art,
+html body #stickyCta .v10-cta-avatar.love64-art.love64-art.love64-art{
+  background-color:transparent!important;
+  border:0!important;
+  outline:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+html body #landingV6 .v10-cta-avatar.love64-art > svg,
+html body #stickyCta .v10-cta-avatar.love64-art > svg{
+  mix-blend-mode:multiply;
+}
+html body #stickyCta .v10-cta-avatar.love64-art{
+  display:inline-block;
+  width:34px;
+  height:38px;
+  flex:0 0 34px;
+}
+@media(max-width:360px){
+  html body #stickyCta .v10-cta-avatar.love64-art{width:28px;height:32px;flex-basis:28px}
+}
