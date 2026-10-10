@@ -410,4 +410,15 @@ jobs:
           fi
 
           git commit -m "Add editorial trust to articles"
-          git push
+          # Reconcile unrelated concurrent pushes without rewriting history.
+          # Retry is bounded; conflicts fail visibly for review.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 3))
+          done
+          echo "Push failed after 3 safe attempts" >&2
+          exit 1
+
