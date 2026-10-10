@@ -174,3 +174,60 @@ html body #landingV6 .v6-starts .v6-start > span:last-child {
  html body #stickyCta.sticky-cta button {height:46px!important;min-height:46px!important;max-height:46px!important;padding:5px 6px!important;font-size:12.5px!important}
  html body #landingV6 .v6-starts{width:min(calc(100% - 20px),560px)!important;gap:7px!important}
 }
+
+/* Subtle character poses and expression cues, 2026-10-10.
+   The approved character artwork is NOT repainted: only eyes/cheeks accents
+   and full-body posture react, with original hair, face shape and clothes intact. */
+html body :is(#catalog,#landingV6,#resultScreen) .love64-art .love64-pose-motion {
+  transform-box:fill-box;
+  transform-origin:50% 66%;
+  will-change:auto;
+}
+html body :is(#catalog,#landingV6,#resultScreen) .love64-art .love64-facial-fx {
+  pointer-events:none;
+  mix-blend-mode:normal;
+}
+@media (prefers-reduced-motion:no-preference) and (hover:hover) {
+  #catalog .card:hover .love64-variant-0 .love64-pose-motion,
+  #landingV6 .v6-card:hover .love64-variant-0 .love64-pose-motion {
+    animation:love64-confident 1.35s ease-in-out infinite;
+  }
+  #catalog .card:hover .love64-variant-1 .love64-pose-motion,
+  #landingV6 .v6-card:hover .love64-variant-1 .love64-pose-motion {
+    animation:love64-gentle 2.4s ease-in-out infinite;
+  }
+  #catalog .card:hover .love64-variant-2 .love64-pose-motion,
+  #landingV6 .v6-card:hover .love64-variant-2 .love64-pose-motion {
+    animation:love64-adventurous .82s ease-in-out infinite;
+  }
+  #catalog .card:hover .love64-variant-3 .love64-pose-motion,
+  #landingV6 .v6-card:hover .love64-variant-3 .love64-pose-motion {
+    animation:love64-bashful 2s ease-in-out infinite;
+  }
+}
+@media (prefers-reduced-motion:no-preference) {
+  #resultCharacter.love64-variant-0 .love64-pose-motion {animation:love64-confident 3s ease-in-out infinite}
+  #resultCharacter.love64-variant-1 .love64-pose-motion {animation:love64-gentle 4s ease-in-out infinite}
+  #resultCharacter.love64-variant-2 .love64-pose-motion {animation:love64-adventurous 2.7s ease-in-out infinite}
+  #resultCharacter.love64-variant-3 .love64-pose-motion {animation:love64-bashful 4.3s ease-in-out infinite}
+}
+@keyframes love64-confident {
+  0%,100%{transform:translate(0,0) rotate(0)}
+  45%{transform:translate(0,-4px) rotate(-1.7deg)}
+}
+@keyframes love64-gentle {
+  0%,100%{transform:translate(0,0) rotate(0)}
+  50%{transform:translate(1px,1px) rotate(1.6deg)}
+}
+@keyframes love64-adventurous {
+  0%,100%{transform:translate(0,0) rotate(0)}
+  45%{transform:translate(0,-6px) rotate(-3.1deg)}
+  65%{transform:translate(0,-3px) rotate(1deg)}
+}
+@keyframes love64-bashful {
+  0%,100%{transform:translate(0,0) rotate(0)}
+  50%{transform:translate(1px,2px) rotate(2.1deg)}
+}
+@media(prefers-reduced-motion:reduce) {
+  .love64-pose-motion {animation:none!important}
+}

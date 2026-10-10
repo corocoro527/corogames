@@ -43,15 +43,35 @@
       '<g opacity=".98"><path d="M'+rx(175)+' '+ry(169)+' L'+rx(183)+' '+ry(186)+' L'+rx(202)+' '+ry(188)+' L'+rx(188)+' '+ry(202)+' L'+rx(190)+' '+ry(220)+' L'+rx(175)+' '+ry(211)+' L'+rx(160)+' '+ry(220)+' L'+rx(163)+' '+ry(202)+' L'+rx(149)+' '+ry(188)+' L'+rx(168)+' '+ry(186)+'Z" fill="#ffd34d" stroke="#ef8e36" stroke-width="3"/><path d="M'+rx(18)+' '+ry(116)+' l10 -13 m-7 25 l-10 -2 M'+rx(206)+' '+ry(103)+' l-7 -11 m3 24 l11 -3" stroke="#fb697b" stroke-width="5" stroke-linecap="round"/><circle cx="'+rx(188)+'" cy="'+ry(139)+'" r="'+rx(7)+'" fill="#ff8ca2"/></g>',
       '<g opacity=".97"><rect x="'+rx(156)+'" y="'+ry(174)+'" width="'+rx(48)+'" height="'+ry(34)+'" rx="5" fill="#f4ecff" stroke="#a78add" stroke-width="3"/><path d="M'+rx(158)+' '+ry(177)+' l'+rx(22)+' '+ry(15)+' l'+rx(23)+' -'+ry(15)+'" fill="none" stroke="#a78add" stroke-width="3"/><path d="M'+rx(188)+' '+ry(112)+' a'+rx(16)+' '+ry(16)+' 0 1 1 -'+rx(13)+' '+ry(28)+' a'+rx(12)+' '+ry(12)+' 0 1 0 '+rx(13)+' -'+ry(28)+'z" fill="#c9b4f1"/><circle cx="'+rx(33)+'" cy="'+ry(131)+'" r="'+rx(5)+'" fill="#e9c8ff"/></g>'
     ];
-    const rotations=[-4,3,-9,6];
-    const mirrored=si===1;
-    let trans='rotate('+rotations[si]+' '+cx+' '+cy+')';
-    if (mirrored) trans+=' translate('+w+' 0) scale(-1 1)';
+    /* Same approved face, hair and clothing in all variants.
+       Small expression accents are placed on the original cheeks/eye corners;
+       the pose changes the entire unaltered character, never individual features. */
+    const px=n=>(w*n).toFixed(1), py=n=>(h*n).toFixed(1);
+    const faceDetails=[
+      /* α — confident, open, glowing: eyes sparkle, light cheerful blush */
+      '<g class="love64-facial-fx love64-fx-alpha"><ellipse cx="'+px(.329)+'" cy="'+py(.542)+'" rx="'+px(.057)+'" ry="'+py(.021)+'" fill="#f59cac" opacity=".22"/><ellipse cx="'+px(.699)+'" cy="'+py(.542)+'" rx="'+px(.057)+'" ry="'+py(.021)+'" fill="#f59cac" opacity=".22"/><path d="M'+px(.396)+' '+py(.427)+'l'+px(.013)+' -'+py(.017)+'m'+px(.012)+' '+py(.020)+'l'+px(.008)+' -'+py(.012)+' M'+px(.630)+' '+py(.428)+'l'+px(.010)+' -'+py(.013)+'" stroke="#fff7dc" stroke-width="2.4" stroke-linecap="round" opacity=".84"/></g>',
+      /* β — relaxed, gentle: soft lowered lids and a warm diffused blush */
+      '<g class="love64-facial-fx love64-fx-beta"><ellipse cx="'+px(.33)+'" cy="'+py(.550)+'" rx="'+px(.053)+'" ry="'+py(.020)+'" fill="#f4adba" opacity=".23"/><ellipse cx="'+px(.69)+'" cy="'+py(.550)+'" rx="'+px(.053)+'" ry="'+py(.020)+'" fill="#f4adba" opacity=".23"/><path d="M'+px(.330)+' '+py(.478)+'q'+px(.014)+' '+py(.011)+' '+px(.030)+' '+py(.003)+' M'+px(.659)+' '+py(.478)+'q'+px(.014)+' '+py(.011)+' '+px(.031)+' '+py(.003)+'" fill="none" stroke="#ab707e" stroke-width="1.5" opacity=".26" stroke-linecap="round"/></g>',
+      /* γ — gleeful and animated: excited cheek flush and raised eye glints */
+      '<g class="love64-facial-fx love64-fx-gamma"><ellipse cx="'+px(.331)+'" cy="'+py(.549)+'" rx="'+px(.065)+'" ry="'+py(.025)+'" fill="#f78eaa" opacity=".28"/><ellipse cx="'+px(.694)+'" cy="'+py(.549)+'" rx="'+px(.065)+'" ry="'+py(.025)+'" fill="#f78eaa" opacity=".28"/><path d="M'+px(.280)+' '+py(.535)+'l'+px(.024)+' -'+py(.018)+'m-'+px(.018)+' '+py(.035)+'l'+px(.024)+' -'+py(.018)+' M'+px(.714)+' '+py(.517)+'l'+px(.027)+' '+py(.018)+'" fill="none" stroke="#ec839d" stroke-width="2" opacity=".55" stroke-linecap="round"/><path d="M'+px(.41)+' '+py(.430)+'l'+px(.009)+' -'+py(.013)+'M'+px(.605)+' '+py(.432)+'l'+px(.009)+' -'+py(.013)+'" stroke="#fff9d9" stroke-width="2.4" stroke-linecap="round" opacity=".85"/></g>',
+      /* δ — shy and reserved: deeper blushing and small downcast eye corners */
+      '<g class="love64-facial-fx love64-fx-delta"><ellipse cx="'+px(.336)+'" cy="'+py(.550)+'" rx="'+px(.062)+'" ry="'+py(.025)+'" fill="#ee91a9" opacity=".36"/><ellipse cx="'+px(.680)+'" cy="'+py(.550)+'" rx="'+px(.062)+'" ry="'+py(.025)+'" fill="#ee91a9" opacity=".36"/><path d="M'+px(.304)+' '+py(.541)+'l'+px(.016)+' -'+py(.012)+'m'+px(.004)+' '+py(.024)+'l'+px(.015)+' -'+py(.012)+' M'+px(.663)+' '+py(.541)+'l'+px(.016)+' -'+py(.012)+'m'+px(.004)+' '+py(.024)+'l'+px(.015)+' -'+py(.012)+'" stroke="#db6f96" stroke-width="1.5" stroke-linecap="round" opacity=".48"/></g>'
+    ];
+    const poses=[
+      {x:-1,y:-2,turn:-5,scale:1.015},
+      {x:2,y:1,turn:4,scale:.99},
+      {x:-2,y:-7,turn:-10,scale:1.015},
+      {x:3,y:3,turn:7,scale:.96}
+    ];
+    const pose=poses[si], mirrored=si===1;
+    let trans='translate('+pose.x+' '+pose.y+') rotate('+pose.turn+' '+cx+' '+cy+') translate('+cx+' '+cy+') scale('+pose.scale+') translate('+-cx+' '+-cy+')';
+    if(mirrored) trans+=' translate('+w+' 0) scale(-1 1)';
     el.classList.add('love64-art','love64-variant-'+si);
+    el.dataset.expression=['bright','soft','excited','shy'][si];
     el.style.setProperty('background-image','none','important');
     el.style.setProperty('box-shadow','none','important');
     el.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="100%" height="100%" aria-hidden="true" style="display:block;width:100%;height:100%;overflow:visible">'+
-      '<g transform="'+trans+'"><image href="assets/love64-hq/'+base+'.webp" x="0" y="0" width="'+w+'" height="'+h+'" preserveAspectRatio="none" /></g>'+
+      '<g class="love64-pose-motion love64-pose-'+si+'"><g transform="'+trans+'"><image href="assets/love64-hq/'+base+'.webp" x="0" y="0" width="'+w+'" height="'+h+'" preserveAspectRatio="none" />'+faceDetails[si]+'</g></g>'+
       marks[si]+'</svg>';
     if (!el.hasAttribute('aria-hidden')) {
       el.setAttribute('role', 'img');
