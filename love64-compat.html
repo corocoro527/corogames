@@ -138,7 +138,7 @@ function sceneText(a,b,kind){
   love:same?'伝え方が似ていても、相手がうれしい言葉は確認しておこう。':'言葉・スキンシップ・行動のうち、何がいちばん愛情として伝わるか話してみよう。',
   conflict:same?'二人とも同じ対処を選ぶとは限らない。落ち着いて話せる時間を相談しよう。':'「今話したい」と「少し考えたい」の違いを尊重して、再開する時間を決めておこう。'
  };
- return 'あなた：'+p+'。\\n相手：'+q+'。\\nふたりへのヒント：'+advice[kind];
+ return 'あなた：'+p+'。\n相手：'+q+'。\nふたりへのヒント：'+advice[kind];
 }
 function display(){
  const a=all.byCode(first.value),b=all.byCode(second.value);if(!a||!b)return;
