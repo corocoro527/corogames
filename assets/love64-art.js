@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   const order = ['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
-  const names = ['恋のリーダー','寄り添い上手','恋の冒険家','秘めた一途'];
+  const names = ['愛の開拓者','寄り添い上手','恋の冒険家','秘めた一途'];
   const codes = ['SD','SW','AD','AW'];
   function apply(el, base, sub) {
     if (!el || !order.includes(base)) return;
