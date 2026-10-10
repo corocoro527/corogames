@@ -59,3 +59,18 @@ html body :is(#catalog,#landingV6,#resultScreen) .love64-art.love64-art.love64-a
   #landingV6 .v6-start>span:last-child {font-size:.9rem!important;white-space:nowrap;}
   #landingV6 .v10-cta-avatar {width:32px!important;height:36px!important;flex-basis:32px!important;}
 }
+
+/* Approved INTJ only: override the generic 64-character sprite selector above. */
+html body #landingV6 .v6-catalog .v6-cat-avatar.love64-art.intj-approved,
+html body #landingV6 .v6-catalog .v6-cat-avatar.love64-art[data-mbti="INTJ"]{
+  background-image:url('love64-intj-new.webp')!important;
+  background-position:center center!important;
+  background-size:auto 76%!important;
+  background-repeat:no-repeat!important;
+}
+html body #landingV6 .v6-characters .v6-card .v6-pixel.intj-approved{
+  background-image:url('love64-intj-new.webp')!important;
+  background-position:center center!important;
+  background-size:auto 76%!important;
+  background-repeat:no-repeat!important;
+}
