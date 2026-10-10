@@ -41,8 +41,8 @@
   ['ENFP','INFP','ENFJ','INFJ'].forEach((base,si) => apply(document.querySelector('#landingV6 .v16-axis-char.c'+(si+1)),base,si));
   apply(document.querySelector('#landingV6 .v16-hero-char.girl'),'ESFJ',0);
   apply(document.querySelector('#landingV6 .v16-hero-char.boy'),'ISTJ',0);
-  document.querySelectorAll('#landingV6 .v10-girl').forEach(el => apply(el,'ESFJ',0));
-  document.querySelectorAll('#landingV6 .v10-boy').forEach(el => apply(el,'ISTJ',0));
+  document.querySelectorAll('.v10-girl').forEach(el => apply(el,'ESFJ',0));
+  document.querySelectorAll('.v10-boy').forEach(el => apply(el,'ISTJ',0));
   const cat = document.querySelector('#landingV6 .v6-catalog');
   if (cat) {
     const picks = [['ENFP',0],['INFP',1],['ENFJ',2],['INFJ',3],['ENTP',0],['INTJ',3],['ESFP',2],['ISTJ',1]];
