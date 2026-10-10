@@ -498,7 +498,11 @@ footer{text-align:center;padding:25px 0 40px;color:#a0a3ad;font-size:.7rem}
 
 </style>
 <!-- KOROPOP_EDITORIAL_STYLE_END -->
-</head>
+<style id="love64-detail-catalog-css">
+#catalog .love64-detail-link{display:block;margin:12px auto 2px;padding:10px 8px;border:1px solid #f4c4d5;border-radius:11px;background:linear-gradient(110deg,#fff3f8,#fbf5ff);font-size:clamp(.7rem,2.8vw,.81rem);font-weight:900;text-align:center;text-decoration:none;color:#b04b81;line-height:1.4}
+#catalog .love64-detail-link:focus-visible{outline:3px solid #7663e5;outline-offset:2px}
+@media(hover:hover){#catalog .love64-detail-link:hover{background:#ffe8f1}}
+</style></head>
 <body>
 <header><div class="shell head"><a class="logo" href="love64.html">恋タイプ64</a><nav><a href="love64.html">診断する</a><a href="#catalog">64タイプ図鑑</a><a href="love64.html#types">16タイプ一覧</a><a href="love64.html#articles">コラム</a></nav><a class="cta" href="love64.html#diagnose">診断を始める</a></div></header>
 <section class="hero"><div class="shell"><h1>あなたの恋は、<em>64通り。</em></h1>
@@ -855,7 +859,7 @@ function pos(idx){const col=idx%8,row=Math.floor(idx/8),x=col/7*100,y=row/7*100;
 let html='',last='';
 data.forEach((d,di)=>{if(d[2]!==last){last=d[2];html+='<div class="group-label">'+groupNames[last]+'<small>'+groupDesc[last]+'</small></div>'}
 html+='<section class="family '+d[2].toLowerCase()+'"><div class="family-head"><div class="family-title"><b>'+d[0]+'</b><span>'+d[1]+'</span></div><div class="family-note">同じ人物・表情と動きだけ変化</div></div><div class="cards">';
-styles.forEach((st,si)=>{const idx=di*4+si;html+='<article class="card"><div class="chara" data-mbti="'+d[0]+'" data-sub="'+si+'"></div><div class="sub">'+st.i+' '+st.n+'</div><div class="greek">'+st.g+'</div><div class="catch">「'+d[3][si]+'」</div></article>'});
+styles.forEach((st,si)=>{const idx=di*4+si;const code=['SD','SW','AD','AW'][si];html+='<article class="card"><div class="chara" data-mbti="'+d[0]+'" data-sub="'+si+'"></div><div class="sub">'+st.i+' '+st.n+'</div><div class="greek">'+st.g+'</div><div class="catch">「'+d[3][si]+'」</div><a class="love64-detail-link" href="love64-'+d[0]+'-'+code+'.html" aria-label="'+d[0]+' '+st.n+'の詳しい解説を見る">このタイプを詳しく見る →</a></article>'});
 html+='</div></section>'});
 document.getElementById('catalogRoot').innerHTML=html;
 </script>

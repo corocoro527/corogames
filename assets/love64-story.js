@@ -33,9 +33,10 @@ function render(r){
   });}
  textTo('love64-story-match','当てはまるものをタップしてみてね。');
  let link=document.getElementById('love64-partner-link');if(link)link.href='love64-compat.html?me='+encodeURIComponent(r.base+'-'+r.sub);
+ const detailLink=document.getElementById('love64-personal-detail');if(detailLink)detailLink.href='love64-'+r.base+'-'+r.sub+'.html';
  const save=document.getElementById('love64-story-save');if(save)save.disabled=false;
 }
-function getShareUrl(d){return new URL('love64-type.html?type='+encodeURIComponent(d.base+'-'+d.sub),location.href).href}
+function getShareUrl(d){return new URL('love64-'+d.base+'-'+d.sub+'.html',location.href).href}
 function shareText(d){return '私の恋タイプ64は【'+d.base+'-'+d.greek+' '+d.style.label+'】！\n実は…'+d.hidden+'\n\nあなたは何タイプ？ #恋タイプ64'}
 async function copy(s){
  try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(s);return true;}}catch(_){}
@@ -49,34 +50,76 @@ async function share(){
 }
 async function copyMyResult(){if(!active)return;const ok=await copy(shareText(active)+'\n'+getShareUrl(active));const msg=document.getElementById('love64-story-status');if(msg)msg.textContent=ok?'結果をコピーしました':'コピーできませんでした。';}
 function shareX(){if(!active)return;const u='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText(active))+'&url='+encodeURIComponent(getShareUrl(active));window.open(u,'_blank','noopener,noreferrer');}
-function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);}
-function wrap(ctx,txt,x,y,max,step,limit){
- let line='',count=0;for(const ch of Array.from(txt)){if(ctx.measureText(line+ch).width>max&&line){ctx.fillText(line,x,y);y+=step;count++;line='';if(count>=limit-1)break;}line+=ch;}
- if(line)ctx.fillText(line,x,y);return y+step;
+
+function roundRect(ctx,x,y,w,h,r){ctx.beginPath();if(ctx.roundRect){ctx.roundRect(x,y,w,h,r)}else{ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath()}}
+function roundedFill(c,x,y,w,h,r,color){c.fillStyle=color;roundRect(c,x,y,w,h,r);c.fill()}
+function drawLines(c,text,x,y,width,lineHeight,limit){
+ const chars=Array.from(text),lines=[];let line='';
+ for(const ch of chars){if(ch==='\n'){lines.push(line);line='';continue}if(c.measureText(line+ch).width>width&&line){lines.push(line);line=''}line+=ch}
+ if(line)lines.push(line);
+ for(let i=0;i<Math.min(lines.length,limit);i++){let l=lines[i];if(i===limit-1&&lines.length>limit){while(l.length&&c.measureText(l+'…').width>width)l=l.slice(0,-1);l+='…'}c.fillText(l,x,y+i*lineHeight)}
+ return y+Math.min(lines.length,limit)*lineHeight;
 }
 async function cardBlob(d){
- const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1350;const c=canvas.getContext('2d');if(!c)throw Error('canvas unsupported');
- const bg=c.createLinearGradient(0,0,1080,1350);bg.addColorStop(0,'#fff7fb');bg.addColorStop(1,'#f1edff');c.fillStyle=bg;c.fillRect(0,0,1080,1350);
- c.fillStyle='#ffffff';roundRect(c,44,46,992,1258,44);c.fill();
- c.textAlign='center';c.fillStyle='#e84c83';c.font='900 34px system-ui,sans-serif';c.fillText('恋タイプ64  •  MY LOVE TYPE',540,123);
- c.fillStyle='#202235';c.font='900 90px system-ui,sans-serif';c.fillText(d.base+' - '+d.greek,540,226);
- c.fillStyle='#e95083';c.font='900 46px system-ui,sans-serif';c.fillText(d.style.icon+' '+d.style.label,540,299);
- try{const img=new Image();img.src='assets/love64-hq/'+d.base+'.webp';await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=reject;});const aspect=img.naturalWidth/img.naturalHeight;const ht=405,wd=Math.round(ht*aspect);c.drawImage(img,540-wd/2,324,wd,ht);}catch(_){}
- c.fillStyle='#fcf0f5';roundRect(c,91,778,898,320,34);c.fill();
- c.fillStyle='#a84570';c.font='800 34px system-ui,sans-serif';c.fillText('本当は、こんな一面も。',540,837);
- c.fillStyle='#2d2938';c.font='650 34px system-ui,sans-serif';wrap(c,d.hidden,540,904,790,51,3);
- c.fillStyle='#a84570';c.font='800 32px system-ui,sans-serif';c.fillText('言われたい一言',540,1155);
- c.fillStyle='#232438';c.font='800 36px system-ui,sans-serif';wrap(c,'「'+d.words+'」',540,1207,840,43,2);
- return await new Promise((res,rej)=>canvas.toBlob(b=>b?res(b):rej(Error('image error')),'image/png'));
+ if(document.fonts&&document.fonts.ready)try{await document.fonts.ready}catch(_){}
+ // 9:16 Instagram Story portrait. Only reuse untouched, approved character art.
+ const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1920;
+ const c=canvas.getContext('2d');if(!c)throw Error('canvas unsupported');
+ const bg=c.createLinearGradient(0,0,1080,1920);bg.addColorStop(0,'#fff2f8');bg.addColorStop(.54,'#fce8f5');bg.addColorStop(1,'#e9e5ff');c.fillStyle=bg;c.fillRect(0,0,1080,1920);
+ c.fillStyle='rgba(255,255,255,.33)';c.beginPath();c.arc(1000,160,250,0,Math.PI*2);c.fill();c.beginPath();c.arc(60,1690,250,0,Math.PI*2);c.fill();
+ roundedFill(c,56,62,968,1794,58,'#ffffff');
+ roundedFill(c,84,87,912,100,28,'#fff0f7');
+ c.textAlign='center';c.fillStyle='#d94b86';c.font='900 36px system-ui,sans-serif';c.fillText('♡  恋タイプ64  /  MY LOVE TYPE',540,153);
+ c.fillStyle='#272138';c.font='900 104px system-ui,sans-serif';c.fillText(d.base+' - '+d.greek,540,292);
+ c.fillStyle='#bf4c86';c.font='900 46px system-ui,sans-serif';c.fillText(d.style.icon+'  '+d.style.label,540,368);
+ c.fillStyle='#8f7893';c.font='750 29px system-ui,sans-serif';c.fillText(d.name+' × '+d.style.label,540,416);
+ // The image is unchanged: no artificial eyes, mouth or hair added.
+ const art=new Image();art.decoding='async';art.src='assets/love64-hq/'+d.base+'.webp';
+ await new Promise((resolve,reject)=>{art.onload=resolve;art.onerror=reject;if(art.complete&&art.naturalWidth)resolve()});
+ const aspect=art.naturalWidth/art.naturalHeight;
+ const ht=640,wd=Math.min(740,Math.round(ht*aspect));
+ c.drawImage(art,540-wd/2,435,wd,ht);
+ roundedFill(c,107,1090,866,225,30,'#fff3f8');
+ c.fillStyle='#c04d82';c.font='850 33px system-ui,sans-serif';c.fillText('🫣  実はこんな一面も…',540,1146);
+ c.fillStyle='#3d3046';c.font='750 35px system-ui,sans-serif';drawLines(c,d.hidden,540,1218,760,52,2);
+ roundedFill(c,107,1345,866,235,30,'#f4f1ff');
+ c.fillStyle='#9070b5';c.font='850 33px system-ui,sans-serif';c.fillText('💬  言われたい一言',540,1406);
+ c.fillStyle='#392c48';c.font='850 38px system-ui,sans-serif';drawLines(c,'「'+d.words+'」',540,1482,760,55,2);
+ c.fillStyle='#9b7a9b';c.font='750 30px system-ui,sans-serif';c.fillText('恋の自分、どれくらい当たってる？',540,1688);
+ roundedFill(c,248,1720,584,82,28,'#f35d90');
+ c.fillStyle='white';c.font='900 34px system-ui,sans-serif';c.fillText('私も無料で診断する →',540,1774);
+ c.fillStyle='#a08eaa';c.font='700 23px system-ui,sans-serif';c.fillText('koropopgames.com/love64.html',540,1835);
+ return await new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?resolve(blob):reject(Error('image generation failed')),'image/png'));
+}
+function openCardPreview(blob,d){
+ const previous=document.getElementById('love64-card-preview');if(previous)previous.remove();
+ const url=URL.createObjectURL(blob);
+ const dialog=document.createElement('dialog');dialog.id='love64-card-preview';dialog.className='love64-card-preview';
+ const image=document.createElement('img');image.alt=d.base+' '+d.style.label+'のシェア用縦型カード';image.src=url;
+ const heading=document.createElement('h2');heading.textContent='シェア画像ができました';
+ const desc=document.createElement('p');desc.textContent='画像を確認して保存、またはLINEやSNSで共有できます。';
+ const controls=document.createElement('div');controls.className='love64-card-preview-actions';
+ const send=document.createElement('button');send.type='button';send.textContent='📲 画像を共有';
+ const download=document.createElement('a');download.href=url;download.download='love64-'+d.base+'-'+d.sub+'.png';download.textContent='画像を保存';
+ const close=document.createElement('button');close.type='button';close.textContent='閉じる';close.className='love64-card-preview-close';
+ const feedback=document.createElement('p');feedback.className='love64-card-preview-status';feedback.setAttribute('role','status');
+ controls.append(send,download,close);dialog.append(heading,desc,image,controls,feedback);document.body.appendChild(dialog);
+ const dismiss=()=>{if(dialog.close)dialog.close();else dialog.remove()};
+ close.addEventListener('click',dismiss);
+ dialog.addEventListener('close',()=>{dialog.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)});
+ send.addEventListener('click',async()=>{
+  const file=new File([blob],download.download,{type:'image/png'});
+  try{if(navigator.share&&(!navigator.canShare||navigator.canShare({files:[file]}))){await navigator.share({title:'恋タイプ64',files:[file]});feedback.textContent='画像を共有しました。';return;}}
+  catch(e){if(e&&e.name==='AbortError')return}
+  feedback.textContent='画像を保存してから、LINEやSNSに投稿してください。';
+ });
+ if(dialog.showModal)dialog.showModal();else dialog.setAttribute('open','');
 }
 async function saveCard(){
  if(!active)return;
- const status=document.getElementById('love64-story-status');
- if(status)status.textContent='シェア画像を作成中…';
- try{const blob=await cardBlob(active);const file=new File([blob],'love64-'+active.base+'-'+active.sub+'.png',{type:'image/png'});
- if(navigator.canShare&&navigator.canShare({files:[file]})&&navigator.share){try{await navigator.share({title:'恋タイプ64',files:[file]});if(status)status.textContent='画像を共有しました';return;}catch(err){if(err&&err.name==='AbortError'){if(status)status.textContent='';return;}}}
- const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=file.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);if(status)status.textContent='画像を保存しました。';
- }catch(e){if(status)status.textContent='画像を作れませんでした。テキストでシェアできます。';}
+ const status=document.getElementById('love64-story-status');if(status)status.textContent='シェア画像を作成中…';
+ try{const blob=await cardBlob(active);openCardPreview(blob,active);if(status)status.textContent='シェア画像を作成しました。';}
+ catch(err){if(status)status.textContent='画像を作成できませんでした。結果テキストを共有してください。';}
 }
 function byCode(raw){if(!raw)return null;let m=String(raw).toUpperCase().match(/^([EI][NS][TF][JP])-(SD|SW|AD|AW)$/);return m?details(m[1],m[2]):null}
 window.Love64Story={details,byCode,render,share,shareX,copyMyResult,saveCard,getShareUrl,shareText,types:Object.keys(PROFILES),subtypes:Object.keys(STYLES)};

@@ -10,84 +10,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="恋タイプ64｜恋愛診断結果をシェア">
 <meta property="og:description" content="その恋、あるある？ 恋愛タイプを比べてみよう。">
-<link rel="stylesheet" href="assets/love64-story.css?v=20261010-results1">
+<link rel="stylesheet" href="assets/love64-story.css?v=20261010-sharecard2">
 <meta name="koropop-updated" content="2026-10-10">
 
 
 
-<!-- KOROPOP_EDITORIAL_STYLE_START -->
-<style id="koropop-editorial-trust-style">
 
-.koropop-editorial-trust{
-  margin:16px 0 22px;
-  padding:15px 17px;
-  background:
-    linear-gradient(
-      135deg,
-      #f7fbff,
-      #fff 60%,
-      #f7f4ff
-    );
-  border:1px solid #d7e3ee;
-  border-radius:14px;
-  color:#475467;
-  font-size:.82rem;
-  line-height:1.65;
-}
-
-.koropop-editorial-head{
-  display:flex;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:7px;
-  margin-bottom:7px;
-}
-
-.koropop-editorial-label{
-  display:inline-block;
-  padding:3px 7px;
-  border-radius:999px;
-  background:#e7f3ff;
-  border:1px solid #c8e1f7;
-  color:#1769b0;
-  font-size:.7rem;
-  font-weight:850;
-}
-
-.koropop-editorial-head strong{
-  color:#243b53 !important;
-}
-
-.koropop-editorial-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px 13px;
-  color:#667085;
-}
-
-.koropop-editorial-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:8px;
-}
-
-.koropop-editorial-links a{
-  font-size:.78rem;
-  font-weight:750;
-  text-decoration:none;
-}
-
-@media(max-width:600px){
-
-  .koropop-editorial-trust{
-    padding:13px 14px;
-  }
-
-}
-
-</style>
-<!-- KOROPOP_EDITORIAL_STYLE_END -->
 </head>
 <body class="love64-extra-page">
 <header class="love64-extra-header"><a href="love64.html">♡ 恋タイプ64</a><a href="love64-types.html">64タイプ図鑑</a></header>
@@ -96,55 +24,7 @@
   <p style="color:#c84b85;font-weight:900;margin:0">LOVE TYPE CARD</p>
   <h1 id="share-title">恋タイプ64の診断結果</h1>
 
-<!-- KOROPOP_EDITORIAL_TRUST_START -->
-<div
-  class="koropop-editorial-trust"
-  aria-label="記事の編集情報"
->
 
-  <div class="koropop-editorial-head">
-
-    <span class="koropop-editorial-label">
-      執筆・編集
-    </span>
-
-    <strong>
-      KOROPOP GAMES編集部
-    </strong>
-
-  </div>
-
-  <div class="koropop-editorial-meta">
-
-    <span>
-      🔄 最終更新 2026/10/10
-    </span>
-
-    <span>
-      🔎 制度・資格・給与などは
-      公的機関・公式情報を優先して確認
-    </span>
-
-  </div>
-
-  <div class="koropop-editorial-links">
-
-    <a href="about.html#editorial-policy">
-      編集方針
-    </a>
-
-    <a href="about.html#sources">
-      情報源について
-    </a>
-
-    <a href="contact.html">
-      誤りを報告
-    </a>
-
-  </div>
-
-</div>
-<!-- KOROPOP_EDITORIAL_TRUST_END -->
 
 
 
@@ -158,6 +38,7 @@
   <div class="love64-extra-buttons">
    <a class="love64-extra-button" href="love64.html">自分も無料で診断する →</a>
    <a class="love64-extra-button secondary" id="share-compat" href="love64-compat.html">このタイプと相性を調べる</a>
+   <a class="love64-extra-button secondary" id="share-detail" href="love64-types.html">詳しい恋愛トリセツを見る</a>
   </div>
  </section>
  <section class="love64-extra-panel">
@@ -170,7 +51,7 @@
  </section>
  <p style="font-size:.75rem;color:#7c7084;line-height:1.7">この結果は娯楽と自己理解のためのものです。相性や性格を科学的に判定・保証するものではありません。</p>
 </main>
-<script src="assets/love64-story.js?v=20261010-results1"></script>
+<script src="assets/love64-story.js?v=20261010-sharecard2"></script>
 <script>
 (function(){
 const q=new URLSearchParams(location.search),item=window.Love64Story.byCode(q.get('type'));
@@ -186,9 +67,8 @@ put('share-intro',item.headline);put('share-habit',item.habits[0]+'。'+item.hab
 put('share-hidden',item.hidden);put('share-words','「'+item.words+'」');
 const img=document.getElementById('share-character');img.src='assets/love64-hq/'+item.base+'.webp';img.alt=item.base+'のキャラクター';
 document.getElementById('share-compat').href='love64-compat.html?other='+encodeURIComponent(item.base+'-'+item.sub);
+document.getElementById('share-detail').href='love64-'+item.base+'-'+item.sub+'.html';
 })();
 </script>
-
-<script defer src="koropop-reader.js"></script>
 </body>
 </html>

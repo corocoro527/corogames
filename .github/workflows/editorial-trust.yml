@@ -282,7 +282,7 @@ jobs:
               Path(".").glob("*.html")
           ):
 
-              if path.name in SKIP:
+              if path.name in SKIP or path.name.startswith("love64-"):
                   continue
 
 

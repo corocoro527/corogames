@@ -45,3 +45,16 @@
  .love64-compat-form{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){#love64Story *{scroll-behavior:auto!important;animation:none!important}}
+
+/* Original 9:16 story-card review modal */
+dialog.love64-card-preview{width:min(94vw,460px);max-height:95dvh;overflow-y:auto;overscroll-behavior:contain;border:1px solid #f4c9dd;border-radius:23px;padding:18px;background:#fff;color:#2f2940;box-shadow:0 20px 60px #2a1b3e33}
+.love64-card-preview::backdrop{background:rgba(25,18,40,.65);backdrop-filter:blur(3px)}
+.love64-card-preview h2{font-size:1.14rem;margin:0 0 5px;font-weight:950}
+.love64-card-preview>p{font-size:.81rem;color:#826a7d;line-height:1.6;margin:0 0 9px}
+.love64-card-preview img{display:block;max-width:100%;width:auto;max-height:min(64dvh,650px);aspect-ratio:9/16;object-fit:contain;margin:8px auto;background:#fff5fa;border:1px solid #f3e0eb;border-radius:12px}
+.love64-card-preview-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.love64-card-preview-actions>*{border:1px solid #eec5d9;border-radius:12px;padding:12px 9px;background:#fff4f9;color:#ab447c;min-height:46px;display:grid;place-items:center;font:850 .86rem system-ui,sans-serif;text-align:center;cursor:pointer;text-decoration:none}
+.love64-card-preview-actions button:first-child{background:#f2578b;border-color:#f2578b;color:#fff}
+.love64-card-preview-actions .love64-card-preview-close{grid-column:span 2;background:#faf9fc;color:#75687c;border-color:#ede8f0}
+.love64-card-preview-status{grid-column:span 2;color:#a04c79;margin:5px 0 0!important}
+.love64-card-preview :focus-visible{outline:3px solid #7363e9;outline-offset:2px}

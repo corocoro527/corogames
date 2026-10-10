@@ -29,6 +29,16 @@
 .love64-editorial-bottom-info p{margin:6px 0!important;font-size:.74rem!important;color:#74667a!important;line-height:1.75!important}
 .love64-editorial-bottom-info a{color:#a14b7e;text-decoration:underline;text-underline-offset:2px}
 </style>
+
+<style id="love64-compat-scenes-css">
+.love64-compat-scenes{display:grid;grid-template-columns:1fr;gap:12px;margin:20px 0}
+.love64-compat-scene{padding:18px 18px 19px;border:1px solid #eee0ed;border-radius:17px;background:linear-gradient(110deg,#fffafc,#fff)}
+.love64-compat-scene:nth-child(2){background:linear-gradient(115deg,#faf5ff,#fff)}
+.love64-compat-scene:nth-child(3){background:linear-gradient(115deg,#fff9f6,#fff)}
+.love64-compat-scene h3{margin:0 0 9px;color:#a94475;font-size:1.02rem}
+.love64-compat-scene p{margin:0;color:#514757;font-size:.92rem;line-height:1.85;white-space:pre-line}
+@media(max-width:550px){.love64-compat-scene{padding:15px 14px}.love64-compat-scene p{font-size:.87rem}}
+</style>
 </head>
 <body class="love64-extra-page">
 <header class="love64-extra-header"><a href="love64.html">♡ 恋タイプ64</a><a href="love64-types.html">64タイプ図鑑</a></header>
@@ -56,6 +66,11 @@
   <div class="love64-compat-score" id="compat-points"></div>
   <h2 id="compat-heading" style="text-align:center"></h2>
   <p id="compat-intro"></p>
+  <div class="love64-compat-scenes" aria-label="場面ごとの相性ヒント">
+  <section class="love64-compat-scene"><h3>💬 LINE・連絡のテンポ</h3><p id="compat-scene-line"></p></section>
+  <section class="love64-compat-scene"><h3>💗 愛情表現のしかた</h3><p id="compat-scene-love"></p></section>
+  <section class="love64-compat-scene"><h3>🫶 喧嘩・仲直りのしかた</h3><p id="compat-scene-conflict"></p></section>
+  </div>
   <div class="love64-compat-advice"><strong>すれ違いを減らすコツ</strong><p id="compat-advice"></p></div>
   <div class="love64-extra-buttons">
    <button type="button" class="love64-extra-button secondary" id="compat-share">結果のリンクをコピー</button>
@@ -74,7 +89,7 @@
   </div>
 </details>
 </main>
-<script src="assets/love64-story.js?v=20261010-results1"></script>
+<script src="assets/love64-story.js?v=20261010-sharecard2"></script>
 <script>
 (function(){
 'use strict';
@@ -109,6 +124,22 @@ function recommendation(a,b){
  if((modesA==='SD'||modesA==='AD')&&(modesB==='SW'||modesB==='AW')||(modesB==='SD'||modesB==='AD')&&(modesA==='SW'||modesA==='AW'))return '動きたい人と待ちたい人の組み合わせ。誘う頻度や一人時間を先に話しておくと、すれ違いが減らせそう。';
  return '好きの表現方法が違っても、優劣ではない。気持ちを受け取りやすい言葉や行動を互いに教え合うといい関係を作りやすい。';
 }
+
+const SCENE_DATA={
+ SD:{line:'用事がなくても自然に連絡しやすい',love:'「会おう」と先に誘い、行動で好意を表す',conflict:'話し合いの場を早めに作りたい'},
+ SW:{line:'返信の間隔よりも会話の安心感を重視しやすい',love:'相手のペースに合わせて、日常の気遣いで示す',conflict:'時間を置いてから穏やかに整理したい'},
+ AD:{line:'好きなほど返信や温度差が気になることがある',love:'好きな気持ちをこまめに伝え、反応も確かめたい',conflict:'不安を残さず、できるだけ早く確認したい'},
+ AW:{line:'送りたい気持ちを抱えながら、相手の様子を見がち',love:'目立たない気遣いと、二人だけの言葉で示す',conflict:'その場では言葉が出ず、整理する時間が欲しい'}
+};
+function sceneText(a,b,kind){
+ const p=SCENE_DATA[a.sub][kind],q=SCENE_DATA[b.sub][kind],same=a.sub===b.sub;
+ const advice={
+  line:same?'似たペースでも忙しい日は変わるもの。連絡できない時のひと言を決めておくと安心。':'一日の連絡回数や返信できない時間帯を、無理のない範囲で共有しておくと安心。',
+  love:same?'伝え方が似ていても、相手がうれしい言葉は確認しておこう。':'言葉・スキンシップ・行動のうち、何がいちばん愛情として伝わるか話してみよう。',
+  conflict:same?'二人とも同じ対処を選ぶとは限らない。落ち着いて話せる時間を相談しよう。':'「今話したい」と「少し考えたい」の違いを尊重して、再開する時間を決めておこう。'
+ };
+ return 'あなた：'+p+'。\\n相手：'+q+'。\\nふたりへのヒント：'+advice[kind];
+}
 function display(){
  const a=all.byCode(first.value),b=all.byCode(second.value);if(!a||!b)return;
  const points=score(a,b);
@@ -117,6 +148,9 @@ function display(){
  document.getElementById('compat-heading').textContent=points>=83?'お互いを伸ばし合える組み合わせ':points>=70?'じっくり育つ組み合わせ':'違いを楽しめる組み合わせ';
  document.getElementById('compat-intro').textContent=a.base+'-'+a.greek+' '+a.style.label+' × '+b.base+'-'+b.greek+' '+b.style.label+'。'+(a.base[0]===b.base[0]?'元気の回復方法が似ている二人。':'元気の回復方法が違う二人。')+'『'+a.words+'』『'+b.words+'』という言葉がそれぞれの安心のヒントになるかも。';
  document.getElementById('compat-advice').textContent=recommendation(a,b);
+ document.getElementById('compat-scene-line').textContent=sceneText(a,b,'line');
+ document.getElementById('compat-scene-love').textContent=sceneText(a,b,'love');
+ document.getElementById('compat-scene-conflict').textContent=sceneText(a,b,'conflict');
  const url=new URL(location.href);url.searchParams.set('me',first.value);url.searchParams.set('other',second.value);history.replaceState({},'',url);
  if(typeof gtag==='function')gtag('event','love64_compat_view',{first:first.value,second:second.value});
 }

@@ -1071,7 +1071,7 @@ jobs:
               Path(".").glob("*.html")
           ):
 
-              if path.name in skip:
+              if path.name in skip or path.name.startswith("love64-"):
                   continue
 
 

@@ -1425,7 +1425,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 #landingV6 .shadow-promo-exact-banner img{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;object-fit:contain!important;object-position:center!important;clip-path:none!important;transform:none!important;filter:none!important}
 </style>
 
-<link rel="stylesheet" href="assets/love64-story.css?v=20261010-results1">
+<link rel="stylesheet" href="assets/love64-story.css?v=20261010-sharecard2">
 
 <style id="love64-compat-hero-discovery-20261010">
 #landingV6 .love64-compat-hero-link{
@@ -1927,6 +1927,7 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
     <button type="button" id="love64-story-save" onclick="Love64Story.saveCard()">🖼️ 結果を画像に</button>
     <button type="button" onclick="Love64Story.copyMyResult()">📋 結果をコピー</button>
     <a id="love64-partner-link" href="love64-compat.html">💑 ふたりの相性を見る</a>
+    <a id="love64-personal-detail" href="love64-types.html">📖 私のタイプを詳しく</a>
    </div>
    <p id="love64-story-status" role="status" aria-live="polite"></p>
   </section>
@@ -2078,10 +2079,16 @@ function updateProgress(){
  document.getElementById('progressPct').textContent='回答済み '+n+' / '+questions.length;
  document.getElementById('progressBar').style.width=Math.round(n/questions.length*100)+'%';
 }
+// iPhone Safari can keep an old offset when a six-question page is replaced.
+function love64JumpToQuizTop(){
+ var root=document.documentElement,prev=root.style.scrollBehavior;
+ root.style.scrollBehavior='auto';window.scrollTo(0,0);
+ requestAnimationFrame(function(){window.scrollTo(0,0);requestAnimationFrame(function(){window.scrollTo(0,0);root.style.scrollBehavior=prev})});
+}
 function previousQuestion(){
  if(currentQuestion<6)return;
  currentQuestion-=6;renderQuestion();updateProgress();
- window.scrollTo({top:0,behavior:'smooth'});
+ love64JumpToQuizTop();
 }
 function nextQuestion(){
  var start=Math.floor(currentQuestion/6)*6;
@@ -2095,7 +2102,7 @@ function nextQuestion(){
  }
  if(start+6>=questions.length){diagnose();return}
  currentQuestion+=6;renderQuestion();updateProgress();
- window.scrollTo({top:0,behavior:'smooth'});
+ love64JumpToQuizTop();
 }
 
 function calc(){
@@ -2311,6 +2318,6 @@ function restart(){
   }
 })();
 </script>
-<script src="assets/love64-story.js?v=20261010-results1"></script>
+<script src="assets/love64-story.js?v=20261010-sharecard2"></script>
 </body>
 </html>
