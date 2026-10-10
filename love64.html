@@ -2171,5 +2171,36 @@ function restart(){
   window.addEventListener('load',syncIntj);
 })();
 </script>
+<script id="love64-final-catalog-labels-20261010">
+/* Catalog labels must stay current even when an older art.js is cached. */
+(function(){
+  var correct=['愛の開拓者','寄り添い上手','恋の冒険家','秘めた一途'];
+  var obsolete=['恋のリーダー','包容の人','情熱の迷子','静かな渇望','愛の先導者'];
+  function updateCatalog(){
+    var root=document.getElementById('landingV6');
+    if(!root)return;
+    root.querySelectorAll('.v6-card span,.v6-cat-copy span,.v16-matrix strong,.v16-matrix b,.v16-matrix span').forEach(function(el){
+      if(el.children.length)return;
+      var t=el.textContent;
+      obsolete.forEach(function(old,i){t=t.split(old).join(correct[i===4?0:i]);});
+      if(t!==el.textContent)el.textContent=t;
+    });
+    root.querySelectorAll('.v6-catalog article').forEach(function(card){
+      var label=card.querySelector('.v6-cat-copy b');
+      var avatar=card.querySelector('.v6-cat-avatar');
+      if(label&&label.textContent.trim()==='INTJ'&&avatar)avatar.classList.add('intj-approved');
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateCatalog);
+  else updateCatalog();
+  window.addEventListener('load',updateCatalog);
+  var root=document.getElementById('landingV6');
+  if(root&&window.MutationObserver){
+    var busy=false;
+    new MutationObserver(function(){if(busy)return;busy=true;requestAnimationFrame(function(){updateCatalog();busy=false;});})
+      .observe(root,{childList:true,subtree:true});
+  }
+})();
+</script>
 </body>
 </html>
