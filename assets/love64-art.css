@@ -110,3 +110,67 @@ html body #stickyCta .v10-cta-avatar.love64-art{
 html body #catalog .chara.love64-art > svg{overflow:visible!important}
 html body #catalog .chara.love64-art {overflow:visible!important}
 html body #resultCharacter.love64-art > svg{overflow:visible!important}
+
+/* 2026-10-10: match benchmark's restrained mobile CTA; no oversized avatars. */
+html body #stickyCta.sticky-cta {
+  display:flex!important; align-items:center!important; justify-content:center!important;
+  min-height:0!important;height:auto!important;
+  gap:10px!important;
+  padding:10px max(14px,env(safe-area-inset-left)) calc(11px + env(safe-area-inset-bottom))!important;
+  background:rgba(255,255,255,.97)!important;
+  border-top:1px solid #f1eff2!important;
+  box-shadow:0 -4px 18px rgba(42,29,48,.055)!important;
+}
+html body #stickyCta.sticky-cta button {
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  flex:1 1 0!important;min-width:0!important;
+  width:auto!important;max-width:310px!important;
+  height:48px!important;min-height:48px!important;max-height:48px!important;
+  gap:7px!important;padding:6px 10px!important;
+  border-radius:15px!important;font-size:clamp(13px,3.8vw,15px)!important;
+  font-weight:900!important;line-height:1.15!important;letter-spacing:0!important;
+  white-space:nowrap!important;
+  box-shadow:0 3px 10px rgba(37,35,57,.08)!important;
+}
+html body #stickyCta.sticky-cta button > span:last-child {
+  display:inline-block!important;flex:0 0 auto!important;
+  font-size:inherit!important;white-space:nowrap!important;
+  overflow:visible!important;line-height:1.15!important;
+}
+html body #stickyCta.sticky-cta .v10-cta-avatar {
+  display:block!important;position:relative!important;
+  width:29px!important;height:33px!important;flex:0 0 29px!important;
+  max-width:29px!important;max-height:33px!important;
+  background:none!important;opacity:1!important;
+  overflow:hidden!important;transform:none!important;
+}
+html body #stickyCta.sticky-cta .v10-cta-avatar img.love64-cta-img {
+  display:block!important;position:static!important;
+  width:100%!important;height:100%!important;max-width:100%!important;
+  object-fit:contain!important;opacity:1!important;filter:none!important;
+  mix-blend-mode:normal!important;transform:none!important;
+}
+/* Top buttons: same benchmark proportions, with readable unwrapped labels. */
+html body #landingV6 .v6-starts {
+  width:min(calc(100% - 44px),560px)!important;
+  max-width:560px!important;margin-inline:auto!important;
+  gap:10px!important;
+}
+html body #landingV6 .v6-starts .v6-start {
+  min-height:58px!important; height:58px!important;
+  padding:7px 10px!important; gap:8px!important;
+  border-radius:16px!important; font-size:clamp(13px,4vw,16px)!important;
+  white-space:nowrap!important;line-height:1.1!important;
+}
+html body #landingV6 .v6-starts .v10-cta-avatar{
+  width:34px!important;height:39px!important;flex:0 0 34px!important;
+  max-width:34px!important;max-height:39px!important;
+}
+html body #landingV6 .v6-starts .v6-start > span:last-child {
+  white-space:nowrap!important;flex:0 0 auto!important;line-height:1.15!important;
+}
+@media(max-width:360px){
+ html body #stickyCta.sticky-cta {padding-left:8px!important;padding-right:8px!important;gap:7px!important}
+ html body #stickyCta.sticky-cta button {height:46px!important;min-height:46px!important;max-height:46px!important;padding:5px 6px!important;font-size:12.5px!important}
+ html body #landingV6 .v6-starts{width:min(calc(100% - 20px),560px)!important;gap:7px!important}
+}
