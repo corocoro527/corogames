@@ -543,6 +543,14 @@ h1{
     height:27px;
   }
 }
+
+/* 24 questions split into 6 accessible screens of 4. */
+.quiz-page-info{margin:18px 2px 6px;color:#cbd5e1;font-weight:800;font-size:.92rem}
+.quiz-page-nav{display:flex;gap:12px;margin-top:16px}
+.quiz-page-nav button{flex:1;min-height:52px;border-radius:13px;border:1px solid #3c4c68;background:#18243a;color:#f8fafc;font-weight:800;cursor:pointer}
+.quiz-page-nav button.next{border:0;background:linear-gradient(100deg,#ef4457,#f97345);color:#fff}
+.quiz-page-nav button:disabled{opacity:.4;cursor:not-allowed}
+#quizArea .q-card[hidden]{display:none!important}
 </style>
 </head>
 
@@ -582,11 +590,16 @@ UNFILTERED PERSONALITY TEST
 
 </div>
 
+<div class="quiz-page-info" id="quizPageInfo" aria-live="polite">1 / 6 ページ</div>
 <div id="quizArea"></div>
+<div class="quiz-page-nav" id="quizPageNav">
+<button type="button" id="quizPrev" onclick="changeQuizPage(-1)">← 前へ</button>
+<button type="button" class="next" id="quizNext" onclick="changeQuizPage(1)">次の4問へ →</button>
+</div>
 
 <div class="error" id="error"></div>
 
-<button class="submit" onclick="diagnose()">
+<button class="submit" id="quizSubmit" onclick="diagnose()" hidden>
 🔥 診断結果を見る
 </button>
 
@@ -1087,6 +1100,8 @@ h:["INTJ","ISTJ"]
 
 const answers = {};
 let current = null;
+let quizPage = 0;
+const QUIZ_PAGE_SIZE = 4;
 
 
 function scaleLabel(value){
@@ -1160,7 +1175,41 @@ onclick="pick(${i},${value},this)"
 `).join("");
 
 updateProgress();
+showQuizPage(false);
+}
 
+
+function showQuizPage(scroll){
+  const pages=Math.ceil(questions.length/QUIZ_PAGE_SIZE);
+  document.querySelectorAll('#quizArea .q-card').forEach((card,i)=>{
+    card.hidden=Math.floor(i/QUIZ_PAGE_SIZE)!==quizPage;
+  });
+  document.getElementById('quizPageInfo').textContent=`${quizPage+1} / ${pages} ページ · 全24問`;
+  document.getElementById('quizPrev').disabled=quizPage===0;
+  const last=quizPage===pages-1;
+  document.getElementById('quizNext').hidden=last;
+  document.getElementById('quizSubmit').hidden=!last;
+  if(scroll)document.querySelector('.progress-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function changeQuizPage(direction){
+  const next=quizPage+direction;
+  if(next<0||next>=Math.ceil(questions.length/QUIZ_PAGE_SIZE))return;
+  if(direction>0){
+    const missing=[];
+    for(let i=quizPage*QUIZ_PAGE_SIZE;i<Math.min((quizPage+1)*QUIZ_PAGE_SIZE,questions.length);i++){
+      if(answers[i]===undefined)missing.push(i);
+    }
+    if(missing.length){
+      const error=document.getElementById('error');
+      error.style.display='block';
+      error.textContent='このページの未回答があと '+missing.length+' 問あります。';
+      document.getElementById('q'+missing[0]).scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+  }
+  document.getElementById('error').style.display='none';
+  quizPage=next;
+  showQuizPage(true);
 }
 
 
@@ -1349,6 +1398,8 @@ e.textContent =
 `未回答があと ${missing.length} 問あります。回答していない最初の質問へ移動します。`;
 
 
+quizPage=Math.floor(missing[0]/QUIZ_PAGE_SIZE);
+showQuizPage(false);
 document.getElementById(
 "q"+missing[0]
 ).scrollIntoView({
@@ -2001,6 +2052,7 @@ delete answers[k]
 
 
 current = null;
+quizPage = 0;
 
 
 document.getElementById(
