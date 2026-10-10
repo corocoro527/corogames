@@ -1033,6 +1033,10 @@ jobs:
               "love-style.html",
               "love64.html",
               "love64-v2.html",
+              "love64-compat.html",
+              "love64-type.html",
+              "love64-types.html",
+              "love64-guide.html",
           }
 
 
