@@ -45,7 +45,7 @@ async function share(){
  if(!active)return;
  const data={title:'恋タイプ64｜'+active.base+' '+active.style.label,text:shareText(active),url:getShareUrl(active)};
  try{if(navigator.share){await navigator.share(data);return;}}catch(err){if(err&&err.name==='AbortError')return;}
- const ok=await copy(data.text+'\n'+data.url);const msg=document.getElementById('love64-story-status');if(msg)msg.textContent=ok?'シェア文とリンクをコピーしたで！':'リンクを開いてシェアしてな：'+data.url;
+ const ok=await copy(data.text+'\n'+data.url);const msg=document.getElementById('love64-story-status');if(msg)msg.textContent=ok?'シェア用テキストとリンクをコピーしました。':'以下のリンクを開いて共有してください：'+data.url;
 }
 async function copyMyResult(){if(!active)return;const ok=await copy(shareText(active)+'\n'+getShareUrl(active));const msg=document.getElementById('love64-story-status');if(msg)msg.textContent=ok?'結果をコピーしました':'コピーできませんでした。';}
 function shareX(){if(!active)return;const u='https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText(active))+'&url='+encodeURIComponent(getShareUrl(active));window.open(u,'_blank','noopener,noreferrer');}

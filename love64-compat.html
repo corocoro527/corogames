@@ -122,7 +122,7 @@ function display(){
 }
 go.addEventListener('click',display);
 document.getElementById('compat-share').addEventListener('click',async()=>{
- const url=location.href;try{await navigator.clipboard.writeText(url);document.getElementById('compat-status').textContent='共有リンクをコピーしたで！';}catch(e){document.getElementById('compat-status').textContent='このページのURLをコピーしてシェアしてな。';}
+ const url=location.href;try{await navigator.clipboard.writeText(url);document.getElementById('compat-status').textContent='共有リンクをコピーしました。';}catch(e){document.getElementById('compat-status').textContent='ページのURLをコピーして共有してください。';}
 });
 if(p.has('other')&&p.has('me'))display();
 })();
