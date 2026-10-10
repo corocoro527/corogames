@@ -9,6 +9,21 @@
     let si = typeof sub === 'number' ? sub : names.indexOf(sub);
     if (si < 0) si = codes.indexOf(sub);
     if (si < 0 || si > 3) si = 0;
+    el.dataset.mbti = base;
+    el.dataset.sub = si;
+
+    // CTA art is a separately cut-out transparent original: never use blending.
+    if (el.classList.contains('v10-cta-avatar')) {
+      const sex = el.classList.contains('v10-girl') ? 'female' : 'male';
+      el.classList.remove('love64-art');
+      el.style.setProperty('background-image','none','important');
+      el.style.setProperty('background-color','transparent','important');
+      el.style.setProperty('opacity','1','important');
+      el.style.setProperty('filter','none','important');
+      el.innerHTML = '<img class="love64-cta-img" src="assets/love64-cta-'+sex+'.webp" alt="" draggable="false">';
+      return;
+    }
+
     const sheetOrder = ['INTJ','INTP','ENTJ','ENTP','INFJ','INFP','ENFJ','ENFP','ISTJ','ISFJ','ESTJ','ESFJ','ISTP','ISFP','ESTP','ESFP'];
     const idx = sheetOrder.indexOf(base);
     const cells = [
@@ -18,19 +33,30 @@
       [876,479,214,255],[1090,480,221,254],[1311,476,223,258],[1534,479,240,255]
     ];
     const [x,y,w,h] = cells[idx];
-    el.classList.add('love64-art');
-    el.dataset.mbti = base;
-    el.dataset.sub = si;
-    // Display the supplied artwork verbatim, clipping only its sheet cell and label.
-    // Inline priority also supersedes the previous INTJ/ISTJ image exceptions.
-    el.style.setProperty('background-image', 'none', 'important');
-    el.style.setProperty('box-shadow', 'none', 'important');
-    el.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="100%" height="100%" aria-hidden="true" style="display:block;width:100%;height:100%;position:static;transform:none">'+
-      '<svg x="0" y="0" width="'+w+'" height="'+h+'" viewBox="'+x+' '+y+' '+w+' '+h+'" overflow="hidden">'+
-      '<image href="assets/love64-characters-20261010.jpeg" width="1774" height="887"/></svg></svg>';
+    const cx=w/2,cy=h/2;
+    // The character's identity is kept exact; all four styles receive
+    // different gestures, motion, gifts and emotion accents.
+    const rx=n=>(n*w/220).toFixed(2), ry=n=>(n*h/260).toFixed(2);
+    const marks=[
+      '<g opacity=".94"><path d="M'+rx(170)+' '+ry(182)+' q-16 -12 -23 2 q-4 13 23 31 q25 -15 23 -30 q-4 -15 -23 -3z" fill="#ff779d" stroke="#d9416d" stroke-width="3"/><path d="M'+rx(21)+' '+ry(100)+' q-7 -6 -11 1 q-3 8 11 17 q14 -9 11 -17 q-4 -7 -11 -1z" fill="#ff9eba"/><path d="M'+rx(196)+' '+ry(112)+' l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z" fill="#ffc349"/></g>',
+      '<g opacity=".96"><path d="M'+rx(163)+' '+ry(202)+' q-11 -24 6 -37 q21 -10 25 15 q-3 23 -31 22" fill="#e6f9ef" stroke="#60ac86" stroke-width="4"/><path d="M'+rx(166)+' '+ry(181)+' q-24 1 -21 -18 q18 -9 21 18 M'+rx(171)+' '+ry(173)+' q6 -20 25 -14 q6 18 -25 14" fill="#8bd3a3" stroke="#4e9b75" stroke-width="3"/><path d="M'+rx(154)+' '+ry(202)+' h42 l-5 16 h-33z" fill="#ffe5b5" stroke="#a88462" stroke-width="3"/><circle cx="'+rx(25)+'" cy="'+ry(120)+'" r="'+rx(9)+'" fill="#c4edda"/></g>',
+      '<g opacity=".98"><path d="M'+rx(175)+' '+ry(169)+' L'+rx(183)+' '+ry(186)+' L'+rx(202)+' '+ry(188)+' L'+rx(188)+' '+ry(202)+' L'+rx(190)+' '+ry(220)+' L'+rx(175)+' '+ry(211)+' L'+rx(160)+' '+ry(220)+' L'+rx(163)+' '+ry(202)+' L'+rx(149)+' '+ry(188)+' L'+rx(168)+' '+ry(186)+'Z" fill="#ffd34d" stroke="#ef8e36" stroke-width="3"/><path d="M'+rx(18)+' '+ry(116)+' l10 -13 m-7 25 l-10 -2 M'+rx(206)+' '+ry(103)+' l-7 -11 m3 24 l11 -3" stroke="#fb697b" stroke-width="5" stroke-linecap="round"/><circle cx="'+rx(188)+'" cy="'+ry(139)+'" r="'+rx(7)+'" fill="#ff8ca2"/></g>',
+      '<g opacity=".97"><rect x="'+rx(156)+'" y="'+ry(174)+'" width="'+rx(48)+'" height="'+ry(34)+'" rx="5" fill="#f4ecff" stroke="#a78add" stroke-width="3"/><path d="M'+rx(158)+' '+ry(177)+' l'+rx(22)+' '+ry(15)+' l'+rx(23)+' -'+ry(15)+'" fill="none" stroke="#a78add" stroke-width="3"/><path d="M'+rx(188)+' '+ry(112)+' a'+rx(16)+' '+ry(16)+' 0 1 1 -'+rx(13)+' '+ry(28)+' a'+rx(12)+' '+ry(12)+' 0 1 0 '+rx(13)+' -'+ry(28)+'z" fill="#c9b4f1"/><circle cx="'+rx(33)+'" cy="'+ry(131)+'" r="'+rx(5)+'" fill="#e9c8ff"/></g>'
+    ];
+    const rotations=[-4,3,-9,6];
+    const mirrored=si===1;
+    let trans='rotate('+rotations[si]+' '+cx+' '+cy+')';
+    if (mirrored) trans+=' translate('+w+' 0) scale(-1 1)';
+    el.classList.add('love64-art','love64-variant-'+si);
+    el.style.setProperty('background-image','none','important');
+    el.style.setProperty('box-shadow','none','important');
+    el.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="100%" height="100%" aria-hidden="true" style="display:block;width:100%;height:100%;overflow:visible">'+
+      '<g transform="'+trans+'"><svg x="0" y="0" width="'+w+'" height="'+h+'" viewBox="'+x+' '+y+' '+w+' '+h+'" overflow="hidden">'+
+      '<image href="assets/love64-characters-20261010.jpeg" width="1774" height="887"/></svg></g>'+
+      marks[si]+'</svg>';
     if (!el.hasAttribute('aria-hidden')) {
       el.setAttribute('role', 'img');
-      el.setAttribute('aria-label', base + '・' + names[si]);
+      el.setAttribute('aria-label', base+'・'+names[si]);
     }
   }
   window.Love64Art = {apply, order, names};

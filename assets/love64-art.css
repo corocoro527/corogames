@@ -85,10 +85,7 @@ html body #stickyCta .v10-cta-avatar.love64-art.love64-art.love64-art{
   box-shadow:none!important;
   overflow:visible!important;
 }
-html body #landingV6 .v10-cta-avatar.love64-art > svg,
-html body #stickyCta .v10-cta-avatar.love64-art > svg{
-  mix-blend-mode:multiply;
-}
+
 html body #stickyCta .v10-cta-avatar.love64-art{
   display:inline-block;
   width:34px;
@@ -98,3 +95,18 @@ html body #stickyCta .v10-cta-avatar.love64-art{
 @media(max-width:360px){
   html body #stickyCta .v10-cta-avatar.love64-art{width:28px;height:32px;flex-basis:28px}
 }
+
+/* 2026-10-10: opaque, faithful colors on BOTH start buttons. */
+#landingV6 .v10-cta-avatar:has(> .love64-cta-img),
+#stickyCta .v10-cta-avatar:has(> .love64-cta-img){
+  background:none!important;opacity:1!important;filter:none!important;
+  border:0!important;box-shadow:none!important;overflow:visible!important;
+}
+#landingV6 .love64-cta-img,#stickyCta .love64-cta-img{
+  display:block!important;width:100%!important;height:100%!important;
+  object-fit:contain!important;opacity:1!important;filter:none!important;
+  mix-blend-mode:normal!important;transform:none!important;
+}
+html body #catalog .chara.love64-art > svg{overflow:visible!important}
+html body #catalog .chara.love64-art {overflow:visible!important}
+html body #resultCharacter.love64-art > svg{overflow:visible!important}
