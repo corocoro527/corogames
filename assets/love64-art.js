@@ -51,8 +51,7 @@
     el.style.setProperty('background-image','none','important');
     el.style.setProperty('box-shadow','none','important');
     el.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' '+h+'" width="100%" height="100%" aria-hidden="true" style="display:block;width:100%;height:100%;overflow:visible">'+
-      '<g transform="'+trans+'"><svg x="0" y="0" width="'+w+'" height="'+h+'" viewBox="'+x+' '+y+' '+w+' '+h+'" overflow="hidden">'+
-      '<image href="assets/love64-characters-20261010.jpeg" width="1774" height="887"/></svg></g>'+
+      '<g transform="'+trans+'"><image href="assets/love64-hq/'+base+'.webp" x="0" y="0" width="'+w+'" height="'+h+'" preserveAspectRatio="none" /></g>'+
       marks[si]+'</svg>';
     if (!el.hasAttribute('aria-hidden')) {
       el.setAttribute('role', 'img');
