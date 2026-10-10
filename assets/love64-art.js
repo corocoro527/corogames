@@ -2,7 +2,7 @@
 (function () {
   'use strict';
   const order = ['ENFP','INFP','ENFJ','INFJ','ENTP','INTP','ENTJ','INTJ','ESFJ','ISFJ','ESTJ','ISTJ','ESFP','ISFP','ESTP','ISTP'];
-  const names = ['愛の先導者','包容の人','情熱の迷子','静かな渇望'];
+  const names = ['恋のリーダー','寄り添い上手','恋の冒険家','秘めた一途'];
   const codes = ['SD','SW','AD','AW'];
   function apply(el, base, sub) {
     if (!el || !order.includes(base)) return;
@@ -37,6 +37,6 @@
   if (cat) {
     const picks = [['ENFP',0],['INFP',1],['ENFJ',2],['INFJ',3],['ENTP',0],['INTJ',3],['ESFP',2],['ISTJ',1]];
     cat.innerHTML = picks.map(([base,si]) => '<article><div class="v6-cat-avatar" data-mbti="'+base+'" data-sub="'+si+'"></div><div class="v6-cat-copy"><b>'+base+'</b><span>× '+names[si]+'</span></div></article>').join('');
-    cat.querySelectorAll('.v6-cat-avatar').forEach(el => apply(el,el.dataset.mbti,Number(el.dataset.sub)));
+    cat.querySelectorAll('.v6-cat-avatar').forEach(el => { apply(el,el.dataset.mbti,Number(el.dataset.sub)); if(el.dataset.mbti === 'INTJ') el.classList.add('intj-approved'); });
   }
 })();
