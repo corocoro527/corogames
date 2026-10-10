@@ -1329,6 +1329,26 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 }
 </style>
 <link rel="stylesheet" href="assets/love64-art.css?v=20261009">
+<style id="love64-qa-fixes-20261010">
+/* Real links instead of non-interactive article-looking cards */
+#landingV6 .v6-articles .v6-article-link{display:block;min-width:0;background:#fffafb;border:1px solid #f0e2e7;border-radius:18px;padding:18px;min-height:160px;text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s}
+#landingV6 .v6-articles .v6-article-link:hover,#landingV6 .v6-articles .v6-article-link:focus-visible{box-shadow:0 7px 24px rgba(203,87,125,.14);transform:translateY(-2px);outline-color:#ed7193}
+#landingV6 .v6-articles .v6-article-link small{display:inline-block;background:#fff;color:#d83f68;border-radius:999px;padding:5px 9px;font-size:.72rem;font-weight:900}
+#landingV6 .v6-articles .v6-article-link b{display:block;margin:12px 0 8px;line-height:1.55}
+#landingV6 .v6-articles .v6-article-link p{font-size:.76rem;line-height:1.7;color:#767985}
+#landingV6 .v6-article-arrow{display:block;margin-top:8px;font-size:.72rem;font-weight:900;color:#d84a75}
+#landingV6 .v6-cross-diagnosis{padding:34px 16px;background:#fff}
+#landingV6 .v6-cross-diagnosis .v6-shell{max-width:900px}
+#landingV6 .v6-cross-content{border-radius:22px;padding:32px 26px;background:linear-gradient(120deg,#302139,#604168);color:#fff;text-align:center}
+#landingV6 .v6-cross-tag{font-size:.77rem;color:#ffe0ef;font-weight:900}
+#landingV6 .v6-cross-content h2{font-size:clamp(1.2rem,4vw,1.65rem);margin:12px 0}
+#landingV6 .v6-cross-content p{font-size:.86rem;line-height:1.8;color:#f7e8f5}
+#landingV6 .v6-cross-button{display:inline-block;margin-top:14px;border-radius:999px;padding:14px 26px;background:linear-gradient(100deg,#ffb4da,#ffe1f2);color:#502c4d;font-weight:950;text-decoration:none}
+#landingV6 .v6-cross-button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+/* Slightly reduce excess pink saturation of the existing character sprites without changing silhouettes */
+#landingV6 .v6-characters .v6-pixel,#landingV6 .v6-catalog .v6-cat-avatar{filter:saturate(.83) brightness(1.025)}
+@media(max-width:560px){#landingV6 .v6-articles .v6-article-link{padding:15px 12px;min-height:170px}#landingV6 .v6-cross-content{padding:28px 16px}}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -1454,17 +1474,19 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
       <h2>💡 もっと詳しく知りたい方へ</h2>
       <p class="v6-sub">診断だけじゃなく、恋愛タイプを深掘りする読みものも追加していきます。</p>
       <div class="v6-articles">
-        <article><small>解説</small><b>恋愛64タイプとは？<br>仕組みを徹底解説</b><p>4つの性格軸と2つの恋愛軸の見方。</p></article>
-        <article><small>相性</small><b>16タイプ相性<br>早見表</b><p>テンポと距離感の噛み合い方を整理。</p></article>
-        <article><small>ランキング</small><b>モテるタイプは？<br>恋愛傾向ランキング</b><p>短期の魅力と長期の強みを分けて考える。</p></article>
-        <article><small>タイプ別</small><b>ENFPの恋愛<br>好きになった時のクセ</b><p>連絡・嫉妬・喧嘩・相性を深掘り。</p></article>
-        <article><small>安心感</small><b>依存度が高いと<br>恋愛はどう変わる？</b><p>返信や愛情表現で揺れやすい理由。</p></article>
-        <article><small>行動</small><b>追う恋・待つ恋<br>どっちが自分？</b><p>リード型とフォロー型の違いを解説。</p></article>
+        <a class="v6-article-link" href="love64-guide.html#about"><small>解説</small><b>恋愛64タイプとは？<br>仕組みを徹底解説</b><p>4つの性格軸と2つの恋愛軸の見方。</p><span class="v6-article-arrow" aria-hidden="true">詳しく読む →</span></a>
+        <a class="v6-article-link" href="love64-guide.html#compat"><small>相性</small><b>16タイプ相性<br>早見表</b><p>テンポと距離感の噛み合い方を整理。</p><span class="v6-article-arrow" aria-hidden="true">詳しく読む →</span></a>
+        <a class="v6-article-link" href="love64-guide.html#ranking"><small>ランキング</small><b>モテるタイプは？<br>恋愛傾向ランキング</b><p>短期の魅力と長期の強みを分けて考える。</p><span class="v6-article-arrow" aria-hidden="true">詳しく読む →</span></a>
+        <a class="v6-article-link" href="love64-guide.html#enfp"><small>タイプ別</small><b>ENFPの恋愛<br>好きになった時のクセ</b><p>連絡・嫉妬・喧嘩・相性を深掘り。</p><span class="v6-article-arrow" aria-hidden="true">詳しく読む →</span></a>
+        <a class="v6-article-link" href="love64-guide.html#anxiety"><small>安心感</small><b>依存度が高いと<br>恋愛はどう変わる？</b><p>返信や愛情表現で揺れやすい理由。</p><span class="v6-article-arrow" aria-hidden="true">詳しく読む →</span></a>
+        <a class="v6-article-link" href="love64-guide.html#approach"><small>行動</small><b>追う恋・待つ恋<br>どっちが自分？</b><p>リード型とフォロー型の違いを解説。</p><span class="v6-article-arrow" aria-hidden="true">詳しく読む →</span></a>
       </div>
     </div>
   </section>
 
-  <section class="v6-compat-links">
+  <section class="v6-cross-diagnosis" aria-label="裏性格診断への案内"><div class="v6-shell"><div class="v6-cross-content"><span class="v6-cross-tag">もうひとつの無料診断</span><h2>恋愛だけじゃない、あなたの裏の顔も。</h2><p>普段は見せない本音や性格の傾向を、裏・16コア性格診断でチェック。</p><a href="shindan.html" class="v6-cross-button">裏性格診断はこちら →</a></div></div></section>
+
+<section class="v6-compat-links">
     <div class="v6-shell">
       <a href="love64-types.html">64タイプ図鑑を見る →</a>
       <a href="#types">タイプ別の恋愛傾向を見る →</a>
