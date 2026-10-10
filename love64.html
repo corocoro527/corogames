@@ -1352,10 +1352,11 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 <style id="love64-intj-only-20261010">
 /* Approved INTJ character replacement; every other avatar stays unchanged. */
 #landingV6 .v6-characters .v6-card .v6-pixel.intj-approved,
-#landingV6 .v6-catalog .v6-pixel.intj-approved{
+#landingV6 .v6-catalog article .v6-pixel.intj-approved,
+#landingV6 .v6-catalog article .v6-cat-avatar.intj-approved{
   background-image:url('assets/love64-intj-new.webp')!important;
   background-position:center center!important;
-  background-size:contain!important;
+  background-size:auto 76%!important;
   background-repeat:no-repeat!important;
   background-color:#fff!important;
   filter:none!important;
@@ -2154,5 +2155,20 @@ function restart(){
 
 
 <script src="assets/love64-art.js?v=20261009"></script>
+<script id="love64-intj-catalog-sync">
+/* Only INTJ catalog thumbnails; handle both static and regenerated cards. */
+(function(){
+  function syncIntj(){
+    document.querySelectorAll('#landingV6 .v6-catalog article').forEach(function(card){
+      var name=card.querySelector('.v6-cat-copy b');
+      var avatar=card.querySelector('.v6-pixel, .v6-cat-avatar');
+      if(name && name.textContent.trim()==='INTJ' && avatar) avatar.classList.add('intj-approved');
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',syncIntj);
+  else syncIntj();
+  window.addEventListener('load',syncIntj);
+})();
+</script>
 </body>
 </html>
