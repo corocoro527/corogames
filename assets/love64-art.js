@@ -68,7 +68,7 @@
       const line='#885866';
       const gradient='<defs><radialGradient id="'+id+'"><stop offset="0%" stop-color="'+skin+'" stop-opacity="1"/><stop offset="64%" stop-color="'+skin+'" stop-opacity="1"/><stop offset="100%" stop-color="'+skin+'" stop-opacity="0"/></radialGradient></defs>';
       const cover='<ellipse cx="'+xx.toFixed(2)+'" cy="'+yy.toFixed(2)+'" rx="'+dx(.088)+'" ry="'+dy(.055)+'" fill="url(#'+id+')" />';
-      const blushOpacity=[.20,.12,.27,.39][si];
+      const blushOpacity=[.22,.13,.29,.43][si];
       const cheekColor=['#f79eaf','#efb0b6','#f18b9e','#eb799b'][si];
       const cheeks='<g class="love64-expression-blush"><ellipse cx="'+fx(.310)+'" cy="'+fy(ey+.055)+'" rx="'+dx(.051)+'" ry="'+dy(.023)+'" fill="'+cheekColor+'" opacity="'+blushOpacity+'"/><ellipse cx="'+fx(.709)+'" cy="'+fy(ey+.055)+'" rx="'+dx(.051)+'" ry="'+dy(.023)+'" fill="'+cheekColor+'" opacity="'+blushOpacity+'"/></g>';
       const ex=x=>x.toFixed(2), eyv=n=>(eye+h*n).toFixed(2);
@@ -76,15 +76,15 @@
       if(si===0){
         // Alpha: bright confident smile, lively raised eyebrows and eye sparkles
         eyes='<g fill="none" stroke="'+line+'" opacity=".72" stroke-width="'+dx(.009)+'" stroke-linecap="round"><path d="M'+ex(eyeL-w*.055)+' '+eyv(-.065)+'q'+dx(.053)+' -'+dy(.032)+' '+dx(.105)+' 0"/><path d="M'+ex(eyeR-w*.055)+' '+eyv(-.064)+'q'+dx(.053)+' -'+dy(.031)+' '+dx(.105)+' 0"/></g><g fill="#fffbe8" opacity=".96"><circle cx="'+ex(eyeL-w*.008)+'" cy="'+eyv(.003)+'" r="'+dx(.010)+'"/><circle cx="'+ex(eyeR-w*.008)+'" cy="'+eyv(.003)+'" r="'+dx(.010)+'"/></g>';
-        mouth='<path d="M'+ex(xx-w*.048)+' '+ex(yy-h*.006)+' Q'+ex(xx)+' '+ex(yy+h*.082)+' '+ex(xx+w*.049)+' '+ex(yy-h*.007)+' Z" fill="#b85d72" stroke="'+line+'" stroke-width="'+dx(.008)+'" stroke-linejoin="round"/><path d="M'+ex(xx-w*.026)+' '+ex(yy+h*.029)+' Q'+ex(xx)+' '+ex(yy+h*.044)+' '+ex(xx+w*.026)+' '+ex(yy+h*.029)+'" stroke="#ffc5c4" stroke-width="'+dy(.013)+'" stroke-linecap="round" fill="none"/>';
+        mouth='<path d="M'+ex(xx-w*.048)+' '+ex(yy-h*.006)+' Q'+ex(xx)+' '+ex(yy+h*.090)+' '+ex(xx+w*.049)+' '+ex(yy-h*.007)+' Z" fill="#b85d72" stroke="'+line+'" stroke-width="'+dx(.008)+'" stroke-linejoin="round"/><path d="M'+ex(xx-w*.026)+' '+ex(yy+h*.029)+' Q'+ex(xx)+' '+ex(yy+h*.044)+' '+ex(xx+w*.026)+' '+ex(yy+h*.029)+'" stroke="#ffc5c4" stroke-width="'+dy(.013)+'" stroke-linecap="round" fill="none"/>';
       }else if(si===1){
         // Beta: relaxed eyelids and a small gentle closed-mouth smile
         eyes='<g fill="none" stroke="'+line+'" stroke-width="'+dx(.008)+'" opacity=".53" stroke-linecap="round"><path d="M'+ex(eyeL-w*.044)+' '+eyv(-.022)+' Q'+ex(eyeL)+' '+eyv(-.004)+' '+ex(eyeL+w*.044)+' '+eyv(-.024)+'"/><path d="M'+ex(eyeR-w*.044)+' '+eyv(-.022)+' Q'+ex(eyeR)+' '+eyv(-.004)+' '+ex(eyeR+w*.044)+' '+eyv(-.024)+'"/></g>';
-        mouth='<path d="M'+ex(xx-w*.041)+' '+ex(yy)+' Q'+ex(xx)+' '+ex(yy+h*.033)+' '+ex(xx+w*.041)+' '+ex(yy)+'" fill="none" stroke="'+line+'" stroke-width="'+dx(.011)+'" stroke-linecap="round"/>';
+        mouth='<path d="M'+ex(xx-w*.035)+' '+ex(yy)+' Q'+ex(xx)+' '+ex(yy+h*.025)+' '+ex(xx+w*.035)+' '+ex(yy)+'" fill="none" stroke="'+line+'" stroke-width="'+dx(.011)+'" stroke-linecap="round"/>';
       }else if(si===2){
         // Gamma: excited eyes and open, laughing mouth
         eyes='<g fill="none" stroke="'+line+'" stroke-width="'+dx(.010)+'" opacity=".82" stroke-linecap="round"><path d="M'+ex(eyeL-w*.052)+' '+eyv(-.083)+' Q'+ex(eyeL)+' '+eyv(-.115)+' '+ex(eyeL+w*.052)+' '+eyv(-.078)+'"/><path d="M'+ex(eyeR-w*.052)+' '+eyv(-.081)+' Q'+ex(eyeR)+' '+eyv(-.114)+' '+ex(eyeR+w*.052)+' '+eyv(-.078)+'"/></g><g fill="#fff9df" opacity=".9"><path d="M'+ex(eyeL)+' '+eyv(.010)+'l'+dx(.010)+' -'+dy(.024)+'l'+dx(.010)+' '+dy(.024)+'l-'+dx(.010)+' '+dy(.012)+'z"/><path d="M'+ex(eyeR)+' '+eyv(.010)+'l'+dx(.010)+' -'+dy(.024)+'l'+dx(.010)+' '+dy(.024)+'l-'+dx(.010)+' '+dy(.012)+'z"/></g>';
-        mouth='<ellipse cx="'+ex(xx)+'" cy="'+ex(yy+h*.018)+'" rx="'+dx(.051)+'" ry="'+dy(.042)+'" fill="#a65069" stroke="'+line+'" stroke-width="'+dx(.007)+'"/><path d="M'+ex(xx-w*.032)+' '+ex(yy+h*.037)+' Q'+ex(xx)+' '+ex(yy+h*.018)+' '+ex(xx+w*.032)+' '+ex(yy+h*.038)+'" stroke="#ffabb5" stroke-width="'+dy(.014)+'" fill="none" stroke-linecap="round"/>';
+        mouth='<ellipse cx="'+ex(xx)+'" cy="'+ex(yy+h*.018)+'" rx="'+dx(.055)+'" ry="'+dy(.047)+'" fill="#a65069" stroke="'+line+'" stroke-width="'+dx(.007)+'"/><path d="M'+ex(xx-w*.032)+' '+ex(yy+h*.037)+' Q'+ex(xx)+' '+ex(yy+h*.018)+' '+ex(xx+w*.032)+' '+ex(yy+h*.038)+'" stroke="#ffabb5" stroke-width="'+dy(.014)+'" fill="none" stroke-linecap="round"/>';
       }else{
         // Delta: bashful half-lidded gaze, little timid curved mouth
         eyes='<g fill="none" stroke="'+line+'" stroke-width="'+dx(.011)+'" stroke-linecap="round" opacity=".69"><path d="M'+ex(eyeL-w*.047)+' '+eyv(-.007)+' Q'+ex(eyeL)+' '+eyv(.018)+' '+ex(eyeL+w*.047)+' '+eyv(-.011)+'"/><path d="M'+ex(eyeR-w*.047)+' '+eyv(-.007)+' Q'+ex(eyeR)+' '+eyv(.018)+' '+ex(eyeR+w*.047)+' '+eyv(-.011)+'"/></g><g stroke="#e087a0" stroke-linecap="round" stroke-width="'+dx(.008)+'" opacity=".65"><path d="M'+fx(.304)+' '+fy(ey+.063)+'l'+dx(.012)+' -'+dy(.013)+' M'+fx(.324)+' '+fy(ey+.063)+'l'+dx(.012)+' -'+dy(.013)+' M'+fx(.694)+' '+fy(ey+.063)+'l'+dx(.012)+' -'+dy(.013)+'"/></g>';
@@ -92,7 +92,7 @@
       }
       return '<g class="love64-face-expression love64-expression-'+si+'">'+gradient+cover+cheeks+eyes+mouth+'</g>';
     }
-    const faceDetails=[0,1,2,3].map(renderIndex=>{const oldIndex=si;return renderIndex===si ? renderFaceExpression() : '';});
+    const faceDetails=[]; faceDetails[si]=renderFaceExpression();
     const poses=[
       {x:-1,y:-2,turn:-5,scale:1.015},
       {x:2,y:1,turn:4,scale:.99},
