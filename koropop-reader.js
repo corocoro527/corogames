@@ -9,6 +9,8 @@ const ready = (fn) => {
 };
 
 ready(() => {
+  // Diagnostic tools are not articles: do not inject career breadcrumbs, reading time or scroll controls.
+  if (/^\/love64-(?:compat|type|types|guide)\.html$/i.test(location.pathname)) return;
 
   const root =
     document.querySelector("article") ||
