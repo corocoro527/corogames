@@ -231,3 +231,22 @@ html body :is(#catalog,#landingV6,#resultScreen) .love64-art .love64-facial-fx {
 @media(prefers-reduced-motion:reduce) {
   .love64-pose-motion {animation:none!important}
 }
+
+/* On mobile, only the visible catalog cards move: pose, not recolored costumes. */
+@media (prefers-reduced-motion:no-preference) {
+ #catalog .card.love64-in-view .love64-variant-0 .love64-pose-motion {
+   animation:love64-confident 3.4s ease-in-out infinite;
+ }
+ #catalog .card.love64-in-view .love64-variant-1 .love64-pose-motion {
+   animation:love64-gentle 4.3s ease-in-out infinite;
+ }
+ #catalog .card.love64-in-view .love64-variant-2 .love64-pose-motion {
+   animation:love64-adventurous 2.1s ease-in-out infinite;
+ }
+ #catalog .card.love64-in-view .love64-variant-3 .love64-pose-motion {
+   animation:love64-bashful 4.1s ease-in-out infinite;
+ }
+}
+@media(prefers-reduced-motion:reduce) {
+ #catalog .card.love64-in-view .love64-pose-motion {animation:none!important}
+}

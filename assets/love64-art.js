@@ -94,4 +94,13 @@
     cat.innerHTML = picks.map(([base,si]) => '<article><div class="v6-cat-avatar" data-mbti="'+base+'" data-sub="'+si+'"></div><div class="v6-cat-copy"><b>'+base+'</b><span>× '+names[si]+'</span></div></article>').join('');
     cat.querySelectorAll('.v6-cat-avatar').forEach(el => { apply(el,el.dataset.mbti,Number(el.dataset.sub)); if(el.dataset.mbti === 'INTJ') el.classList.add('intj-approved'); });
   }
+  // Animate only cards actually on screen, preserving battery and scroll performance.
+  if (document.getElementById('catalog') &&
+      typeof IntersectionObserver !== 'undefined' &&
+      (!window.matchMedia || window.matchMedia('(prefers-reduced-motion: no-preference)').matches)) {
+    const visibility = new IntersectionObserver(entries => {
+      entries.forEach(item => item.target.classList.toggle('love64-in-view', item.isIntersecting));
+    }, {rootMargin:'30px 0px', threshold:0.2});
+    document.querySelectorAll('#catalog .card').forEach(card => visibility.observe(card));
+  }
 })();
