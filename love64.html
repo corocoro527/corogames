@@ -1378,6 +1378,24 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 #landingV6 .shadow-promo-note{color:#cbb9d4;font-size:.76rem;margin-top:14px}
 @media(max-width:480px){#landingV6 .shadow-promo .shadow-promo-inner{padding:30px 16px 26px;border-radius:24px}#landingV6 .shadow-promo-cast img{height:88px}}
 </style>
+<style id="shadow-promo-poster-v2">
+#landingV6 .shadow-promo-poster{display:block;max-width:900px;margin:auto;padding:0 0 25px;border-radius:23px;overflow:hidden;text-align:center;text-decoration:none;color:#fff;background:radial-gradient(circle at 45% 12%,#51325b 0%,#10101f 75%);box-shadow:0 14px 34px #22102b33}
+#landingV6 .shadow-promo-poster-cast{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
+#landingV6 .shadow-promo-poster-person{position:relative;min-width:0;height:clamp(175px,34vw,320px);overflow:hidden;background:#21172d}
+#landingV6 .shadow-promo-poster-person img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 50%}
+#landingV6 .shadow-promo-poster-person:after{content:"";position:absolute;inset:48% 0 0;background:linear-gradient(transparent,#090816e8)}
+#landingV6 .shadow-promo-poster-person strong,#landingV6 .shadow-promo-poster-person span{position:absolute;z-index:1;left:3px;right:3px;text-shadow:0 2px 8px #000;line-height:1.2}
+#landingV6 .shadow-promo-poster-person strong{bottom:37px;font-size:clamp(1.35rem,4.5vw,2.4rem);color:#ffb4e1}
+#landingV6 .shadow-promo-poster-person span{bottom:12px;font-size:clamp(.53rem,1.7vw,.95rem);font-weight:800}
+#landingV6 .shadow-promo-poster-title{display:flex;justify-content:center;align-items:baseline;flex-wrap:wrap;gap:8px;margin:15px 8px 3px;font-weight:900;line-height:1.15}
+#landingV6 .shadow-promo-poster-title span{font-size:clamp(1.5rem,6vw,3.3rem);color:#ff5cb7}
+#landingV6 .shadow-promo-poster-title b{font-size:clamp(1.5rem,6vw,3.3rem);color:white}
+#landingV6 .shadow-promo-poster p{margin:9px 12px 15px;font-size:clamp(.7rem,2.6vw,1rem);color:#f9e7f4}
+#landingV6 .shadow-promo-poster-pills{display:flex;gap:6px;margin:0 14px 18px}
+#landingV6 .shadow-promo-poster-pills span{flex:1;min-width:0;padding:7px 3px;border:1px solid #ed8aca;border-radius:999px;font-size:clamp(.58rem,2vw,.85rem);color:#ffc2e7;font-weight:800}
+#landingV6 .shadow-promo-poster-cta{margin:0 auto 13px;width:calc(100% - 40px);max-width:640px;padding:16px 8px;border-radius:999px;background:linear-gradient(100deg,#f57dbf,#ffb9e2,#f04caa);color:#221021;font-weight:950;font-size:clamp(1rem,4vw,1.5rem);box-shadow:0 0 18px #f35aab66}
+#landingV6 .shadow-promo-poster small{font-size:.8rem;color:#fff}
+</style>
 </head>
 <body>
 <header class="site-head">
@@ -1515,19 +1533,18 @@ details p{font-size:.8rem!important;line-height:1.8!important;color:#747681!impo
 
   <section class="v6-cross-diagnosis shadow-promo" aria-label="裏・16コア性格診断への案内">
   <div class="v6-shell">
-    <div class="v6-cross-content shadow-promo-inner">
-      <span class="v6-cross-tag">🔥 もうひとつの無料診断</span>
-      <h2>表では見せない、<br>もうひとりのあなた。</h2>
-      <p>恋愛中の本音、意外な弱点、隠れた性格。<br>24問で、自分の知らない一面をチェック。</p>
-      <div class="shadow-promo-cast" aria-label="裏性格診断の結果キャラクター例">
-        <div><img src="images/intj.jpg" alt="裏性格診断 INTJ のキャラクター" loading="lazy" onerror="this.parentElement.style.display='none'"><span>INTJ</span></div>
-        <div><img src="images/infj.jpg" alt="裏性格診断 INFJ のキャラクター" loading="lazy" onerror="this.parentElement.style.display='none'"><span>INFJ</span></div>
-        <div><img src="images/enfj.jpg" alt="裏性格診断 ENFJ のキャラクター" loading="lazy" onerror="this.parentElement.style.display='none'"><span>ENFJ</span></div>
+    <a class="shadow-promo-poster" href="shindan.html" aria-label="裏・16コア性格診断を無料で始める">
+      <div class="shadow-promo-poster-cast">
+        <div class="shadow-promo-poster-person"><img src="images/intj.jpg" alt="INTJ 上から目線のひきこもり" loading="lazy"><strong>INTJ</strong><span>上から目線のひきこもり</span></div>
+        <div class="shadow-promo-poster-person"><img src="images/esfj.jpg" alt="ESFJ 世間体モンスター" loading="lazy"><strong>ESFJ</strong><span>世間体モンスター</span></div>
+        <div class="shadow-promo-poster-person"><img src="images/enfj.jpg" alt="ENFJ お節介偽善者" loading="lazy"><strong>ENFJ</strong><span>お節介偽善者</span></div>
       </div>
-      <div class="shadow-promo-hook">「自分って、こんな一面があったんだ。」</div>
-      <a href="shindan.html" class="v6-cross-button">裏の自分を診断する →</a>
-      <div class="shadow-promo-note">無料・登録不要・約3〜4分</div>
-    </div>
+      <div class="shadow-promo-poster-title"><span>🔥 裏・16コア</span><b>性格診断</b></div>
+      <p>恋愛の本音・隠れた性格・意外な弱点を24問でチェック。</p>
+      <div class="shadow-promo-poster-pills"><span>♥ 恋愛の本音</span><span>隠れた性格</span><span>意外な弱点</span></div>
+      <div class="shadow-promo-poster-cta">裏の自分を診断する →</div>
+      <small>無料 / 登録不要 / 約3〜4分</small>
+    </a>
   </div>
 </section>
 
