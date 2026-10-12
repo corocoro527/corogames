@@ -3,7 +3,7 @@ name: Auto Update Sitemap
 on:
   workflow_run:
     workflows:
-      - "Build Career Hub"
+      - "Update Career Directory"
     types:
       - completed
 
