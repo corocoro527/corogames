@@ -67,9 +67,7 @@ jobs:
           # Public pages in subdirectories that should also appear in the sitemap.
           # Keep private/utility pages such as company/contact.html and
           # company/thanks.html out of the sitemap.
-          extra_pages = [
-              ("company/index.html", base + "/company/"),
-          ]
+          extra_pages = []  # Company service lives outside the IT editorial sitemap.
 
           def lastmod(filename):
               try:
