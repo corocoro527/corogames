@@ -1,0 +1,19 @@
+/* Supplemental tools & article search — avoid touching article layouts */
+.career-tool-strip{margin:24px 0 0;border:1px solid #d7e5e2;border-radius:9px;background:#edf6f3;padding:24px 27px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px}
+.career-tool-strip .eyeline{font-size:10px;letter-spacing:.17em;color:#276f65;font-weight:850}
+.career-tool-strip h2{margin:7px 0 5px;font-size:clamp(18px,2.3vw,23px);line-height:1.5;letter-spacing:-.04em}
+.career-tool-strip p{font-size:13px;line-height:1.8;margin:0;color:#546b71}
+.career-tool-strip a{display:inline-flex;background:#1c665d;border-radius:5px;color:#fff;font-size:13px;padding:13px 20px;font-weight:800;gap:12px;align-items:center;white-space:nowrap}
+.career-tool-strip a:hover{background:#164d47}
+.career-search{margin:17px 0 29px;background:#fff;border:1px solid #dfe7e8;border-radius:9px;padding:17px 19px}
+.career-search label{display:block;font-size:12px;font-weight:800;color:#315459;margin-bottom:8px}
+.career-search-field{display:flex;gap:8px}
+.career-search input{appearance:none;flex:1;min-width:0;padding:12px 15px;font:inherit;font-size:15px;line-height:1.5;color:#263d49;background:#f8fafb;border:1px solid #cedbde;border-radius:5px}
+.career-search input:focus{outline:2px solid #499487;outline-offset:2px}
+.career-search button{border:1px solid #d4e0e1;background:#fff;font:inherit;font-weight:750;color:#326961;border-radius:5px;padding:8px 14px;cursor:pointer}
+.career-search button[hidden],.topic-section[hidden],.article-link[hidden],#noResults[hidden]{display:none!important}
+#searchStatus{font-size:12px;color:#687a84;margin:8px 0 0}
+#noResults{border:1px solid #d9e2e3;background:#fff;border-radius:9px;padding:20px;margin-bottom:30px;color:#506571}
+#noResults p{margin:0 0 5px}
+#noResults a{font-weight:750;color:#286e67;text-decoration:underline}
+@media(max-width:650px){.career-tool-strip{padding:20px;grid-template-columns:1fr;gap:14px}.career-tool-strip a{justify-content:center}.career-search{padding:15px}.career-search input{font-size:16px}.career-search-field{gap:5px}.career-search button{padding:8px 11px}}
