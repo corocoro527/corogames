@@ -21,3 +21,17 @@
 .career-tool-strip .tool-actions .secondary-tool{color:#215e57;background:#fff;border:1px solid #9ebeb7}
 .career-tool-strip .tool-actions .secondary-tool:hover{background:#f7fbfa}
 @media(max-width:760px){.career-tool-strip .tool-actions{justify-content:stretch}.career-tool-strip .tool-actions a{flex:1 1 100%}}
+
+/* Simple, compact utility links instead of a large third feature panel. */
+.career-tool-strip.compact-tools{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;margin:18px 0 0;border-radius:9px;background:#edf5f1}
+.compact-tools .compact-tool-copy{min-width:0}
+.compact-tools .eyeline{font-size:10px;letter-spacing:.04em}
+.compact-tools h2{font-size:16px;line-height:1.45;margin:5px 0 0;white-space:normal}
+.compact-tools .tool-actions{display:flex;align-items:center;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.compact-tools .tool-actions a{font-size:12px;padding:10px 13px;min-height:42px;gap:6px;white-space:normal}
+@media(max-width:760px){
+ .career-tool-strip.compact-tools{display:flex;flex-direction:column;align-items:stretch;padding:15px 15px 14px;gap:12px;margin:14px 0 0}
+ .compact-tools .tool-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .compact-tools .tool-actions a{display:flex;justify-content:center;align-items:center;min-width:0;padding:11px 5px;font-size:12px;text-align:center;flex:none}
+ .compact-tools h2{font-size:16px;margin:2px 0 0}
+}
