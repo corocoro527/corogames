@@ -18,7 +18,7 @@ empty.hidden=count!==0;
 clear.hidden=input.value.length===0;
 }
 input.addEventListener('input',filter);
-clear.addEventListener('click',()=>{input.value='';filter();input.focus()});
+clear.addEventListener('click',()=>{input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));input.focus()});
 filter();
 
 /* Keep the long IT directory compact until the reader asks for more. */
