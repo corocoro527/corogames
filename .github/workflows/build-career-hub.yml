@@ -7,6 +7,7 @@ on:
       - ".github/workflows/build-career-hub.yml"
       - "!index.html"
       - "!career.html"
+      - "!career-general.html"
   workflow_dispatch:
 
 permissions:
@@ -20,102 +21,129 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-      - name: Add newly published articles to the editorial directory
+      - name: Add new guides to IT specialist and general directories
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import html
           import re
 
-          path = Path("index.html")
-          source = path.read_text(encoding="utf-8")
-          existing = set(re.findall(r'class="article-link" href="([^"]+)"', source))
+          home_path = Path("index.html")
+          general_path = Path("career-general.html")
+          home = home_path.read_text(encoding="utf-8")
+          general = general_path.read_text(encoding="utf-8")
+          known = set(re.findall(r'class="article-link" href="([^"]+)"', home + general))
           excluded = {
-              "index.html", "career.html", "about.html", "privacy.html",
-              "terms.html", "contact.html", "contact-thanks.html",
+              "index.html", "career.html", "career-general.html",
+              "about.html", "privacy.html", "terms.html",
+              "contact.html", "contact-thanks.html", "tedori.html",
               "shindan.html", "site-portal.html", "love-style.html",
               "love64.html", "love64-v2.html", "love64-type.html",
               "love64-types.html", "love64-guide.html", "love64-compat.html",
-              "tedori.html", "kyujin-check.html", "shokushu-hikaku.html",
+              "kyujin-check.html", "shokushu-hikaku.html",
           }
 
-          def plain(s):
-              s = re.sub(r"<[^>]+>", "", s)
-              return html.unescape(s).strip()
+          def plain(text):
+              return html.unescape(re.sub(r"<[^>]+>", "", text)).strip()
 
-          def article_metadata(filename):
-              data = Path(filename).read_text(encoding="utf-8", errors="replace")
-              title = re.search(r"<title[^>]*>(.*?)</title>", data, re.I | re.S)
-              desc = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)', data, re.I)
-              if desc is None:
-                  desc = re.search(r'<meta[^>]+content=["\']([^"\']*)["\'][^>]+name=["\']description["\']', data, re.I)
-              title = plain(title.group(1)).split("｜KOROPOP")[0] if title else filename
-              summary = plain(desc.group(1)) if desc else ""
+          def extract_meta(page):
+              title_match = re.search(r"<title[^>]*>(.*?)</title>", page, re.I | re.S)
+              desc_match = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']*)', page, re.I)
+              if not desc_match:
+                  desc_match = re.search(r'<meta[^>]+content=["\']([^"\']*)["\'][^>]+name=["\']description["\']', page, re.I)
+              title = plain(title_match.group(1)).split("｜KOROPOP")[0] if title_match else ""
+              summary = plain(desc_match.group(1)) if desc_match else ""
               return title, summary[:112] + ("…" if len(summary) > 112 else "")
 
-          def group(filename):
-              work = {"mikeiken-shikaku-nashi-shigoto.html", "raku-na-shigoto.html",
-                      "jobs.html", "hito-to-kakawaranai-shigoto.html"}
-              career = {"mikeiken-it-shibodoki.html", "mikeiken-it-kyujin-miwakekata.html",
-                        "shigoto-yametai-tsugi-kimattenai.html", "20s-mikeiken-tenshoku.html"}
-              if filename in work or filename.startswith(("raku-", "hito-to-")):
-                  return "work"
-              if filename in career or filename.startswith("shigoto-"):
-                  return "career"
-              return "it"
+          def classify(filename, title):
+              name = filename.lower()
+              if name.startswith(("raku-", "hito-to-", "shigoto-")) or name in {
+                  "jobs.html", "mikeiken-shikaku-nashi-shigoto.html",
+                  "20s-mikeiken-tenshoku.html"
+              }:
+                  return "general"
+              if any(k in name for k in ("nenshu", "remote", "salary")) or "年収" in title:
+                  return "future"
+              if any(k in name for k in ("shibodoki", "kyujin", "mensetsu", "rirekisho", "oubo")) or any(k in title for k in ("志望動機", "求人の見分け方", "面接の準備")):
+                  return "apply"
+              if any(k in name for k in ("shanai", "helpdesk", "infra", "network", "cloud", "soc", "security", "engineer")) or any(k in title for k in ("社内SE", "ヘルプデスク", "インフラ", "ネットワーク", "クラウド", "SOC")):
+                  return "roles"
+              if any(k in name for k in ("it-", "programming", "shikaku")) or any(k in title for k in ("IT", "プログラミング", "エンジニア")):
+                  return "start"
+              return "general"
 
-          new = []
-          for article in sorted(Path(".").glob("*.html")):
-              filename = article.name
-              if filename in excluded or filename in existing or filename.startswith("love"):
-                  continue
-              content = article.read_text(encoding="utf-8", errors="replace")
-              if 'http-equiv="refresh"' in content[:1500] or "window.location.replace(" in content[:1500]:
-                  continue
-              if not re.search(r'<(?:article|main)\b', content, re.I):
-                  continue
-              title, summary = article_metadata(filename)
-              if not title or len(title) < 12:
-                  continue
-              new.append((filename, title, summary, group(filename)))
-
-          for filename, title, summary, section in new:
-              category = {"work":"WORK STYLES","career":"CAREER CHANGE","it":"IT CAREERS"}[section]
-              card = ('<a class="article-link" href="' + html.escape(filename, quote=True) + '">'
-                      '<span class="card-kicker">' + category + '</span>'
-                      '<h3>' + html.escape(title) + '</h3>'
-                      '<p>' + html.escape(summary) + '</p>'
-                      '<span class="read-link">記事を読む <span aria-hidden="true">↗</span></span>'
-                      '</a>')
-              pattern = r'(<section class="topic-section" id="' + section + r'"[\s\S]*?<div class="article-grid">)([\s\S]*?)(</div>\s*</section>)'
-              def insert(m):
-                  return m.group(1) + m.group(2) + "\n" + card + "\n" + m.group(3)
-              source, count = re.subn(pattern, insert, source, count=1)
+          def add_card(source, section, filename, title, desc):
+              labels = {
+                  "start": "はじめ方", "roles": "IT職種",
+                  "apply": "求人・応募", "future": "年収・キャリア",
+                  "general": "一般の仕事・転職",
+              }
+              card = (
+                  '<a class="article-link" href="' + html.escape(filename, quote=True) + '">'
+                  '<span class="card-kicker">' + labels[section] + '</span>'
+                  '<h3>' + html.escape(title) + '</h3>'
+                  '<p>' + html.escape(desc) + '</p>'
+                  '<span class="read-link">記事を読む <span aria-hidden="true">↗</span></span>'
+                  '</a>'
+              )
+              pattern = r'(<section class="topic-section" id="' + section + r'"[\s\S]*?<div class="article-grid">)([\s\S]*?)(</div>)'
+              source, count = re.subn(pattern, lambda m: m.group(1) + m.group(2) + "\n" + card + "\n" + m.group(3), source, count=1)
               if count != 1:
-                  raise RuntimeError("Could not locate article grid for " + section)
+                  raise RuntimeError("Missing directory: " + section)
+              return source
 
-          for section in ("work", "career", "it"):
-              pat = r'(<section class="topic-section" id="' + section + r'"[\s\S]*?<span class="section-count">)\d+ ARTICLES'
-              match = re.search(r'<section class="topic-section" id="' + section + r'"([\s\S]*?)</section>', source)
-              if match:
-                  count = len(re.findall(r'class="article-link"', match.group(1)))
-                  source = re.sub(pat, lambda m: m.group(1) + str(count) + " ARTICLES", source, count=1)
+          added = []
+          for file in sorted(Path(".").glob("*.html")):
+              filename = file.name
+              if filename in excluded or filename in known or filename.startswith("love64-"):
+                  continue
+              source = file.read_text(encoding="utf-8", errors="replace")
+              if re.search(r'<meta[^>]+http-equiv=["\']refresh["\']', source, re.I) or "window.location.replace(" in source[:1600]:
+                  continue
+              if not re.search(r'<(?:main|article)\b', source, re.I):
+                  continue
+              title, summary = extract_meta(source)
+              if len(title) < 12:
+                  continue
+              category = classify(filename, title)
+              if category == "general":
+                  general = add_card(general, category, filename, title, summary)
+              else:
+                  home = add_card(home, category, filename, title, summary)
+              known.add(filename)
+              added.append((filename, category))
 
-          if new:
-              path.write_text(source, encoding="utf-8")
-              print("Added", len(new), "new articles to the designed directory")
+          def recount(source, categories):
+              for section in categories:
+                  pattern = r'(<section class="topic-section" id="' + section + r'"[\s\S]*?)(?=</section>)'
+                  match = re.search(pattern, source)
+                  if not match:
+                      raise RuntimeError("Missing category " + section)
+                  segment = match.group(1)
+                  count = len(re.findall(r'class="article-link"', segment))
+                  segment = re.sub(r'<span class="section-count">\d+ ARTICLES</span>',
+                                   '<span class="section-count">' + str(count) + ' ARTICLES</span>',
+                                   segment, count=1)
+                  source = source[:match.start(1)] + segment + source[match.end(1):]
+              return source
+
+          if added:
+              home_path.write_text(recount(home, ("start", "roles", "apply", "future")), encoding="utf-8")
+              general_path.write_text(recount(general, ("general",)), encoding="utf-8")
+              print("Added", len(added), "new guides:", added)
           else:
-              print("No new articles; editorial design unchanged")
+              print("No new guides; existing editorial structure preserved")
+
           PY
       - name: Commit only if directory changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html career-general.html
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
           fi
-          git commit -m "Auto add new career articles to homepage"
+          git commit -m "Auto add newly published guides to correct category"
           git pull --rebase origin main
           git push origin main
