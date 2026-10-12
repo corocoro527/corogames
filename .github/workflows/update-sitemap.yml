@@ -42,6 +42,7 @@ jobs:
 
           exclude = {
               "index.html",
+              "career.html",  # Redirects to homepage; not a canonical page.
               "contact-thanks.html",
               "love-style.html",
               "love64-v2.html",
@@ -58,6 +59,9 @@ jobs:
               p.name
               for p in Path(".").glob("*.html")
               if p.name not in exclude
+              # 64 legacy type detail pages belong to the diagnosis site,
+              # not the career sitemap, even if old HTML files remain here.
+              and not p.name.startswith("love64-")
           )
 
           # Public pages in subdirectories that should also appear in the sitemap.
