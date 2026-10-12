@@ -13,7 +13,7 @@ function filter(){
 const needle=fold(input.value);let count=0;
 for(const card of cards){const show=!needle||fold(card.textContent).includes(needle);card.hidden=!show;if(show)count++}
 for(const sec of sections){const shown=sec.querySelectorAll('.article-link:not([hidden])').length;sec.hidden=!!needle&&shown===0;}
-status.textContent=needle?'「'+input.value.trim()+'」の検索結果：'+count+'件':'全'+cards.length+'記事を表示中';
+status.textContent=needle?'「'+input.value.trim()+'」の検索結果：'+count+'件':'全'+cards.length+'記事から検索できます';
 empty.hidden=count!==0;
 clear.hidden=input.value.length===0;
 }
