@@ -1,0 +1,52 @@
+/* KOROPOP CAREER Article Reading System — 2026-10-12
+   Loaded after legacy theme: maintains each page's tools and article semantics. */
+:root{--kp-ink:#203440;--kp-text:#425865;--kp-blue:#286c62;--kp-blue-soft:#edf6f3;--kp-green:#327c70;--kp-line:#dce6e4;--kp-bg:#f8faf9}
+html{scroll-padding-top:86px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",Meiryo,sans-serif!important;background:#f7f9f9!important;color:#243945!important;letter-spacing:0!important;line-height:1.9!important}
+body p,body li{color:#425663!important;line-height:1.95!important;letter-spacing:0!important}
+body p{font-size:15px}
+body :is(h1,h2,h3,h4){text-wrap:pretty;overflow-wrap:anywhere;letter-spacing:-.025em!important}
+header,.top{background:#fff!important;border-bottom:1px solid #e0e7e7!important;box-shadow:none!important}
+header a,header .brand,.top a{color:#214451!important}
+header .brand,.top .brand{font-weight:850!important;font-size:16px}
+.hero{background:linear-gradient(135deg,#fff 0%,#f7fbf9 73%,#eaf5f1 100%)!important;border:1px solid #e0e9e7!important;border-radius:13px!important;box-shadow:none!important}
+.hero h1{font-size:clamp(27px,4.3vw,43px)!important;line-height:1.45!important;margin:13px 0!important;color:#1c3642!important}
+.hero .lead,.lead{color:#526977!important}
+.badge,.label,.tag{background:#eaf4f0!important;border:1px solid #d1e7de!important;color:#28695c!important}
+.answer{background:#eaf5f1!important;border:1px solid #d7e9e1!important;border-left:4px solid #4d9686!important;border-radius:9px!important;box-shadow:none!important}
+.answer strong{color:#245d57!important}
+.layout>article,article{border-color:#dfe8e7!important;box-shadow:none!important}
+.layout>article{background:#fff!important;border-radius:12px!important}
+main>article{border-radius:12px!important}
+article p{font-size:15px!important;line-height:2!important;color:#405663!important}
+article ul,article ol{padding-left:1.35em}
+article li{margin-bottom:.42em}
+article h2,main h2,.layout h2{border:0!important;border-bottom:2px solid #b6d6ce!important;border-radius:0!important;background:none!important;padding:0 0 13px!important;margin-top:38px;margin-bottom:17px;font-size:clamp(20px,2.55vw,25px)!important;line-height:1.5!important;color:#244854!important}
+article h3,main h3,.layout h3{color:#2b4b56!important;line-height:1.55!important}
+article :is(a[href^="https:"],a[href^="http:"]){text-decoration:underline;text-underline-offset:3px}
+article a:focus-visible,main a:focus-visible{outline:3px solid #7cb9ab;outline-offset:3px}
+.toc,.table-wrap,.sidebox,.point,.box,.faq,.route-card,.check,.step,.link{border-radius:10px!important;box-shadow:none!important}
+.toc{border-left:3px solid #78b4a5!important;background:#f2f8f6!important}
+.toc a{color:#256c62!important}
+.point,.point:nth-of-type(even){background:#f0f7f4!important;border-left:3px solid #60a394!important}
+.box:nth-child(n){border-left:1px solid #e2e9e9!important}
+table{font-size:14px}
+th{background:#ecf5f2!important;color:#2d5255!important}
+.figure,.figure-card{background:#f3f8f6!important}
+.koropop-editorial-trust{background:#f4f8f6!important;border-color:#d9e7e2!important;border-radius:8px!important;box-shadow:none!important}
+.koropop-editorial-label{background:#e8f2ed!important;color:#2b6f62!important;border-color:#c8e0d5!important}
+.koropop-editorial-head strong{color:#2b4d50!important}
+footer{background:#1d3744!important;border:0!important;color:#dce7eb!important}
+footer a{color:#e6f2f0!important}
+@media(max-width:680px){
+ body{font-size:15px!important}
+ .hero{padding:22px 18px!important;margin-top:19px!important}
+ .hero h1{font-size:clamp(26px,7vw,34px)!important;line-height:1.45!important}
+ article p{font-size:15px!important;line-height:1.95!important}
+ article h2,main h2,.layout h2{font-size:20px!important;margin-top:30px;padding-bottom:10px!important}
+ article h3,main h3,.layout h3{font-size:17px!important}
+ .layout>article{padding:18px!important}
+ .koropop-editorial-trust{padding:12px 13px!important}
+ .toc{padding:14px 15px!important}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
