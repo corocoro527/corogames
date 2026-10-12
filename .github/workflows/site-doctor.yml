@@ -315,12 +315,18 @@ jobs:
 
                   for path in files:
 
-                      if path.name in {
-                          "index.html",
-                          "contact-thanks.html",
-                "love-style.html",
-                "love64-v2.html",
-                      }:
+                      # The main sitemap lists editorial pages, not
+                      # legacy diagnosis redirects or non-canonical pages.
+                      if (
+                          path.name in {
+                              "index.html", "career.html", "contact-thanks.html",
+                              "love-style.html", "love64-v2.html", "love64.html",
+                              "love64-types.html", "love64-type.html",
+                              "love64-compat.html", "love64-guide.html",
+                              "shindan.html", "site-portal.html"
+                          }
+                          or path.name.startswith("love64-")
+                      ):
                           continue
 
 
@@ -342,6 +348,24 @@ jobs:
                       f"sitemap.xml解析失敗: {error}"
                   )
 
+
+          # AdSense/readability smoke tests — protect the new IT focus.
+          terms = Path("terms.html").read_text(encoding="utf-8")
+          if "恋タイプ64" in terms:
+              errors.append("メイン利用規約に旧診断ブランドが残存")
+          root = Path("index.html").read_text(encoding="utf-8")
+          if "未経験から" not in root or "career-general.html" not in root:
+              errors.append("IT専門トップ・一般記事への導線が不足")
+          txt = Path("ads.txt")
+          if not txt.exists() or "pub-1125809356622056" not in txt.read_text(encoding="utf-8"):
+              warnings.append("ads.txt未配置またはパブリッシャーID不一致")
+          privacy = Path("privacy.html").read_text(encoding="utf-8")
+          if "FormSubmit" not in privacy or "Google Analytics 4" not in privacy:
+              errors.append("プライバシー情報と運用中のサービスが不一致")
+          for article in ("mikeiken-it-tenshoku.html", "mikeiken-shanai-se.html",
+                          "it-job-nenshu-hikaku.html"):
+              if 'id="koropop-decision-practice"' not in Path(article).read_text(encoding="utf-8"):
+                  warnings.append(f"{article}: 独自の判断ワークが未反映")
 
           print(
               f"Checked {len(files)} HTML files"
