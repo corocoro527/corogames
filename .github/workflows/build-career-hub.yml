@@ -86,7 +86,7 @@ jobs:
                   '<span class="read-link">記事を読む <span aria-hidden="true">↗</span></span>'
                   '</a>'
               )
-              pattern = r'(<section class="topic-section" id="' + section + r'"[\s\S]*?<div class="article-grid">)([\s\S]*?)(</div>)'
+              pattern = r'(<section class="topic-section(?: [^"]*)?" id="' + section + r'"[\s\S]*?<div class="article-grid">)([\s\S]*?)(</div>)'
               source, count = re.subn(pattern, lambda m: m.group(1) + m.group(2) + "\n" + card + "\n" + m.group(3), source, count=1)
               if count != 1:
                   raise RuntimeError("Missing directory: " + section)
@@ -115,7 +115,7 @@ jobs:
 
           def recount(source, categories):
               for section in categories:
-                  pattern = r'(<section class="topic-section" id="' + section + r'"[\s\S]*?)(?=</section>)'
+                  pattern = r'(<section class="topic-section(?: [^"]*)?" id="' + section + r'"[\s\S]*?)(?=</section>)'
                   match = re.search(pattern, source)
                   if not match:
                       raise RuntimeError("Missing category " + section)
