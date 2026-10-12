@@ -157,3 +157,25 @@ a:focus-visible{outline:3px solid #73b9aa;outline-offset:4px}
 .directory-heading .comparison-inline{display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:#246b62;border-bottom:1px solid #a8cbc2;padding-bottom:4px;font-size:13px;font-weight:750;line-height:1.55}
 .directory-heading .comparison-inline:hover{color:#164d46;border-color:#164d46}
 @media(max-width:760px){.directory-heading .comparison-inline{font-size:13px;margin-top:12px}}
+
+/* Focus homepage on IT career pathways; keep non-IT guides separately linked at the bottom. */
+#start .section-heading{background:#edf6f2}
+#roles .section-heading{background:#eaf2f9}
+#apply .section-heading{background:#faf2ea}
+#future .section-heading{background:#f1f2f8}
+#roles.has-extras:not(.expanded):not(.searching) .article-link.extra-article{display:none!important}
+.other-careers{background:#fff;border:1px solid #d9e5e3;border-radius:12px;padding:28px 30px;display:flex;align-items:center;justify-content:space-between;gap:25px;margin:48px 0 40px}
+.other-careers h2{font-size:clamp(19px,2.3vw,24px);margin:6px 0 8px;letter-spacing:-.04em;line-height:1.5}
+.other-careers p{font-size:13px;line-height:1.8;color:#607078;margin:0;max-width:670px}
+.other-careers-link{display:inline-flex;align-items:center;gap:10px;background:#215f59;color:white;min-height:46px;border-radius:6px;padding:12px 17px;font-size:13px;font-weight:800;white-space:nowrap}
+.other-careers-link:hover{background:#164e48}
+.general-hero{padding:52px 0 34px}
+.general-hero h1{font-size:clamp(29px,4.7vw,43px);line-height:1.48;letter-spacing:-.04em;margin:8px 0 13px}
+.general-hero p{font-size:15px;color:#627580;max-width:750px;line-height:1.9}
+.general-hero>a{font-size:13px;color:#236a61;text-decoration:underline;text-underline-offset:3px;font-weight:750}
+.general-index .section-heading{background:#f1f5f3}
+@media(max-width:760px){
+ .other-careers{flex-direction:column;align-items:stretch;gap:16px;padding:22px 20px;margin:32px 0 25px}
+ .other-careers-link{justify-content:center;white-space:normal}
+ .general-hero{padding:35px 0 25px}
+}
