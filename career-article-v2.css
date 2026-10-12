@@ -50,3 +50,13 @@ footer a{color:#e6f2f0!important}
  .toc{padding:14px 15px!important}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+/* Clearly identified original editorial exercises; mobile first. */
+.kp-decision-practice{background:#f3f8f5;border:1px solid #d4e6dd;border-radius:12px;padding:24px 26px;margin:38px 0 28px}
+.kp-decision-practice .kp-practice-kicker{font-size:11px;letter-spacing:.1em;font-weight:850;color:#376e63}
+article .kp-decision-practice h2,.layout .kp-decision-practice h2{border-bottom:1px solid #c0dcd1!important;padding-bottom:12px!important;margin:10px 0 15px!important;font-size:22px!important;color:#214e47!important}
+article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px!important;margin:20px 0 6px!important;color:#2a6559!important}
+.kp-decision-practice p{line-height:1.95!important;font-size:14px!important}
+.kp-decision-practice .kp-practice-note{background:#fff;padding:14px 16px;border-left:3px solid #5b968a;border-radius:4px}
+.kp-decision-practice .kp-practice-footnote{font-size:12px!important;color:#61766f!important;line-height:1.8!important;margin-bottom:0}
+@media(max-width:650px){.kp-decision-practice{padding:19px 16px;margin:32px 0 22px}article .kp-decision-practice h2{font-size:20px!important}}
