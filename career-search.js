@@ -20,4 +20,24 @@ clear.hidden=input.value.length===0;
 input.addEventListener('input',filter);
 clear.addEventListener('click',()=>{input.value='';filter();input.focus()});
 filter();
+
+/* Keep the long IT directory compact until the reader asks for more. */
+const it=document.getElementById('it'),more=document.getElementById('moreIt');
+if(it&&more){
+ const extras=Array.from(it.querySelectorAll('.article-link')).slice(6);
+ if(extras.length){
+  extras.forEach(el=>el.classList.add('extra-article'));
+  it.classList.add('has-extras');
+  more.hidden=false;
+  more.textContent='ほかのIT転職の記事 '+extras.length+'件を見る ↓';
+  more.addEventListener('click',()=>{
+   const expanded=it.classList.toggle('expanded');
+   more.setAttribute('aria-expanded',String(expanded));
+   more.textContent=expanded?'記事を少なく表示 ↑':'ほかのIT転職の記事 '+extras.length+'件を見る ↓';
+   if(!expanded)it.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  input.addEventListener('input',()=>{const query=input.value.trim().length>0;it.classList.toggle('searching',query);more.hidden=query;});
+ }
+}
+
 })();
