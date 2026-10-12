@@ -17,3 +17,7 @@
 #noResults p{margin:0 0 5px}
 #noResults a{font-weight:750;color:#286e67;text-decoration:underline}
 @media(max-width:650px){.career-tool-strip{padding:20px;grid-template-columns:1fr;gap:14px}.career-tool-strip a{justify-content:center}.career-search{padding:15px}.career-search input{font-size:16px}.career-search-field{gap:5px}.career-search button{padding:8px 11px}}
+.career-tool-strip .tool-actions{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.career-tool-strip .tool-actions .secondary-tool{color:#215e57;background:#fff;border:1px solid #9ebeb7}
+.career-tool-strip .tool-actions .secondary-tool:hover{background:#f7fbfa}
+@media(max-width:760px){.career-tool-strip .tool-actions{justify-content:stretch}.career-tool-strip .tool-actions a{flex:1 1 100%}}
