@@ -60,3 +60,11 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
 .kp-decision-practice .kp-practice-note{background:#fff;padding:14px 16px;border-left:3px solid #5b968a;border-radius:4px}
 .kp-decision-practice .kp-practice-footnote{font-size:12px!important;color:#61766f!important;line-height:1.8!important;margin-bottom:0}
 @media(max-width:650px){.kp-decision-practice{padding:19px 16px;margin:32px 0 22px}article .kp-decision-practice h2{font-size:20px!important}}
+
+/* A genuinely useful cross-article route to the interactive job comparison. */
+.kp-related-tool{background:#eff7f4;border:1px solid #cfe4db;border-left:4px solid #438b7c;border-radius:9px;padding:20px 22px;margin:27px 0 32px}
+.kp-related-tool strong{display:block;font-size:16px;font-weight:850;color:#285751}
+.kp-related-tool p{font-size:13px!important;color:#526d69!important;line-height:1.85!important;margin:8px 0 15px!important}
+.kp-related-tool a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#226e61;text-decoration:underline;text-underline-offset:3px}
+.kp-related-tool a:focus-visible{outline:2px solid #4c998b;outline-offset:4px}
+@media(max-width:650px){.kp-related-tool{padding:16px 17px;margin:21px 0 27px}}
