@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>問い合わせCSVを一括整理｜無料実演デモ｜KOROPOP LABS</title>
+<meta name="description" content="ExcelやCSVに届いた問い合わせをカテゴリ別に分類し、担当者が確認しやすい一覧へ整理。ブラウザ内だけで試せる無料デモです。">
+<link rel="canonical" href="https://koropopgames.com/company/demos/inquiry-csv-organizer.html">
+<style>
+:root{--bg:#071321;--card:#0e2135;--line:#294159;--text:#f2f7ff;--muted:#9eb4cb;--cyan:#6fe4fb;--blue:#87a6ff;--good:#9ff3c8}*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(150deg,#06101d 0%,#0a1c30 72%,#0a2235);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;color:var(--text);line-height:1.75}
+a{color:var(--cyan)}.wrap{width:min(1030px,calc(100% - 30px));margin:auto;padding:32px 0 76px}.brand{font-weight:900;text-decoration:none;color:#fff;letter-spacing:.1em;font-size:15px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.18em}.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:44px}.nav .back{font-size:12px;text-decoration:none;color:#c5d6e8}.eyebrow{font-size:11px;color:var(--cyan);font-weight:900;letter-spacing:.18em}.hero{padding:20px 0 30px}.hero h1{font-size:clamp(32px,6.5vw,59px);line-height:1.14;letter-spacing:-.04em;margin:16px 0}.hero p{color:#b4c9db;max-width:730px;font-size:16px}.pill{display:inline-block;color:#83f3c7;border:1px solid #316953;background:#0e332e;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:800}.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:17px}.card{background:linear-gradient(160deg,#10243a,#0b1a2b);border:1px solid var(--line);border-radius:20px;padding:24px;min-width:0}.card h2{font-size:19px;margin:0 0 6px}.label{font-size:12px;color:#afc5db;font-weight:800;display:block;margin:14px 0 8px}.sub{font-size:12px;color:var(--muted);margin:0 0 15px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;gap:7px;min-height:44px;border:0;padding:0 19px;border-radius:11px;background:linear-gradient(110deg,var(--cyan),#93adff);color:#081623;font-weight:900;cursor:pointer;font-size:13px}.btn.secondary{border:1px solid #496780;background:#19304a;color:white}.btn:disabled{opacity:.45;cursor:not-allowed}.buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}textarea{display:block;width:100%;height:220px;resize:vertical;background:#061321;border:1px solid #3b5571;border-radius:12px;color:#edf6ff;font:13px/1.65 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;padding:14px}
+.notice{border:1px solid #2c5a53;background:#0d292b;color:#bbe6d8;border-radius:10px;padding:11px 13px;font-size:12px}.notice.error{border-color:#a85659;background:#382127;color:#ffc4c6}.stat{background:#0a1a2a;border-radius:12px;padding:13px;margin-bottom:10px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{display:block;font-size:21px}.categories{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.categories span{background:#152e44;color:#cce6fa;border-radius:9px;padding:6px 9px;font-size:11px}.privacy{font-size:12px;color:#93abc5;margin-top:15px}.output{margin-top:17px}.scroll{max-height:320px;overflow:auto;border-radius:12px;border:1px solid var(--line)}table{border-collapse:collapse;width:100%;min-width:600px;font-size:12px}th,td{padding:10px 11px;border-bottom:1px solid #294159;text-align:left;vertical-align:top}th{position:sticky;top:0;background:#193047;color:#c5ddf2}td{color:#e5f0fa}.warning{color:#f7d59e}.cta{margin-top:24px;padding:26px;border-radius:20px;background:linear-gradient(125deg,#e3faff,#d5e6ff,#e4dcff);color:#0b2035}.cta h2{margin:0 0 7px;font-size:25px}.cta p{font-size:13px;color:#415973}.cta .btn{background:#0b2035;color:white}.scope{font-size:12px;color:#d5e3f3;margin-top:19px}.scope a{color:var(--cyan)}footer{margin-top:35px;font-size:11px;color:#8fa4bd}@media(max-width:760px){.cols{grid-template-columns:1fr}.card{padding:17px}.nav{align-items:flex-start}.hero p{font-size:14px}.cta{padding:18px}}
+</style>
+</head>
+<body><main class="wrap">
+<nav class="nav"><a class="brand" href="../">KOROPOP LABS<small>SMALL BUSINESS AUTOMATION</small></a><a class="back" href="../solutions/one-task.html">← サービス紹介へ</a></nav>
+<section class="hero"><span class="pill">無料・インストール不要・サンプルだけで体験可</span><div class="eyebrow" style="margin-top:20px">WORKING DEMO / CSV SORTING</div><h1>問い合わせの一覧整理、<br>毎回コピペしなくていい。</h1><p>届いた問い合わせのCSVを貼り付けると、内容をキーワードで分類して、確認用の一覧を作ります。「1業務だけ自動化」の実演です。AIによる判断や自動返信は行いません。</p></section>
+<div class="cols">
+<section class="card" aria-labelledby="input-heading"><h2 id="input-heading">1. CSVを入力</h2><p class="sub">1行目は「受付日,お名前,本文」の見出し。引用符やカンマ入りの本文にも対応。</p><label class="label" for="input">問い合わせCSV</label><textarea id="input" spellcheck="false" aria-describedby="privacy"></textarea><div class="buttons"><button class="btn" id="process" type="button">分類して一覧を作る</button><button class="btn secondary" id="reset" type="button">サンプルに戻す</button></div><p id="privacy" class="privacy">このデモの分類処理はブラウザ内のみ。入力内容の送信・保存はしません。動作確認には架空データをお使いください。</p></section>
+<section class="card" aria-labelledby="guide-heading"><h2 id="guide-heading">2. 自動整理のルール</h2><p class="sub">サンプル用の固定ルール。実案件では業務に合わせて調整します。</p><div class="stat"><small>処理件数</small><strong id="count">―</strong></div><div class="stat"><small>分類できなかった項目</small><strong id="unclear">―</strong></div><div class="categories" id="categories"><span>見積・料金</span><span>予約・日程</span><span>不具合</span><span>その他</span></div><p class="privacy">誤分類があり得るため、人による最終確認が必要です。個人情報の扱い・返信先・保存方法などは実運用前に確認します。</p><div id="notice" class="notice" role="status" aria-live="polite">サンプルを入力済み。分類ボタンで結果を表示します。</div></section>
+</div>
+<section class="card output" aria-labelledby="output-heading"><h2 id="output-heading">3. 整理結果</h2><p class="sub">カテゴリを付けた一覧。すべて「要確認」として出力し、送信処理は一切しません。</p><div class="scroll"><table><thead><tr><th>受付日</th><th>お名前</th><th>カテゴリ</th><th>確認状況</th><th>本文</th></tr></thead><tbody id="rows"><tr><td colspan="5">分類を実行するとここに結果が表示されます。</td></tr></tbody></table></div><div class="buttons"><button class="btn secondary" id="download" disabled type="button">整理済みCSVを保存</button><button class="btn secondary" id="copy" disabled type="button">CSVをコピー</button></div><p class="privacy">表計算ソフトで開く際の数式誤実行を防ぐため、危険な先頭文字はCSV出力時に無効化します。</p></section>
+<section class="cta"><div class="eyebrow">SMALL FIRST / CUSTOMIZE LATER</div><h2>自社の「毎回やってる作業」も1つだけ。</h2><p>このデモは架空の問い合わせを整理する機能限定です。実業務では既存の入力形式、必要な項目、運用ルールに合わせて小さく制作。39,800円〜は目安で、着手前に範囲と金額を確認します。</p><a class="btn" href="../contact.html?src=csv-demo&service=one-task">1業務の自動化を相談する</a></section>
+<p class="scope">ほかの実演：<a href="./report-generator.html">報告文作成</a> ／ <a href="./inquiry-triage.html">問い合わせ分類</a> ／ <a href="../solutions/one-task.html">サービス詳細</a></p>
+<footer>© KOROPOP LABS ／ 本デモは架空データを使用した技術紹介であり、導入実績・効果の保証ではありません。</footer>
+</main>
+<script>
+(function(){
+'use strict';
+var sample='受付日,お名前,本文\n2026-10-12,山田 太郎,"料金の見積もりをお願いします。内訳も知りたいです。"\n2026-10-12,鈴木 花子,"来週の予約日時を変更できますか？"\n2026-10-13,佐藤 一郎,"ログイン時にエラーが出て動きません。"\n2026-10-13,田中 みどり,"営業時間を教えてください。"';
+var input=document.getElementById('input'), rows=document.getElementById('rows'), notice=document.getElementById('notice');
+var count=document.getElementById('count'), unclear=document.getElementById('unclear'), cats=document.getElementById('categories');
+var btnDown=document.getElementById('download'), btnCopy=document.getElementById('copy'), output='';
+function parseCsv(s){var data=[],r=[],cur='',quoted=false; s=String(s).replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');
+for(var i=0;i<s.length;i++){var ch=s[i];if(quoted){if(ch==='"'&&s[i+1]==='"'){cur+='"';i++;}else if(ch==='"'){quoted=false;}else{cur+=ch;}}
+else if(ch==='"'){if(cur!=='')throw Error('引用符の位置が不正です');quoted=true;}else if(ch===','){r.push(cur);cur='';}else if(ch==='\n'){r.push(cur);data.push(r);r=[];cur='';}else{cur+=ch;}}
+if(quoted)throw Error('引用符が閉じられていません');if(cur!==''||r.length){r.push(cur);data.push(r);}return data.filter(function(v){return v.some(function(x){return x.trim()!=='';});});}
+function classify(t){if(/見積|料金|価格|費用|いくら|金額/.test(t))return '見積・料金';if(/予約|日程|日時|訪問|日付|空き/.test(t))return '予約・日程';if(/不具合|故障|エラー|動かない|壊れた|ログインでき/.test(t))return '不具合';return 'その他';}
+function safe(v){v=String(v);return /^[\s]*[=+\-@\t\r]/.test(v)?"'"+v:v;}
+function escapeCsv(v){v=safe(v);return '"'+v.replace(/"/g,'""')+'"';}
+function alertMsg(msg,bad){notice.textContent=msg;notice.className='notice'+(bad?' error':'');}
+function run(){try{var text=input.value;if(text.length>30000)throw Error('入力は30,000文字以内にしてください');var all=parseCsv(text);if(all.length<2)throw Error('見出しと1件以上のデータを入力してください');if(all.length>101)throw Error('デモは100件までです');var head=all.shift().map(function(s){return s.trim().replace(/^\uFEFF/,'');});var names=['受付日','お名前','本文'];var indexes=names.map(function(n){return head.indexOf(n);});if(indexes.some(function(i){return i<0;}))throw Error('見出しは「受付日,お名前,本文」を含めてください');
+var result=[],counts={'見積・料金':0,'予約・日程':0,'不具合':0,'その他':0};
+all.forEach(function(row,i){if(row.length!==head.length)throw Error((i+2)+'行目の項目数が一致しません');var a=indexes.map(function(j){return row[j].trim();});var category=classify(a[2]);counts[category]++;result.push([a[0],a[1],category,'要確認',a[2]]);});
+rows.textContent='';result.forEach(function(row){var tr=document.createElement('tr');row.forEach(function(cell){var td=document.createElement('td');td.textContent=cell;tr.appendChild(td);});rows.appendChild(tr);});
+count.textContent=String(result.length)+'件';unclear.textContent=String(counts['その他'])+'件';cats.textContent='';Object.keys(counts).forEach(function(k){var span=document.createElement('span');span.textContent=k+': '+counts[k];cats.appendChild(span);});
+output=[['受付日','お名前','カテゴリ','確認状況','本文']].concat(result).map(function(row){return row.map(escapeCsv).join(',');}).join('\r\n');btnDown.disabled=false;btnCopy.disabled=false;alertMsg(result.length+'件の整理が完了しました。内容を確認してから使ってください。',false);
+}catch(err){output='';btnDown.disabled=true;btnCopy.disabled=true;alertMsg(err.message||'入力内容をご確認ください',true);}}
+document.getElementById('process').addEventListener('click',run);
+document.getElementById('reset').addEventListener('click',function(){input.value=sample;rows.textContent='';count.textContent='―';unclear.textContent='―';output='';btnDown.disabled=true;btnCopy.disabled=true;alertMsg('サンプルに戻しました。分類ボタンで結果を表示します。',false);});
+btnDown.addEventListener('click',function(){if(!output)return;var blob=new Blob(['\uFEFF'+output],{type:'text/csv;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='inquiries-organized.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},3000);});
+btnCopy.addEventListener('click',function(){if(!output)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(output).then(function(){alertMsg('整理済みCSVをコピーしました',false);}).catch(function(){alertMsg('コピーできませんでした。CSV保存をご利用ください',true);});}else{alertMsg('このブラウザではコピーに対応していません。CSV保存をご利用ください',true);}});
+input.value=sample;})();
+</script>
+</body></html>
