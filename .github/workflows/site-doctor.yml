@@ -370,6 +370,7 @@ jobs:
           # Verify editorial index pages and enhanced comparison worksheet.
           index_pages = ["index.html", "career-general.html"]
           utility_pages = ["shokushu-hikaku.html", "kyujin-check.html",
+                           "kyujin-joken-hikaku.html",
                            "about.html", "privacy.html", "terms.html", "contact.html"]
           featured = set()
           for directory in index_pages:
@@ -397,6 +398,19 @@ jobs:
                           'id="questionList"', 'class="job-info-grid"'):
               if element not in comparison:
                   errors.append("IT職種比較ツールの主要機能が不足: " + element)
+
+          # Protect the second, independent job-offer comparison tool.
+          offer_page = Path("kyujin-joken-hikaku.html").read_text(encoding="utf-8")
+          for token in ('id="compareButton"', 'id="copyResult"',
+                        'id="resetCompare"', 'id="resultBody"',
+                        'function calc(item)', 'function validate(item)'):
+              if token not in offer_page:
+                  errors.append("求人条件比較ツールの基本機能が不足: " + token)
+          if 'href="kyujin-joken-hikaku.html"' not in Path("index.html").read_text(encoding="utf-8"):
+              errors.append("トップから求人条件比較ツールへの導線がありません")
+          for page in ("mikeiken-it-kyujin-miwakekata.html", "it-job-nenshu-hikaku.html"):
+              if 'href="kyujin-joken-hikaku.html"' not in Path(page).read_text(encoding="utf-8"):
+                  warnings.append(page + ": 求人条件比較ツールへのリンクが不足")
 
           # Prevent regressions in the IT job map and HTML-based reading paths.
           home_html = Path("index.html").read_text(encoding="utf-8")
