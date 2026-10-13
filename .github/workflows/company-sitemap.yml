@@ -1,0 +1,60 @@
+name: Company Service Sitemap
+
+on:
+  push:
+    paths:
+      - 'company/**/*.html'
+      - 'company/*.html'
+      - 'scripts/build-company-sitemap.cjs'
+      - '.github/workflows/company-sitemap.yml'
+  schedule:
+    - cron: '35 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: company-sitemap-main
+  cancel-in-progress: false
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Generate company sitemap
+        run: node scripts/build-company-sitemap.cjs
+
+      - name: Verify no private URLs enter sitemap
+        run: |
+          if grep -E '/(proposals|contact|thanks|operator)/|/(contact|thanks|operator)\.html|/demos/website-(auto|reform|salon)\.html' company/sitemap.xml; then
+            echo "Private/noindex page found in company sitemap" >&2
+            exit 1
+          fi
+          test "$(grep -c '<loc>' company/sitemap.xml)" -ge 10
+
+      - name: Commit and push only if changed
+        run: |
+          git config user.name "KOROPOP SEO Bot"
+          git config user.email "actions@github.com"
+          git add company/sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Company sitemap already current."
+            exit 0
+          fi
+          git commit -m "Update public company service sitemap"
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            sleep "$((attempt*3))"
+          done
+          echo "Failed to push company sitemap safely" >&2
+          exit 1
