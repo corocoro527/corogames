@@ -35,7 +35,15 @@ function filter(){
  status.textContent=needle?'「'+input.value.trim()+'」の検索結果：'+count+'件':'全'+cards.length+'本のIT転職記事から探せます';
  empty.hidden=count!==0;
  clear.hidden=input.value.length===0;
+ markQuickButtons();
 }
+const quickButtons=Array.from(document.querySelectorAll('[data-search-term]'));
+function markQuickButtons(){const value=fold(input.value);quickButtons.forEach(btn=>btn.setAttribute('aria-pressed',String(value!==''&&value===fold(btn.dataset.searchTerm))));}
+quickButtons.forEach(btn=>btn.addEventListener('click',()=>{
+ const chosen=btn.dataset.searchTerm||'';
+ input.value=fold(input.value)===fold(chosen)?'':chosen;
+ filter();input.focus({preventScroll:true});
+}));
 input.addEventListener('input',filter);
 clear.addEventListener('click',()=>{input.value='';filter();input.focus();});
 filter();

@@ -35,3 +35,15 @@
  .compact-tools .tool-actions a{display:flex;justify-content:center;align-items:center;min-width:0;padding:11px 5px;font-size:12px;text-align:center;flex:none}
  .compact-tools h2{font-size:16px;margin:2px 0 0}
 }
+
+/* Intent-driven entry points: short, crawlable links, no decorative panels. */
+.intent-explore{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:6px 0 8px;padding:14px 0;border-top:1px solid #dde7e5;border-bottom:1px solid #dde7e5}
+.intent-label{font-size:12px;font-weight:850;color:#2b6259;margin-right:6px}
+.intent-explore a{font-size:12px;line-height:1.45;padding:9px 12px;border-radius:999px;border:1px solid #cadfd8;background:#fff;color:#2b645a;font-weight:750;transition:background .16s,border-color .16s}
+.intent-explore a:hover{background:#edf7f3;border-color:#79ab9e}
+.search-topics{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin-top:13px}
+.search-topics span{font-size:11px;color:#60777a;margin-right:4px}
+.search-topics button{font:inherit;font-size:12px;font-weight:720;line-height:1.5;border:1px solid #d0e0dc;border-radius:999px;background:#f7faf9;color:#356a60;padding:6px 11px;cursor:pointer;min-height:35px}
+.search-topics button:hover,.search-topics button[aria-pressed="true"]{background:#dcefe7;border-color:#6dab9b;color:#194e43}
+.search-topics button:focus-visible{outline:2px solid #397d72;outline-offset:2px}
+@media(max-width:760px){.intent-explore{gap:7px;margin:0 0 7px;padding:12px 0}.intent-label{width:100%;font-size:12px}.intent-explore a{font-size:11px;padding:8px 10px}.search-topics{gap:6px}.search-topics span{flex-basis:100%;margin-bottom:1px}.search-topics button{font-size:12px}}
