@@ -382,17 +382,18 @@ ready(() => {
     );
 
 
-    const pathText =
-      (
-        location.pathname +
-        " " +
-        cleanTitle
-      ).toLowerCase();
-
-
-    const isIT =
-      /it|エンジニア|社内se|ヘルプデスク|インフラ|ネットワーク|クラウド|soc|プログラミング/
-      .test(pathText);
+    // Classify by real article routes. A substring /it/ also matches
+    // "hito-..." (people) and caused false IT breadcrumbs.
+    const fileName = location.pathname.split("/").pop().toLowerCase();
+    const generalFiles = new Set([
+      "20s-mikeiken-tenshoku.html",
+      "hito-to-kakawaranai-shigoto.html",
+      "jobs.html",
+      "mikeiken-shikaku-nashi-shigoto.html",
+      "raku-na-shigoto.html",
+      "shigoto-yametai-tsugi-kimattenai.html"
+    ]);
+    const isIT = !generalFiles.has(fileName);
 
 
     breadcrumb.innerHTML = `
