@@ -75,14 +75,9 @@ async function initRelated(){
     }
 
 
-    const shared =
-      candidate.tags.filter(
-        tag =>
-          current.tags.includes(tag)
-      );
-
-    points +=
-      shared.length * 5;
+    const broad = new Set(["未経験","IT","求人","転職","仕事","エンジニア"]);
+    const shared = (candidate.tags || []).filter(tag => (current.tags || []).includes(tag));
+    points += shared.reduce((sum,tag)=>sum + (broad.has(tag) ? 1 : 7),0);
 
 
     if(
@@ -101,7 +96,8 @@ async function initRelated(){
     data
     .filter(
       item =>
-        item.url !== current.url
+        item.url !== current.url &&
+        (current.category === "it" ? item.category === "it" : item.category !== "it")
     )
     .map(
       item => ({
@@ -233,17 +229,16 @@ async function initRelated(){
         </h2>
 
         <p>
-          今読んでいる内容に近い記事を
-          自動で選んでいます。
+          内容がつながる記事を選びました。次の疑問を解決しましょう。
         </p>
 
       </div>
 
       <a
         class="koropop-related-all"
-        href="career.html"
+        href="${current.category === "it" ? "/" : "career-general.html"}"
       >
-        仕事・転職の記事一覧 →
+        ${current.category === "it" ? "IT転職の記事一覧" : "一般の転職記事一覧"} →
       </a>
 
     </div>
@@ -287,14 +282,14 @@ async function initRelated(){
   .koropop-related-auto{
     margin:52px 0 44px;
     padding:25px;
-    border:1px solid #d9e3ed;
+    border:1px solid #d5e4dd;
     border-radius:18px;
     background:
       linear-gradient(
         135deg,
-        #f7fbff,
+        #f3faf6,
         #ffffff 55%,
-        #f8f5ff
+        #f6f9f7
       );
   }
 
@@ -320,7 +315,7 @@ async function initRelated(){
   }
 
   .koropop-related-eyebrow{
-    color:#6e56cf;
+    color:#2a7869;
     font-size:.73rem;
     font-weight:900;
     letter-spacing:.12em;
@@ -347,7 +342,7 @@ async function initRelated(){
     min-width:0;
     padding:17px;
     background:#fff;
-    border:1px solid #dfe6ee;
+    border:1px solid #dce8e2;
     border-radius:14px;
     color:inherit;
     text-decoration:none;
@@ -359,14 +354,14 @@ async function initRelated(){
 
   .koropop-related-card:hover{
     transform:translateY(-2px);
-    border-color:#bfd4e7;
+    border-color:#a5c9bb;
     box-shadow:
       0 8px 24px
       rgba(16,24,40,.07);
   }
 
   .koropop-related-card strong{
-    color:#174a7e;
+    color:#224c4b;
     line-height:1.5;
   }
 
@@ -374,8 +369,8 @@ async function initRelated(){
     align-self:flex-start;
     padding:4px 8px;
     border-radius:999px;
-    background:#eef5fc;
-    color:#35658e;
+    background:#edf6f1;
+    color:#32665e;
     font-size:.7rem;
     font-weight:800;
   }
@@ -389,7 +384,7 @@ async function initRelated(){
   .koropop-related-more{
     margin-top:auto;
     padding-top:3px;
-    color:#1677df;
+    color:#286f64;
     font-size:.8rem;
     font-weight:800;
   }

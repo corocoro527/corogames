@@ -50,8 +50,8 @@ ready(() => {
     background:
       linear-gradient(
         90deg,
-        #1677df,
-        #6e56cf
+        #2c8272,
+        #62ac92
       );
     transition:width .08s linear;
   }
@@ -114,14 +114,14 @@ ready(() => {
 
   .koropop-auto-toc{
     margin:12px 0 38px;
-    border:1px solid #d6e1ec;
+    border:1px solid #d4e5dc;
     border-radius:16px;
     background:
       linear-gradient(
         135deg,
-        #f7fbff,
+        #f7fbf9,
         #fff 55%,
-        #f7f4ff
+        #f7faf8
       );
     box-shadow:
       0 7px 24px
@@ -136,8 +136,8 @@ ready(() => {
     padding:17px 20px;
     cursor:pointer;
     list-style:none;
-    background:#eef6fd;
-    border-bottom:1px solid #dae6f0;
+    background:#ecf6f1;
+    border-bottom:1px solid #dae9e2;
   }
 
   .koropop-auto-toc summary::-webkit-details-marker{
@@ -153,8 +153,8 @@ ready(() => {
     place-items:center;
     border-radius:50%;
     background:#fff;
-    border:1px solid #d4e2ef;
-    color:#1769b0;
+    border:1px solid #cfe5da;
+    color:#28796e;
     font-weight:900;
   }
 
@@ -167,7 +167,7 @@ ready(() => {
   .koropop-toc-title{
     font-size:1.04rem;
     font-weight:900;
-    color:#183a61;
+    color:#234f48;
   }
 
   .koropop-toc-note{
@@ -185,7 +185,7 @@ ready(() => {
   }
 
   .koropop-auto-toc a{
-    color:#1769b0;
+    color:#28796e;
     text-decoration:none;
     font-weight:650;
     line-height:1.55;
@@ -225,7 +225,7 @@ ready(() => {
     appearance:none;
     border:1px solid #d8e2ec;
     background:rgba(255,255,255,.96);
-    color:#174a7e;
+    color:#24685c;
     box-shadow:
       0 7px 22px
       rgba(16,24,40,.12);
@@ -402,8 +402,8 @@ ready(() => {
 
       <span>›</span>
 
-      <a href="career.html">
-        仕事・転職
+      <a href="${isIT ? "/" : "career-general.html"}">
+        ${isIT ? "IT転職記事一覧" : "一般の転職記事一覧"}
       </a>
 
       ${
@@ -730,7 +730,7 @@ ready(() => {
 
       summary.innerHTML = `
         <span class="koropop-toc-title">
-          📑 目次
+          目次を見る
         </span>
 
         <span class="koropop-toc-note">
@@ -834,7 +834,7 @@ ready(() => {
       "koropop-reader-btn";
 
     tocButton.textContent =
-      "📑 目次";
+      "目次";
 
     tocButton.setAttribute(
       "aria-label",
