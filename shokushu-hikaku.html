@@ -10,13 +10,30 @@
 <style>
 body{background:#f8fafb}.compare-page{width:min(1100px,calc(100% - 34px));margin:auto;padding:36px 0 90px}.crumb{font-size:12px;color:#506873}.crumb a{text-decoration:underline}.compare-page h1{font-size:clamp(31px,6vw,45px);letter-spacing:-.05em;line-height:1.4;margin:12px 0}.lead{color:#546874;line-height:1.95;max-width:850px;font-size:15px}.explainer{border-left:3px solid #5d9e92;background:#edf6f3;border-radius:4px;padding:14px 17px;color:#45616a;margin:19px 0 31px;font-size:13px;line-height:1.8}.selector{border:1px solid #e0e8e9;background:#fff;border-radius:10px;padding:22px}.selector h2{font-size:19px;margin:0 0 4px}.selector p{font-size:12px;color:#657883;margin:0 0 15px}.options{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.options label{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:730;border:1px solid #dce5e6;padding:12px;border-radius:7px;cursor:pointer;line-height:1.5}.options label:has(input:checked){background:#edf6f3;border-color:#589387;color:#235a52}.options input{accent-color:#246c62}.compare-results{margin:26px 0}.section-heading-local{display:flex;align-items:end;justify-content:space-between;gap:10px}.section-heading-local h2{font-size:22px;margin:0 0 13px}.section-heading-local p{color:#697e86;font-size:12px;margin:0 0 13px}.table-shell{overflow-x:auto;border:1px solid #dce5e7;border-radius:9px;background:#fff}.compare-table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:620px}.compare-table th,.compare-table td{border-bottom:1px solid #e6eced;border-right:1px solid #e9eeee;padding:15px 14px;vertical-align:top;text-align:left;line-height:1.85;font-size:13px;overflow-wrap:anywhere}.compare-table th:last-child,.compare-table td:last-child{border-right:0}.compare-table tr:last-child td,.compare-table tr:last-child th{border-bottom:0}.compare-table thead th{background:#eaf3f0;color:#234f49;font-size:14px}.compare-table th.rowhead{background:#f7faf9;width:132px;color:#35515a;font-size:12px}.compare-table a{color:#236f65;text-decoration:underline;text-underline-offset:3px;font-weight:730}.note{font-size:12px;color:#74848d;margin-top:11px}.below{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin-top:33px}.below section{border:1px solid #e1e7e9;background:#fff;border-radius:9px;padding:20px}.below h2{font-size:17px;margin:0 0 10px}.below p,.below li{font-size:13px;line-height:1.9;color:#52656c}.below a{color:#226b62;font-weight:750;text-decoration:underline}.alert{font-size:12px;color:#6a7981;padding:8px 2px}#chooseWarn{color:#a75a3b;font-size:12px;font-weight:700;margin-top:10px;min-height:18px}
 @media(max-width:760px){.compare-page{padding-top:25px}.options{grid-template-columns:repeat(2,minmax(0,1fr))}.selector{padding:17px 15px}.options label{font-size:12px;padding:11px 9px}.below{grid-template-columns:1fr}.section-heading-local{display:block}.compare-results{margin-top:21px}.compare-table th.rowhead{width:120px}}
+
+.job-understand{margin:39px 0}.job-understand h2{font-size:clamp(20px,3vw,25px);margin-bottom:10px}.method-note{font-size:13px;color:#60747c;line-height:1.9}.method-note a{color:#236a61;text-decoration:underline}
+.job-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.job-info-grid article{background:#fff;border:1px solid #dce6e4;border-radius:10px;padding:21px 22px}
+.job-info-grid article>span{font-size:10px;font-weight:850;color:#437e72;letter-spacing:.08em}.job-info-grid h3{font-size:18px;margin:9px 0}
+.job-info-grid p{font-size:13px;line-height:1.95;color:#50646e}.job-info-grid a{font-size:13px;font-weight:750;color:#216b61;text-decoration:underline}
+.question-memo{border:1px solid #cde1d9;background:#edf6f1;border-radius:12px;padding:24px 26px;margin:24px 0 36px}
+.question-memo h2{font-size:clamp(20px,3vw,25px);margin:6px 0}.question-memo>p{font-size:13px;line-height:1.85;color:#476069}
+.memo-label{display:block;font-size:14px;font-weight:750;margin:17px 0 8px}
+#memoInput{box-sizing:border-box;width:100%;border:1px solid #aecbc1;background:#fff;color:#25404a;border-radius:7px;padding:11px 13px;font:inherit;font-size:14px;min-height:90px;line-height:1.7}
+#memoInput:focus-visible{outline:2px solid #76a89a}.question-memo .memo-privacy{font-size:11px;margin:5px 0 15px}
+.memo-preview{border:1px solid #d4e6de;background:#fff;border-radius:8px;padding:17px 20px}.memo-preview h3{font-size:15px;margin:0 0 8px}.memo-preview ul{margin:0;padding-left:19px}
+.memo-preview li{font-size:13px;line-height:1.85;margin-bottom:6px;color:#415a62}.memo-actions{display:flex;align-items:center;flex-wrap:wrap;gap:11px;margin:15px 0 0}
+#copyQuestions{background:#256b5e;color:#fff;padding:11px 19px;border:none;border-radius:7px;font:inherit;font-size:13px;font-weight:750;cursor:pointer;min-height:44px}
+#copyStatus{font-size:12px;color:#286d60;font-weight:750}
+@media(max-width:760px){.job-info-grid{grid-template-columns:1fr;gap:10px}.job-info-grid article{padding:17px}.question-memo{padding:19px 16px}.memo-actions button{width:100%}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"IT職種比較シート","url":"https://koropopgames.com/shokushu-hikaku.html","description":"仕事を選ぶ際の比較観点をまとめた独自の実用シート"}</script>
 </head>
 <body>
 <header class="site-header"><div class="shell header-inner"><a class="wordmark" href="/"><span class="brand-symbol">K</span><span class="brand-name"><strong>KOROPOP</strong><small>CAREER</small></span></a><nav class="header-nav" aria-label="ナビゲーション"><a href="/">記事を探す</a><a href="kyujin-check.html">応募前の確認リスト</a></nav></div></header>
 <main class="compare-page">
-<p class="crumb"><a href="/">トップ</a> ／ 無料ツール ／ 仕事比較シート</p>
+<p class="crumb"><a href="/">トップ</a> ／ 無料ツール ／ IT職種比較シート</p>
 <span class="section-kicker">JOB COMPARISON / ORIGINAL GUIDE</span>
 <h1>ITの仕事を、<br>名前だけで選ばないために。</h1>
 <p class="lead">気になるIT職種を最大3つ選んで、仕事内容・活かせる経験・求人を見るときの注意点を横並びで比べよう。大切なのは「職種名が魅力的か」より、<strong>実際に何をする仕事なのか</strong>やね。</p>
@@ -29,6 +46,24 @@ body{background:#f8fafb}.compare-page{width:min(1100px,calc(100% - 34px));margin
 <div class="table-shell"><table class="compare-table" id="compareTable"><thead id="compareHead"></thead><tbody id="compareBody"></tbody></table></div>
 <p class="note">※ 仕事内容は一般的な例であり、特定の企業・求人の実態を示すものではありません。</p>
 </section>
+<section class="job-understand" aria-labelledby="jobUnderstandTitle">
+<h2 id="jobUnderstandTitle">職種名ではなく、配属後の仕事内容で選ぶ</h2>
+<p class="method-note">以下は一般的な仕事内容をもとに編集部が整理した比較観点です。架空の企業・応募者に関する説明用の例であり、実際の企業を調査した結果や未経験者の採用保証ではありません。</p>
+<div class="job-info-grid"><article><span>01 / IT ROLE</span><h3>ITヘルプデスク</h3><p>PCやアカウントのトラブルを受け付け、原因を調べる仕事。受付だけか、自分で設定・権限変更まで行うかで学べる技術は変わる。</p><p><strong>求人で確認：</strong>一次受付と設定作業の割合、使う製品、教育担当者を確認する。</p><a href="mikeiken-it-helpdesk.html">この職種の詳しい記事 ↗</a></article>
+<article><span>02 / IT ROLE</span><h3>社内SE</h3><p>社内のPC管理、業務システムの運用、外部業者との調整などを担当。開発や総務を兼ねる職場もあり、肩書きだけでは仕事内容を決められない。</p><p><strong>求人で確認：</strong>何人チームか、問い合わせ・開発・運用の仕事の比率を確認する。</p><a href="mikeiken-shanai-se.html">この職種の詳しい記事 ↗</a></article>
+<article><span>03 / IT ROLE</span><h3>インフラ運用</h3><p>サーバーの監視や障害時の一次対応、復旧の補助を行う。24時間稼働する現場ではシフト勤務があり、監視から設定変更へ進めるかも重要。</p><p><strong>求人で確認：</strong>夜勤頻度と障害対応の範囲、設定作業に関われる条件を確認する。</p><a href="mikeiken-infra-engineer.html">この職種の詳しい記事 ↗</a></article>
+<article><span>04 / IT ROLE</span><h3>ネットワークエンジニア</h3><p>ルーターやスイッチ等の運用・設定・障害対応に関わる。アラートの確認から機器設定・構築まで、求人により担当工程が大きく異なる。</p><p><strong>求人で確認：</strong>使う機器や技術、構築に関わる時期、教育制度を確認する。</p><a href="mikeiken-network-engineer.html">この職種の詳しい記事 ↗</a></article>
+<article><span>05 / IT ROLE</span><h3>クラウド関連</h3><p>AWSなどクラウド環境の監視・設定・管理を行う。クラウドを使う会社でも監視のみか、IAM権限設定や構築まで担うかで業務が違う。</p><p><strong>求人で確認：</strong>担当サービス、設定変更の権限、前提となる技術を確認する。</p><a href="mikeiken-cloud-engineer.html">この職種の詳しい記事 ↗</a></article>
+<article><span>06 / IT ROLE</span><h3>SOC・セキュリティ運用</h3><p>ログやアラートを確認し、疑わしい兆候を分類・報告する。一次対応が中心か、詳細な調査・改善まで参加できるかで成長機会が変わる。</p><p><strong>求人で確認：</strong>夜勤、分析の範囲、教育体制と調査に参加できる時期を確認する。</p><a href="mikeiken-soc-security.html">この職種の詳しい記事 ↗</a></article></div>
+<p class="method-note">主な参照先：<a href="https://shigoto.mhlw.go.jp/User/Occupation/Detail/320" target="_blank" rel="noopener noreferrer">厚生労働省 job tag（ITヘルプデスク）</a>、<a href="https://shigoto.mhlw.go.jp/User/Occupation/Detail/319" target="_blank" rel="noopener noreferrer">IT運用管理</a>、<a href="https://shigoto.mhlw.go.jp/" target="_blank" rel="noopener noreferrer">職業情報検索</a>。求人・労働条件は募集企業の公式情報で確認してください。</p>
+</section>
+<section class="question-memo" aria-labelledby="memoTitle"><span class="section-kicker">応募前に使う質問メモ</span><h2 id="memoTitle">選んだ職種の質問メモを作る</h2><p>上で選んだIT職種に合わせて、面接で確認したい質問をまとめます。自分の希望条件を加えてコピーできます。</p>
+<label for="memoInput" class="memo-label">ほかに確認したいこと（任意）</label>
+<textarea id="memoInput" rows="3" maxlength="1000" placeholder="例：研修中の勤務地と配属後の勤務先は？"></textarea>
+<p class="memo-privacy">入力したメモはページ内で処理し、サイトのサーバーへ送信しません。</p>
+<div class="memo-preview"><h3>職種別の質問</h3><ul id="questionList" aria-live="polite"></ul></div>
+<div class="memo-actions"><button type="button" id="copyQuestions">比較結果と質問をコピー ↗</button><span id="copyStatus" role="status" aria-live="polite"></span></div>
+<p class="method-note">これは仕事探しの判断材料を整理する補助ツールです。職業紹介・適職の確定診断ではありません。</p></section>
 <div class="below">
 <section><h2>応募前に押さえておきたいこと</h2><p>興味のある仕事が決まったら、仕事内容の具体例、夜勤・転勤・配属先、給与条件、研修内容を求人票で比べよう。</p><p><a href="kyujin-check.html">応募前の確認リストを見る ↗</a></p></section>
 <section><h2>公式情報でも仕事を調べる</h2><p>国の職業情報提供サイト「job tag」では、職業の仕事内容・求められる技能・関連する統計などを調べられます。職種ごとのデータと個別求人の条件は同じではありません。</p><p><a href="https://shigoto.mhlw.go.jp/" target="_blank" rel="noopener noreferrer">厚生労働省 job tag ↗</a></p></section>
@@ -51,7 +86,30 @@ const rows={overview:"主な仕事内容",entry:"活かせる経験・力",cauti
 const selected=new Set(['helpdesk','shanai']);
 const opts=document.getElementById('options'),head=document.getElementById('compareHead'),body=document.getElementById('compareBody'),warn=document.getElementById('chooseWarn');
 for(const job of jobs){const label=document.createElement('label');const chk=document.createElement('input');chk.type='checkbox';chk.value=job.id;chk.checked=selected.has(job.id);label.append(chk,document.createTextNode(job.name));opts.append(label);chk.addEventListener('change',()=>{if(chk.checked&&selected.size>=3){chk.checked=false;warn.textContent='比較できるのは3職種までやで。ほかのチェックを外してな。';return}chk.checked?selected.add(job.id):selected.delete(job.id);warn.textContent='';render()})}
-function render(){const curr=jobs.filter(j=>selected.has(j.id));head.replaceChildren();body.replaceChildren();const top=document.createElement('tr');const gap=document.createElement('th');gap.textContent='比較項目';gap.scope='col';top.append(gap);curr.forEach(j=>{const th=document.createElement('th');th.textContent=j.name;th.scope='col';top.append(th)});head.append(top);if(!curr.length){warn.textContent='職種を1つ以上選択してください。';return}for(const k of order){const tr=document.createElement('tr'),label=document.createElement('th');label.className='rowhead';label.scope='row';label.textContent=rows[k];tr.append(label);for(const j of curr){const cell=document.createElement('td');if(k==='link'){const a=document.createElement('a');a.href=j.link;a.textContent='詳しい解説を読む ↗';cell.append(a)}else cell.textContent=j[k];tr.append(cell)}body.append(tr)}}
+function render(){const curr=jobs.filter(j=>selected.has(j.id));renderNotes();head.replaceChildren();body.replaceChildren();const top=document.createElement('tr');const gap=document.createElement('th');gap.textContent='比較項目';gap.scope='col';top.append(gap);curr.forEach(j=>{const th=document.createElement('th');th.textContent=j.name;th.scope='col';top.append(th)});head.append(top);if(!curr.length){warn.textContent='職種を1つ以上選択してください。';return}for(const k of order){const tr=document.createElement('tr'),label=document.createElement('th');label.className='rowhead';label.scope='row';label.textContent=rows[k];tr.append(label);for(const j of curr){const cell=document.createElement('td');if(k==='link'){const a=document.createElement('a');a.href=j.link;a.textContent='詳しい解説を読む ↗';cell.append(a)}else cell.textContent=j[k];tr.append(cell)}body.append(tr)}}
+
+function renderNotes(){
+ const ul=document.getElementById('questionList');ul.replaceChildren();
+ const curr=jobs.filter(j=>selected.has(j.id));
+ if(!curr.length){const li=document.createElement('li');li.textContent='職種を選ぶと質問が表示されます。';ul.append(li);return}
+ for(const j of curr){const li=document.createElement('li');const strong=document.createElement('strong');strong.textContent=j.name+'：';li.append(strong,document.createTextNode(j.ask));ul.append(li)}
+}
+function memoText(){
+ const lines=['IT職種比較・応募前の質問メモ','https://koropopgames.com/shokushu-hikaku.html',''];
+ for(const j of jobs.filter(j=>selected.has(j.id))){lines.push('【'+j.name+'】','仕事内容：'+j.overview,'活かせる経験：'+j.entry,'確認点：'+j.caution,'面接で聞く：'+j.ask,'参考記事：https://koropopgames.com/'+j.link,'')}
+ const note=document.getElementById('memoInput').value.trim();if(note)lines.push('【自分のメモ】',note,'');
+ lines.push('※一般的な比較例です。募集企業の最新情報で条件を確認してください。');return lines.join('\n');
+}
+document.getElementById('copyQuestions').addEventListener('click',async()=>{
+ const status=document.getElementById('copyStatus');if(!selected.size){status.textContent='先に職種を選んでください。';return}
+ try{
+  const value=memoText();
+  if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(value);
+  else{const ta=document.createElement('textarea');ta.value=value;ta.style.position='fixed';ta.style.left='-9999px';document.body.append(ta);ta.select();const success=document.execCommand('copy');ta.remove();if(!success)throw Error('copy failed')}
+  status.textContent='コピーしました。メモ帳に貼り付けて使えます。';
+ }catch(e){status.textContent='コピーできませんでした。ブラウザのコピー機能をご利用ください。'}
+});
+
 render();
 })();
 </script>
