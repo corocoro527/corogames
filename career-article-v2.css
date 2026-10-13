@@ -68,3 +68,16 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
 .kp-related-tool a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:850;color:#226e61;text-decoration:underline;text-underline-offset:3px}
 .kp-related-tool a:focus-visible{outline:2px solid #4c998b;outline-offset:4px}
 @media(max-width:650px){.kp-related-tool{padding:16px 17px;margin:21px 0 27px}}
+
+/* Reading comfort: avoid miniature text on modern phones. */
+@media(max-width:680px){
+ article p,article li,.layout article p,.layout article li{font-size:16px!important;line-height:1.95!important}
+ article h2,.layout h2{font-size:21px!important;line-height:1.48!important}
+ article h3,.layout h3{font-size:18px!important}
+ .layout>article{padding:20px 18px!important}
+ .layout article a:not(.kp-next-grid a){overflow-wrap:anywhere}
+ .kp-decision-practice p,.kp-related-tool p{font-size:14px!important}
+ .kp-related-tool a{display:inline-flex;padding:7px 0;line-height:1.7}
+ .kp-next-grid a{min-height:60px}
+ .layout table,.layout .table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}

@@ -213,7 +213,7 @@ ready(() => {
   .koropop-reader-actions{
     position:fixed;
     right:16px;
-    bottom:18px;
+    bottom:calc(18px + env(safe-area-inset-bottom));
     z-index:9990;
     display:flex;
     flex-direction:column;
@@ -224,7 +224,7 @@ ready(() => {
   .koropop-reader-btn{
     appearance:none;
     border:1px solid #d8e2ec;
-    background:rgba(255,255,255,.96);
+    background:rgba(255,255,255,.97);
     color:#24685c;
     box-shadow:
       0 7px 22px
@@ -288,7 +288,7 @@ ready(() => {
 
     .koropop-reader-actions{
       right:11px;
-      bottom:13px;
+      bottom:calc(13px + env(safe-area-inset-bottom));
     }
 
     .koropop-reader-btn{

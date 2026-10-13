@@ -72,3 +72,25 @@
 /* Keep the second comparison tool compact beside the article directory heading. */
 .directory-heading a.offer-compare-link{display:inline-flex;align-items:center;margin-left:16px;color:#286c62;font-weight:800}
 @media(max-width:760px){.directory-heading a.offer-compare-link{display:flex;margin:9px 0 0}}
+
+/* Mobile readability and touch ergonomics 2026-10-13 */
+@media(max-width:650px){
+ .career-role-grid{grid-template-columns:1fr;gap:9px}
+ .career-role-card{padding:15px 16px;gap:12px;min-height:84px;align-items:center}
+ .career-role-index{font-size:12px}
+ .career-role-card h3{font-size:16px;margin-bottom:4px}
+ .career-role-card strong{font-size:13px;line-height:1.55}
+ .career-role-card p{font-size:12px;line-height:1.65;margin:4px 0 0}
+ .career-role-arrow{font-size:17px}
+ .career-map-header>div p{font-size:14px}
+ .career-map-header>a{font-size:13px;padding:4px 0}
+ .search-topics button{min-height:42px;font-size:13px;padding:8px 13px}
+ .intent-explore a{font-size:12px;line-height:1.5;padding:10px 12px;min-height:41px}
+ .career-search label{font-size:14px}
+ .career-search input{min-height:48px}
+ .directory-heading p{line-height:1.85}
+}
+@media(max-width:390px){
+ .career-role-grid{grid-template-columns:1fr}
+ .career-role-card{padding:14px 15px}
+}
