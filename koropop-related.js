@@ -13,7 +13,7 @@ async function initRelated(){
 
   if(
     document.querySelector(
-      ".koropop-related-auto"
+      ".koropop-related-auto, .kp-next-guides"
     )
   ){
     return;
