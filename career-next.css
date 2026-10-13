@@ -1,0 +1,13 @@
+/* KOROPOP CAREER – human-curated next-reading paths
+   These links are rendered in HTML for both readers and crawlers. */
+.kp-next-guides{margin:46px 0 40px;padding:26px 24px;border:1px solid #d1e4dc;background:#f0f8f4;border-radius:11px;color:#213c41}
+.kp-next-kicker{display:block;color:#377969;font-size:11px;letter-spacing:.1em;font-weight:850;margin-bottom:7px}
+.kp-next-guides h2{margin:0 0 9px!important;padding:0!important;font-size:clamp(21px,3vw,25px)!important;line-height:1.45!important;background:transparent!important;border:0!important;color:#244c46!important}
+.kp-next-guides>p{font-size:13px!important;line-height:1.85!important;color:#536d69!important;margin:0 0 17px!important}
+.kp-next-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.kp-next-grid a{display:flex;flex-direction:column;gap:8px;min-width:0;border:1px solid #d7e5df;background:#fff;border-radius:8px;padding:16px 15px;text-decoration:none!important;color:#203d45!important;box-shadow:0 3px 8px rgba(32,73,59,.02)}
+.kp-next-grid a:hover{border-color:#8bb5a7;background:#fbfefc}
+.kp-next-grid strong{display:block;font-size:14px;line-height:1.65;font-weight:800;color:#265c54}
+.kp-next-grid span{display:block;font-size:12px;line-height:1.75;color:#5e7178}
+.kp-next-grid a:focus-visible{outline:2px solid #478a78;outline-offset:3px}
+@media(max-width:780px){.kp-next-grid{grid-template-columns:1fr}.kp-next-guides{padding:21px 17px;margin:34px 0}.kp-next-grid a{padding:14px 15px}.kp-next-guides>p{font-size:12px!important}}
