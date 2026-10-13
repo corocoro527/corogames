@@ -398,6 +398,29 @@ jobs:
               if element not in comparison:
                   errors.append("IT職種比較ツールの主要機能が不足: " + element)
 
+          # Prevent regressions in the IT job map and HTML-based reading paths.
+          home_html = Path("index.html").read_text(encoding="utf-8")
+          if 'id="job-map"' not in home_html:
+              errors.append("IT職種6種類の早見表が見つかりません")
+          map_urls = re.findall(r'class="career-role-card" href="([^"]+)"', home_html)
+          if len(map_urls) != 6 or any(not Path(url).exists() for url in map_urls):
+              errors.append("職種早見表は6件の有効な記事リンクが必要")
+          next_link_count = 0
+          for article in sorted(featured):
+              if article == "mikeiken-it-study-roadmap.html":
+                  continue
+              if article not in Path("koropop-articles.json").read_text(encoding="utf-8"):
+                  continue
+              page = Path(article).read_text(encoding="utf-8")
+              if 'class="kp-next-guides"' in page:
+                  section = page.split('class="kp-next-guides"', 1)[1].split("</aside>", 1)[0]
+                  destinations = re.findall(r'href="([^"]+\.html)"', section)
+                  if len(destinations) != 3 or any(not Path(url).exists() for url in destinations):
+                      errors.append(f"{article}: 次に読む記事のリンクを要確認")
+                  next_link_count += len(destinations)
+          if next_link_count < 63:
+              warnings.append(f"静的な関連記事リンクが不足: {next_link_count}/63")
+          
           print(
               f"Checked {len(files)} HTML files"
           )
