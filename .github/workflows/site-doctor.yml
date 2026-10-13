@@ -367,6 +367,37 @@ jobs:
               if 'id="koropop-decision-practice"' not in Path(article).read_text(encoding="utf-8"):
                   warnings.append(f"{article}: 独自の判断ワークが未反映")
 
+          # Verify editorial index pages and enhanced comparison worksheet.
+          index_pages = ["index.html", "career-general.html"]
+          utility_pages = ["shokushu-hikaku.html", "kyujin-check.html",
+                           "about.html", "privacy.html", "terms.html", "contact.html"]
+          featured = set()
+          for directory in index_pages:
+              html = Path(directory).read_text(encoding="utf-8")
+              featured.update(re.findall(
+                  r'class="article-link" href="([^"]+\.html)"', html
+              ))
+          if len(featured) < 27:
+              errors.append("記事一覧に既存の27記事がそろっていません")
+          for article in sorted(featured):
+              if not Path(article).exists():
+                  errors.append(f"記事一覧のリンク切れ: {article}")
+          
+          for page in sorted(featured | set(index_pages + utility_pages)):
+              if not Path(page).exists():
+                  continue
+              content = Path(page).read_text(encoding="utf-8")
+              if not has_meta(content, "google-adsense-account"):
+                  warnings.append(f"{page}: サイト確認用メタタグが欠落")
+              if GA not in content:
+                  warnings.append(f"{page}: GA4タグが欠落")
+          
+          comparison = Path("shokushu-hikaku.html").read_text(encoding="utf-8")
+          for element in ('id="memoTitle"', 'id="copyQuestions"',
+                          'id="questionList"', 'class="job-info-grid"'):
+              if element not in comparison:
+                  errors.append("IT職種比較ツールの主要機能が不足: " + element)
+
           print(
               f"Checked {len(files)} HTML files"
           )
