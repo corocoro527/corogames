@@ -22,7 +22,7 @@ if(roles&&more){
     const open=roles.classList.toggle('expanded');
     more.setAttribute('aria-expanded',String(open));
     more.textContent=open?'記事を少なく表示 ↑':'ほかのIT職種の記事 '+extras.length+'件を見る ↓';
-    if(!open)roles.scrollIntoView({behavior:'smooth',block:'start'});
+    if(!open)roles.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
   });
  }
 }
