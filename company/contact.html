@@ -73,6 +73,7 @@ footer{margin-top:24px;color:#7b8b9d;font-size:12px;text-align:center}@media(max
 <option value="概算見積シミュレーター 49,800円〜">概算見積シミュレーター 49,800円〜</option>
 <option value="業務改善診断 19,800円〜">業務改善診断 19,800円〜</option>
 <option value="PDF/FAX 1業務Web化 39,800円〜">PDF/FAX・紙業務のWeb化 39,800円〜</option>
+<option value="1業務だけ自動化 39,800円〜">1業務だけ自動化 39,800円〜</option>
 <option value="Googleマップ継続ケア">Googleマップ継続ケア</option>
 <option value="Web更新ケア 14,800円/月〜">Web更新ケア 14,800円/月〜</option>
 <option value="その他">その他</option>
@@ -140,9 +141,28 @@ footer{margin-top:24px;color:#7b8b9d;font-size:12px;text-align:center}@media(max
     'business-audit':'業務改善診断 19,800円〜',
     'estimate-calculator-demo':'概算見積シミュレーター 49,800円〜',
     'local-care':'Googleマップ継続ケア',
-    'web-care':'Web更新ケア 14,800円/月〜'
+    'web-care':'Web更新ケア 14,800円/月〜',
+    'one-task-solution':'1業務だけ自動化 39,800円〜',
+    'csv-demo':'1業務だけ自動化 39,800円〜',
+    'pricing-one-task':'1業務だけ自動化 39,800円〜',
+    'pricing-web-rescue':'Web Rescue 39,800円〜',
+    'pricing-website-starter':'Business Site STARTER 59,800円〜',
+    'pricing-small-website':'小規模ホームページ制作 79,800円〜',
+    'pricing-google-maps':'Googleマップ整備 19,800円〜',
+    'pricing-inquiry-flow':'問い合わせ導線ミニ改善 29,800円〜',
+    'pricing-estimate':'概算見積シミュレーター 49,800円〜',
+    'pricing-recruit-flow':'採用ページ・応募導線 29,800円〜',
+    'pricing-recruit-lp':'採用LP 69,800円〜',
+    'pricing-business-audit':'業務改善診断 19,800円〜',
+    'pricing-form-web':'PDF/FAX 1業務Web化 39,800円〜',
+    'pricing-local-care':'Googleマップ継続ケア',
+    'pricing-web-care':'Web更新ケア 14,800円/月〜'
   };
   if(srcMap[src]!==undefined) plan.value=srcMap[src];
+  // Query-string service selection only chooses an existing offer; never accepts arbitrary text.
+  const service=p.get('service');
+  const allowed={'one-task':'1業務だけ自動化 39,800円〜','web-rescue':'Web Rescue 39,800円〜','maps':'Googleマップ整備 19,800円〜'};
+  if(service&&allowed[service])plan.value=allowed[service];
   document.querySelector('form').addEventListener('submit',()=>{if(window.gtag)gtag('event','lead_form_submit',{lead_source:src});});
 })();
 </script>
