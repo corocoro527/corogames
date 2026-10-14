@@ -1,0 +1,21 @@
+/* KOROPOP CAREER — standalone local-only print worksheet, never a finished application. */
+@media screen{
+ #resumePrintable{display:none!important}
+}
+@media print{
+ @page{size:A4 portrait;margin:16mm 17mm}
+ html,body{background:#fff!important;color:#1b2933!important;margin:0!important;padding:0!important}
+ body:has(> #resumePrintable[data-ready="true"]) > :not(#resumePrintable){display:none!important}
+ #resumePrintable[data-ready="true"]{display:block!important;width:100%!important;max-width:none!important;padding:0!important;margin:0!important;box-shadow:none!important;color:#1b2933!important}
+ #resumePrintable *{box-sizing:border-box}
+ #resumePrintable .resume-sheet-kicker{display:block;font-size:10pt;letter-spacing:.08em;color:#426455;border-bottom:1pt solid #cbd7d1;padding-bottom:6mm}
+ #resumePrintable h2{font-size:18pt;line-height:1.4;margin:9mm 0 4mm}
+ #resumePrintable .resume-sheet-intro{font-size:10.5pt;line-height:1.8;margin-bottom:7mm;color:#44545a}
+ #resumePrintable dl{display:grid;grid-template-columns:30mm 1fr;gap:2mm 4mm;border-top:1pt solid #ccd6d4;border-bottom:1pt solid #ccd6d4;padding:4mm 0;margin:0 0 8mm}
+ #resumePrintable dt{font-size:10pt;font-weight:700}
+ #resumePrintable dd{font-size:10pt;margin:0}
+ #resumePrintable h3{font-size:12pt;border-left:3pt solid #538f79;padding-left:3mm;margin:7mm 0 3mm;break-after:avoid}
+ #resumePrintable .resume-print-content{font:10.5pt/1.8 "Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+ #resumePrintable .resume-sheet-warning{font-size:9pt;color:#5a6467;margin-top:10mm;border-top:1pt solid #e1e5e5;padding-top:4mm}
+ #resumePrintable dl,#resumePrintable .resume-print-content{break-inside:auto}
+}
