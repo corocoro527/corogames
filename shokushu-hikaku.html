@@ -62,6 +62,16 @@ body{background:#f8fafb}.compare-page{width:min(1100px,calc(100% - 34px));margin
 .role-explore-method a{color:#22695d;text-decoration:underline}
 @media(max-width:760px){.role-explore{padding:17px 15px;margin:17px 0}.role-explore-fields,.role-candidates{grid-template-columns:1fr}.role-explore-fields{gap:14px}.role-candidate{padding:14px 15px}}
 
+.role-day-examples{margin:30px 0;padding:20px;border:1px solid #d5e7df;border-radius:12px;background:#f4faf6}
+.role-day-examples h2{font-size:18px;color:#255b50;margin:0 0 7px}
+.role-day-examples p{font-size:13px;line-height:1.85;color:#4b6564;margin:0 0 13px}
+.role-day-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.role-day-cards a{display:flex;flex-direction:column;gap:6px;justify-content:center;min-height:88px;padding:13px;background:#fff;border:1px solid #cfe2d8;border-radius:8px;color:#265d50;text-decoration:none}
+.role-day-cards a:hover{background:#eaf6ef}
+.role-day-cards a:focus-visible{outline:3px solid #3d977d;outline-offset:2px}
+.role-day-cards strong{font-size:14px;line-height:1.5}
+.role-day-cards span{font-size:12px;color:#526c69;line-height:1.65}
+@media(max-width:700px){.role-day-cards{grid-template-columns:1fr}.role-day-cards a{min-height:68px}.role-day-cards span{font-size:13px}.role-day-examples{padding:16px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"IT職種比較シート","url":"https://koropopgames.com/shokushu-hikaku.html","description":"仕事を選ぶ際の比較観点をまとめた独自の実用シート"}</script>
 
@@ -139,6 +149,15 @@ body{background:#f8fafb}.compare-page{width:min(1100px,calc(100% - 34px));margin
 <div class="memo-preview"><h3>職種別の質問</h3><ul id="questionList" aria-live="polite"></ul></div>
 <div class="memo-actions"><button type="button" id="copyQuestions">比較結果と質問をコピー ↗</button><span id="copyStatus" role="status" aria-live="polite"></span></div>
 <p class="method-note">これは仕事探しの判断材料を整理する補助ツールです。職業紹介・適職の確定診断ではありません。</p></section>
+<section class="role-day-examples" aria-labelledby="role-day-examples-heading">
+<h2 id="role-day-examples-heading">比べた職種の「実際の1日」を見てみる</h2>
+<p>仕事内容の比較だけでは迷うなら、1日の流れを見て、働く自分をイメージしてみよう。時刻は実在の勤務統計ではなく架空の例です。</p>
+<nav class="role-day-cards" aria-label="職種別の1日と仕事の入り口">
+<a href="it-helpdesk-ichinichi.html"><strong>ヘルプデスクの1日</strong><span>社員の相談・PC設定・記録まで</span></a>
+<a href="shanai-se-ichinichi.html"><strong>社内SEの1日</strong><span>サポート型と改善型を比較</span></a>
+<a href="pc-kitting-mikeiken.html"><strong>PCキッティングの工程</strong><span>未経験求人の担当範囲を確認</span></a>
+</nav>
+</section>
 <div class="below">
 <section><h2>応募前に押さえておきたいこと</h2><p>興味のある仕事が決まったら、仕事内容の具体例、夜勤・転勤・配属先、給与条件、研修内容を求人票で比べよう。</p><p><a href="kyujin-check.html">応募前の確認リストを見る ↗</a></p></section>
 <section><h2>公式情報でも仕事を調べる</h2><p>国の職業情報提供サイト「job tag」では、職業の仕事内容・求められる技能・関連する統計などを調べられます。職種ごとのデータと個別求人の条件は同じではありません。</p><p><a href="https://shigoto.mhlw.go.jp/" target="_blank" rel="noopener noreferrer">厚生労働省 job tag ↗</a></p></section>
