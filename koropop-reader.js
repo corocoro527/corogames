@@ -372,7 +372,7 @@ ready(() => {
 
   if(
     !document.querySelector(
-      ".koropop-breadcrumb"
+      ".koropop-breadcrumb, .kp-reading-breadcrumb, .deep-crumb, .crumb, nav[aria-label='パンくず'], nav[aria-label='現在のページ']"
     )
   ){
 
