@@ -159,7 +159,7 @@
 .career-next-main:hover{background:#165748}
 .career-next-secondary{background:white;border:1px solid #b7d5c9;color:#265f51!important}
 .career-next-secondary:hover{background:#edf5ef}
-.career-next-note{font-size:11px;line-height:1.8;color:#688079;margin:13px 0 0}
+.career-next-note{font-size:12px;line-height:1.8;color:#526e66;margin:13px 0 0}
 @media(max-width:780px){.career-next{margin:16px 0 37px;padding:20px 18px}.career-next-result{flex-direction:column;align-items:stretch;gap:13px}.career-next-actions{flex-basis:auto;flex-direction:row}.career-next-actions a{flex:1}}
 @media(max-width:590px){.career-next{padding:19px 15px}.career-next-controls{grid-template-columns:1fr;gap:13px;margin:16px 0}.career-next-controls label{font-size:14px}.career-next-controls select{min-height:49px;font-size:15px}.career-next-result{padding:15px 13px}.career-next-actions{flex-direction:column;gap:8px}.career-next-actions a{font-size:14px}.career-next-header p{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.career-next{scroll-behavior:auto}}
