@@ -71,3 +71,15 @@ body{margin:0;background:#f7faf9;color:var(--deep-ink);font-family:-apple-system
 .deep-checks label:has(input:checked){background:#e4f2e9;border-color:#77ad98}
 .deep-checks input:focus-visible{outline:3px solid #4fa483;outline-offset:3px}
 @media(max-width:700px){.deep-checks{grid-template-columns:1fr}.deep-checks label{font-size:14px;min-height:54px}}
+
+/* Original IT interview question cards, 20 prompts, reading and touch-accessible. */
+.interview-questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0 27px}
+.interview-question{background:#fff;border:1px solid #d7e5df;border-radius:10px;padding:17px 19px;min-width:0;scroll-margin-top:24px}
+.interview-question h3{margin:0 0 11px!important;font-size:16px!important;line-height:1.65!important;letter-spacing:-.01em}
+.interview-question h3 span{display:inline-block;background:#e7f2ec;color:#236c5b;padding:2px 7px;border-radius:5px;font-size:11px;margin-right:7px;vertical-align:middle}
+.interview-question p{font-size:13px!important;line-height:1.88!important;color:#425d61!important;margin:7px 0!important}
+.interview-question .caution{color:#7f5552!important}
+.interview-question .practice-link{display:inline-flex;min-height:42px;align-items:center;font-size:12px;font-weight:760;margin-top:6px;padding:8px 10px;background:#edf7f1;border-radius:6px}
+.interview-question .practice-link:focus-visible{outline:3px solid #52a887;outline-offset:2px}
+#mockInterviewTool textarea{min-height:96px}
+@media(max-width:700px){.interview-questions{grid-template-columns:1fr;gap:10px}.interview-question{padding:15px 15px}.interview-question h3{font-size:16px!important}.interview-question p{font-size:14px!important}}
