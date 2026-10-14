@@ -515,6 +515,7 @@ jobs:
           node scripts/test-career-reading-system.cjs
           node scripts/test-career-landmarks.cjs
           node scripts/audit-career-public-pages.cjs
+          node scripts/test-career-indexability.cjs
           node scripts/test-career-related-catalog.cjs
           # Stage-use analytics must never include search keywords or free-text job notes.
           python3 - <<'PY'
