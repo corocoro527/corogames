@@ -11,6 +11,7 @@
   const status = root.querySelector('#workroleStatus');
   const choices = [...root.querySelectorAll('input[data-workrole]')];
   if (!build || !copy || !result || !output || !status || choices.length !== 6) return;
+  root.classList.add('is-ready');
 
   const duties = {
     support: {
