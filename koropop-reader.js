@@ -96,6 +96,10 @@ ready(() => {
     margin:12px 0 4px;
   }
 
+  .koropop-share-btn{cursor:pointer;background:#edf6f2!important;color:#255f54!important;border-color:#bad9ce!important}
+  .koropop-share-btn:hover{background:#dcece5!important}
+  .koropop-share-btn:focus-visible{outline:2px solid #368371;outline-offset:2px}
+
   .koropop-meta-pill{
     display:inline-flex;
     align-items:center;
@@ -576,6 +580,39 @@ ready(() => {
     }
 
     meta.innerHTML = html;
+
+    const shareButton = document.createElement("button");
+    shareButton.type = "button";
+    shareButton.className = "koropop-meta-pill koropop-share-btn";
+    shareButton.textContent = "共有・リンクコピー";
+    shareButton.setAttribute("aria-label", "この記事のURLを共有またはコピー");
+    shareButton.addEventListener("click", async () => {
+      const url = location.href.split("#")[0];
+      try {
+        if(navigator.share){
+          await navigator.share({title:cleanTitle, url});
+          return;
+        }
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(url);
+        }else{
+          const input = document.createElement("textarea");
+          input.value = url;
+          input.style.position = "fixed";
+          input.style.left = "-9999px";
+          document.body.appendChild(input);
+          input.select();
+          const copied = document.execCommand("copy");
+          input.remove();
+          if(!copied) throw new Error("copy unavailable");
+        }
+        shareButton.textContent = "URLをコピーしました";
+      }catch(error){
+        if(error && error.name === "AbortError") return;
+        shareButton.textContent = "コピーできませんでした";
+      }
+    });
+    meta.appendChild(shareButton);
 
     h1.insertAdjacentElement(
       "afterend",
