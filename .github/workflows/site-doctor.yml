@@ -529,7 +529,7 @@ jobs:
           css = Path("career-extras.css").read_text(encoding="utf-8")
           if "career_step_" not in js or "step_destination:link.getAttribute('href')" not in js:
               raise SystemExit("転職準備の5ステップ計測が不足")
-          if "career-search.js?v=20261014journey5" not in home:
+          if 'src="career-search.js?v=' not in home:
               raise SystemExit("GA4導線計測のスクリプトが読み込まれていません")
           if "検索窓の入力文字や職務経歴書" not in privacy:
               raise SystemExit("アクセス解析と入力内容の取り扱いの説明が不足")
