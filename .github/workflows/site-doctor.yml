@@ -516,6 +516,7 @@ jobs:
           node scripts/test-career-landmarks.cjs
           node scripts/audit-career-public-pages.cjs
           node scripts/test-career-indexability.cjs
+          node scripts/test-career-discovery-paths.cjs
           node scripts/test-career-indexed-hubs.cjs
           node scripts/test-career-related-catalog.cjs
           # Stage-use analytics must never include search keywords or free-text job notes.
