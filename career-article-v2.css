@@ -92,3 +92,13 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
 .kp-seven-day li em{display:block;font-size:12px;font-style:normal;font-weight:740;color:#285d54;margin-top:8px}
 .kp-seven-day li a{color:#216a5e!important;text-decoration:underline!important;text-underline-offset:3px}
 @media(max-width:700px){.kp-seven-day{grid-template-columns:1fr;gap:9px}.kp-seven-day li{padding:14px 15px!important}.kp-seven-day li p{font-size:14px!important}.kp-seven-day li strong{font-size:15px}}
+
+/* Consistent high-priority guided link, shared by older long-form article pages. */
+.kp-visual-bridge{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 21px;margin:8px 0 27px;background:#eaf5ef;border:1px solid #c8e0d5;border-radius:10px}
+.kp-visual-bridge div{min-width:0}
+.kp-visual-bridge strong{display:block;font-size:16px;line-height:1.55;color:#285c4e}
+.kp-visual-bridge p{font-size:13px;line-height:1.8;margin:4px 0 0;color:#526c65!important}
+.kp-visual-bridge>a{display:inline-flex;min-height:46px;align-items:center;justify-content:center;flex:none;padding:10px 14px;border-radius:7px;background:#246c58;color:#fff!important;text-decoration:none;font-size:13px;line-height:1.6;font-weight:800}
+.kp-visual-bridge>a:hover{background:#16513f}
+.kp-visual-bridge>a:focus-visible{outline:3px solid #79bda2;outline-offset:3px}
+@media(max-width:720px){.kp-visual-bridge{display:block;padding:16px;margin:10px 0 22px}.kp-visual-bridge>a{margin-top:13px;width:100%;font-size:14px}.kp-visual-bridge p{font-size:14px}}
