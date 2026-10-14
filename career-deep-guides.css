@@ -156,3 +156,6 @@ body{margin:0;background:#f7faf9;color:var(--deep-ink);font-family:-apple-system
 .workrole-status{margin:10px 0 0}
 @media(max-width:670px){.workrole-worksheet{padding:18px 14px;margin:28px 0}.workrole-options{grid-template-columns:1fr}.workrole-options label{font-size:14px;min-height:51px}.workrole-controls{display:grid;grid-template-columns:1fr 1fr}.workrole-controls button{padding:10px 9px;font-size:13px}.workrole-result{padding:12px}.workrole-result textarea{font-size:14px}}
 @media(max-width:360px){.workrole-controls{grid-template-columns:1fr}}
+
+/* Show the interactive questionnaire only after its script has initialized. */
+.workrole-worksheet:not(.is-ready) .workrole-fieldset,.workrole-worksheet:not(.is-ready) .workrole-controls,.workrole-worksheet:not(.is-ready) .workrole-status{display:none!important}
