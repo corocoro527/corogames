@@ -511,6 +511,7 @@ jobs:
           node scripts/test-career-search.cjs
           node --check career-next-action.js
           node scripts/test-career-next-action.cjs
+          node scripts/test-career-workday-visual.cjs
           # Stage-use analytics must never include search keywords or free-text job notes.
           python3 - <<'PY'
           from pathlib import Path
