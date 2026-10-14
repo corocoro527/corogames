@@ -49,6 +49,14 @@
 - 読書補助のパンくず重複防止：JS修正＋主要5記事の読み込み版更新。
 - 自動監査のソース作成・CIへの登録は実施。**新しい全ページ監査がCI上で成功したとはまだ主張できない。**
 
+## 検索状況の訂正と緊急対応（2026-10-14）
+
+- **Google Search Consoleは2026年9月26日からの検索インプレッションを通知済み。** 少なくとも一部のページはGoogle検索に表示されていた。Web検索サービスがURLを返さなかったことを理由に「検索にまったく出ていない」とは結論しない。
+- Search Console本体は以前に所有権確認済み。未接続なのは**GSC Wizardアプリ側**であり、プロパティが存在しないわけではない。
+- Search Console通知では404、リダイレクト、canonicalの重複による未登録理由が報告され、10月12日には1ページの適切なcanonical代替ページに対する修正検証が始まっている。**個別のURLは通知だけでは確定できない**。不明なURLを勝手にリダイレクト・canonical変更しない。
+- GitHubへ `.github/workflows/career-live-publish-gate.yml` を作成。GitHub ActionsランナーからGitHub Pages API、DNS、公開HTTP、HTTPS、sitemap差分、全URLの配信を確認し、GitHub Actionsのステップサマリーにエラー原因を表示する。初回のActions実行結果はこの時点で取得できていない。
+- 正しい詳細と今後の検査順は [検索結果照会表](career-search-presence-20261014.md) を参照。Search Consoleの登録ページ数・検索流入・実URL別のステータスは、APIかコンソールの実データで確認する必要がある。
+
 ## 5周目：45ページの検索向け設定と個別検索チェック
 
 - サイトマップに **44記事（その他ページを含むHTML）＋トップページ＝45 URL**を確認。45ページすべてについてGitHub上のHTMLを再取得し、title、description、viewport、canonical、noindexを点検。今回の静的検査では欠落・不一致・意図しないnoindexを発見しなかった。
