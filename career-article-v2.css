@@ -81,3 +81,14 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
  .kp-next-grid a{min-height:60px}
  .layout table,.layout .table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 }
+
+
+/* Seven-day original beginner IT career worksheet, visually readable without scripts. */
+.kp-seven-day{list-style:none!important;margin:19px 0 20px!important;padding:0!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.kp-seven-day li{margin:0!important;padding:16px 17px!important;background:#fff;border:1px solid #dce7e3;border-radius:9px;min-width:0}
+.kp-seven-day li strong{display:block;line-height:1.5!important;font-size:15px;color:#234d48}
+.kp-seven-day li strong span{display:inline-block;font-size:10px;line-height:1.2;letter-spacing:.08em;color:#2c7567;border:1px solid #bbd9ce;border-radius:4px;padding:4px 6px;margin-right:7px;vertical-align:middle}
+.kp-seven-day li p{font-size:13px!important;line-height:1.8!important;color:#4b646a!important;margin:10px 0 0!important}
+.kp-seven-day li em{display:block;font-size:12px;font-style:normal;font-weight:740;color:#285d54;margin-top:8px}
+.kp-seven-day li a{color:#216a5e!important;text-decoration:underline!important;text-underline-offset:3px}
+@media(max-width:700px){.kp-seven-day{grid-template-columns:1fr;gap:9px}.kp-seven-day li{padding:14px 15px!important}.kp-seven-day li p{font-size:14px!important}.kp-seven-day li strong{font-size:15px}}
