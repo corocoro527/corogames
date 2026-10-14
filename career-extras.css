@@ -163,3 +163,18 @@
 @media(max-width:780px){.career-next{margin:16px 0 37px;padding:20px 18px}.career-next-result{flex-direction:column;align-items:stretch;gap:13px}.career-next-actions{flex-basis:auto;flex-direction:row}.career-next-actions a{flex:1}}
 @media(max-width:590px){.career-next{padding:19px 15px}.career-next-controls{grid-template-columns:1fr;gap:13px;margin:16px 0}.career-next-controls label{font-size:14px}.career-next-controls select{min-height:49px;font-size:15px}.career-next-result{padding:15px 13px}.career-next-actions{flex-direction:column;gap:8px}.career-next-actions a{font-size:14px}.career-next-header p{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.career-next{scroll-behavior:auto}}
+
+/* Mobile legibility audit for the main career homepage, 2026-10-14.
+   One-card-per-row at phone widths avoids narrow 2-column role descriptions.
+   Avoid 9px topic labels and micro-copy that are hard to scan on a phone. */
+@media(max-width:560px){
+ .career-role-grid{grid-template-columns:1fr}
+ .career-role-card{min-height:74px;align-items:center;padding:13px 15px}
+ .career-role-card h3{font-size:16px}
+ .career-role-card p{font-size:13px;line-height:1.55}
+ .career-role-index{color:#356e64;font-size:12px}
+ .article-link .card-kicker{font-size:11px}
+ .article-link p{font-size:13px}
+ .section-count{font-size:11px}
+ .featured-content p{font-size:12px}
+}
