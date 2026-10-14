@@ -49,6 +49,21 @@
 - 読書補助のパンくず重複防止：JS修正＋主要5記事の読み込み版更新。
 - 自動監査のソース作成・CIへの登録は実施。**新しい全ページ監査がCI上で成功したとはまだ主張できない。**
 
+## 5周目：45ページの検索向け設定と個別検索チェック
+
+- サイトマップに **44記事（その他ページを含むHTML）＋トップページ＝45 URL**を確認。45ページすべてについてGitHub上のHTMLを再取得し、title、description、viewport、canonical、noindexを点検。今回の静的検査では欠落・不一致・意図しないnoindexを発見しなかった。
+- `CNAME` が `koropopgames.com`、`robots.txt` に `Allow: /` と `https://koropopgames.com/sitemap.xml` があることを確認。これらは正しい方向の設定だが、**公開HTTP 200やGoogleによるクロールの証明ではない**。
+- 各HTMLの個別 `site:koropopgames.com/<filename>` 検索照会と記事名検索を実施。利用可能な検索ツールから当サイトの結果を取得できなかった。**site検索での非表示 ≠ Google未登録**。Google Search Consoleは連携済みプロパティ0件で、登録状況・検索順位・表示回数は検証不可。
+- [44URL個別検索照会表・Search Console手順](career-search-presence-20261014.md) に調査の制限・全URL・接続後に行う検査手順を記録。
+- `scripts/test-career-indexability.cjs` を追加、Site Doctorへ組み込み、HTMLソースのcanonical / robots / meta / JSON-LD / sitemap / CNAME の取り違えや誤設定を検知する設計。構文確認済み、**リモートGitHub Actionsの成功結果はまだ未確認**。
+
+## 6周目：画像・CSS・JavaScript・構造化データ
+
+- 全45ページからHTML上の主要ローカル画像/CSS/JSの参照を抽出し、GitHubに実在するか照合。**壊れた画像1件**（`20s-mikeiken-tenshoku.html` → `images/20s-mikeiken-tenshoku.webp`）を検出し、既存の `assets/career-thumb-work.svg` に差し替えた。
+- 全45ページの `application/ld+json` スクリプトを構文解析し、**1件**（`shigoto-yametai-tsugi-kimattenai.html`）で不正なJSONを検出。`@graph` を正しく閉じ、`Article` と `FAQPage` の2ノードを再解析できることを確認した。
+- サイトマップのHTMLは44件、ホーム追加で45件。関連記事カード35件は関連JSON登録数35件と一致したまま。
+- 本番ブラウザでのスクリーンショット・画像のHTTP 200・JavaScriptの実操作・Google URL検査は引き続き未完了。
+
 ## 次の優先順位（新記事を増やす前に）
 
 **P0：本番表示の実証。** Site Doctorの実行結果を確認し、ライブサイトで320/390/430pxのスクリーンショットを撮って横はみ出し、文字の最小サイズ、メニュー操作、フォームの利用、パンくず表示を確認する。公開DNSアクセス・外部ブラウザが使える環境が必要。
