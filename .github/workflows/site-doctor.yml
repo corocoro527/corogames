@@ -522,6 +522,24 @@ jobs:
           )
           PY
           node --check /tmp/koropop-roadmap-check.js
+          # Guard the standalone career comparison and preference navigator.
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("shokushu-hikaku.html").read_text(encoding="utf-8")
+          required = (
+              'id="role-explore"', 'id="roleAction"', 'id="roleSchedule"',
+              'id="roleLearning"', 'id="showRoleCandidates"',
+              'id="roleCandidates"', 'preferenceScores',
+              "opts.querySelectorAll", 'candidateReasons'
+          )
+          if not all(token in page for token in required):
+              raise SystemExit("IT職種ナビの入力・表示・比較表連動が不足")
+          code = page.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/koropop-role-navigator-check.js").write_text(
+              code, encoding="utf-8"
+          )
+          PY
+          node --check /tmp/koropop-role-navigator-check.js
 
       - name: Check live site
         if: >
