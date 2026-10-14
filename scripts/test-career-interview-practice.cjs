@@ -15,7 +15,8 @@ const e=Object.fromEntries(names.map(k=>[k,el()]));
 e.copyInterviewMemo.disabled=true; // Initial disabled HTML attribute.
 const links=Array.from({length:20},(_,i)=>{const o=el();o.dataset.question=String(i+1);return o});
 let allow=true,confirmCalls=0,copied='';
-const window={isSecureContext:true,confirm(){confirmCalls++;return allow}};
+const events=[];
+const window={isSecureContext:true,confirm(){confirmCalls++;return allow},gtag(...args){events.push(args)}};
 const navigator={clipboard:{async writeText(s){copied=s}}};
 const document={
  getElementById(id){assert.ok(e[id],'Missing '+id);return e[id]},
@@ -75,6 +76,13 @@ async function run(){
  assert.equal(e.interviewQuestion.value,'');
  assert.equal(e.copyInterviewMemo.disabled,true);
  assert.match(e.interviewLength.textContent,/0文字/);
- console.log('Interview practice: 20 cards, input freshness, cancel/accept question change, copy, clear, length, privacy PASS');
+ assert.equal(events.filter(x=>x[1]==='career_interview_memo_created').length,2);
+ assert.equal(events.filter(x=>x[1]==='career_interview_memo_copied').length,2);
+ for(const event of events){
+  assert.equal(event[0],'event');
+  assert.equal(event[2].tool_name,'interview_practice');
+  assert.deepEqual(Object.keys(event[2]).sort(),['event_category','tool_name']);
+ }
+ console.log('Interview practice: 20 cards, fresh answers, switch confirmation, copy, clear, length, privacy-safe GA4 events PASS');
 }
 run().catch(err=>{console.error(err);process.exitCode=1});
