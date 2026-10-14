@@ -26,6 +26,8 @@ function assetUrl(raw,current){
 for(const file of publicFiles){
  if(!exists(file)){errors.push(file+': sitemap references a missing HTML file');continue}
  const html=read(file);
+ // Inspect document markup only; JavaScript templates may contain HTML-looking text.
+ const markup=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<!--[\s\S]*?-->/g,'');
  if(!/<html\b[^>]*lang=["']ja["']/i.test(html))warnings.push(file+': missing html lang=ja');
  if(!/<meta\b[^>]*name=["']viewport["']/i.test(html))warnings.push(file+': missing mobile viewport');
  if((html.match(/<h1\b/gi)||[]).length!==1)warnings.push(file+': expected exactly one H1');
@@ -36,22 +38,25 @@ for(const file of publicFiles){
  const canon=html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["']/i)?.[1];
  if(canon && canon!==('https://koropopgames.com/'+(file==='index.html'?'':file)))warnings.push(file+': unexpected canonical '+canon);
  if(!canon)warnings.push(file+': canonical missing');
- const idMatches=[...html.matchAll(/\bid=["']([^"']+)["']/gi)].map(m=>m[1]);
+ const idMatches=[...markup.matchAll(/\bid=["']([^"']+)["']/gi)].map(m=>m[1]);
  const ids=new Set(idMatches);
  const duplicate=[...new Set(idMatches.filter((v,i)=>idMatches.indexOf(v)!==i))];
  if(duplicate.length)errors.push(file+': duplicate IDs '+duplicate.join(', '));
- for(const anchor of html.matchAll(/<a\b[^>]*>/gi)){
+ for(const anchor of markup.matchAll(/<a\b[^>]*>/gi)){
   const tag=anchor[0];
   const href=tag.match(/\bhref=["']([^"']+)["']/i)?.[1];
   if(!href)continue;
   const targ=tag.match(/\btarget=["']_blank["']/i);
   if(targ&&!/\brel=["'][^"']*\bnoopener\b/i.test(tag))warnings.push(file+': new-tab link should set rel=noopener');
   let raw=href;
-  if(raw.startsWith('https://koropopgames.com/'))raw=raw.slice('https://koropopgames.com/'.length);
-  else if(!isLocal(raw))continue;
+  let homepageAbsolute=false;
+  if(raw.startsWith('https://koropopgames.com/')){
+   raw=raw.slice('https://koropopgames.com/'.length);
+   homepageAbsolute=!raw||raw.startsWith('#');
+  }else if(!isLocal(raw))continue;
   if(raw.startsWith('//'))continue;
   const [urlPath,fragment]=raw.split('#');
-  const target=urlPath?assetUrl(urlPath,file):file;
+  const target=urlPath?assetUrl(urlPath,file):(homepageAbsolute?'index.html':file);
   if(target===null)continue;
   const dest=target==='index.html'||!target?'index.html':target;
   if(!/\.html$/i.test(dest))continue;
