@@ -119,3 +119,11 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
 .kp-practical-grid span{font-size:13px;line-height:1.65;color:#526b6a}
 .kp-practical-paths .kp-practical-note{font-size:12px;line-height:1.85;color:#536d6c}
 @media(max-width:640px){.kp-practical-grid{grid-template-columns:1fr;gap:9px}.kp-practical-grid a{min-height:76px;padding:13px 15px}.kp-practical-grid span{font-size:14px}.kp-practical-paths .kp-practical-note{font-size:13px}}
+
+/* Accessible text contrast in light editorial boxes, including pages using a dark base theme. */
+.kp-decision-practice p,.kp-decision-practice li{color:#284a43!important}
+.kp-decision-practice a{color:#205e51!important;text-decoration:underline;text-underline-offset:3px}
+.kp-official-check,.kp-official-check p,.kp-official-check li{color:#264941!important}
+.kp-official-check h2,.kp-official-check h3{color:#214c42!important}
+.kp-official-check a{color:#145e51!important;text-decoration:underline;text-underline-offset:3px}
+.kp-official-check a:focus-visible{outline:3px solid #307e68;outline-offset:3px}
