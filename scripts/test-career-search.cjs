@@ -13,7 +13,8 @@ function classList(){
  },contains(v){return items.has(v)}};
 }
 function control(value=''){
- return {value,textContent:'',hidden:false,dataset:{},listeners:{},
+ return {value,textContent:'',hidden:false,dataset:{},listeners:{},children:[],
+ replaceChildren(...items){this.children=items;},
  classList:classList(),addEventListener(event,callback){this.listeners[event]=callback},
  setAttribute(name,val){this[name]=val},focus(){},scrollIntoView(){}};
 }
@@ -23,7 +24,7 @@ const cards=matchCards.map(([_,href,body])=>{
   getAttribute(k){return k==='href'?href:null},
   querySelector(k){const h=body.match(/<h3[^>]*>([\s\S]*?)<\/h3>/);return k==='h3'&&h?{textContent:h[1].replace(/<[^>]*>/g,'')}:null}};
 });
-const fields=Object.fromEntries(['articleSearch','clearSearch','searchStatus','noResults','moreRoles'].map(id=>[id,control()]));
+const fields=Object.fromEntries(['articleSearch','clearSearch','searchStatus','noResults','moreRoles','searchMatches','searchMatchesLinks','searchMatchesCount'].map(id=>[id,control()]));
 const topicWords=[...home.matchAll(/data-search-term="([^"]+)"/g)].map(m=>m[1]);
 const quick=topicWords.map(w=>{const x=control();x.dataset.searchTerm=w;return x});
 const sections=[{hidden:false,querySelectorAll(){return cards.filter(x=>!x.hidden)}}];
@@ -31,6 +32,7 @@ const roles={...control(),querySelectorAll(){return cards.slice(0,8)}};
 const stages=[...home.matchAll(/<li><a href="([^"]+)"><span class="career-path-num">/g)].map((m)=>{const x=control();x.getAttribute=k=>k==='href'?m[1]:null;return x});
 let events=[];
 const document={
+ createElement(tag){const e=control();e.tagName=tag.toUpperCase();e.href='';return e;},
  getElementById(id){return id==='roles'?roles:fields[id]||null},
  querySelectorAll(q){
   if(q==='.topic-section .article-link')return cards;
@@ -56,15 +58,22 @@ has('パソコン初期設定','pc-kitting-mikeiken.html');
 has('客先常駐','ses-haken-jisha-ukeoi-chigai.html');
 has('逆質問','mikeiken-it-mensetsu-20.html');
 has('社内SE 未経験','mikeiken-shanai-se.html');
+assert.equal(fields.searchMatches.hidden,false,'Search suggestions must be visible immediately');
+assert.ok(fields.searchMatchesLinks.children.length>0 && fields.searchMatchesLinks.children.length<=6,'Only a small set of immediately actionable suggestions');
+assert.ok(fields.searchMatchesLinks.children.some(link=>link.href==='mikeiken-shanai-se.html'),'Matching articles should be directly clickable');
+assert.ok(fields.searchMatchesLinks.children.every(link=>link.tagName==='A'),'Use real accessible links, not injected HTML');
 const fallback=search('社内SE 惑星研究');
 assert.ok(fallback.length>0&&fallback.length<=8,'Partial results are controlled');
 assert.match(fields.searchStatus.textContent,/すべての言葉に一致する記事はありません/);
 const zero=search('銀河ガラス浮遊船');
 assert.equal(zero.length,0);
 assert.equal(fields.noResults.hidden,false);
+assert.equal(fields.searchMatches.hidden,true,'No suggestions for a search with zero results');
+assert.equal(fields.searchMatchesLinks.children.length,0);
 const all=search('');
 assert.equal(all.length,cards.length,'Clearing must restore all articles');
 assert.equal(fields.noResults.hidden,true);
+assert.equal(fields.searchMatches.hidden,true,'Do not clutter browsing with results when search is empty');
 assert.ok(quick.some(x=>x.dataset.searchTerm==='情シス'));
 const q=quick.find(x=>x.dataset.searchTerm==='情シス');
 q.listeners.click();
