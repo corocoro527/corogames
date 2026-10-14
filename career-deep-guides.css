@@ -130,3 +130,29 @@ body{margin:0;background:#f7faf9;color:var(--deep-ink);font-family:-apple-system
 .day-diff-list h3{margin:0 0 5px;font-size:16px}.day-diff-list p{font-size:13px;line-height:1.85;margin:0}
 @media(max-width:760px){.day-models,.day-diff-list{grid-template-columns:1fr}.day-model header{padding:18px}.day-timeline{padding:15px!important}.day-timeline li{grid-template-columns:50px minmax(0,1fr);gap:9px}.day-timeline li::before{left:57px}.day-timeline li>div{padding:12px}.day-timeline li p{font-size:14px}.day-diff-list p{font-size:14px}}
 @media(max-width:375px){.day-timeline{padding:12px 10px!important}.day-timeline li{grid-template-columns:44px minmax(0,1fr);gap:7px}.day-timeline li::before{left:50px}.day-model h3{font-size:18px}.day-model header{padding:15px}}
+
+
+/* 2026-10-14: Turn a hypothetical workday into concrete, reader-owned interview questions. */
+.workrole-worksheet{margin:38px 0;padding:24px;border:1px solid #cbded4;border-radius:13px;background:#f5faf7}
+.workrole-worksheet>h2{margin-top:0}
+.workrole-worksheet>p{font-size:14px;line-height:1.9}
+.workrole-fieldset{min-width:0;margin:18px 0;padding:0;border:0}
+.workrole-fieldset legend{font-size:15px;font-weight:800;color:#224d43;margin-bottom:12px}
+.workrole-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.workrole-options label{display:flex;align-items:flex-start;gap:10px;padding:13px 14px;min-height:56px;border:1px solid #c9ded4;border-radius:9px;background:#fff;color:#294940;font-size:13px;line-height:1.7;cursor:pointer}
+.workrole-options label:has(input:checked){background:#e8f5ed;border-color:#7aaf98}
+.workrole-options input{flex:0 0 20px;width:20px;height:20px;min-height:20px;margin:2px 0 0;accent-color:#256b56}
+.workrole-options input:focus-visible,.workrole-controls button:focus-visible,.workrole-result textarea:focus-visible{outline:3px solid #448d74;outline-offset:3px}
+.workrole-controls{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.workrole-controls button{min-height:46px;padding:10px 16px;border-radius:8px;border:1px solid #2d765f;background:#226c57;color:#fff;font:inherit;font-weight:800;font-size:13px;cursor:pointer}
+.workrole-controls #copyWorkroleMemo{background:#fff;color:#246755}
+.workrole-controls button:disabled{opacity:.5;cursor:not-allowed}
+.workrole-result{padding:16px 18px;border:1px solid #cbded4;background:#fff;border-radius:9px}
+.workrole-result[hidden]{display:none!important}
+.workrole-result>label{display:block;font-size:14px;font-weight:800;margin-bottom:9px;color:#204a3e}
+.workrole-result textarea{box-sizing:border-box;display:block;width:100%;min-height:220px;resize:vertical;padding:13px;white-space:pre-wrap;border:1px solid #b8d4c6;border-radius:6px;background:#fbfefc;color:#253e35;font:inherit;font-size:13px;line-height:1.85}
+.workrole-result p,.workrole-status{font-size:12px;line-height:1.8;color:#4f6860}
+.workrole-result p{margin:10px 0 0}
+.workrole-status{margin:10px 0 0}
+@media(max-width:670px){.workrole-worksheet{padding:18px 14px;margin:28px 0}.workrole-options{grid-template-columns:1fr}.workrole-options label{font-size:14px;min-height:51px}.workrole-controls{display:grid;grid-template-columns:1fr 1fr}.workrole-controls button{padding:10px 9px;font-size:13px}.workrole-result{padding:12px}.workrole-result textarea{font-size:14px}}
+@media(max-width:360px){.workrole-controls{grid-template-columns:1fr}}
