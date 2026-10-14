@@ -32,6 +32,14 @@ Work toward an internal quality score of **at least 80/100 in all five areas**. 
 - Improved `shokushu-hikaku.html` horizontal comparison table by fixing its left row headings while scrolling on a phone. GitHub change confirmed, mobile visual layout not yet device-tested.
 - Highest quality gap remains independently verified, specific information and clear evidence. Do not claim SEO traffic, approval or all internal 80-point targets based only on adding features.
 
+## 2026-10-14 — PC kitting guide and existing article update
+- Published `pc-kitting-mikeiken.html` (PCキッティングとは？未経験でもできる？). Sources checked against MHLW job tag's kitting occupational details and Microsoft Learn's Windows Autopilot overview. Focused on a seven-stage workflow, specific job interview questions, manual vs device deployment, and distinctions from helpdesk; avoids claiming actual experience, hiring results, or salary figures.
+- Added a seven-check self-learning worksheet (copy/reset, no persistence, no analytics events for entered content) and mobile-friendly touch checkboxes in `career-deep-guides.css`.
+- Linked from homepage IT roles and `mikeiken-it-helpdesk.html` / `it-helpdesk-ichinichi.html`. Fixed classification of future kitting guides to the IT roles section in `.github/workflows/build-career-hub.yml`.
+- Automated sitemap contains the new article. Added Site Doctor validation for source links, article completeness, in-site links and JavaScript syntax. The workflow's success is not yet independently verified.
+- Public-URL fetch returned a retrieval error in the available web tool; **do not describe the new article as independently rendered/interaction-tested in production until verified**.
+- Next content: assess `未経験IT求人の「研修3か月」は信用できる？`, but first check if it overlaps the existing 15-point IT job guide. If it overlaps, deepen that guide before publishing a new page.
+
 ## Next work without awaiting editorial suggestions
 1. Test the new role navigator on phone (tap each select, candidate output, select sync, question copy, overflow/keyboard) and test JS-disabled article links. Fix errors.
 2. Review 8 high-intent articles' factual sourcing and substantiation: unclear statistics, title/content mismatch, unverified claims, duplicate prose, outdated citations. Make **specific** edits backed by official publications. Never manufacture testimonials, review data, hiring rates, or experience.
