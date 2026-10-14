@@ -59,6 +59,8 @@ function invalidate(message){
  report='';result.textContent='';wrap.hidden=true;copy.disabled=true;
  status.textContent=message;
 }
+// Only record a generic tool-success event, never the question or user's answer.
+function measure(eventName){if(typeof window.gtag==='function')window.gtag('event',eventName,{event_category:'career_tool',tool_name:'interview_practice'})}
 function updateQuestion(){
  const item=dataset.find(q=>String(q.id)===activeQuestion);
  hint.textContent=item?'準備のヒント：'+item.intent+'。実際に経験した材料から答えを組み立てましょう。':'質問を選ぶと、何を伝えるべきかのヒントが表示されます。';
@@ -98,6 +100,7 @@ byId('createInterviewMemo').addEventListener('click',()=>{
  lines.push('','※架空の実績、未取得の資格、確認できない数字を含まないか確認してください。','参考：https://koropopgames.com/mikeiken-it-mensetsu-20.html');
  report=lines.join('\n');result.textContent=report;wrap.hidden=false;copy.disabled=false;
  status.textContent='現在の入力からメモを作成しました。声に出して練習し、必要に応じて書き直してください。';
+ measure('career_interview_memo_created');
 });
 copy.addEventListener('click',async()=>{
  if(!report){status.textContent='先に最新の内容でメモを作成してください。';return}
@@ -109,6 +112,7 @@ copy.addEventListener('click',async()=>{
    const okay=document.execCommand('copy');area.remove();if(!okay)throw Error('copy denied');
   }
   status.textContent='現在の練習メモをコピーしました。';
+  measure('career_interview_memo_copied');
  }catch(_){status.textContent='コピーできませんでした。表示された文章を選択してコピーしてください。'}
 });
 byId('clearInterviewMemo').addEventListener('click',()=>{
