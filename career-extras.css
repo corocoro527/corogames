@@ -124,7 +124,7 @@
 /* Editorial reading path: real HTML links, visible without JavaScript. */
 .career-path{margin:17px 0 7px;padding:16px 17px 18px;border:1px solid #d9e6e3;border-radius:10px;background:#f8fbfa}
 .career-path-heading{font-size:13px;line-height:1.6;font-weight:850;color:#294c49;margin:0 0 11px}
-.career-path-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;list-style:none;margin:0;padding:0}
+.career-path-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:9px;list-style:none;margin:0;padding:0}
 .career-path-list a{display:flex;align-items:center;gap:10px;min-height:72px;padding:12px 13px;border:1px solid #d9e5e1;background:#fff;border-radius:8px;text-decoration:none;color:#223d42;transition:border-color .15s,background-color .15s}
 .career-path-list a:hover{border-color:#82b3a3;background:#f6fbf8}
 .career-path-list a:focus-visible{outline:3px solid #438b78;outline-offset:2px}
