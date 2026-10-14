@@ -1,4 +1,6 @@
 # KOROPOP CAREER — quality and competitor research roadmap
+
+**2026-10-14 17:09 JST 追記：** GSC Wizardに `sc-domain:koropopgames.com` をフル権限で接続済み。公式URL検査APIでトップ＋44HTMLの**45URL全件**を調査し、**登録済み18・Google未認識23・発見済み未登録4**と判明。`sitemap.xml` はGoogleに再送信・再取得され、**45URL・警告0・エラー0**を確認した。直近28日間のSearch Console全ドメイン実績は**11クリック・44表示・平均43.66位**。以前の「GSC Wizard未接続」は調査時点の記録であり**現在は解消済み**。最新の個別結果は [実測インデックス報告](career-search-presence-20261014.md) を参照。ここまでのGoogleデータは登録状況を示すもので、自然検索上位・収益化を保証しない。
 Updated: 2026-10-14. This is an internal project plan, **not** a Google or AdSense scoring system.
 
 ## Goals
