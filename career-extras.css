@@ -178,3 +178,7 @@
  .section-count{font-size:11px}
  .featured-content p{font-size:12px}
 }
+
+/* Make search alias guidance legible without crowding the search field. */
+.career-search-hint{margin:5px 0 0;font-size:12px;line-height:1.8;color:#526c68}
+@media(max-width:560px){.career-search-hint{font-size:13px;line-height:1.75}}
