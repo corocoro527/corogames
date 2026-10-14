@@ -35,6 +35,22 @@ for(const marker of ['.kp-practical-grid{','@media(max-width:640px){.kp-practica
  assert.ok(css.includes(marker),'Responsive/accessibility styles missing: '+marker);
 }
 assert.ok(unique.size===4,'Exactly 4 complementary unindexed targets expected');
+const jobHelpdesk=fs.readFileSync('mikeiken-it-helpdesk.html','utf8');
+for(const target of ['it-helpdesk-ichinichi.html','pc-kitting-mikeiken.html']){
+ assert.ok(jobHelpdesk.includes('href="'+target+'"'),'Helpdesk work examples missing: '+target);
+}
+for(const page of ['mikeiken-it-helpdesk.html','mikeiken-cloud-engineer.html']){
+ const doc=fs.readFileSync(page,'utf8');
+ const match=doc.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+ assert.ok(match,'Article structured data expected in '+page);
+ const metadata=JSON.parse(match[1]);
+ assert.equal(metadata['@type'],'Article','Article type');
+ assert.equal(metadata.mainEntityOfPage,'https://koropopgames.com/'+page,'Correct canonical schema');
+ assert.ok(metadata.author?.name && metadata.publisher?.name,'Editorial/publisher identity');
+ assert.ok(!metadata.datePublished,'Do not invent an unknown first-publication date');
+}
+console.log('Article JSON-LD is parseable on refreshed helpdesk and cloud guides');
+
 const sitemap=fs.readFileSync('sitemap.xml','utf8');
 for(const page of unique)assert.ok(sitemap.includes('https://koropopgames.com/'+page),'Missing sitemap page: '+page);
 console.log('Indexed-hub related paths PASS: '+routes.length+' editorial entrances linking to '+unique.size+' destination guides');
