@@ -540,6 +540,41 @@ jobs:
           )
           PY
           node --check /tmp/koropop-role-navigator-check.js
+          # Three original beginner IT career guides: source transparency, crawlable links, and JS syntax.
+          python3 - <<'PY'
+          from pathlib import Path
+          home = Path("index.html").read_text(encoding="utf-8")
+          sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
+          expected = {
+              "ses-haken-jisha-ukeoi-chigai.html": (
+                  'id="table"', 'id="check"',
+                  'https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000077386_00020.html'),
+              "it-mikeiken-shokumukeirekisho.html": (
+                  'id="buildResume"', 'id="copyResume"',
+                  'https://www.job-card.mhlw.go.jp/guidance'),
+              "it-helpdesk-ichinichi.html": (
+                  'id="schedule"', 'id="trouble"',
+                  'https://shigoto.mhlw.go.jp/User/Occupation/Detail/320'),
+          }
+          for name, needs in expected.items():
+              page = Path(name).read_text(encoding="utf-8")
+              if any(token not in page for token in needs):
+                  raise SystemExit(name + ": 必要な実用コンテンツ・根拠が不足")
+              if 'href="' + name + '"' not in home:
+                  raise SystemExit(name + ": トップページからの導線なし")
+              if 'https://koropopgames.com/' + name not in sitemap:
+                  raise SystemExit(name + ": サイトマップに未登録")
+              if 'class="deep-related"' not in page:
+                  raise SystemExit(name + ": 関連記事導線なし")
+          css = Path("career-deep-guides.css").read_text(encoding="utf-8")
+          if ".deep-wrap" not in css or ".deep-form" not in css:
+              raise SystemExit("新しいIT記事のスマホ用スタイルがありません")
+          page = Path("it-mikeiken-shokumukeirekisho.html").read_text(encoding="utf-8")
+          code = page.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/corogames-new-career-resume-check.js").write_text(
+              code, encoding="utf-8")
+          PY
+          node --check /tmp/corogames-new-career-resume-check.js
           # Keep explicit opt-in saving functional and validate its inline script syntax.
           python3 - <<'PY'
           from pathlib import Path
