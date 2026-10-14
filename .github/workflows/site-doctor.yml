@@ -431,6 +431,8 @@ jobs:
               "shokushu-hikaku.html",
               "mikeiken-it-study-roadmap.html",
               "mikeiken-it-kyujin-miwakekata.html",
+              "it-mikeiken-shokumukeirekisho.html",
+              "mikeiken-it-mensetsu-20.html",
           ]
           if path_targets != expected_path or any(not Path(url).exists() for url in path_targets):
               errors.append("職種比較→4週間学習→求人確認のHTMLリンク導線が壊れています")
@@ -643,6 +645,36 @@ jobs:
           Path("/tmp/koropop-it-interview-questions.js").write_text(code, encoding="utf-8")
           PY
           node --check /tmp/koropop-it-interview-questions.js
+          # Prevent regression in actionable helpdesk-to-internal-IT career bridge.
+          python3 - <<'PY'
+          from pathlib import Path
+          home = Path("index.html").read_text(encoding="utf-8")
+          sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
+          article = Path("helpdesk-kara-shanai-se.html").read_text(encoding="utf-8")
+          required = (
+              'rel="canonical"', 'id="difference"', 'id="types"',
+              'id="practice"', 'id="plan"', 'id="recruit"',
+              'id="buildShanaiPlan"', 'id="copyShanaiPlan"',
+              'id="resetShanaiPlan"', 'id="shanaiPlanText"',
+              'data-skill="support"', 'data-skill="coordinate"',
+              'https://shigoto.mhlw.go.jp/User/Occupation/Detail/320',
+              'https://shigoto.mhlw.go.jp/User/Occupation/Detail/319'
+          )
+          if any(item not in article for item in required):
+              raise SystemExit("社内ITキャリアアップ記事に必要な要素が欠落")
+          if article.count('data-skill=') != 6:
+              raise SystemExit("経験チェックの6項目が揃っていません")
+          if 'href="helpdesk-kara-shanai-se.html"' not in home:
+              raise SystemExit("社内SE記事がトップから辿れません")
+          if 'https://koropopgames.com/helpdesk-kara-shanai-se.html' not in sitemap:
+              raise SystemExit("社内SE記事がサイトマップにありません")
+          for name in ("mikeiken-it-helpdesk.html","mikeiken-shanai-se.html"):
+              if 'href="helpdesk-kara-shanai-se.html"' not in Path(name).read_text(encoding="utf-8"):
+                  raise SystemExit(name + ": キャリア記事への内部リンクがありません")
+          script = article.rsplit("<script>",1)[1].split("</script>",1)[0]
+          Path("/tmp/koropop-helpdesk-to-se.js").write_text(script,encoding="utf-8")
+          PY
+          node --check /tmp/koropop-helpdesk-to-se.js
           # Keep explicit opt-in saving functional and validate its inline script syntax.
           python3 - <<'PY'
           from pathlib import Path
