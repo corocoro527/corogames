@@ -423,6 +423,21 @@ jobs:
               home_html.find('class="featured-section"') < 0 or
               home_html.find('id="job-map"') > home_html.find('class="featured-section"')):
               errors.append("職種比較が最初のおすすめ記事より下に移動しています")
+          # Keep the main journey crawlable and helpful even if scripts fail.
+          path_targets = re.findall(
+              r'<li><a href="([^"]+)"><span class="career-path-num">', home_html
+          )
+          expected_path = [
+              "shokushu-hikaku.html",
+              "mikeiken-it-study-roadmap.html",
+              "mikeiken-it-kyujin-miwakekata.html",
+          ]
+          if path_targets != expected_path or any(not Path(url).exists() for url in path_targets):
+              errors.append("職種比較→4週間学習→求人確認のHTMLリンク導線が壊れています")
+          if 'class="search-fallback-links"' not in home_html:
+              warnings.append("検索0件からのおすすめ導線がありません")
+          if ".career-path-list" not in Path("career-extras.css").read_text(encoding="utf-8"):
+              errors.append("職種比較から次に読む導線のスタイルがありません")
           reader_code = Path("koropop-reader.js").read_text(encoding="utf-8")
           if "max-width: 760px" not in reader_code or "tocButton.hidden" not in reader_code:
               warnings.append("モバイル目次・固定ボタンの読みやすさ設定が不足")
