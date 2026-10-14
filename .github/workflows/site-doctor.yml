@@ -508,6 +508,8 @@ jobs:
           node --check koropop-reader.js
           node --check koropop-related.js
           node --check career-search.js
+          node --check career-next-action.js
+          node scripts/test-career-next-action.cjs
           # Stage-use analytics must never include search keywords or free-text job notes.
           python3 - <<'PY'
           from pathlib import Path
