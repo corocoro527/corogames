@@ -99,3 +99,34 @@ body{margin:0;background:#f7faf9;color:var(--deep-ink);font-family:-apple-system
 .interview-count{font-size:13px;line-height:1.8;margin:10px 0 0;color:#325e55;font-weight:700}
 .interview-switch-note{font-size:13px;margin:8px 0 17px}
 @media(max-width:600px){.interview-toolbar{display:grid;grid-template-columns:1fr 1fr}.interview-toolbar #createInterviewMemo{grid-column:1/-1}.interview-toolbar button{width:100%;font-size:14px}}
+
+/* Side-by-side, fully visible (no JS) timeline explaining two different kinds of internal IT day. */
+.day-compare-head{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0 18px}
+.day-compare-head a{display:inline-flex;min-height:44px;align-items:center;padding:8px 14px;border:1px solid #badacb;border-radius:7px;background:#fff;color:#225c51;text-decoration:none;font-size:13px;font-weight:800}
+.day-compare-head a:hover{background:#e9f5ef}
+.day-models{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:19px;margin:18px 0 26px;align-items:start}
+.day-model{background:#fff;border:1px solid #cfdfd7;border-radius:13px;overflow:hidden;min-width:0;scroll-margin-top:32px}
+.day-model header{padding:22px 22px 16px;background:#e8f4ed;border-bottom:1px solid #d6e6de}
+.day-model:nth-child(2) header{background:#eef2fa;border-bottom-color:#d9e3f3}
+.day-model-label{font-size:11px;font-weight:900;letter-spacing:.08em;color:#326b5e}
+.day-model:nth-child(2) .day-model-label{color:#4e6494}
+.day-model h3{font-size:20px;margin:6px 0 8px;line-height:1.48;color:#1b4840}
+.day-model:nth-child(2) h3{color:#2d466c}
+.day-model header p{font-size:13px;line-height:1.8;margin:0}
+.day-timeline{list-style:none;margin:0!important;padding:17px 16px 20px 22px!important}
+.day-timeline li{display:grid;grid-template-columns:54px minmax(0,1fr);gap:12px;position:relative;min-width:0;margin:0!important;padding:0 0 20px!important}
+.day-timeline li::before{content:"";position:absolute;left:65px;top:17px;bottom:0;width:2px;background:#dae9e1}
+.day-timeline li:last-child{padding-bottom:0!important}
+.day-timeline li:last-child::before{display:none}
+.day-timeline time{font-variant-numeric:tabular-nums;color:#216c58;font-size:12px;font-weight:900;line-height:1.8;padding-top:4px}
+.day-model:nth-child(2) .day-timeline time{color:#496a99}
+.day-timeline li>div{border-left:3px solid #88baa5;background:#f7faf8;padding:12px 14px;border-radius:0 8px 8px 0;min-width:0;position:relative}
+.day-model:nth-child(2) .day-timeline li>div{border-left-color:#98aad1;background:#f7f9fd}
+.day-timeline h4{margin:0 0 5px;color:#244940;font-size:14px;line-height:1.6}
+.day-timeline li p{font-size:13px;line-height:1.8;margin:0;color:#4b6060}
+.day-diff-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.day-diff-list article{display:flex;gap:13px;align-items:start;background:#fff;border:1px solid #dce8e1;border-radius:10px;padding:16px 18px}
+.day-diff-list article>span{flex:none;border-radius:7px;padding:3px 8px;background:#e5f2ea;color:#2c7460;font-size:12px;font-weight:900}
+.day-diff-list h3{margin:0 0 5px;font-size:16px}.day-diff-list p{font-size:13px;line-height:1.85;margin:0}
+@media(max-width:760px){.day-models,.day-diff-list{grid-template-columns:1fr}.day-model header{padding:18px}.day-timeline{padding:15px!important}.day-timeline li{grid-template-columns:50px minmax(0,1fr);gap:9px}.day-timeline li::before{left:57px}.day-timeline li>div{padding:12px}.day-timeline li p{font-size:14px}.day-diff-list p{font-size:14px}}
+@media(max-width:375px){.day-timeline{padding:12px 10px!important}.day-timeline li{grid-template-columns:44px minmax(0,1fr);gap:7px}.day-timeline li::before{left:50px}.day-model h3{font-size:18px}.day-model header{padding:15px}}
