@@ -1,0 +1,102 @@
+name: KOROPOP Career Live Publish Gate
+
+on:
+  push:
+    paths:
+      - ".github/workflows/career-live-publish-gate.yml"
+  schedule:
+    - cron: "43 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  verify-live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 9
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Check domain, GitHub Pages setup and all live URLs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          import concurrent.futures, json, os, socket, urllib.request, urllib.error, xml.etree.ElementTree as ET
+          BASE = "https://koropopgames.com"
+          issues = []
+          report = ["# Career live publishing diagnostic", "This tests DNS, GitHub Pages and live HTTP — not Google indexing.", ""]
+          def note(label, val):
+              report.append(f"- **{label}**: {val}")
+          def get(url):
+              try:
+                  req=urllib.request.Request(url,headers={"User-Agent":"KOROPOP-Career-Audit/1.0"})
+                  with urllib.request.urlopen(req,timeout=12) as response:
+                      return response.status,response.geturl(),response.headers.get("Content-Type",""),response.read(650000)
+              except Exception as exc:
+                  return 0,url,"",str(exc).encode()
+          try:
+              ips=sorted({x[4][0] for x in socket.getaddrinfo("koropopgames.com",443)})
+              note("Domain DNS answers",", ".join(ips))
+          except Exception as exc:
+              issues.append(f"Domain DNS resolution failed: {exc}")
+              note("DNS failure",str(exc))
+          token=os.environ.get("GH_TOKEN")
+          repo=os.environ.get("GITHUB_REPOSITORY")
+          if token and repo:
+              req=urllib.request.Request(f"https://api.github.com/repos/{repo}/pages",headers={
+                  "Authorization":f"Bearer {token}","Accept":"application/vnd.github+json",
+                  "X-GitHub-Api-Version":"2022-11-28"})
+              try:
+                  with urllib.request.urlopen(req,timeout=12) as res: data=json.load(res)
+                  note("GitHub Pages status",data.get("status"))
+                  note("GitHub Pages public URL",data.get("html_url"))
+                  note("Custom domain",data.get("cname"))
+                  note("HTTPS certificate",(data.get("https_certificate") or {}).get("state"))
+                  if data.get("cname")!="koropopgames.com":
+                      issues.append("Pages custom domain does not match CNAME; check Settings → Pages.")
+              except Exception as exc:
+                  note("Pages API unverified",str(exc)[:250])
+          for uri in ["/","/robots.txt","/sitemap.xml"]:
+              status,final,content_type,body=get(BASE+uri)
+              note(BASE+uri,f"HTTP {status}, type={content_type}, final={final}")
+              if status!=200: issues.append(f"Failed HTTP {status} at {uri}: {body[:150].decode(errors='replace')}")
+              if uri=="/" and status==200 and b"KOROPOP CAREER" not in body:
+                  issues.append("The homepage is reachable but does not contain the expected site identity.")
+          status,_,_,xml=get(BASE+"/sitemap.xml")
+          if status==200:
+              try:
+                  root=ET.fromstring(xml)
+                  ns="{http://www.sitemaps.org/schemas/sitemap/0.9}"
+                  urls=[x.text.strip() for x in root.findall(".//"+ns+"loc") if x.text]
+                  local=ET.parse("sitemap.xml")
+                  expected={x.text.strip() for x in local.findall(".//"+ns+"loc") if x.text}
+                  note("Live sitemap count",len(urls))
+                  note("Repository sitemap count",len(expected))
+                  for url in sorted(expected-set(urls)):
+                      issues.append(f"Missing from live sitemap: {url}")
+                  def check(url):
+                      code,final,ctype,data=get(url)
+                      if code!=200: return f"{url}: HTTP {code}"
+                      if not final.startswith(BASE): return f"{url}: redirected to {final}"
+                      if "text/html" not in ctype.lower(): return f"{url}: unexpected type {ctype}"
+                      if b"<html" not in data.lower(): return f"{url}: no HTML"
+                      return ""
+                  with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:
+                      defects=[x for x in pool.map(check,urls) if x]
+                  note("Live URLs passing HTTP/HTML",f"{len(urls)-len(defects)}/{len(urls)}")
+                  issues+=defects
+              except Exception as exc:
+                  issues.append(f"Sitemap XML invalid: {exc}")
+          report.extend(["","## Issues found", ""])
+          report.extend("- ❌ "+x for x in issues)
+          if not issues: report.append("✅ Live DNS/HTTP checks passed. Google indexing still requires Search Console URL Inspection.")
+          report.extend(["","If DNS/HTTPS fails, inspect repo Settings → Pages, domain registrar A/AAAA records and certificate."])
+          text="\n".join(report)+"\n"
+          print(text)
+          if os.environ.get("GITHUB_STEP_SUMMARY"):
+              with open(os.environ["GITHUB_STEP_SUMMARY"],"a",encoding="utf-8") as file:
+                  file.write(text)
+          if issues: raise SystemExit(1)
