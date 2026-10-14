@@ -26,6 +26,12 @@ Work toward an internal quality score of **at least 80/100 in all five areas**. 
 - Existing persistent four-week study checklist, 3-step homepage path, search-empty fallbacks.
 - Site Doctor validates navigator markup and extracted JS syntax (workflow-level validation; run status needs independent check).
 
+## Follow-up improvements: 2026-10-14
+- Compared official MHLW job tag, Geekly's job category finder, and doda's activity checklists and downloadable worksheets. Competitive advantage is not matching a job agency's listing supply: KOROPOP should stay independent, useful, and registration-free.
+- Added **explicitly opt-in, device-only offer comparison draft preservation** to `kyujin-joken-hikaku.html`: save, restore, remove; no automatic storage of names or salaries. Updated privacy policy and Site Doctor checks. Live HTML controls confirmed by selector; full interactive behavior (save/reload/delete) still needs browser testing.
+- Improved `shokushu-hikaku.html` horizontal comparison table by fixing its left row headings while scrolling on a phone. GitHub change confirmed, mobile visual layout not yet device-tested.
+- Highest quality gap remains independently verified, specific information and clear evidence. Do not claim SEO traffic, approval or all internal 80-point targets based only on adding features.
+
 ## Next work without awaiting editorial suggestions
 1. Test the new role navigator on phone (tap each select, candidate output, select sync, question copy, overflow/keyboard) and test JS-disabled article links. Fix errors.
 2. Review 8 high-intent articles' factual sourcing and substantiation: unclear statistics, title/content mismatch, unverified claims, duplicate prose, outdated citations. Make **specific** edits backed by official publications. Never manufacture testimonials, review data, hiring rates, or experience.
