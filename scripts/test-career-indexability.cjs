@@ -14,7 +14,7 @@ const urls=[...sitemap.matchAll(/<loc>\s*(https:\/\/koropopgames\.com\/[^<]*)\s*
 assert.equal(new Set(urls).size,urls.length,'Duplicate canonical sitemap URLs');
 assert.ok(urls.length>=45,'Sitemap unexpectedly sparse');
 const pages=urls.map(url=>{
- const path=url==='https://koropopgames.com/'?'index.html':url.replace('https://koropgames.com/','').replace('https://koropopgames.com/','');
+ const path=url==='https://koropopgames.com/'?'index.html':url.replace('https://koropopgames.com/','');
  assert.match(path,/^[\w-]+\.html$/,'Unexpected non-HTML sitemap URL');
  assert.ok(fs.existsSync(path),'Sitemap target missing: '+path);
  const doc=read(path),head=doc.slice(0,doc.search(/<\/head>/i)+7);
