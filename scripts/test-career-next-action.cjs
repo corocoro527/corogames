@@ -45,7 +45,7 @@ const css=fs.readFileSync('career-extras.css','utf8');
 assert.match(css,/\.career-next-controls select\{[^}]*min-height:48px/,'Adequate touch target');
 assert.match(css,/\.career-next-note\{[^}]*color:#526e66/,'Readable explanation text');
 assert.ok(css.includes('@media(max-width:560px)'),'Responsive narrow phone styles required');
-assert.ok(home.includes('career-extras.css?v=20261014nextaction4'),'Latest CSS cache version');
+assert.match(home, /<link\s+rel="stylesheet"\s+href="career-extras\.css\?v=[0-9A-Za-z_-]+"/, 'The active stylesheet must have a cache-busting version without pinning an obsolete release ID');
 
 assert.ok(home.includes('<a class="career-next-main"'),'No-script default CTA missing');
 assert.equal((home.match(/<option value="/g)||[]).length>=12,true);
