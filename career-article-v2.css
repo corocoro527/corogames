@@ -107,3 +107,15 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
 .kp-skip-main{position:absolute;top:8px;left:-9999px;z-index:9999;padding:11px 15px;border:2px solid #235c50;border-radius:7px;background:#fff;color:#194a40!important;font-size:15px;font-weight:850;text-decoration:none}
 .kp-skip-main:focus,.kp-skip-main:focus-visible{left:8px}
 [role="main"][id="kp-main"]{scroll-margin-top:20px}
+
+/* Search-discovered pillar: context-first pathways for the unfamiliar IT career reader. */
+.kp-practical-paths{margin:22px 0 38px;scroll-margin-top:24px}
+.kp-practical-paths>p{line-height:1.9}
+.kp-practical-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:17px 0}
+.kp-practical-grid a{display:flex;flex-direction:column;justify-content:center;gap:6px;min-height:100px;padding:16px 17px;border:1px solid #c9dddf;border-radius:10px;background:#fff;color:#254f51!important;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.025)}
+.kp-practical-grid a:hover{background:#f0f8f3;border-color:#86b6a3}
+.kp-practical-grid a:focus-visible{outline:3px solid #3c9078;outline-offset:3px}
+.kp-practical-grid strong{font-size:15px;line-height:1.55}
+.kp-practical-grid span{font-size:13px;line-height:1.65;color:#526b6a}
+.kp-practical-paths .kp-practical-note{font-size:12px;line-height:1.85;color:#536d6c}
+@media(max-width:640px){.kp-practical-grid{grid-template-columns:1fr;gap:9px}.kp-practical-grid a{min-height:76px;padding:13px 15px}.kp-practical-grid span{font-size:14px}.kp-practical-paths .kp-practical-note{font-size:13px}}
