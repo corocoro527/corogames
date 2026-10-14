@@ -28,6 +28,12 @@ const pages=urls.map(url=>{
  assert.ok(metas.some(m=>/\bname=["']viewport["']/i.test(m)),'Mobile viewport missing '+path);
  assert.ok(/<title\b/i.test(head),'Title missing '+path);
  assert.equal((doc.match(/<h1\b/gi)||[]).length,1,'Single top heading expected: '+path);
+ for(const block of doc.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)){
+  let schema;
+  try{schema=JSON.parse(block[1])}catch(error){throw new Error('Broken JSON-LD '+path+': '+error.message)}
+  assert.ok(schema['@context']||schema['@graph'],'JSON-LD context missing: '+path);
+ }
+
  return path;
 });
 const redirect=read('career.html');
