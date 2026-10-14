@@ -38,10 +38,12 @@ const checkboxes=['support','devices','operations','projects','improvement','dev
  const el=element();el.dataset={workrole:id};return el;
 });
 const els={buildWorkroleMemo:button,copyWorkroleMemo:copy,workroleMemoResult:result,workroleMemo:output,workroleStatus:status};
-const root={querySelector(selector){return els[selector.replace('#','')]||null;},querySelectorAll(selector){assert.equal(selector,'input[data-workrole]');return checkboxes;}};
+const ready=new Set();
+const root={classList:{add(value){ready.add(value);}},querySelector(selector){return els[selector.replace('#','')]||null;},querySelectorAll(selector){assert.equal(selector,'input[data-workrole]');return checkboxes;}};
 const document={getElementById(id){return id==='role-worksheet'?root:null;}};
 const exported={exports:{}};
 new Function('document','window','navigator','module',js)(document,{matchMedia:()=>({matches:true})},{},exported);
+assert.ok(ready.has('is-ready'), 'Controls must be enabled after successful initialization');
 assert.equal(typeof button.listeners.click,'function');
 assert.equal(typeof checkboxes[0].listeners.change,'function');
 assert.equal(typeof exported.exports.buildText,'function');
