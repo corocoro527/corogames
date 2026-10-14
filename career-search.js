@@ -5,6 +5,9 @@ const input=document.getElementById('articleSearch');
 const clear=document.getElementById('clearSearch');
 const status=document.getElementById('searchStatus');
 const empty=document.getElementById('noResults');
+const matchPanel=document.getElementById('searchMatches');
+const matchLinks=document.getElementById('searchMatchesLinks');
+const matchCount=document.getElementById('searchMatchesCount');
 if(!input||!clear||!status||!empty)return;
 const cards=Array.from(document.querySelectorAll('.topic-section .article-link'));
 const sections=Array.from(document.querySelectorAll('.topic-section'));
@@ -51,6 +54,23 @@ if(roles&&more){
   });
  }
 }
+// The first results are actionable immediately; do not make readers scroll through hidden categories.
+function showMatchedLinks(chosen,searching){
+ if(!matchPanel||!matchLinks||!matchCount)return;
+ const visible=searching&&chosen.length>0;
+ matchPanel.hidden=!visible;
+ if(!visible){matchLinks.replaceChildren();matchCount.textContent='';return;}
+ const results=chosen.slice(0,6).map(item=>{
+  const link=document.createElement('a');
+  link.href=item.card.getAttribute('href');
+  link.textContent=item.card.querySelector('h3')?.textContent?.trim()||'記事を読む';
+  return link;
+ });
+ matchLinks.replaceChildren(...results);
+ matchCount.textContent=chosen.length>results.length
+  ?'ほかに'+(chosen.length-results.length)+'件あります。下の記事一覧でも確認できます。'
+  :'下の記事一覧にも結果が表示されています。';
+}
 function filter(){
  const tokens=tokenize(input.value);
  const searching=tokens.length>0;
@@ -69,7 +89,8 @@ function filter(){
    }
    return {...item,matched,rank};
   });
-  chosen=scored.filter(item=>item.matched===tokens.length);
+  chosen=scored.filter(item=>item.matched===tokens.length)
+   .sort((a,b)=>b.rank-a.rank);
   if(!chosen.length&&tokens.length>1){
    partial=true;
    chosen=scored.filter(item=>item.matched>0)
@@ -91,6 +112,7 @@ function filter(){
  else if(partial)status.textContent='すべての言葉に一致する記事はありません。関連する記事を'+chosen.length+'件表示しています。';
  else status.textContent='「'+input.value.trim()+'」の検索結果：'+chosen.length+'件';
  empty.hidden=chosen.length!==0;
+ showMatchedLinks(chosen,searching);
  clear.hidden=input.value.length===0;
  markQuickButtons();
 }
