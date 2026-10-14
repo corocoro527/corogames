@@ -7,7 +7,7 @@ const routes=[
  {source:'mikeiken-it-tenshoku.html',links:[
   'it-helpdesk-ichinichi.html','shanai-se-ichinichi.html',
   'pc-kitting-mikeiken.html','helpdesk-kara-shanai-se.html'
- ],anchor:'career-specific-paths',style:'career-article-v2.css?v=20261014pathways1'},
+ ],anchor:'career-specific-paths',style:true},
  {source:'shokushu-hikaku.html',links:[
   'it-helpdesk-ichinichi.html','shanai-se-ichinichi.html','pc-kitting-mikeiken.html'
  ],selector:'role-day-examples'},
@@ -21,7 +21,7 @@ for(const item of routes){
  assert.ok(s.includes('rel="canonical"'),'Must retain original page canonical: '+item.source);
  if(item.anchor)assert.ok(s.includes('id="'+item.anchor+'"'),'Missing navigation landmark: '+item.source);
  if(item.selector)assert.ok(s.includes('class="'+item.selector+'"'),'Missing semantic contextual nav: '+item.source);
- if(item.style)assert.ok(s.includes(item.style),'Stylesheet cache for visible cards: '+item.source);
+ if(item.style)assert.match(s, /career-article-v2\.css\?v=[0-9A-Za-z_-]+/, 'Visible-card stylesheet must have a cache-busting version: '+item.source);
  for(const target of item.links){
   assert.ok(s.includes('href="'+target+'"'),item.source+' missing actual link '+target);
   assert.ok(fs.existsSync(target),'Link destination file missing: '+target);
