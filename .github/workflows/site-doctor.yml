@@ -435,7 +435,7 @@ jobs:
               "mikeiken-it-mensetsu-20.html",
           ]
           if path_targets != expected_path or any(not Path(url).exists() for url in path_targets):
-              errors.append("職種比較→4週間学習→求人確認のHTMLリンク導線が壊れています")
+              errors.append("職種比較→学習→求人確認→職務経歴書→面接練習のHTMLリンク導線が壊れています")
           if 'class="search-fallback-links"' not in home_html:
               warnings.append("検索0件からのおすすめ導線がありません")
           if ".career-path-list" not in Path("career-extras.css").read_text(encoding="utf-8"):
@@ -508,6 +508,22 @@ jobs:
           node --check koropop-reader.js
           node --check koropop-related.js
           node --check career-search.js
+          # Stage-use analytics must never include search keywords or free-text job notes.
+          python3 - <<'PY'
+          from pathlib import Path
+          js = Path("career-search.js").read_text(encoding="utf-8")
+          home = Path("index.html").read_text(encoding="utf-8")
+          privacy = Path("privacy.html").read_text(encoding="utf-8")
+          css = Path("career-extras.css").read_text(encoding="utf-8")
+          if "career_step_" not in js or "step_destination:link.getAttribute('href')" not in js:
+              raise SystemExit("転職準備の5ステップ計測が不足")
+          if "career-search.js?v=20261014journey5" not in home:
+              raise SystemExit("GA4導線計測のスクリプトが読み込まれていません")
+          if "検索窓の入力文字や職務経歴書" not in privacy:
+              raise SystemExit("アクセス解析と入力内容の取り扱いの説明が不足")
+          if "repeat(auto-fit,minmax(178px,1fr))" not in css:
+              raise SystemExit("5ステップの可読性を保つモバイル対応が不足")
+          PY
           # Confirm the interactive 4-week worksheet remains valid JavaScript.
           python3 - <<'PY'
           from pathlib import Path
