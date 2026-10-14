@@ -506,6 +506,22 @@ jobs:
           node --check koropop-reader.js
           node --check koropop-related.js
           node --check career-search.js
+          # Confirm the interactive 4-week worksheet remains valid JavaScript.
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("mikeiken-it-study-roadmap.html").read_text(encoding="utf-8")
+          storage_key = "koropop-career-roadmap-v1"
+          required = ("localStorage.getItem(storageKey)", "localStorage.setItem(storageKey",
+                      "planCount", "resetPlan", "copyPlan")
+          if storage_key not in page or not all(token in page for token in required):
+              raise SystemExit("4週間ロードマップの進捗保存または操作が不足")
+          if "<script>" not in page or "</script>" not in page:
+              raise SystemExit("4週間ロードマップのスクリプトがありません")
+          Path("/tmp/koropop-roadmap-check.js").write_text(
+              page.rsplit("<script>", 1)[1].split("</script>", 1)[0], encoding="utf-8"
+          )
+          PY
+          node --check /tmp/koropop-roadmap-check.js
 
       - name: Check live site
         if: >
