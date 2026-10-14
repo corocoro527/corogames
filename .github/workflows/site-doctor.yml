@@ -605,6 +605,44 @@ jobs:
           Path("/tmp/koropop-pc-kitting.js").write_text(code, encoding="utf-8")
           PY
           node --check /tmp/koropop-pc-kitting.js
+          # IT interview training guide: all 20 questions must be crawlable, safe and linked.
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("mikeiken-it-mensetsu-20.html").read_text(encoding="utf-8")
+          home = Path("index.html").read_text(encoding="utf-8")
+          sitemap = Path("sitemap.xml").read_text(encoding="utf-8")
+          css = Path("career-deep-guides.css").read_text(encoding="utf-8")
+          markers = (
+              'id="interview-practice"', 'id="interviewQuestion"',
+              'id="createInterviewMemo"', 'id="copyInterviewMemo"',
+              'id="clearInterviewMemo"', 'id="interviewResult"',
+              'id="questionHint"', 'id="sources"',
+              'https://jsite.mhlw.go.jp/kagawa-hellowork/',
+              'https://shigoto.mhlw.go.jp/User/Occupation/Detail/320'
+          )
+          if any(token not in page for token in markers):
+              raise SystemExit("面接20問記事の出典・入力・表示機能に欠落")
+          if page.count('class="interview-question"') != 20:
+              raise SystemExit("面接質問は20件必要")
+          if page.count('class="practice-link" data-question=') != 20:
+              raise SystemExit("20問の練習導線が不足")
+          if page.count('<option value="') < 21:
+              raise SystemExit("質問選択肢が不足")
+          if ".interview-questions" not in css:
+              raise SystemExit("面接質問のスマホ表示CSSが不足")
+          if 'href="mikeiken-it-mensetsu-20.html"' not in home:
+              raise SystemExit("トップページから面接記事へのリンクなし")
+          if 'https://koropopgames.com/mikeiken-it-mensetsu-20.html' not in sitemap:
+              raise SystemExit("面接記事がサイトマップ未登録")
+          for file in ("mikeiken-it-shibodoki.html",
+                       "mikeiken-it-kyujin-miwakekata.html",
+                       "it-mikeiken-shokumukeirekisho.html"):
+              if 'mikeiken-it-mensetsu-20.html' not in Path(file).read_text(encoding="utf-8"):
+                  raise SystemExit(file + ": 面接への内部リンクがない")
+          code = page.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/koropop-it-interview-questions.js").write_text(code, encoding="utf-8")
+          PY
+          node --check /tmp/koropop-it-interview-questions.js
           # Keep explicit opt-in saving functional and validate its inline script syntax.
           python3 - <<'PY'
           from pathlib import Path
