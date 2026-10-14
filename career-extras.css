@@ -94,3 +94,28 @@
  .career-role-grid{grid-template-columns:1fr}
  .career-role-card{padding:14px 15px}
 }
+
+/* October 2026: make the most useful comparison visible immediately. */
+.career-role-map{margin-top:23px;margin-bottom:24px}
+.career-role-card{box-shadow:0 3px 12px rgba(18,52,46,.025)}
+.career-role-card:focus-visible{outline:3px solid #438b78;outline-offset:3px}
+@media(max-width:760px){
+ .career-role-map{margin:18px 0 17px}
+ .career-map-header h2{font-size:24px;line-height:1.37}
+ .career-role-grid{gap:8px}
+ .career-role-card{min-height:76px}
+ .featured-heading{padding-top:5px}
+ .featured-section{padding-top:19px}
+ .career-role-card strong{color:#276758}
+ .featured-card h3{overflow-wrap:anywhere}
+ .header-nav a{min-height:42px;display:inline-flex;align-items:center}
+ .header-nav .about-nav{display:none}
+}
+@media(max-width:480px){
+ .hero-visual{max-height:142px!important}
+ .hero-visual img{max-height:142px!important;object-position:center 51%!important}
+ .hero{gap:10px;padding-bottom:9px}
+ .hero-caption{font-size:11px}
+ .career-map-header p{font-size:13px}
+ .career-role-card{padding:13px 15px}
+}
