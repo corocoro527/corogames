@@ -1,0 +1,65 @@
+/* KOROPOP CAREER original deep-dive article system — 2026-10-14 */
+:root{--deep-ink:#203d43;--deep-accent:#226f5f;--deep-line:#dce7e3}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#f7faf9;color:var(--deep-ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif}
+.skip-deep{position:absolute;left:-9999px;top:6px;z-index:100;background:#fff;padding:8px}.skip-deep:focus{left:8px}
+.deep-header{background:#fff;border-bottom:1px solid var(--deep-line)}
+.deep-header-inner{max-width:1100px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.deep-logo{color:#205b50;font-weight:900;font-size:17px;letter-spacing:.02em;text-decoration:none}
+.deep-header nav{display:flex;gap:15px;flex-wrap:wrap}
+.deep-header nav a{font-size:13px;color:#355e59;text-decoration:none}
+.deep-wrap{width:min(960px,calc(100% - 32px));margin:0 auto;padding:28px 0 70px}
+.deep-crumb{font-size:12px;color:#6b7c81;line-height:1.7;margin:0 0 25px}.deep-crumb a{color:#286f62;text-underline-offset:3px}
+.deep-kicker{font-size:11px;letter-spacing:.13em;font-weight:850;color:#2b806e}
+.deep-wrap h1{font-size:clamp(28px,4.5vw,40px);line-height:1.42;letter-spacing:-.035em;margin:12px 0 13px}
+.deep-lead{font-size:16px;line-height:1.95;max-width:780px;color:#49656a}
+.deep-meta{font-size:12px;line-height:1.8;color:#67818a;margin:13px 0 22px}
+.deep-summary{padding:18px 23px;background:#eaf5ef;border:1px solid #bdd8cc;border-radius:10px;margin:23px 0}
+.deep-summary strong{font-size:14px;color:#27584f}.deep-summary p{margin:6px 0 0;font-size:14px;line-height:1.9}
+.deep-toc{border:1px solid var(--deep-line);border-radius:10px;background:#fff;padding:20px 23px;margin:28px 0 35px}
+.deep-toc>strong{font-size:15px}.deep-toc ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 15px;list-style:none;margin:10px 0 0;padding:0}.deep-toc a{font-size:13px;line-height:1.7;color:#26685d;text-decoration:underline;text-underline-offset:3px}
+.deep-wrap section{scroll-margin-top:22px;margin:36px 0}
+.deep-wrap section>h2{font-size:clamp(20px,2.7vw,26px);line-height:1.5;letter-spacing:-.025em;border-left:4px solid #448f79;padding-left:12px;margin:0 0 14px}
+.deep-wrap h3{font-size:17px;line-height:1.5;margin:22px 0 8px}
+.deep-wrap p,.deep-wrap li{font-size:15px;line-height:1.95;color:#425a61}
+.deep-wrap ul,.deep-wrap ol{padding-left:22px}.deep-wrap li{margin:6px 0}
+.deep-wrap a{color:#1b725e;text-underline-offset:3px;overflow-wrap:anywhere}
+.deep-table-scroll{overflow-x:auto;border:1px solid var(--deep-line);border-radius:9px;margin:19px 0;background:#fff}
+.deep-table{width:100%;border-collapse:collapse;min-width:600px;font-size:13px}
+.deep-table th,.deep-table td{border-bottom:1px solid #e1eae7;padding:13px 12px;vertical-align:top;text-align:left;line-height:1.85;overflow-wrap:anywhere}
+.deep-table thead th{background:#e9f3ef;color:#234f45}
+.deep-table tbody th{background:#f8fbf9;min-width:105px}
+.deep-table tbody tr:last-child td,.deep-table tbody tr:last-child th{border-bottom:0}
+.deep-note{font-size:12px!important;line-height:1.9!important;color:#678084!important;margin:7px 0 19px}
+.deep-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:17px 0}
+.deep-card{background:#fff;border:1px solid var(--deep-line);border-radius:9px;padding:18px 20px;min-width:0}
+.deep-card h3{margin:0 0 6px;font-size:17px}.deep-card p{font-size:13px;margin:6px 0}
+.deep-example{border-left:4px solid #87b3a6;border-radius:6px;padding:17px 20px;background:#fff;margin:19px 0}
+.deep-example strong{color:#2a5e56}
+.deep-example p{font-size:14px;margin:6px 0}
+.deep-list{list-style:none;padding:0!important;counter-reset:step}
+.deep-list li{counter-increment:step;border:1px solid var(--deep-line);padding:14px 16px 14px 55px;position:relative;border-radius:9px;background:#fff;margin:10px 0;font-size:14px}
+.deep-list li:before{content:counter(step,decimal-leading-zero);position:absolute;left:14px;top:14px;color:#317b69;font-size:12px;font-weight:900}
+.deep-cta{padding:20px 22px;background:#eaf5ef;border-radius:10px;border:1px solid #c3ded1;margin:25px 0}
+.deep-cta h3{margin-top:0}.deep-cta p{font-size:14px;margin:10px 0}
+.deep-cta a{display:inline-flex;align-items:center;min-height:43px;background:#216b5b;color:#fff;text-decoration:none;padding:10px 15px;border-radius:7px;font-weight:800;font-size:13px}
+.deep-cta a:hover{background:#155344}
+.deep-sources{font-size:13px}.deep-sources li{font-size:13px}
+.deep-faq details{border:1px solid #dbe8e2;background:#fff;margin:9px 0;border-radius:9px;padding:14px 16px}
+.deep-faq summary{cursor:pointer;color:#225b51;font-weight:800;line-height:1.7}
+.deep-faq details p{margin:12px 0 4px;font-size:14px}
+.deep-related{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.deep-related a{padding:15px 16px;background:#fff;border:1px solid var(--deep-line);border-radius:8px;font-size:14px;font-weight:800;text-decoration:none;line-height:1.7}
+.deep-related a:hover{background:#eef7f2}
+.deep-footer{border-top:1px solid #e0ebe5;background:#fff;padding:24px 18px;text-align:center;color:#607a79;font-size:12px}
+.deep-footer a{color:#1c6857;margin:0 8px}
+.deep-form{padding:20px;border:1px solid #c9dfd3;background:#f0f8f3;border-radius:11px}
+.deep-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.deep-form label{display:block;font-size:13px;font-weight:800;line-height:1.7}
+.deep-form input,.deep-form textarea,.deep-form select{width:100%;font:inherit;font-size:15px;color:#234149;display:block;border:1px solid #a6c9bb;border-radius:7px;background:#fff;padding:10px 11px;min-height:44px;margin-top:6px}
+.deep-form textarea{min-height:100px;resize:vertical}
+.deep-form button{min-height:44px;border:0;border-radius:6px;background:#216b5a;color:#fff;font-weight:850;font-size:14px;padding:11px 17px;cursor:pointer;margin:14px 9px 9px 0}
+.deep-form button:focus-visible,.deep-wrap a:focus-visible,.deep-faq summary:focus-visible{outline:3px solid #52a887;outline-offset:3px}
+.deep-form pre{font-size:13px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:17px;border:1px solid #d4e5da;border-radius:8px;color:#2f4c50}
+.deep-form .form-status{font-size:13px;color:#236e59;min-height:1.8em}
+@media(max-width:680px){.deep-header-inner{padding:13px 16px}.deep-header nav{gap:10px}.deep-wrap{width:calc(100% - 28px);padding-top:22px}.deep-lead{font-size:15px}.deep-toc{padding:15px 17px}.deep-toc ul,.deep-cards,.deep-related,.deep-form-grid{grid-template-columns:1fr}.deep-wrap section{margin:28px 0}.deep-wrap p,.deep-wrap li{font-size:15px}.deep-table th,.deep-table td{font-size:12px;padding:11px 9px}.deep-form{padding:16px 13px}}
