@@ -21,7 +21,7 @@ const improve=page.match(/<article class="day-model" id="improve-model"[\s\S]*?<
 assert.ok(support&&improve,'Both career types required');
 assert.equal((support[0].match(/<li><time>/g)||[]).length,8);
 assert.equal((improve[0].match(/<li><time>/g)||[]).length,8);
-assert.ok(page.includes('架空の日勤例')&&page.includes('架空の9時〜18時'));
+assert.ok(page.includes('架空のモデル')&&page.includes('架空の9時〜18時'));
 assert.equal((page.match(/<h1>/g)||[]).length,1);
 assert.ok(!page.includes('**問い合わせ'),'No raw markdown in HTML text');
 assert.ok(css.includes('.day-models{')&&css.includes('@media(max-width:760px){.day-models,.day-diff-list{'));
