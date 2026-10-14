@@ -26,6 +26,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import html
+          import json
           import re
 
           home_path = Path("index.html")
@@ -118,6 +119,43 @@ jobs:
               known.add(filename)
               added.append((filename, category))
 
+          # Keep contextual reading recommendations in sync with newly published guides.
+          # Historical editorial entries remain curated; utility pages stay excluded.
+          related_path = Path("koropop-articles.json")
+          related_items = json.loads(related_path.read_text(encoding="utf-8"))
+          related_known = {item["url"] for item in related_items}
+          recommended_added = []
+          tag_words = (
+              "社内SE", "ヘルプデスク", "キッティング", "SES", "派遣",
+              "インフラ", "クラウド", "ネットワーク", "セキュリティ",
+              "職務経歴書", "志望動機", "面接", "求人", "資格", "勉強",
+              "年収", "1日", "未経験", "転職", "IT",
+          )
+          for filename, section in added:
+              if filename in related_known:
+                  continue
+              page_source = Path(filename).read_text(encoding="utf-8")
+              title, summary = extract_meta(page_source)
+              content = title + " " + summary
+              tags = [tag for tag in tag_words if tag in content]
+              if section != "general" and "IT" not in tags:
+                  tags.append("IT")
+              related_items.append({
+                  "url": filename,
+                  "title": title,
+                  "description": summary,
+                  "category": "work" if section == "general" else "it",
+                  "tags": tags[:10],
+              })
+              related_known.add(filename)
+              recommended_added.append(filename)
+          if recommended_added:
+              related_path.write_text(
+                  json.dumps(related_items, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+              print("Added to related-reading catalog:", recommended_added)
+
           def recount(source, categories):
               for section in categories:
                   pattern = r'(<section class="topic-section(?: [^"]*)?" id="' + section + r'"[\s\S]*?)(?=</section>)'
@@ -144,7 +182,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html career-general.html
+          git add index.html career-general.html koropop-articles.json
           if git diff --cached --quiet; then
             echo "No changes"
             exit 0
