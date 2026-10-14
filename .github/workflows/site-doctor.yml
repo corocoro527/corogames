@@ -596,6 +596,7 @@ jobs:
               code, encoding="utf-8")
           PY
           node --check /tmp/corogames-new-career-resume-check.js
+          node scripts/test-career-resume-print.cjs
           # PC kitting educational guide: verified sources, 7-step worksheet, SEO and local links.
           python3 - <<'PY'
           from pathlib import Path
