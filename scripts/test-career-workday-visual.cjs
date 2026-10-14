@@ -24,7 +24,7 @@ assert.equal((improve[0].match(/<li><time>/g)||[]).length,8);
 assert.ok(page.includes('架空の日勤例')&&page.includes('架空の9時〜18時'));
 assert.equal((page.match(/<h1>/g)||[]).length,1);
 assert.ok(!page.includes('**問い合わせ'),'No raw markdown in HTML text');
-assert.ok(css.includes('.day-models{')&&css.includes('@media(max-width:760px){.day-models'));
+assert.ok(css.includes('.day-models{')&&css.includes('@media(max-width:760px){.day-models,.day-diff-list{'));
 const helpdeskSection=helpdesk.split('<section id="schedule">')[1].split('<section id="support">')[0];
 assert.ok(helpdeskSection.includes('class="day-model day-model-single"'),'Helpdesk should use vertical timeline');
 assert.equal((helpdeskSection.match(/<li><time>/g)||[]).length,8);
