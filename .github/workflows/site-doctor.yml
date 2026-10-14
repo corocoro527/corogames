@@ -665,6 +665,7 @@ jobs:
           Path("/tmp/koropop-it-interview-questions.js").write_text(code, encoding="utf-8")
           PY
           node --check /tmp/koropop-it-interview-questions.js
+          node scripts/test-career-interview-practice.cjs
           # Prevent regression in actionable helpdesk-to-internal-IT career bridge.
           python3 - <<'PY'
           from pathlib import Path
