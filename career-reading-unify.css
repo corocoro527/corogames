@@ -4,8 +4,8 @@
  * Preserves existing article contents, original tools, and page-specific graphics.
  */
 body.kp-reading-refresh{--kp-read-ink:#203d43;--kp-read-sub:#445e64;--kp-read-border:#d8e7df;--kp-read-accent:#236b5a;background:#f7faf9!important;color:var(--kp-read-ink)!important;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif!important;-webkit-font-smoothing:antialiased}
-body.kp-reading-refresh :is(.deep-header,header:first-child){border-bottom:1px solid #dce7e3!important;background:#fff!important;box-shadow:none!important}
-body.kp-reading-refresh :is(.deep-logo,header:first-child .brand){color:#235b50!important;font-size:17px!important;font-weight:900!important;letter-spacing:.015em;text-decoration:none}
+body.kp-reading-refresh :is(.deep-header){border-bottom:1px solid #dce7e3!important;background:#fff!important;box-shadow:none!important}
+body.kp-reading-refresh .deep-logo{color:#235b50!important;font-size:17px!important;font-weight:900!important;letter-spacing:.015em;text-decoration:none}
 body.kp-reading-refresh .deep-header-inner{max-width:1100px;min-height:65px;padding:13px 22px}
 body.kp-reading-refresh .deep-header nav a{font-size:13px;font-weight:750;line-height:1.5;display:inline-flex;align-items:center;min-height:40px;color:#285c51}
 body.kp-reading-refresh .deep-header nav a:hover{color:#174d40;text-decoration:underline;text-underline-offset:4px}
@@ -51,3 +51,7 @@ body.kp-reading-refresh :is(img,svg){max-width:100%}
  body.kp-reading-refresh .deep-note{font-size:13px!important;color:#516c69!important}
 }
 @media(prefers-reduced-motion:reduce){body.kp-reading-refresh *{scroll-behavior:auto!important}}
+
+/* Limit legacy header normalization to the direct page header: never touch timeline cards or article section headers. */
+body.kp-reading-refresh > header{border-bottom:1px solid #dce7e3!important;background:#fff!important;box-shadow:none!important}
+body.kp-reading-refresh > header .brand{color:#235b50!important;font-size:17px!important;font-weight:900!important;letter-spacing:.015em;text-decoration:none}
