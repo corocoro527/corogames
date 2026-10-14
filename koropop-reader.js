@@ -242,6 +242,8 @@ ready(() => {
     transform:translateY(-1px);
   }
 
+  .koropop-reader-btn[hidden]{display:none!important;}
+
   #koropop-top-btn{
     opacity:0;
     pointer-events:none;
@@ -721,7 +723,8 @@ ready(() => {
           "details"
         );
 
-      details.open = true;
+      // Keep long generated tables of contents compact on small screens.
+      details.open = !(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
 
 
       const summary =
@@ -821,9 +824,11 @@ ready(() => {
     "koropop-reader-actions";
 
 
+  let tocButton = null;
+
   if(toc){
 
-    const tocButton =
+    tocButton =
       document.createElement(
         "button"
       );
@@ -833,6 +838,8 @@ ready(() => {
 
     tocButton.className =
       "koropop-reader-btn";
+
+    tocButton.hidden = true;
 
     tocButton.textContent =
       "目次";
@@ -886,6 +893,8 @@ ready(() => {
   topButton.className =
     "koropop-reader-btn";
 
+  topButton.hidden = true;
+
   topButton.textContent =
     "↑ 上へ";
 
@@ -921,14 +930,13 @@ ready(() => {
 
     updateProgress();
 
-    if(window.scrollY > 650){
-      topButton.classList.add(
-        "show"
-      );
-    }else{
-      topButton.classList.remove(
-        "show"
-      );
+    const canShowTop = window.scrollY > 650;
+    topButton.hidden = !canShowTop;
+    topButton.classList.toggle("show", canShowTop);
+
+    if(tocButton){
+      const canShowToc = window.scrollY > 380;
+      tocButton.hidden = !canShowToc;
     }
 
   }
