@@ -16,13 +16,15 @@
 <div class="deep-form" id="mockInterviewTool">
 <label for="interviewQuestion">練習する質問<select id="interviewQuestion"><option value="">練習したい質問を選んでください</option><option value="1">Q01 自己紹介とこれまでの仕事を1分程度で説明してください</option><option value="2">Q02 前職ではどんな問題を解決しましたか</option><option value="3">Q03 退職・転職を考えた理由は何ですか</option><option value="4">Q04 あなたの長所と、それが表れた仕事の例は？</option><option value="5">Q05 苦手なことや失敗からどう学びましたか</option><option value="6">Q06 なぜIT業界で働きたいと思ったのですか</option><option value="7">Q07 なぜヘルプデスク・社内SE・インフラなど、その職種なのですか</option><option value="8">Q08 応募先の会社を選んだ理由は？</option><option value="9">Q09 現在どんなIT学習をしていますか</option><option value="10">Q10 学習中に分からなかったことをどう調べましたか</option><option value="11">Q11 『PCにログインできない』と相談されたら、何から確認しますか</option><option value="12">Q12 トラブルの原因が分からない場合はどうしますか</option><option value="13">Q13 複数の問い合わせが同時に来たらどうしますか</option><option value="14">Q14 PC設定や定型作業でミスを減らすには？</option><option value="15">Q15 夜勤・シフトや急な障害対応についてどう考えますか</option><option value="16">Q16 分からないことを先輩に質問するとき、何を伝えますか</option><option value="17">Q17 他部署の人に技術的なことを説明するなら？</option><option value="18">Q18 今後1年間でどんな仕事をできるようになりたいですか</option><option value="19">Q19 何か逆質問はありますか</option><option value="20">Q20 最後に伝えておきたいことはありますか</option></select></label>
 <p id="questionHint" class="deep-note">質問を選ぶと、何を伝えるべきかのヒントが表示されます。</p>
+<p class="deep-note interview-switch-note">※ 質問を切り替えるとき、書きかけの回答がある場合は確認します。必要な回答は先にコピーしてください。</p>
 <div class="deep-form-grid">
 <label for="interviewConclusion">① 結論（必須）<textarea id="interviewConclusion" maxlength="500" placeholder="最初に質問への答えを1文で"></textarea></label>
 <label for="interviewSituation">② 実際に経験した場面（任意）<textarea id="interviewSituation" maxlength="500" placeholder="担当した業務、状況など。実際に経験したことだけ"></textarea></label>
 <label for="interviewAction">③ 自分の行動・確認できた結果（任意）<textarea id="interviewAction" maxlength="500" placeholder="何を確かめ、何を工夫したか。数字は根拠がある場合だけ"></textarea></label>
 <label for="interviewConnection">④ 応募職種につなげる（任意）<textarea id="interviewConnection" maxlength="500" placeholder="求人票で確認した仕事のうち、どこに活かしたいか"></textarea></label>
 </div>
-<div><button type="button" id="createInterviewMemo">練習メモを作成</button><button type="button" id="copyInterviewMemo" disabled>文章をコピー</button><button type="button" id="clearInterviewMemo">入力を消去</button></div>
+<p class="interview-count" id="interviewLength">回答メモの入力：0文字（目安を見ながら自分の言葉で調整できます）</p>
+<div class="interview-toolbar"><button type="button" id="createInterviewMemo">練習メモを作成</button><button type="button" id="copyInterviewMemo" disabled>文章をコピー</button><button type="button" id="clearInterviewMemo">入力を消去</button></div>
 <p id="interviewStatus" class="form-status" role="status" aria-live="polite">回答はブラウザ上だけで組み立てます。自動保存もサーバー送信もしません。</p>
 <div id="interviewResultWrap" hidden><h3>声に出して練習するメモ</h3><pre id="interviewResult"></pre></div>
 <p class="deep-note">下書きが上手にできても採用が決まるわけではありません。長すぎる文章は、話してみて必要な部分だけに短く編集しましょう。</p>
@@ -42,4 +44,78 @@
 <li><a href="https://jsite.mhlw.go.jp/hyogo-roudoukyoku/roudoukyoku/_105009/_111627_00021.html" target="_blank" rel="noopener noreferrer">兵庫労働局：書類・面接練習についての案内</a></li>
 <li><a href="https://shigoto.mhlw.go.jp/User/Occupation/Detail/320" target="_blank" rel="noopener noreferrer">厚生労働省 job tag：ヘルプデスク（IT）</a></li>
 <li><a href="https://shigoto.mhlw.go.jp/User/Occupation/Detail?occupationId=319" target="_blank" rel="noopener noreferrer">厚生労働省 job tag：運用・管理（IT）</a></li></ul>
-<p class="deep-note">資料確認日：2026年10月14日。応募条件・採用方法は各企業で異なります。公開日・最終更新日：2026年10月14日。</p></section><section><h2>次に読む記事</h2><nav class="deep-related" aria-label="関連記事"><a href="mikeiken-it-shibodoki.html">未経験IT転職の志望動機 ↗</a><a href="it-mikeiken-shokumukeirekisho.html">職務経歴書の書き方・下書き ↗</a><a href="mikeiken-it-kyujin-miwakekata.html">IT求人の見分け方 ↗</a><a href="shokushu-hikaku.html">6職種の仕事内容比較 ↗</a></nav></section></main><footer class="deep-footer"><a href="/">トップ</a><a href="about.html">編集方針</a><a href="privacy.html">プライバシー</a><a href="contact.html">お問い合わせ</a><p>© 2026 KOROPOP CAREER</p></footer><script>(function(){'use strict';const dataset=[{"id":1,"question":"自己紹介とこれまでの仕事を1分程度で説明してください","intent":"経歴の全体像が簡潔に伝わるか"},{"id":2,"question":"前職ではどんな問題を解決しましたか","intent":"経験した仕事での行動と考え方"},{"id":3,"question":"退職・転職を考えた理由は何ですか","intent":"今回の応募理由と働き方の希望が整合するか"},{"id":4,"question":"あなたの長所と、それが表れた仕事の例は？","intent":"具体的な行動による裏付け"},{"id":5,"question":"苦手なことや失敗からどう学びましたか","intent":"振り返りと改善への姿勢"},{"id":6,"question":"なぜIT業界で働きたいと思ったのですか","intent":"他業界との違いを理解して応募しているか"},{"id":7,"question":"なぜヘルプデスク・社内SE・インフラなど、その職種なのですか","intent":"具体的な担当業務を把握しているか"},{"id":8,"question":"応募先の会社を選んだ理由は？","intent":"実際の仕事内容と求人内容を調べたか"},{"id":9,"question":"現在どんなIT学習をしていますか","intent":"学んでいることを具体的に説明できるか"},{"id":10,"question":"学習中に分からなかったことをどう調べましたか","intent":"調査手順と周囲への相談の考え方"},{"id":11,"question":"『PCにログインできない』と相談されたら、何から確認しますか","intent":"状況整理、本人確認、権限と引き継ぎ"},{"id":12,"question":"トラブルの原因が分からない場合はどうしますか","intent":"推測と事実を区別できるか"},{"id":13,"question":"複数の問い合わせが同時に来たらどうしますか","intent":"影響範囲や緊急度の判断と共有"},{"id":14,"question":"PC設定や定型作業でミスを減らすには？","intent":"手順遵守、照合、報告を意識しているか"},{"id":15,"question":"夜勤・シフトや急な障害対応についてどう考えますか","intent":"実際の求人条件と本人の働き方希望が合うか"},{"id":16,"question":"分からないことを先輩に質問するとき、何を伝えますか","intent":"自力調査と報告の両立"},{"id":17,"question":"他部署の人に技術的なことを説明するなら？","intent":"相手に合わせた説明と確認"},{"id":18,"question":"今後1年間でどんな仕事をできるようになりたいですか","intent":"現実的な学習姿勢と業務理解"},{"id":19,"question":"何か逆質問はありますか","intent":"応募条件を理解する意欲と実務イメージ"},{"id":20,"question":"最後に伝えておきたいことはありますか","intent":"未回答の懸念・本人の伝えたい補足があるか"}];const byId=id=>document.getElementById(id);const selected=byId('interviewQuestion'),hint=byId('questionHint'),status=byId('interviewStatus'),result=byId('interviewResult'),wrap=byId('interviewResultWrap'),copy=byId('copyInterviewMemo');const fields=['interviewConclusion','interviewSituation','interviewAction','interviewConnection'];let report='';function updateQuestion(){const item=dataset.find(x=>String(x.id)===selected.value);hint.textContent=item?'準備のヒント：'+item.intent+'。自分が実際に経験した材料で話してください。':'質問を選ぶと、何を伝えるべきかのヒントが表示されます。';}selected.addEventListener('change',()=>{updateQuestion();report='';copy.disabled=true;wrap.hidden=true;status.textContent='質問を選びました。入力して練習メモを作成してください。';});document.querySelectorAll('[data-question]').forEach(link=>{link.addEventListener('click',()=>{selected.value=link.dataset.question;updateQuestion();report='';copy.disabled=true;wrap.hidden=true;status.textContent='質問を選びました。経験を整理してから練習してください。';});});byId('createInterviewMemo').addEventListener('click',()=>{const obj=dataset.find(x=>String(x.id)===selected.value),values=fields.map(x=>byId(x).value.trim());if(!obj||!values[0]){status.textContent='質問と、①結論の両方を入力してください。';wrap.hidden=true;report='';copy.disabled=true;return;}report=['未経験IT転職：模擬回答メモ','質問：'+obj.question,'','【結論】',values[0]];const labels=['','【経験した場面】','【自分の行動・結果】','【応募職種とのつながり】'];for(let i=1;i<values.length;i++)if(values[i])report.push('',labels[i],values[i]);report.push('','※架空の実績、取得していない資格、確認できない数値を書いていないか確認してください。','参考：https://koropopgames.com/mikeiken-it-mensetsu-20.html');report=report.join('\n');result.textContent=report;wrap.hidden=false;copy.disabled=false;status.textContent='練習メモを作成しました。声に出して読み、事実と伝わりやすさを確認しましょう。';});copy.addEventListener('click',async()=>{if(!report){status.textContent='先にメモを作成してください。';return;}try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(report);}else{const ta=document.createElement('textarea');ta.value=report;ta.style.position='fixed';ta.style.left='-9999px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(!ok)throw Error('copy failed');}status.textContent='練習メモをコピーしました。';}catch(_){status.textContent='コピーできませんでした。画面に表示したテキストを選択してコピーしてください。';}});byId('clearInterviewMemo').addEventListener('click',()=>{if(fields.some(x=>byId(x).value.trim())&&!window.confirm('入力した練習メモを消去しますか？'))return;fields.forEach(x=>byId(x).value='');selected.value='';report='';result.textContent='';copy.disabled=true;wrap.hidden=true;updateQuestion();status.textContent='入力を消去しました。';});updateQuestion();})();</script></body></html>
+<p class="deep-note">資料確認日：2026年10月14日。応募条件・採用方法は各企業で異なります。公開日・最終更新日：2026年10月14日。</p></section><section><h2>次に読む記事</h2><nav class="deep-related" aria-label="関連記事"><a href="mikeiken-it-shibodoki.html">未経験IT転職の志望動機 ↗</a><a href="it-mikeiken-shokumukeirekisho.html">職務経歴書の書き方・下書き ↗</a><a href="mikeiken-it-kyujin-miwakekata.html">IT求人の見分け方 ↗</a><a href="shokushu-hikaku.html">6職種の仕事内容比較 ↗</a></nav></section></main><footer class="deep-footer"><a href="/">トップ</a><a href="about.html">編集方針</a><a href="privacy.html">プライバシー</a><a href="contact.html">お問い合わせ</a><p>© 2026 KOROPOP CAREER</p></footer><script>(function(){
+'use strict';
+const dataset=[{"id":1,"question":"自己紹介とこれまでの仕事を1分程度で説明してください","intent":"経歴の全体像が簡潔に伝わるか"},{"id":2,"question":"前職ではどんな問題を解決しましたか","intent":"経験した仕事での行動と考え方"},{"id":3,"question":"退職・転職を考えた理由は何ですか","intent":"今回の応募理由と働き方の希望が整合するか"},{"id":4,"question":"あなたの長所と、それが表れた仕事の例は？","intent":"具体的な行動による裏付け"},{"id":5,"question":"苦手なことや失敗からどう学びましたか","intent":"振り返りと改善への姿勢"},{"id":6,"question":"なぜIT業界で働きたいと思ったのですか","intent":"他業界との違いを理解して応募しているか"},{"id":7,"question":"なぜヘルプデスク・社内SE・インフラなど、その職種なのですか","intent":"具体的な担当業務を把握しているか"},{"id":8,"question":"応募先の会社を選んだ理由は？","intent":"実際の仕事内容と求人内容を調べたか"},{"id":9,"question":"現在どんなIT学習をしていますか","intent":"学んでいることを具体的に説明できるか"},{"id":10,"question":"学習中に分からなかったことをどう調べましたか","intent":"調査手順と周囲への相談の考え方"},{"id":11,"question":"『PCにログインできない』と相談されたら、何から確認しますか","intent":"状況整理、本人確認、権限と引き継ぎ"},{"id":12,"question":"トラブルの原因が分からない場合はどうしますか","intent":"推測と事実を区別できるか"},{"id":13,"question":"複数の問い合わせが同時に来たらどうしますか","intent":"影響範囲や緊急度の判断と共有"},{"id":14,"question":"PC設定や定型作業でミスを減らすには？","intent":"手順遵守、照合、報告を意識しているか"},{"id":15,"question":"夜勤・シフトや急な障害対応についてどう考えますか","intent":"実際の求人条件と本人の働き方希望が合うか"},{"id":16,"question":"分からないことを先輩に質問するとき、何を伝えますか","intent":"自力調査と報告の両立"},{"id":17,"question":"他部署の人に技術的なことを説明するなら？","intent":"相手に合わせた説明と確認"},{"id":18,"question":"今後1年間でどんな仕事をできるようになりたいですか","intent":"現実的な学習姿勢と業務理解"},{"id":19,"question":"何か逆質問はありますか","intent":"応募条件を理解する意欲と実務イメージ"},{"id":20,"question":"最後に伝えておきたいことはありますか","intent":"未回答の懸念・本人の伝えたい補足があるか"}];
+const byId=id=>document.getElementById(id);
+const selected=byId('interviewQuestion'),hint=byId('questionHint'),status=byId('interviewStatus');
+const result=byId('interviewResult'),wrap=byId('interviewResultWrap'),copy=byId('copyInterviewMemo');
+const length=byId('interviewLength');
+const fields=['interviewConclusion','interviewSituation','interviewAction','interviewConnection'];
+let report='',activeQuestion=selected.value;
+function values(){return fields.map(id=>byId(id).value.trim())}
+function count(){length.textContent='回答メモの入力：'+Array.from(values().join('')).length+'文字（長さの評価ではありません。声に出して調整しましょう）'}
+function invalidate(message){
+ report='';result.textContent='';wrap.hidden=true;copy.disabled=true;
+ status.textContent=message;
+}
+function updateQuestion(){
+ const item=dataset.find(q=>String(q.id)===activeQuestion);
+ hint.textContent=item?'準備のヒント：'+item.intent+'。実際に経験した材料から答えを組み立てましょう。':'質問を選ぶと、何を伝えるべきかのヒントが表示されます。';
+}
+function changeQuestion(next){
+ if(next!==activeQuestion&&values().some(Boolean)){
+  if(!window.confirm('質問を変えると、入力中の回答が消えます。必要な文章は先にコピーしましたか？')){
+   selected.value=activeQuestion;return false;
+  }
+  fields.forEach(id=>{byId(id).value=''});
+ }
+ activeQuestion=next;selected.value=next;
+ updateQuestion();count();
+ invalidate('質問を選びました。①結論から入力して練習メモを作成してください。');
+ return true;
+}
+selected.addEventListener('change',()=>{changeQuestion(selected.value)});
+document.querySelectorAll('[data-question]').forEach(link=>{
+ link.addEventListener('click',()=>{changeQuestion(link.dataset.question)});
+});
+fields.forEach(id=>{
+ byId(id).addEventListener('input',()=>{
+  count();
+  invalidate('回答を編集しました。最新の文章をコピーするには、メモを再作成してください。');
+ });
+});
+byId('createInterviewMemo').addEventListener('click',()=>{
+ const obj=dataset.find(q=>String(q.id)===activeQuestion);
+ const a=values();
+ if(!obj||!a[0]){
+  invalidate('質問と、①結論の両方を入力してください。');
+  return;
+ }
+ const lines=['未経験IT転職：模擬回答メモ','質問：'+obj.question,'','【結論】',a[0]];
+ const labels=['','【経験した場面】','【自分の行動・結果】','【応募職種とのつながり】'];
+ for(let i=1;i<a.length;i++){if(a[i])lines.push('',labels[i],a[i])}
+ lines.push('','※架空の実績、未取得の資格、確認できない数字を含まないか確認してください。','参考：https://koropopgames.com/mikeiken-it-mensetsu-20.html');
+ report=lines.join('\n');result.textContent=report;wrap.hidden=false;copy.disabled=false;
+ status.textContent='現在の入力からメモを作成しました。声に出して練習し、必要に応じて書き直してください。';
+});
+copy.addEventListener('click',async()=>{
+ if(!report){status.textContent='先に最新の内容でメモを作成してください。';return}
+ try{
+  if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(report);
+  else{
+   const area=document.createElement('textarea');area.value=report;
+   area.style.position='fixed';area.style.left='-9999px';document.body.append(area);area.select();
+   const okay=document.execCommand('copy');area.remove();if(!okay)throw Error('copy denied');
+  }
+  status.textContent='現在の練習メモをコピーしました。';
+ }catch(_){status.textContent='コピーできませんでした。表示された文章を選択してコピーしてください。'}
+});
+byId('clearInterviewMemo').addEventListener('click',()=>{
+ if(values().some(Boolean)&&!window.confirm('入力した練習回答を消去しますか？'))return;
+ fields.forEach(id=>{byId(id).value=''});
+ activeQuestion='';selected.value='';updateQuestion();count();
+ invalidate('入力を消去しました。');
+});
+updateQuestion();count();
+})();</script></body></html>
