@@ -419,6 +419,15 @@ jobs:
           map_urls = re.findall(r'class="career-role-card" href="([^"]+)"', home_html)
           if len(map_urls) != 6 or any(not Path(url).exists() for url in map_urls):
               errors.append("職種早見表は6件の有効な記事リンクが必要")
+          if (home_html.find('id="job-map"') < 0 or
+              home_html.find('class="featured-section"') < 0 or
+              home_html.find('id="job-map"') > home_html.find('class="featured-section"')):
+              errors.append("職種比較が最初のおすすめ記事より下に移動しています")
+          reader_code = Path("koropop-reader.js").read_text(encoding="utf-8")
+          if "max-width: 760px" not in reader_code or "tocButton.hidden" not in reader_code:
+              warnings.append("モバイル目次・固定ボタンの読みやすさ設定が不足")
+          if "koropop-share-btn" not in reader_code:
+              warnings.append("記事の共有・リンクコピー機能が不足")
           next_link_count = 0
           for article in sorted(featured):
               if article == "mikeiken-it-study-roadmap.html":
@@ -476,6 +485,12 @@ jobs:
 
           PY
 
+
+      - name: Validate reader and search JavaScript
+        run: |
+          node --check koropop-reader.js
+          node --check koropop-related.js
+          node --check career-search.js
 
       - name: Check live site
         if: >
