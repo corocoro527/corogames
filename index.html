@@ -17,7 +17,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="career-home.css?v=20261012it1">
 <link rel="stylesheet" href="career-extras.css?v=20261014visualday1">
-<script src="career-search.js?v=20261014smartsearch1" defer></script>
+<script src="career-search.js?v=20261014instantresults1" defer></script>
   <script src="career-next-action.js?v=20261014first" defer></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NWPD2QBCQ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8NWPD2QBCQ')</script>
@@ -137,6 +137,11 @@
  <button type="button" data-search-term="リモート" aria-pressed="false">リモート</button>
  </div>
  <p id="searchStatus" role="status" aria-live="polite">記事を表示中</p>
+ <div id="searchMatches" class="career-search-matches" hidden aria-label="検索して見つかった記事へのリンク">
+  <strong>見つかった記事からすぐに読む</strong>
+  <nav id="searchMatchesLinks" class="career-search-match-links" aria-label="検索結果の記事リンク"></nav>
+  <p id="searchMatchesCount" class="career-search-match-count"></p>
+ </div>
  <p class="career-search-hint">「情シス」「PCセットアップ」などの言い換えや、複数キーワードの検索にも対応しています。検索した言葉は送信しません。</p>
  <noscript><p class="career-search-hint">検索機能はJavaScriptを使用します。無効な場合も、下の記事一覧や<a href="#job-map">IT職種一覧</a>から記事を選べます。</p></noscript>
  </section>
