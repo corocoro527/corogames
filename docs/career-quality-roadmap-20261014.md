@@ -40,6 +40,15 @@ Work toward an internal quality score of **at least 80/100 in all five areas**. 
 - Public-URL fetch returned a retrieval error in the available web tool; **do not describe the new article as independently rendered/interaction-tested in production until verified**.
 - Next content: assess `未経験IT求人の「研修3か月」は信用できる？`, but first check if it overlaps the existing 15-point IT job guide. If it overlaps, deepen that guide before publishing a new page.
 
+## 2026-10-14 — IT interview practice guide
+- Published `mikeiken-it-mensetsu-20.html` after checking MHLW Hello Work interview guidance and job tag helpdesk / IT operations descriptions.
+- Created 20 static, crawlable questions in four groups (experience, motivation, real IT work, teamwork/career), each with intent, grounded answer materials, and a concrete pitfall; added four clearly fictional practice answer examples. This is not a verified database of actual employers' interview questions.
+- Added a browser-only practice worksheet: select one of 20 questions, draft a conclusion plus lived experience / actions / work relevance, preview and copy; no automatic saving or network transfer of response text.
+- Updated `career-deep-guides.css` for mobile and linked from the homepage / existing job guide / motivation / resume articles.
+- Automated sitemap includes the guide. Site Doctor validates question count, anchors, controls, source citations, and extracted JS syntax. Workflow run and live JavaScript clicking have not yet been independently verified.
+- Next candidate: `ヘルプデスクから社内SEになる方法`. Aim to show differences between helpdesk and internal IT work, an evidence-based skill-mapping roadmap, specific artifacts to retain, and realistic job-check questions. Before publishing, inspect `mikeiken-shanai-se.html` and `mikeiken-it-helpdesk.html` for near-duplicate sections.
+- Search Console is still unconnected to this tool as of the previous check; no actual organic click-volume basis for traffic forecasts.
+
 ## Next work without awaiting editorial suggestions
 1. Test the new role navigator on phone (tap each select, candidate output, select sync, question copy, overflow/keyboard) and test JS-disabled article links. Fix errors.
 2. Review 8 high-intent articles' factual sourcing and substantiation: unclear statistics, title/content mismatch, unverified claims, duplicate prose, outdated citations. Make **specific** edits backed by official publications. Never manufacture testimonials, review data, hiring rates, or experience.
