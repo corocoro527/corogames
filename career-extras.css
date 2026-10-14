@@ -119,3 +119,22 @@
  .career-map-header p{font-size:13px}
  .career-role-card{padding:13px 15px}
 }
+
+
+/* Editorial reading path: real HTML links, visible without JavaScript. */
+.career-path{margin:17px 0 7px;padding:16px 17px 18px;border:1px solid #d9e6e3;border-radius:10px;background:#f8fbfa}
+.career-path-heading{font-size:13px;line-height:1.6;font-weight:850;color:#294c49;margin:0 0 11px}
+.career-path-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;list-style:none;margin:0;padding:0}
+.career-path-list a{display:flex;align-items:center;gap:10px;min-height:72px;padding:12px 13px;border:1px solid #d9e5e1;background:#fff;border-radius:8px;text-decoration:none;color:#223d42;transition:border-color .15s,background-color .15s}
+.career-path-list a:hover{border-color:#82b3a3;background:#f6fbf8}
+.career-path-list a:focus-visible{outline:3px solid #438b78;outline-offset:2px}
+.career-path-num{font-size:11px;font-weight:850;color:#2f7a6b;align-self:flex-start;flex:none;line-height:1.6}
+.career-path-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.career-path-text strong{font-size:13px;line-height:1.5;letter-spacing:-.02em}
+.career-path-text small{font-size:11px;color:#637780;line-height:1.55}
+.career-path-arrow{margin-left:auto;align-self:flex-start;font-size:14px;color:#387e70}
+.search-fallback-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+#noResults .search-fallback-links a{display:inline-flex;align-items:center;min-height:42px;padding:9px 13px;border:1px solid #d3e3de;background:#f5faf8;border-radius:6px;text-decoration:none;font-size:13px}
+@media(max-width:900px){.career-path-list{grid-template-columns:1fr}.career-path-list a{min-height:61px;padding:10px 12px}}
+@media(max-width:480px){.career-path{padding:14px 12px}.career-path-heading{font-size:13px}.career-path-text strong{font-size:13px}.career-path-text small{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.career-path-list a{transition:none}}
