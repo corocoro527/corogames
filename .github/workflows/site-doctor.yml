@@ -523,6 +523,7 @@ jobs:
           node scripts/test-career-real-work-links.cjs
           node scripts/test-career-indexed-hubs.cjs
           node scripts/test-career-discovery-26.cjs
+          node scripts/test-career-schema-and-contrast.cjs
           node scripts/test-career-related-catalog.cjs
           # Stage-use analytics must never include search keywords or free-text job notes.
           python3 - <<'PY'
