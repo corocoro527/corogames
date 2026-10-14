@@ -540,6 +540,22 @@ jobs:
           )
           PY
           node --check /tmp/koropop-role-navigator-check.js
+          # Protect the seven-day reading worksheet and its real article links.
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("mikeiken-it-tenshoku.html").read_text(encoding="utf-8")
+          if 'class="kp-seven-day"' not in page:
+              raise SystemExit("7日間の自主学習ワークがありません")
+          if any(f"DAY {day:02d}" not in page for day in range(1, 8)):
+              raise SystemExit("7日間の自主学習ワークに日付の欠落があります")
+          for href in ("shokushu-hikaku.html",
+                       "mikeiken-it-study-roadmap.html",
+                       "mikeiken-it-kyujin-miwakekata.html"):
+              if f'href="{href}"' not in page or not Path(href).exists():
+                  raise SystemExit("7日間ワークの学習導線が切れています: " + href)
+          if ".kp-seven-day" not in Path("career-article-v2.css").read_text(encoding="utf-8"):
+              raise SystemExit("7日間ワークのモバイルスタイルが欠けています")
+          PY
 
       - name: Check live site
         if: >
