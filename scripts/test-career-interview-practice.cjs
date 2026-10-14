@@ -12,6 +12,7 @@ const names=['interviewQuestion','questionHint','interviewStatus','interviewResu
  'interviewConclusion','interviewSituation','interviewAction','interviewConnection','interviewLength',
  'createInterviewMemo','clearInterviewMemo'];
 const e=Object.fromEntries(names.map(k=>[k,el()]));
+e.copyInterviewMemo.disabled=true; // Initial disabled HTML attribute.
 const links=Array.from({length:20},(_,i)=>{const o=el();o.dataset.question=String(i+1);return o});
 let allow=true,confirmCalls=0,copied='';
 const window={isSecureContext:true,confirm(){confirmCalls++;return allow}};
