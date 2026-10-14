@@ -513,6 +513,8 @@ jobs:
           node --check career-next-action.js
           node scripts/test-career-next-action.cjs
           node scripts/test-career-workday-visual.cjs
+          node --check career-workrole-worksheet.js
+          node scripts/test-career-workrole-worksheet.cjs
           node scripts/test-career-reading-system.cjs
           node scripts/test-career-landmarks.cjs
           node scripts/audit-career-public-pages.cjs
