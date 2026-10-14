@@ -540,6 +540,22 @@ jobs:
           )
           PY
           node --check /tmp/koropop-role-navigator-check.js
+          # Keep explicit opt-in saving functional and validate its inline script syntax.
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("kyujin-joken-hikaku.html").read_text(encoding="utf-8")
+          privacy = Path("privacy.html").read_text(encoding="utf-8")
+          required = ('id="saveOfferDraft"', 'id="loadOfferDraft"',
+                      'id="removeOfferDraft"', "localStorage.setItem(draftKey",
+                      "localStorage.getItem(draftKey)", "localStorage.removeItem(draftKey)")
+          if any(token not in page for token in required):
+              raise SystemExit("求人比較の下書き保存・復元・削除が不足")
+          if "求人2社比較ツールでは" not in privacy:
+              raise SystemExit("求人下書きの保存方法がプライバシーポリシー未記載")
+          code = page.rsplit("<script>", 1)[1].split("</script>", 1)[0]
+          Path("/tmp/koropop-offer-draft-check.js").write_text(code, encoding="utf-8")
+          PY
+          node --check /tmp/koropop-offer-draft-check.js
           # Protect the seven-day reading worksheet and its real article links.
           python3 - <<'PY'
           from pathlib import Path
