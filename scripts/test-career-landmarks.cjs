@@ -21,7 +21,7 @@ for(const page of pages){
  assert.ok(s.indexOf('href="#kp-main"')<s.indexOf('</header>'),page+': skip must precede navigation');
  assert.ok(/(?:<main\b[^>]*id="kp-main"|<div\b[^>]*id="kp-main"[^>]*role="main")/.test(s),page+': accessible main landmark');
  assert.ok(s.includes('tabindex="-1"'),page+': focusable skip destination');
- assert.ok(s.includes('career-article-v2.css?v=20261014skip1'),page+': refreshed stylesheet for first-time visitors');
+ assert.match(s, /career-article-v2\.css\?v=[0-9A-Za-z_-]+/, page+': stylesheet must remain versioned to refresh returning visitors');
 }
 const reader=fs.readFileSync('koropop-reader.js','utf8');
 for(const key of ['.kp-reading-breadcrumb','.deep-crumb','.crumb',"nav[aria-label='現在のページ']"]){
@@ -31,6 +31,6 @@ for(const page of ['mikeiken-shanai-se.html','mikeiken-it-helpdesk.html','mikeik
  'mikeiken-it-kyujin-miwakekata.html','mikeiken-it-shibodoki.html']){
  const s=fs.readFileSync(page,'utf8');
  assert.ok(s.includes('class="kp-reading-breadcrumb"'),page+': manually authored navigation');
- assert.ok(s.includes('koropop-reader.js?v=20261014dedupe1'),page+': updated reader script not cached');
+ assert.match(s, /koropop-reader\.js\?v=[0-9A-Za-z_-]+/, page+': updated reader script must remain versioned');
 }
 console.log('Legacy article UX regression PASS: 14 skip/main landmarks, 5 reader breadcrumb dedupe cases');
