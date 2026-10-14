@@ -54,3 +54,17 @@ console.log('Article JSON-LD is parseable on refreshed helpdesk and cloud guides
 const sitemap=fs.readFileSync('sitemap.xml','utf8');
 for(const page of unique)assert.ok(sitemap.includes('https://koropopgames.com/'+page),'Missing sitemap page: '+page);
 console.log('Indexed-hub related paths PASS: '+routes.length+' editorial entrances linking to '+unique.size+' destination guides');
+
+// Preserve helpful static links from established, search-visible guides.
+// This prevents newly published articles from relying on a sitemap or JS-only navigation.
+const discoveryRoutes = [
+ {from:'shokushu-hikaku.html',to:'shanai-se-raku-kitsui.html'},
+ {from:'20s-mikeiken-tenshoku.html',to:'shanai-se-raku-kitsui.html'},
+ {from:'jobs.html',to:'shigoto-yametai-tsugi-kimattenai.html'}
+];
+for (const {from,to} of discoveryRoutes) {
+ const html=fs.readFileSync(from,'utf8');
+ assert.ok(html.includes('href="'+to+'"'),from+' must have a crawlable contextual link to '+to);
+ assert.ok(fs.existsSync(to),to+' must be published in the repository');
+}
+console.log('Priority discovery links PASS: 3 contextual links to 2 previously underlinked articles');
