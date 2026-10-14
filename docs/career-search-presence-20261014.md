@@ -75,7 +75,7 @@
 - `scripts/test-career-indexed-hubs.cjs` で3つの入口→4重要記事のリンク、リンク先存在、スマホCSSと正確なArticle JSON-LDをテスト。実際のGitHubコンテンツで模擬実行PASS、Site Doctorへ登録。
 - GSC Wizardの **Indexing Trackerに45URLすべてを登録済み**。現在のベースライン18件登録済み／23件Google未認識／4件発見済み未登録を使い、今後の変化を比較できる。
 - GSC Wizardの公開サイトSEO監査は、上記とは別の計20URLで**critical 0 / high 0、取得可能かつindexable 20件**。警告は画像・ロゴを含まないArticle構造化データや、文字数推計など。日本語記事に対して「thin-content」の英語系単語数推計が適切とは限らないため、低い数値を理由に内容を水増ししない。トップの`alt=""`画像4件は意図的な装飾画像（`aria-hidden="true"`）だったため、不必要な読み上げテキストを追加しない。
-- **公開反映の注意**：GitHubのソースには新しい構造化データがあるが、追加直後に行ったGSC Wizardのライブ監査では古い構造化データ無しの表示が続いた。デプロイ・キャッシュ等の時間差の可能性がある。公開サイトの更新完了は独立に確認すること。
+- **公開反映の確認**：追加直後のライブ監査では旧版だったが、その後 GSC Wizardの公開URL取得で `mikeiken-it-helpdesk.html`、`mikeiken-cloud-engineer.html` のHTTP 200と新しい `Article` JSON-LDを確認。`mikeiken-it-tenshoku.html`、`shokushu-hikaku.html`、`20s-mikeiken-tenshoku.html` もHTTP 200／自己canonical／インデックス可能と確認。**ボタンの実クリックやスマホ実画面のレンダリングまでは検証していない**。
 - 今回の内部リンクとSEOチェックは**検索順位上昇の測定結果ではない**。サイトマップとリンクを更新した後、Googleの発見・クロール・登録の変化を数日単位で観測し、実際の流入と照合する。
 
 ## 直すべき順序
