@@ -63,3 +63,11 @@ body{margin:0;background:#f7faf9;color:var(--deep-ink);font-family:-apple-system
 .deep-form pre{font-size:13px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:17px;border:1px solid #d4e5da;border-radius:8px;color:#2f4c50}
 .deep-form .form-status{font-size:13px;color:#236e59;min-height:1.8em}
 @media(max-width:680px){.deep-header-inner{padding:13px 16px}.deep-header nav{gap:10px}.deep-wrap{width:calc(100% - 28px);padding-top:22px}.deep-lead{font-size:15px}.deep-toc{padding:15px 17px}.deep-toc ul,.deep-cards,.deep-related,.deep-form-grid{grid-template-columns:1fr}.deep-wrap section{margin:28px 0}.deep-wrap p,.deep-wrap li{font-size:15px}.deep-table th,.deep-table td{font-size:12px;padding:11px 9px}.deep-form{padding:16px 13px}}
+
+/* Seven-step kitting self-study worksheet; large touch targets, no save tracking. */
+.deep-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0 22px}
+.deep-checks label{display:flex;align-items:flex-start;gap:11px;min-height:52px;padding:12px 13px;background:#fff;border:1px solid #c9ded4;border-radius:8px;font-size:13px;line-height:1.75;font-weight:650;cursor:pointer}
+.deep-checks input[type="checkbox"]{flex:0 0 19px;width:19px;height:19px;min-height:19px;margin:3px 0 0;accent-color:#226f5f}
+.deep-checks label:has(input:checked){background:#e4f2e9;border-color:#77ad98}
+.deep-checks input:focus-visible{outline:3px solid #4fa483;outline-offset:3px}
+@media(max-width:700px){.deep-checks{grid-template-columns:1fr}.deep-checks label{font-size:14px;min-height:54px}}
