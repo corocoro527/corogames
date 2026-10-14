@@ -28,6 +28,29 @@ body{background:#f8fafb}.compare-page{width:min(1100px,calc(100% - 34px));margin
 #copyStatus{font-size:12px;color:#286d60;font-weight:750}
 @media(max-width:760px){.job-info-grid{grid-template-columns:1fr;gap:10px}.job-info-grid article{padding:17px}.question-memo{padding:19px 16px}.memo-actions button{width:100%}}
 
+
+/* KOROPOP CAREER original preference-to-role navigator */
+.role-explore{margin:24px 0 22px;padding:22px 24px;background:#fff;border:1px solid #d5e3df;border-radius:12px}
+.role-explore .eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;color:#2a7668}
+.role-explore h2{font-size:clamp(21px,3vw,26px);letter-spacing:-.035em;line-height:1.45;margin:6px 0 7px}
+.role-explore p{font-size:13px;line-height:1.85;color:#536d73;margin:4px 0 14px}
+.role-explore-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.role-explore-fields label{font-size:13px;font-weight:750;color:#2b4f50;display:flex;flex-direction:column;gap:8px}
+.role-explore-fields select{width:100%;min-width:0;appearance:auto;font:inherit;font-size:14px;line-height:1.5;padding:12px 10px;min-height:49px;border:1px solid #b7d0c8;border-radius:8px;color:#213c42;background:#f8fbfa}
+.role-explore-fields select:focus-visible,#showRoleCandidates:focus-visible{outline:3px solid #59a18b;outline-offset:2px}
+#showRoleCandidates{min-height:46px;border:0;border-radius:8px;padding:12px 18px;background:#236e60;color:#fff;font-size:14px;font-weight:800;cursor:pointer}
+#showRoleCandidates:hover{background:#195548}
+#exploreSummary{margin:14px 0 9px;min-height:22px;font-size:13px;font-weight:700;color:#285f55}
+.role-candidates{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.role-candidate{padding:16px 17px;border:1px solid #cde1d9;border-radius:9px;background:#f5faf8;min-width:0}
+.role-candidate h3{font-size:16px;margin:0 0 8px;line-height:1.5}
+.role-candidate h3 a{color:#206a5d;text-decoration:underline;text-underline-offset:3px}
+.role-candidate p{margin:7px 0;font-size:12px;line-height:1.85}
+.role-candidate .check{color:#445f63}
+.role-explore-method{margin:17px 0 0!important;font-size:12px!important;color:#5b7379!important}
+.role-explore-method a{color:#22695d;text-decoration:underline}
+@media(max-width:760px){.role-explore{padding:17px 15px;margin:17px 0}.role-explore-fields,.role-candidates{grid-template-columns:1fr}.role-explore-fields{gap:14px}.role-candidate{padding:14px 15px}}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"IT職種比較シート","url":"https://koropopgames.com/shokushu-hikaku.html","description":"仕事を選ぶ際の比較観点をまとめた独自の実用シート"}</script>
 
@@ -43,6 +66,42 @@ body{background:#f8fafb}.compare-page{width:min(1100px,calc(100% - 34px));margin
 <h1>ITの仕事を、<br>名前だけで選ばないために。</h1>
 <p class="lead">気になるIT職種を最大3つ選んで、仕事内容・活かせる経験・求人を見るときの注意点を横並びで比べよう。大切なのは「職種名が魅力的か」より、<strong>実際に何をする仕事なのか</strong>やね。</p>
 <div class="explainer">比較の文章はKOROPOP CAREER編集部の整理例です。採用難易度・給与・向き不向きを断定するものではありません。同じ職種名でも仕事内容、勤務形態、必要経験は企業ごとに違います。</div>
+
+<section class="role-explore" id="role-explore" aria-labelledby="role-explore-title">
+  <span class="eyebrow">仕事の条件から候補を探す / 無料・登録不要</span>
+  <h2 id="role-explore-title">まず「やってみたい仕事」から2職種を絞る</h2>
+  <p>仕事内容への興味、働き方の希望、学習の方向を選ぶと、比較するための候補と確認点を表示します。「向いている」「採用されやすい」と判定するものではありません。</p>
+  <div class="role-explore-fields">
+    <label for="roleAction">① 気になる仕事内容
+      <select id="roleAction">
+        <option value="">選んでください</option>
+        <option value="support">人のPCやシステムの困りごとを解決したい</option>
+        <option value="systems">サーバー・通信の仕組みを調べたい</option>
+        <option value="security">不審なログやセキュリティを調べたい</option>
+        <option value="unsure">まだ決められない</option>
+      </select>
+    </label>
+    <label for="roleSchedule">② 働き方で重視したいこと
+      <select id="roleSchedule">
+        <option value="unsure">求人を見ながら決める</option>
+        <option value="day">できれば日勤中心がいい</option>
+        <option value="shift">夜勤・シフトも検討できる</option>
+      </select>
+    </label>
+    <label for="roleLearning">③ 学習の進め方
+      <select id="roleLearning">
+        <option value="unsure">これから考えたい</option>
+        <option value="basic">PCやITの基礎から少しずつ</option>
+        <option value="deep">ネットワーク・Linux等も深く学びたい</option>
+      </select>
+    </label>
+  </div>
+  <button id="showRoleCandidates" type="button">比較候補を表示する ↗</button>
+  <p id="exploreSummary" role="status" aria-live="polite">条件を選んで、下の比較候補を見つけよう。</p>
+  <div id="roleCandidates" class="role-candidates" aria-label="条件から選んだ比較候補"></div>
+  <p class="role-explore-method">選定方法：仕事内容への関心を最優先し、勤務希望・学習方針を補助条件にして6職種を並べます。結果は編集部が作ったルールによる比較の出発点です。勤務時間・応募条件は企業ごとに異なるため必ず求人で確認してください。仕事内容の参照：<a href="https://shigoto.mhlw.go.jp/User/personaluse" target="_blank" rel="noopener noreferrer">厚生労働省 job tag ↗</a></p>
+  <noscript><p>JavaScriptを無効にしている場合も、以下の6職種の記事と比較情報はそのまま閲覧できます。</p></noscript>
+</section>
 <section class="selector" aria-labelledby="chooseTitle">
 <h2 id="chooseTitle">比べたい職種を選ぶ</h2><p>最大3職種まで。最初は2職種を選択しています。</p><div id="options" class="options"></div><div id="chooseWarn" role="status" aria-live="polite"></div>
 </section>
@@ -113,6 +172,70 @@ document.getElementById('copyQuestions').addEventListener('click',async()=>{
   else{const ta=document.createElement('textarea');ta.value=value;ta.style.position='fixed';ta.style.left='-9999px';document.body.append(ta);ta.select();const success=document.execCommand('copy');ta.remove();if(!success)throw Error('copy failed')}
   status.textContent='コピーしました。メモ帳に貼り付けて使えます。';
  }catch(e){status.textContent='コピーできませんでした。ブラウザのコピー機能をご利用ください。'}
+});
+
+
+// This is a transparent editorial shortlist, not aptitude testing.
+// Interest has the highest weight; schedule and study preferences only adjust comparison order.
+const candidateReasons={
+  helpdesk:"問い合わせの内容を聞き、原因を切り分ける仕事。対人サポートに関心がある人が仕事内容を調べる入口になる。",
+  shanai:"社内ユーザーのサポートに加え、PC・業務システムの運用にも関われることがある。実際の担当範囲は幅広い。",
+  infra:"サーバーやネットワークの運用を支える。監視と設定変更の違い、夜勤・シフトの有無を先に調べたい。",
+  network:"通信の仕組みや接続障害の切り分けに関わる。機器設定・構築まで担当できるか確認が必要。",
+  cloud:"クラウド環境の設定・運用を調べたい人向けの候補。Linuxやネットワークの前提知識が重要。",
+  soc:"不審なログやアラートの分析を調べたい人向けの候補。シフト制か、調査に関われるかで仕事内容が変わる。"
+};
+const preferenceScores={
+  support:{helpdesk:6,shanai:5,infra:1,network:0,cloud:0,soc:0},
+  systems:{helpdesk:0,shanai:1,infra:5,network:5,cloud:4,soc:2},
+  security:{helpdesk:0,shanai:1,infra:1,network:3,cloud:2,soc:6},
+  unsure:{helpdesk:2,shanai:2,infra:2,network:2,cloud:2,soc:2}
+};
+const candSummary=document.getElementById('exploreSummary');
+const candRoot=document.getElementById('roleCandidates');
+document.getElementById('showRoleCandidates').addEventListener('click',()=>{
+  const interest=document.getElementById('roleAction').value;
+  const schedule=document.getElementById('roleSchedule').value;
+  const learning=document.getElementById('roleLearning').value;
+  candRoot.replaceChildren();
+  if(!interest){candSummary.textContent='まず「気になる仕事内容」を選んでください。';document.getElementById('roleAction').focus();return}
+  const ranked=jobs.map((j,idx)=>{
+    let score=preferenceScores[interest][j.id];
+    if(schedule==='day'){
+      if(j.id==='helpdesk'||j.id==='shanai')score+=2;
+      if(j.id==='infra'||j.id==='soc')score-=2;
+    }
+    if(schedule==='shift'&&(j.id==='infra'||j.id==='soc'))score+=1;
+    if(learning==='basic'&&(j.id==='helpdesk'||j.id==='shanai'))score+=1;
+    if(learning==='deep'&&(j.id==='network'||j.id==='cloud'))score+=2;
+    if(learning==='deep'&&(j.id==='infra'||j.id==='soc'))score+=1;
+    return {job:j,score,idx};
+  }).sort((a,b)=>b.score-a.score||a.idx-b.idx).slice(0,2);
+  selected.clear();
+  for(const entry of ranked)selected.add(entry.job.id);
+  opts.querySelectorAll('input[type="checkbox"]').forEach(chk=>{chk.checked=selected.has(chk.value)});
+  render();
+  warn.textContent='';
+  for(const entry of ranked){
+    const job=entry.job;
+    const article=document.createElement('article');
+    article.className='role-candidate';
+    const heading=document.createElement('h3');
+    const link=document.createElement('a');
+    link.href=job.link;
+    link.textContent=job.name+'の仕事内容を読む ↗';
+    heading.append(link);
+    const why=document.createElement('p');
+    why.textContent=candidateReasons[job.id];
+    const caution=document.createElement('p');
+    caution.className='check';
+    const strong=document.createElement('strong');
+    strong.textContent='求人で確認：';
+    caution.append(strong,document.createTextNode(job.caution));
+    article.append(heading,why,caution);
+    candRoot.append(article);
+  }
+  candSummary.textContent='比較候補2職種を表示し、下の比較表にも反映しました。ほかの職種に変更して比較することもできます。';
 });
 
 render();
