@@ -65,7 +65,7 @@ jobs:
                   return "general"
               if any(k in name for k in ("nenshu", "remote", "salary")) or "年収" in title:
                   return "future"
-              if any(k in name for k in ("shibodoki", "kyujin", "mensetsu", "rirekisho", "oubo")) or any(k in title for k in ("志望動機", "求人の見分け方", "面接の準備")):
+              if any(k in name for k in ("shibodoki", "kyujin", "mensetsu", "rirekisho", "keirekisho", "ses-", "oubo")) or any(k in title for k in ("志望動機", "求人の見分け方", "面接の準備")):
                   return "apply"
               if any(k in name for k in ("shanai", "helpdesk", "infra", "network", "cloud", "soc", "security", "engineer")) or any(k in title for k in ("社内SE", "ヘルプデスク", "インフラ", "ネットワーク", "クラウド", "SOC")):
                   return "roles"
