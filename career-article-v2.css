@@ -102,3 +102,8 @@ article .kp-decision-practice h3,.layout .kp-decision-practice h3{font-size:17px
 .kp-visual-bridge>a:hover{background:#16513f}
 .kp-visual-bridge>a:focus-visible{outline:3px solid #79bda2;outline-offset:3px}
 @media(max-width:720px){.kp-visual-bridge{display:block;padding:16px;margin:10px 0 22px}.kp-visual-bridge>a{margin-top:13px;width:100%;font-size:14px}.kp-visual-bridge p{font-size:14px}}
+
+/* Visible-on-focus skip link for the older publication templates. */
+.kp-skip-main{position:absolute;top:8px;left:-9999px;z-index:9999;padding:11px 15px;border:2px solid #235c50;border-radius:7px;background:#fff;color:#194a40!important;font-size:15px;font-weight:850;text-decoration:none}
+.kp-skip-main:focus,.kp-skip-main:focus-visible{left:8px}
+[role="main"][id="kp-main"]{scroll-margin-top:20px}
