@@ -138,3 +138,28 @@
 @media(max-width:900px){.career-path-list{grid-template-columns:1fr}.career-path-list a{min-height:61px;padding:10px 12px}}
 @media(max-width:480px){.career-path{padding:14px 12px}.career-path-heading{font-size:13px}.career-path-text strong{font-size:13px}.career-path-text small{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.career-path-list a{transition:none}}
+
+/* An accessible two-question next-action guide, independent of editorial search. */
+.career-next{scroll-margin-top:22px;margin:20px 0 45px;padding:25px 28px 22px;border:1px solid #d7e4df;border-radius:13px;background:#fff;box-shadow:0 8px 26px rgba(27,56,47,.045)}
+.career-next-header h2{font-size:clamp(21px,2.6vw,29px);letter-spacing:-.04em;line-height:1.5;margin:5px 0 7px}
+.career-next-header p{font-size:14px;line-height:1.8;color:#556e6b;margin:0}
+.career-next-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:20px 0}
+.career-next-controls label{display:block;font-size:13px;line-height:1.7;font-weight:800;color:#2d5550}
+.career-next-controls select{width:100%;display:block;min-width:0;min-height:48px;margin-top:7px;border:1px solid #aecbc0;border-radius:8px;padding:10px 13px;background:#fff;color:#203c3c;font:inherit;font-size:14px;font-weight:500;cursor:pointer}
+.career-next-controls select:focus-visible,.career-next-actions a:focus-visible{outline:3px solid #58a891;outline-offset:3px}
+.career-next-result{display:flex;gap:20px;align-items:center;justify-content:space-between;background:#f4f9f6;border:1px solid #d8e9df;border-radius:10px;padding:17px 19px}
+.career-next-result-copy{min-width:0;flex:1}
+.career-next-eyebrow{font-size:11px;letter-spacing:.06em;font-weight:900;color:#347665}
+.career-next-result h3{font-size:clamp(17px,2.1vw,21px);line-height:1.5;color:#234a45;margin:4px 0 6px;letter-spacing:-.02em}
+.career-next-result p{font-size:13px;line-height:1.85;margin:5px 0;color:#445e5b}
+.career-next-task{margin-top:9px!important;color:#294d48!important}
+.career-next-actions{display:flex;flex-direction:column;align-items:stretch;gap:9px;flex:0 0 224px}
+.career-next-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 13px;border-radius:7px;text-align:center;text-decoration:none;font-size:12px;font-weight:800;line-height:1.7}
+.career-next-main{background:#216d5d;color:white!important}
+.career-next-main:hover{background:#165748}
+.career-next-secondary{background:white;border:1px solid #b7d5c9;color:#265f51!important}
+.career-next-secondary:hover{background:#edf5ef}
+.career-next-note{font-size:11px;line-height:1.8;color:#688079;margin:13px 0 0}
+@media(max-width:780px){.career-next{margin:16px 0 37px;padding:20px 18px}.career-next-result{flex-direction:column;align-items:stretch;gap:13px}.career-next-actions{flex-basis:auto;flex-direction:row}.career-next-actions a{flex:1}}
+@media(max-width:590px){.career-next{padding:19px 15px}.career-next-controls{grid-template-columns:1fr;gap:13px;margin:16px 0}.career-next-controls label{font-size:14px}.career-next-controls select{min-height:49px;font-size:15px}.career-next-result{padding:15px 13px}.career-next-actions{flex-direction:column;gap:8px}.career-next-actions a{font-size:14px}.career-next-header p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.career-next{scroll-behavior:auto}}
