@@ -228,6 +228,18 @@ grid-template-columns:1fr;
 
 }
 
+/* Salary calculator: clear validation, mobile controls and copy/share actions. */
+.salary-error{padding:12px 14px;border:1px solid #e5b7b7;border-radius:10px;color:#8b2626;background:#fff4f3;font-size:14px;line-height:1.6}
+.salary-error[hidden]{display:none!important}
+.result[aria-label]{scroll-margin-top:24px}
+.salary-result-summary{font-size:13px;line-height:1.75;color:#31596f}
+.salary-result-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:10px;margin-top:12px}
+.salary-result-actions button,.salary-result-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 14px;border:1px solid #1769b0;border-radius:9px;background:#1769b0;color:#fff;font:inherit;font-size:14px;font-weight:750;text-decoration:none;cursor:pointer}
+.salary-result-actions a{background:#fff;color:#175f9a}
+.salary-result-actions button:disabled{opacity:.58;cursor:not-allowed}
+.salary-result-actions button:focus-visible,.salary-result-actions a:focus-visible{outline:3px solid #267fb9;outline-offset:3px}
+.salary-copy-status{font-size:13px;color:#285a4a;margin:10px 0 0;line-height:1.7}
+@media(max-width:650px){.field input{min-height:46px;font-size:16px}.salary-result-actions{display:grid;grid-template-columns:1fr}.salary-result-actions button,.salary-result-actions a{font-size:14px}}
 </style>
 
 </head>
@@ -243,7 +255,7 @@ grid-template-columns:1fr;
 KOROPOP GAMES
 </a>
 
-<a href="career.html">
+<a href="index.html">
 仕事・転職ガイド
 </a>
 
@@ -438,6 +450,7 @@ step="0.1"
 </div>
 
 
+<p id="salaryError" class="salary-error" role="alert" hidden></p>
 <button
 class="btn"
 id="calc"
@@ -450,6 +463,7 @@ type="button"
 <div
 class="result"
 id="result"
+aria-label="手取り・残業代の概算結果"
 >
 
 <strong>
@@ -539,6 +553,12 @@ id="result"
 
 </div>
 
+<p class="salary-result-summary" id="salaryResultSummary" role="status" aria-live="polite"></p>
+<div class="salary-result-actions">
+<button type="button" id="copySalaryResult" disabled>計算結果をコピー</button>
+<a id="shareSalaryTool" href="https://twitter.com/intent/tweet?text=%E6%89%8B%E5%8F%96%E3%82%8A%E3%83%BB%E6%AE%8B%E6%A5%AD%E4%BB%A3%E3%82%92%E8%A9%A6%E7%AE%97%E3%81%A7%E3%81%8D%E3%82%8B%E7%84%A1%E6%96%99%E3%83%84%E3%83%BC%E3%83%AB%20https%3A%2F%2Fkoropopgames.com%2Ftedori.html" target="_blank" rel="noopener noreferrer">Xでツールを共有 ↗</a>
+</div>
+<p class="salary-copy-status" id="salaryCopyStatus" role="status" aria-live="polite"></p>
 </div>
 
 
@@ -888,7 +908,7 @@ rel="noopener noreferrer"
 
 <a href="index.html">トップ</a>
 ・
-<a href="career.html">仕事・転職</a>
+<a href="index.html">仕事・転職</a>
 ・
 <a href="privacy.html">プライバシーポリシー</a>
 ・
@@ -903,105 +923,7 @@ rel="noopener noreferrer"
 </footer>
 
 
-<script>
-
-(() => {
-
-const yen =
-value =>
-Math.round(value).toLocaleString("ja-JP")+"円";
-
-
-const calc =
-document.getElementById("calc");
-
-
-calc.addEventListener("click",()=>{
-
-
-const salary =
-(Number(document.getElementById("salary").value)||0)*10000;
-
-const allowance =
-(Number(document.getElementById("allowance").value)||0)*10000;
-
-const hours =
-Number(document.getElementById("hours").value)||160;
-
-const overtime =
-Number(document.getElementById("overtime").value)||0;
-
-const premium =
-Number(document.getElementById("premium").value)||1.25;
-
-const bonus =
-Number(document.getElementById("bonus").value)||0;
-
-const deduction =
-Math.min(
-60,
-Math.max(
-0,
-Number(document.getElementById("deduction").value)||0
-)
-);
-
-
-if(salary<=0 || hours<=0){
-
-alert("基本給と所定労働時間を入力してください。");
-return;
-
-}
-
-
-const hourly =
-salary / hours;
-
-const overtimePay =
-hourly * premium * overtime;
-
-const gross =
-salary + allowance + overtimePay;
-
-const net =
-gross * (1-deduction/100);
-
-const annualGross =
-gross*12 + salary*bonus;
-
-const annualNet =
-annualGross*(1-deduction/100);
-
-
-document.getElementById("hourly").textContent =
-yen(hourly);
-
-document.getElementById("overtime-pay").textContent =
-yen(overtimePay);
-
-document.getElementById("gross").textContent =
-yen(gross);
-
-document.getElementById("net").textContent =
-yen(net);
-
-document.getElementById("annual-gross").textContent =
-yen(annualGross);
-
-document.getElementById("annual-net").textContent =
-yen(annualNet);
-
-
-document.getElementById("result")
-.classList.add("show");
-
-
-});
-
-})();
-
-</script>
+<script defer src="career-salary-estimator.js?v=20261014validation1"></script>
 
 </body>
 </html>
