@@ -46,5 +46,17 @@ quickButtons.forEach(btn=>btn.addEventListener('click',()=>{
 }));
 input.addEventListener('input',filter);
 clear.addEventListener('click',()=>{input.value='';filter();input.focus();});
+// Measure only anonymous journey link activation; never log search text or form data.
+const journeyLinks=Array.from(document.querySelectorAll('.career-path-list a'));
+journeyLinks.forEach((link,index)=>{
+ link.addEventListener('click',()=>{
+  if(typeof window.gtag==='function'){
+   window.gtag('event','career_step_'+String(index+1).padStart(2,'0')+'_click',{
+    event_category:'career_journey',
+    step_destination:link.getAttribute('href')
+   });
+  }
+ });
+});
 filter();
 })();
