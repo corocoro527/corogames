@@ -3,6 +3,9 @@
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#06101e,#091522);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;line-height:1.75}
 .wrap{width:min(900px,calc(100% - 28px));margin:auto;padding:44px 0 70px}.brand{font-weight:900;letter-spacing:.08em}.brand small{display:block;color:#8297b0;font-size:10px;letter-spacing:.18em}.badge{display:inline-block;margin-top:20px;padding:6px 10px;border:1px solid #315170;border-radius:999px;color:#bdefff;font-size:12px}
 h1{font-size:clamp(34px,6vw,58px);line-height:1.12;letter-spacing:-.03em;margin:18px 0 14px}.lead{font-size:18px;color:#bdccdc}.card{background:linear-gradient(180deg,#0f1d30,#0b1727);border:1px solid var(--line);border-radius:20px;padding:24px;margin-top:16px}.card h2{margin-top:0}.obs{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;padding:15px 0;border-top:1px solid rgba(255,255,255,.08)}.obs:first-child{border-top:0}.num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#10283b;color:#83e8ff;font-weight:900}.muted{color:var(--muted)}.cta{margin-top:22px;padding:28px;border-radius:22px;background:linear-gradient(135deg,#dffaff,#d7e6ff,#ded8ff);color:#07111f}.cta p{color:#30445c}.btn{display:inline-block;margin-top:10px;padding:13px 18px;border-radius:999px;background:#07111f;color:#fff;text-decoration:none;font-weight:900}.small{font-size:12px;color:#7f93aa;margin-top:22px}.good{border-color:#2b5945;background:#0d1a16}
+
+/* Public-price mini demo: client data is never collected. */
+.demo-form{display:grid;gap:12px}.demo-form label{display:flex;align-items:center;gap:10px;cursor:pointer}.demo-form input,.demo-form select{accent-color:#83e8ff}.demo-form select{background:#11263d;color:#eef5ff;border:1px solid #315170;border-radius:8px;padding:8px;max-width:100%}.demo-form fieldset{border:1px solid #315170;border-radius:12px;padding:14px}.demo-form legend{padding:0 8px}.demo-total{font-size:clamp(26px,5vw,40px);font-weight:900;color:#83e8ff;margin:12px 0}.demo-note{font-size:13px;color:#b5c7da}
 </style></head><body><main class="wrap">
 <div class="brand">KOROPOP LABS<small>ESTIMATE CALCULATOR PROPOSAL</small></div>
 <span class="badge">ぱんだ清掃様向け・公開情報のみで作成</span>
@@ -17,8 +20,46 @@ h1{font-size:clamp(34px,6vw,58px);line-height:1.12;letter-spacing:-.03em;margin:
 
 <section class="card good"><h2>全面リニューアルではありません</h2><p>現在の料金ページや問い合わせ導線を活かし、必要な箇所だけに軽量シミュレーターを追加する想定です。今ある情報資産を作り直すのではなく、相談前の確認を少し楽にする提案です。</p></section>
 
+
+<section class="card" id="sample-calculator" aria-labelledby="sample-title">
+<h2 id="sample-title">操作サンプル｜公開料金から概算を計算</h2>
+<p class="muted">以下は貴社の公開料金を参考にした<strong>提案用の試作品</strong>です。貴社の正式な見積機能ではなく、申込・送信も行いません。</p>
+<form class="demo-form" id="sample-form">
+<fieldset><legend>清掃メニューを選ぶ</legend>
+<label><input type="checkbox" name="service" value="12000">浴室（12,000円）</label>
+<label><input type="checkbox" name="service" value="9000">トイレ（9,000円）</label>
+<label><input type="checkbox" name="service" value="9000">洗面所（9,000円）</label>
+<label><input type="checkbox" name="service" value="10000">レンジフード（10,000円）</label>
+</fieldset>
+<label for="sample-aircon">エアコンクリーニング</label>
+<select id="sample-aircon"><option value="0">選択しない</option><option value="9000">通常（9,000円）</option><option value="14000">お掃除機能付き（14,000円）</option></select>
+<label><input type="checkbox" id="sample-coating" disabled>防カビコーティング（エアコン選択時＋1,000円）</label>
+</form>
+<p class="demo-total" id="sample-total" aria-live="polite">参考合計：0円</p>
+<p class="demo-note">※表示額は単純な選択例です。現場条件、追加料金、料金改定等を反映しない場合があります。正式な金額・作業可否は、ぱんだ清掃様の確認が必要です。入力情報は保存・送信されません。</p>
+</section>
 <section class="card"><h2>制作する場合</h2><p class="muted">料金・概算見積シミュレーター SIMPLE：49,800円〜。最大5項目程度の固定ルールで、概算価格または価格帯を表示します。既存サイトへの追加方法は、現在のサイト環境を確認したうえで決めます。</p><a class="btn" href="../solutions/estimate-calculator.html">サービス内容を見る</a> <a class="btn" href="../demos/estimate-calculator.html">デモを試す</a></section>
 
 <section class="cta"><h2>必要なら、公開料金だけで計算項目案を作れます。</h2><p>ご関心があれば「詳細希望」と一言ご返信ください。今の料金表をもとに、どの項目を選択式にできそうかだけ簡潔に整理します。</p><a class="btn" href="../contact.html?src=estimate-proposal-panda">相談する</a></section>
 <p class="small">公式サイトの公開料金・サービス情報をもとに作成。KOROPOP LABS／運営責任者 寺本 迅</p>
-</main></body></html>
+</main>
+<script>
+(()=>{
+  const form=document.getElementById('sample-form');
+  const aircon=document.getElementById('sample-aircon');
+  const coating=document.getElementById('sample-coating');
+  const total=document.getElementById('sample-total');
+  if(!form||!aircon||!coating||!total)return;
+  function calculate(){
+    const a=Number(aircon.value);
+    coating.disabled=a===0;
+    if(a===0)coating.checked=false;
+    const selected=[...form.querySelectorAll('input[name="service"]:checked')];
+    const sum=selected.reduce((v,el)=>v+Number(el.value),0)+a+(coating.checked?1000:0);
+    total.textContent='参考合計：'+sum.toLocaleString('ja-JP')+'円';
+  }
+  form.addEventListener('change',calculate);
+  calculate();
+})();
+</script>
+</body></html>
