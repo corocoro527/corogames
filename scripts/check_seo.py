@@ -5,7 +5,7 @@ import re
 import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 HOST = "koropopgames.com"
@@ -15,8 +15,11 @@ class HeadParser(HTMLParser):
         super().__init__()
         self.robots = []
         self.canonicals = []
+        self.links = []
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag == "a" and a.get("href"):
+            self.links.append(a["href"])
         if tag == "meta" and a.get("name", "").lower() == "robots":
             self.robots.append(a.get("content", "").lower())
         if tag == "link" and "canonical" in a.get("rel", "").lower().split():
@@ -56,8 +59,17 @@ def main():
             errors.append(f"Canonical mismatch: {relative}: {parser.canonicals}")
         if any("noindex" in value for value in parser.robots):
             errors.append(f"Noindex page in sitemap: {relative}")
-        if not re.search(r"<title(?:\\s[^>]*)?>\\s*[^<\\s]", html, re.I):
+        if not re.search(r"<title(?:\s[^>]*)?>\s*[^<\s]", html, re.I):
             errors.append(f"Missing title: {relative}")
+    # Root pages must consistently link to the canonical homepage, including fragments.
+    for file in ROOT.glob("*.html"):
+        parser = HeadParser()
+        parser.feed(file.read_text(encoding="utf-8"))
+        for href in parser.links:
+            base_path = "" if file.name == "index.html" else file.name
+            target = urlparse(urljoin(f"https://{HOST}/{base_path}", href))
+            if target.netloc == HOST and target.path == "/index.html":
+                errors.append(f"Noncanonical homepage link: {file.name}: {href}")
     print(f"Checked {len(urls)} sitemap URLs; {len(errors)} error(s).")
     for err in errors:
         print("ERROR:", err)
