@@ -45,6 +45,15 @@
 ## Free hosting decision
 A static host such as GitHub Pages or Cloudflare Pages may be suitable for a rights-cleared catalog and reader. The full image archive is hundreds of megabytes, so check repository size, per-file limits, bandwidth, and durable storage before choosing a host. Do not deploy all images into the existing repository by default.
 
+## Work-by-work release gate
+The public catalog contains 12 works and 24 episodes. Treat each work independently before public image hosting:
+- `midnight-lie`, `floor13`, `asobimashou`, `buzz-fight`, `debt-collector-isekai`, `dungeon-diner`, `borrowed-skill`, `youth-retake`, `lowest-dungeon-stream`, `little-general-store`: verify original authorship or obtain redistribution permission, including cover and all episode images.
+- `blackjack-ni-yoroshiku`: check the specific distribution terms and any required attribution before publishing 629 pages.
+- `pepper-and-carrot`: check the applicable Creative Commons attribution requirements and preserve author, license, and source credits.
+- A successful private backup or working Floot CDN URL is **not** evidence of public republication rights.
+- Keep drafts, user records, and comments out of public static exports.
+- Release only works with documented clearance; do not make the full backup ZIP public by default.
+
 ## Rights and user privacy
 Confirm hosting and redistribution rights for each work and all required attribution. Do not publicly upload user accounts, sessions, comments, drafts or private database records. A publicly accessible original image is not proof of a redistribution license.
 
