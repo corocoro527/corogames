@@ -27,11 +27,22 @@ jobs:
           cp manga-zero-migration/index.html manga-zero-migration/reader.html /tmp/manga-zero-preview/
           cp manga-zero-migration/public-catalog.json manga-zero-migration/episodes-original.json manga-zero-migration/episodes-remaining.json /tmp/manga-zero-preview/
           cp manga-zero-migration/volumes/*.json /tmp/manga-zero-preview/volumes/
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('/tmp/manga-zero-preview')
+          for name in ('index.html','reader.html'):
+              p=root/name
+              content=p.read_text()
+              needle="const preview=new URLSearchParams(location.search).get('preview')==='1';"
+              assert needle in content, f'Preview guard missing in {name}'
+              p.write_text(content.replace(needle,'const preview=true;'))
+          PY
+          if grep -q "const preview=new URLSearchParams" /tmp/manga-zero-preview/*.html; then exit 1; fi
           cat > /tmp/manga-zero-preview/README.txt <<'EOF'
           MANGA ZERO static preview, no bundled images.
           Serve this directory using: python3 -m http.server 8000
           Then open: http://localhost:8000/?offline=1&preview=1
-          In preview mode, image placeholders are expected because this package contains no images.\n          Do not remove preview=1 when publicly serving this package; otherwise source CDN fallback may occur.
+          In preview mode, image placeholders are expected because this package contains no images.\n          This preview package permanently disables image loads, even without query parameters.
           This package is NOT an independent complete deployment.
           EOF
       - name: Upload preview package
