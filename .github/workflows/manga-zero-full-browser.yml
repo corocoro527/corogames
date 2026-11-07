@@ -4,6 +4,10 @@ on:
     branches: [manga-zero-migration]
     paths:
       - '.github/workflows/manga-zero-full-browser.yml'
+      - 'manga-zero-migration/reader.html'
+      - 'manga-zero-migration/index.html'
+      - 'manga-zero-migration/browser_test.py'
+      - 'manga-zero-migration/verify_offline.py'
   workflow_dispatch:
 jobs:
   full-browser:
