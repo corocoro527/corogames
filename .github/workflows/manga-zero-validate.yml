@@ -1,0 +1,20 @@
+name: MANGA ZERO static catalog checks
+on:
+  push:
+    branches: [manga-zero-migration]
+    paths:
+      - 'manga-zero-migration/*.json'
+      - 'manga-zero-migration/*.html'
+      - 'manga-zero-migration/volumes/**'
+      - 'manga-zero-migration/validate_catalog.py'
+      - '.github/workflows/manga-zero-validate.yml'
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check catalog, episode IDs, page ordering and reader assets
+        run: python3 manga-zero-migration/validate_catalog.py
