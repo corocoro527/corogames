@@ -4,6 +4,7 @@ on:
     branches: [manga-zero-migration]
     paths:
       - 'manga-zero-migration/backup_assets.py'
+      - 'manga-zero-migration/validate_catalog.py'
       - '.github/workflows/manga-zero-backup.yml'
   workflow_dispatch:
 jobs:
