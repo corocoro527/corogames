@@ -16,11 +16,19 @@ def main():
             pages.extend(part)
         assert len(pages)==spans[-1][1]
         assert all(x.get("image") for x in pages)
+        assert [int(x["page"]) for x in pages]==list(range(1,spans[-1][1]+1)),eid
         ids.append(eid)
     assert len(ids)==len(set(ids))==24
     listed=[ep["id"] for w in works for ep in w["episodes"]]
     assert sorted(ids)==sorted(listed),(set(ids)-set(listed),set(listed)-set(ids))
     empty=[ep["id"] for ep in episodes if not ep.get("images")]
+    assert all(w.get("cover_url") for w in works), "Missing cover image"
+    assert all(w.get("slug") and w.get("title") for w in works)
+    assert all(ep.get("slug") and ep.get("title") for ep in episodes)
+    reader=(ROOT/"reader.html").read_text(encoding="utf-8")
+    catalog_html=(ROOT/"index.html").read_text(encoding="utf-8")
+    assert "asset-manifest.json" in reader and "asset-manifest.json" in catalog_html
+    assert "reader.html?id=" in catalog_html
     if empty: print(f"WARNING: episodes without image pages: {empty}")
     print(f"PASS: {len(works)} works, {len(ids)} episode records, complete volume chunks; {len(empty)} episodes have no image pages")
 if __name__=="__main__":main()
