@@ -5,6 +5,7 @@ on:
     paths:
       - 'manga-zero-migration/*.html'
       - 'manga-zero-migration/*.json'
+      - 'manga-zero-migration/browser_test.py'
       - 'manga-zero-migration/volumes/**'
       - '.github/workflows/manga-zero-browser.yml'
   workflow_dispatch:
@@ -20,6 +21,8 @@ jobs:
         run: |
           python3 -m pip install playwright
           python3 -m playwright install --with-deps chromium
+      - name: Confirm browser test is checked out
+        run: test -f manga-zero-migration/browser_test.py
       - name: Test desktop and mobile reader
         run: python3 manga-zero-migration/browser_test.py
       - name: Upload browser screenshots on failure
