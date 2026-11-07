@@ -1,0 +1,42 @@
+name: MANGA ZERO static preview package
+on:
+  push:
+    branches: [manga-zero-migration]
+    paths:
+      - 'manga-zero-migration/*.html'
+      - 'manga-zero-migration/*.json'
+      - 'manga-zero-migration/volumes/**'
+      - 'manga-zero-migration/validate_catalog.py'
+      - 'manga-zero-migration/smoke_test.py'
+      - '.github/workflows/manga-zero-preview.yml'
+  workflow_dispatch:
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify public catalog and reader
+        run: |
+          python3 manga-zero-migration/validate_catalog.py
+          python3 manga-zero-migration/smoke_test.py
+      - name: Assemble preview without copyrighted image files
+        run: |
+          mkdir -p /tmp/manga-zero-preview/volumes
+          cp manga-zero-migration/index.html manga-zero-migration/reader.html /tmp/manga-zero-preview/
+          cp manga-zero-migration/public-catalog.json manga-zero-migration/episodes-original.json manga-zero-migration/episodes-remaining.json /tmp/manga-zero-preview/
+          cp manga-zero-migration/volumes/*.json /tmp/manga-zero-preview/volumes/
+          cat > /tmp/manga-zero-preview/README.txt <<'EOF'
+          MANGA ZERO static preview, no bundled images.
+          Serve this directory using: python3 -m http.server 8000
+          Then open: http://localhost:8000/?offline=1
+          In offline mode, image placeholders are expected because this package contains no images.
+          This package is NOT an independent complete deployment.
+          EOF
+      - name: Upload preview package
+        uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-static-preview
+          path: /tmp/manga-zero-preview/
+          retention-days: 30
