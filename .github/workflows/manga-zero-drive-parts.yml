@@ -1,0 +1,61 @@
+name: MANGA ZERO private backup parts for durable Drive transfer
+on:
+  push:
+    branches: [manga-zero-migration]
+    paths: ['.github/workflows/manga-zero-drive-parts.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download previously verified full backup artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/full
+          gh run download 42414723367 --repo ${{ github.repository }} --name manga-zero-complete-offline-site --dir /tmp/full
+          du -sh /tmp/full
+      - name: Create bounded ZIP archives for Drive transfer
+        run: |
+          cd /tmp/full
+          python3 - <<'PY'
+          from pathlib import Path
+          import zipfile, hashlib, json
+          root=Path('.')
+          files=sorted(p for p in root.rglob('*') if p.is_file())
+          assert files, 'No backup files'
+          groups=[[],[]]
+          sizes=[0,0]
+          for p in sorted(files,key=lambda p:p.stat().st_size,reverse=True):
+              i=sizes.index(min(sizes))
+              groups[i].append(p)
+              sizes[i]+=p.stat().st_size
+          for i,group in enumerate(groups,1):
+              out=Path('/tmp')/f'manga-zero-private-backup-part-{i}.zip'
+              with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_STORED) as z:
+                  for p in group:z.write(p,p.as_posix())
+              assert out.stat().st_size<500_000_000, f'Part {i} too large'
+              print(out.name,out.stat().st_size,hashlib.sha256(out.read_bytes()).hexdigest())
+          Path('/tmp/backup-parts-manifest.json').write_text(json.dumps({'parts':2,'original_file_count':len(files),'original_total_bytes':sum(p.stat().st_size for p in files)},indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-1
+          path: /tmp/manga-zero-private-backup-part-1.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-2
+          path: /tmp/manga-zero-private-backup-part-2.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-backup-parts-manifest
+          path: /tmp/backup-parts-manifest.json
+          retention-days: 30
