@@ -2,6 +2,7 @@
 """Chromium UI checks for local static site; no external CDN requests."""
 import contextlib
 import http.server
+import json
 import pathlib
 import socketserver
 import threading
@@ -18,6 +19,10 @@ def main():
         thread=threading.Thread(target=server.serve_forever,daemon=True)
         thread.start()
         base=f"http://127.0.0.1:{server.server_address[1]}"
+        full_assets=(ROOT/"asset-manifest.json").exists()
+        if full_assets:
+            manifest=json.loads((ROOT/"asset-manifest.json").read_text())["assets"]
+            assert len(manifest)==884
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True)
             for device in ("desktop","mobile"):
@@ -34,16 +39,25 @@ def main():
                 page.locator(".card").first.wait_for()
                 assert page.locator(".card").count()==12
                 assert "12作品" in page.locator("#status").inner_text()
+                if full_assets:
+                    page.locator(".cover").first.evaluate("(img) => img.decode()")
+                    assert page.locator(".cover").first.evaluate("(img) => img.naturalWidth > 0")
                 assert page.locator(".card a").first.get_attribute("href").endswith("offline=1")
                 page.goto(base+"/reader.html?id=16&offline=1")
                 page.locator("#pages img, #pages div").first.wait_for()
                 assert page.locator("#pages img, #pages div").count()==209
                 assert "209ページ" in page.locator("#status").inner_text()
+                if full_assets:
+                    page.locator("#pages img").first.evaluate("(img) => img.decode()")
+                    assert page.locator("#pages img").first.evaluate("(img) => img.naturalWidth > 0")
                 for episode,count in ((17,199),(18,221)):
                     page.goto(base+f"/reader.html?id={episode}&offline=1")
                     page.locator("#pages img, #pages div").first.wait_for()
                     assert page.locator("#pages img, #pages div").count()==count,(episode,count)
                     assert f"{count}ページ" in page.locator("#status").inner_text()
+                    if full_assets:
+                        page.locator("#pages img").first.evaluate("(img) => img.decode()")
+                        assert page.locator("#pages img").first.evaluate("(img) => img.naturalWidth > 0")
                 page.goto(base+"/reader.html?id=16&offline=1")
                 page.locator("#pages img, #pages div").first.wait_for()
                 page.locator("#next").click()
