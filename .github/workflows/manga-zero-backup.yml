@@ -3,7 +3,7 @@ on:
   push:
     branches: [manga-zero-migration]
     paths:
-      - 'manga-zero-migration/**'
+      - 'manga-zero-migration/backup_assets.py'
       - '.github/workflows/manga-zero-backup.yml'
   workflow_dispatch:
 jobs:
