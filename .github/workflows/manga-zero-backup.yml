@@ -36,6 +36,8 @@ jobs:
           assert all((p/path).stat().st_size>0 for path in manifest['assets'].values())
           print(f"Verified offline package: {len(manifest['assets'])} images")
           PY
+      - name: Verify SHA256 for every downloaded image
+        run: python3 manga-zero-migration/verify_offline.py
       - name: Upload asset backup artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -47,6 +49,8 @@ jobs:
             manga-zero-migration/asset-manifest.json
             manga-zero-migration/index.html
             manga-zero-migration/reader.html
+            manga-zero-migration/verify_offline.py
+            manga-zero-migration/backup_assets.py
             manga-zero-migration/public-catalog.json
             manga-zero-migration/episodes-*.json
             manga-zero-migration/volumes/
