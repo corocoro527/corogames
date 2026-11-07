@@ -14,6 +14,8 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v4
+      - name: Validate episode catalog and volume chunks
+        run: python3 manga-zero-migration/validate_catalog.py
       - name: Download public manga assets and verify hashes
         run: python3 manga-zero-migration/backup_assets.py
       - name: Verify complete offline package
