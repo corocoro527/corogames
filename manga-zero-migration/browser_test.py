@@ -39,6 +39,13 @@ def main():
                 page.locator("#pages img, #pages div").first.wait_for()
                 assert page.locator("#pages img, #pages div").count()==209
                 assert "209ページ" in page.locator("#status").inner_text()
+                for episode,count in ((17,199),(18,221)):
+                    page.goto(base+f"/reader.html?id={episode}&offline=1")
+                    page.locator("#pages img, #pages div").first.wait_for()
+                    assert page.locator("#pages img, #pages div").count()==count,(episode,count)
+                    assert f"{count}ページ" in page.locator("#status").inner_text()
+                page.goto(base+"/reader.html?id=16&offline=1")
+                page.locator("#pages img, #pages div").first.wait_for()
                 page.locator("#next").click()
                 assert page.locator("#episode").input_value()!="16"
                 assert "offline=1" in page.url
