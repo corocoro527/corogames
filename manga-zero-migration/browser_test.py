@@ -38,6 +38,9 @@ def main():
                 page.goto(base+"/index.html?offline=1")
                 page.locator(".card").first.wait_for()
                 assert page.locator(".card").count()==12
+                assert page.locator(".card details").count()==12
+                assert page.locator(".card details a").count()==24
+                assert page.locator(".card details a").first.get_attribute("href").endswith("offline=1")
                 assert "12作品" in page.locator("#status").inner_text()
                 if full_assets:
                     page.locator(".cover").first.evaluate("(img) => img.decode()")
