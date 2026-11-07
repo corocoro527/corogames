@@ -29,6 +29,12 @@
 - Desktop and mobile viewports passed static catalog, offline-mode, three long-form volume page counts, and episode navigation checks.
 - These tests verify layout/data behavior with missing-image placeholders; they do **not** prove that all 884 real images render correctly in browsers. A browser test of the complete artifact is still required before public cutover.
 
+## Full-image browser check
+- Workflow: https://github.com/corocoro527/corogames/actions/workflows/manga-zero-full-browser.yml
+- Reuses verified offline artifact and checks actual image decoding in Chromium on desktop/mobile.
+- Successful image download and SHA256 verification are not substitutes for successful browser rendering.
+- Confirm this workflow is green before deploying; a queued or running workflow is **not** a pass.
+
 ## Free hosting decision
 A static host such as GitHub Pages or Cloudflare Pages may be suitable for a rights-cleared catalog and reader. The full image archive is hundreds of megabytes, so check repository size, per-file limits, bandwidth, and durable storage before choosing a host. Do not deploy all images into the existing repository by default.
 
