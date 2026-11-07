@@ -25,6 +25,9 @@ The `MANGA ZERO public asset backup` GitHub Actions workflow runs `validate_cata
 ## What is not migrated
 Authentication, user accounts, comments, creator submissions, administration, original server APIs, and private database records are **not implemented** in the static reader. Do not present this prototype as a full feature-for-feature migration.
 
+## Floot free-tier outage and migration dependency
+Floot notified the owner that its free-plan daily hosting usage cap (about USD 0.30) temporarily suspended MANGA ZERO and three other applications. This does not mean source code or data was deleted. The static reader still falls back to the Floot CDN without local assets; therefore an outage may affect images. Package permitted images and test with `?offline=1` before deployment. Do not change DNS prematurely.
+
 ## Production safety and rights
 1. Keep production Floot and `manga.koropopgames.com` DNS unchanged until independent hosting and functional checks pass.
 2. Do not commit private user data, credentials, or session tokens.
