@@ -1,0 +1,126 @@
+[
+  {
+    "id": 19,
+    "slug": "pepper-and-carrot",
+    "episode_number": 1,
+    "title": "飛行薬",
+    "images": [
+      "https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E01P00.jpg",
+      "https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E01P01.jpg",
+      "https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E01P02.jpg",
+      "https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E01P03.jpg",
+      "https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E01P04.jpg"
+    ]
+  },
+  {
+    "id": 20,
+    "slug": "pepper-and-carrot",
+    "episode_number": 2,
+    "title": "虹の薬",
+    "images": [
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P00.jpg",
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P01.jpg",
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P02.jpg",
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P03.jpg",
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P04.jpg",
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P05.jpg",
+      "https://www.peppercarrot.com/0_sources/ep02_Rainbow-potions/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E02P06.jpg"
+    ]
+  },
+  {
+    "id": 21,
+    "slug": "pepper-and-carrot",
+    "episode_number": 3,
+    "title": "秘密の材料",
+    "images": [
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P00.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P01.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P02.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P03.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P04.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P05.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P06.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P07.jpg",
+      "https://www.peppercarrot.com/0_sources/ep03_The-secret-ingredients/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E03P08.jpg"
+    ]
+  },
+  {
+    "id": 22,
+    "slug": "pepper-and-carrot",
+    "episode_number": 4,
+    "title": "天才のひらめき",
+    "images": [
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P00.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P01.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P02.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P03.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P04.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P06.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P07.jpg",
+      "https://www.peppercarrot.com/0_sources/ep04_Stroke-of-genius/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E04P08.jpg"
+    ]
+  },
+  {
+    "id": 23,
+    "slug": "pepper-and-carrot",
+    "episode_number": 5,
+    "title": "クリスマススペシャルエピソード",
+    "images": [
+      "https://www.peppercarrot.com/0_sources/ep05_Special-holiday-episode/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E05P00.jpg",
+      "https://www.peppercarrot.com/0_sources/ep05_Special-holiday-episode/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E05P01.jpg",
+      "https://www.peppercarrot.com/0_sources/ep05_Special-holiday-episode/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E05P02.jpg",
+      "https://www.peppercarrot.com/0_sources/ep05_Special-holiday-episode/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E05P03.jpg",
+      "https://www.peppercarrot.com/0_sources/ep05_Special-holiday-episode/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E05P04.jpg",
+      "https://www.peppercarrot.com/0_sources/ep05_Special-holiday-episode/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E05P05.jpg"
+    ]
+  },
+  {
+    "id": 24,
+    "slug": "pepper-and-carrot",
+    "episode_number": 6,
+    "title": "魔法薬コンテスト",
+    "images": [
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P00.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P01.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P02.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P03.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P04.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P05.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P06.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P07.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P08.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P09.jpg",
+      "https://www.peppercarrot.com/0_sources/ep06_The-Potion-Contest/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E06P10.jpg"
+    ]
+  },
+  {
+    "id": 25,
+    "slug": "buzz-fight",
+    "episode_number": 6,
+    "title": "開戦",
+    "images": [
+      "/_cdn/static/87726ece-6726-4348-ae5f-634fb4aa46aa-buzz-fight-ch06-p01-final.png",
+      "/_cdn/static/75cc8fc2-6193-4f75-9f7d-56ae1a53ad16-buzz-fight-ch06-p02-final.png",
+      "/_cdn/static/159b3154-b065-441c-84b9-28a4a243cffa-buzz-fight-ch06-p03-final.png",
+      "/_cdn/static/787a7bc1-1e42-43c0-8807-08da2402bf3f-buzz-fight-ch06-p04-final.png",
+      "/_cdn/static/505d110e-7f0a-46de-9293-58c015933fbb-buzz-fight-ch06-p05-final.png",
+      "/_cdn/static/7d90889a-15c4-4ae1-b275-69fc4558ede8-buzz-fight-ch06-p06-final.png",
+      "/_cdn/static/3acfe734-ce00-42a0-9c3c-67ab84d9042e-buzz-fight-ch06-p07-final.png",
+      "/_cdn/static/593e2e6a-5b4c-417d-92d7-9b02428ca015-buzz-fight-ch06-p08-final.png",
+      "/_cdn/static/aa148e8a-5b08-45d4-9fb5-7e68c7efc62c-buzz-fight-ch06-p09-final.png",
+      "/_cdn/static/524ad3e4-8d31-4b08-a87a-80e4c7aa460d-buzz-fight-ch06-p10-final.png",
+      "/_cdn/static/b1672561-052c-4b6f-bd80-751828146aa5-buzz-fight-ch06-p11-final.png",
+      "/_cdn/static/914ebc61-f913-48b6-9a0f-2645c565ad92-buzz-fight-ch06-p12-final.png",
+      "/_cdn/static/dcaf3ced-e226-4bd0-ac32-78ecf44b15a0-buzz-fight-ch06-p13-final.png",
+      "/_cdn/static/258f7400-9936-4f5e-bce0-87eb4da1fad4-buzz-fight-ch06-p14-final.png",
+      "/_cdn/static/050a5eaa-f517-46c7-b219-4c9ac5dd7777-buzz-fight-ch06-p15-final.png",
+      "/_cdn/static/0f2b4777-e422-428c-baff-c4a2a7c6cf25-buzz-fight-ch06-p16-final.png",
+      "/_cdn/static/bc71a2fc-6964-42c6-8bff-ee42ae6f9117-buzz-fight-ch06-p17-final.png",
+      "/_cdn/static/6768cc9d-ba7b-406e-9b8c-1b0941626429-buzz-fight-ch06-p18-final.png",
+      "/_cdn/static/7b209ae5-77e2-4623-83ba-3b3e5ac3f44f-buzz-fight-ch06-p19-final.png",
+      "/_cdn/static/3c547098-3ea1-45ce-86b1-404edd488088-buzz-fight-ch06-p20-final.png",
+      "/_cdn/static/54786f01-bca1-4b99-b8e0-cc181b3868a7-buzz-fight-ch06-p21-final.png",
+      "/_cdn/static/59848b2b-a7df-40d2-8849-0c61ca74a24f-buzz-fight-ch06-p22-final.png"
+    ]
+  }
+]
