@@ -1,0 +1,47 @@
+name: MANGA ZERO image-free GitHub Pages preview
+on:
+  push:
+    branches: [manga-zero-migration]
+    paths:
+      - '.github/workflows/manga-zero-pages-preview.yml'
+      - 'manga-zero-migration/*.html'
+      - 'manga-zero-migration/*.json'
+      - 'manga-zero-migration/volumes/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: manga-zero-pages-preview
+  cancel-in-progress: true
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image-free isolated preview
+        run: |
+          python3 manga-zero-migration/validate_catalog.py
+          mkdir -p /tmp/manga-pages/manga-zero-preview/volumes
+          cp manga-zero-migration/index.html manga-zero-migration/reader.html /tmp/manga-pages/manga-zero-preview/
+          cp manga-zero-migration/public-catalog.json manga-zero-migration/episodes-original.json manga-zero-migration/episodes-remaining.json /tmp/manga-pages/manga-zero-preview/
+          cp manga-zero-migration/volumes/*.json /tmp/manga-pages/manga-zero-preview/volumes/
+          python3 - <<'PY'
+          from pathlib import Path
+          for p in Path('/tmp/manga-pages/manga-zero-preview').glob('*.html'):
+              s=p.read_text()
+              needle="const preview=new URLSearchParams(location.search).get('preview')==='1';"
+              assert needle in s
+              p.write_text(s.replace(needle,'const preview=true;'))
+          PY
+          touch /tmp/manga-pages/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: /tmp/manga-pages
+      - id: deployment
+        uses: actions/deploy-pages@v4
