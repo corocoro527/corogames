@@ -16,13 +16,31 @@ jobs:
       - uses: actions/checkout@v4
       - name: Download public manga assets and verify hashes
         run: python3 manga-zero-migration/backup_assets.py
-      - name: Verify complete offline package\n        run: |\n          python3 - <<'PY'\n          import json, pathlib\n          p=pathlib.Path('manga-zero-migration')\n          report=json.loads((p/'asset-backup-report.json').read_text())\n          manifest=json.loads((p/'asset-manifest.json').read_text())\n          assert not report['errors'], report['errors'][:5]\n          assert len(report['saved'])==report['totalUniqueReferences']==len(manifest['assets'])\n          assert all((p/path).is_file() for path in manifest['assets'].values())\n          print(f\"Verified offline package: {len(manifest['assets'])} images\")\n          PY\n      - name: Upload asset backup artifact
+      - name: Verify complete offline package
+        run: |
+          python3 - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('manga-zero-migration')
+          report=json.loads((p/'asset-backup-report.json').read_text())
+          manifest=json.loads((p/'asset-manifest.json').read_text())
+          assert not report['errors'], report['errors'][:5]
+          assert len(report['saved'])==report['totalUniqueReferences']==len(manifest['assets'])
+          assert all((p/path).is_file() for path in manifest['assets'].values())
+          print(f"Verified offline package: {len(manifest['assets'])} images")
+          PY
+      - name: Upload asset backup artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: manga-zero-public-assets
           path: |
             manga-zero-migration/backup-assets/
-            manga-zero-migration/asset-backup-report.json\n            manga-zero-migration/asset-manifest.json\n            manga-zero-migration/index.html\n            manga-zero-migration/reader.html\n            manga-zero-migration/public-catalog.json\n            manga-zero-migration/episodes-*.json\n            manga-zero-migration/volumes/
+            manga-zero-migration/asset-backup-report.json
+            manga-zero-migration/asset-manifest.json
+            manga-zero-migration/index.html
+            manga-zero-migration/reader.html
+            manga-zero-migration/public-catalog.json
+            manga-zero-migration/episodes-*.json
+            manga-zero-migration/volumes/
           if-no-files-found: warn
           retention-days: 30
