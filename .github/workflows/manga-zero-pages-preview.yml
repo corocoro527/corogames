@@ -1,12 +1,5 @@
 name: MANGA ZERO image-free GitHub Pages preview
 on:
-  push:
-    branches: [manga-zero-migration]
-    paths:
-      - '.github/workflows/manga-zero-pages-preview.yml'
-      - 'manga-zero-migration/*.html'
-      - 'manga-zero-migration/*.json'
-      - 'manga-zero-migration/volumes/**'
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,6 +10,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   deploy:
+    # Manual-only: deployment requires explicit GitHub Pages environment approval.
     environment:
       name: manga-zero-preview
       url: ${{ steps.deployment.outputs.page_url }}
