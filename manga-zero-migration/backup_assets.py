@@ -48,6 +48,8 @@ def main():
         except Exception as exc: errors.append({"url":url,"error":str(exc)})
         if i%50==0: print(f"{i}/{len(urls)} downloaded; errors={len(errors)}",flush=True)
     (BASE/"asset-backup-report.json").write_text(json.dumps({"totalUniqueReferences":len(urls),"saved":report,"errors":errors},ensure_ascii=False,indent=2),encoding="utf-8")
-    manifest={"assets":{item["source"]:"backup-assets/"+item["file"] for item in report}}\n    (BASE/"asset-manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")\n    print(f"Done: {len(report)} images, {len(errors)} errors")
+    manifest={"assets":{item["source"]:"backup-assets/"+item["file"] for item in report}}
+    (BASE/"asset-manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding="utf-8")
+    print(f"Done: {len(report)} images, {len(errors)} errors")
     return 1 if errors else 0
 if __name__=="__main__":sys.exit(main())
