@@ -1,0 +1,234 @@
+{
+  "exportedAt": "2026-11-08",
+  "source": "Floot MANGA ZERO public catalog",
+  "works": [
+    {
+      "title": "午前0時、君は嘘をつく",
+      "slug": "midnight-lie",
+      "genre": "恋愛・サスペンス",
+      "description": "婚約者のスマホに届いた、存在しないはずの女からのメッセージ。信じたい気持ちほど、真実は残酷だった。",
+      "cover_url": "/_cdn/static/81f4c72e-502e-4883-b363-ee3d3e620b40-midnight-lie-cover-v3.png",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "知らない通知",
+          "id": 1
+        }
+      ]
+    },
+    {
+      "title": "13階には帰れない",
+      "slug": "floor13",
+      "genre": "サバイバル・ホラー",
+      "description": "母の死をきっかけに、15年ぶりに故郷へ戻った雨宮律。妹・澪が失踪した日の記憶と、母が遺した手紙。3階304号室で、存在しないはずの13階につながる不可解な出来事が始まる。",
+      "cover_url": "/_cdn/static/1ad28562-bf9c-4326-8bb1-e5eb87521edb.png",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "15年ぶりの帰郷",
+          "id": 2
+        }
+      ]
+    },
+    {
+      "title": "あそびましょう",
+      "slug": "asobimashou",
+      "genre": "学園ホラー・サスペンス",
+      "description": "目覚めたのは、子どもの頃に通った児童館。集められた六人は、互いを知らないふりをしていた。最初の遊びは「だるまさんがころんだ」。だが鬼が見ているのは、身体の動きではなかった。",
+      "cover_url": "/_cdn/static/e781dc9d-66ca-492b-96d0-acd6a39f1a1e-asobimashou-cover-v2.png",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "放課後の招待",
+          "id": 3
+        }
+      ]
+    },
+    {
+      "title": "バズ・ファイト",
+      "slug": "buzz-fight",
+      "genre": "アクション・青春",
+      "description": "大学2年生・朝倉蓮。何者でもない自分を変えたい青年の、思いがけない出来事から始まる青春ストーリー。",
+      "cover_url": "/_cdn/static/055e0bb4-1144-4556-87ab-283728fa3ad2-buzz-fight-cover-color-v2.jpeg",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "何者でもない俺",
+          "id": 4
+        },
+        {
+          "episodeNumber": 2,
+          "title": "変わりたい",
+          "id": 8
+        },
+        {
+          "episodeNumber": 3,
+          "title": "会場まで",
+          "id": 12
+        },
+        {
+          "episodeNumber": 4,
+          "title": "会場の中へ",
+          "id": 13
+        },
+        {
+          "episodeNumber": 5,
+          "title": "心臓の音",
+          "id": 15
+        },
+        {
+          "episodeNumber": 6,
+          "title": "開戦",
+          "id": 25
+        }
+      ]
+    },
+    {
+      "title": "異世界でも取り立てます",
+      "slug": "debt-collector-isekai",
+      "genre": "異世界・逆転",
+      "description": "魔力まで借金になる世界で、元取立て屋が見つけたのは、勇者を一生縛る契約の一文。剣も魔法もない。あるのは、嘘を見抜く目と返済計画。最初の回収相手は、世界を救って無一文になった勇者だった。",
+      "cover_url": "/_cdn/static/1176f4c6-9ea0-47b4-b3e3-cbbcc8af787b-manga-zero-debt-cover-new.jpg",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "勇者さん、返済日です",
+          "id": 5
+        }
+      ]
+    },
+    {
+      "title": "ダンジョン終電食堂",
+      "slug": "dungeon-diner",
+      "genre": "異世界・グルメ",
+      "description": "ダンジョン帰りの終電を待つ、小さな食堂。戦えない店主が迎えるのは、味を感じなくなった冒険者、帰る家をなくした騎士、仲間の分まで注文する客。一皿を食べ終えるまで、言えなかった話を。",
+      "cover_url": "/_cdn/static/13b2cc1c-50b3-4eda-83bc-3ffae9eccb56-manga-zero-diner-cover-new.jpg",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "生還者には、温かいものを",
+          "id": 6
+        }
+      ]
+    },
+    {
+      "title": "借り物スキルで最強まで",
+      "slug": "borrowed-skill",
+      "genre": "異世界・成長",
+      "description": "他人の技を借りられるのは、たった10分。代わりに消えるのは、自分の大切な記憶。追放された青年は、姉を救うため最初の剣技を借りた。戦いのあと、姉の声だけが思い出せなくなっていた。",
+      "cover_url": "/_cdn/static/81e62741-7ec2-43bd-a8e1-5bb0f8feb4d9-manga-zero-skill-cover-new.jpg",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "才能ゼロの10分間",
+          "id": 7
+        }
+      ]
+    },
+    {
+      "title": "青春リテイク",
+      "slug": "youth-retake",
+      "genre": "青春・恋愛",
+      "description": "28歳の俺に届いた、高校時代の自分からの手紙。後悔したあの日を、もう一度やり直せるなら。",
+      "cover_url": "/_cdn/static/5b74d4f7-4a42-42a3-bd7f-0b7eb77ba806-youth-retake-cover-v3.png",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "戻りたい日",
+          "id": 9
+        }
+      ]
+    },
+    {
+      "title": "最下層ダンジョン配信",
+      "slug": "lowest-dungeon-stream",
+      "genre": "ダンジョン・配信・成長",
+      "description": "再生数ほぼゼロの底辺配信者・リク。誰も踏み込まない最下層で、赤い狼に叩き飛ばされた先に待っていたのは、成長の常識そのものを変える赤いオーブだった。",
+      "cover_url": "/_cdn/static/619fb868-6323-4d70-8006-2d3f57bd3e73-lowest-dungeon-cover.png",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "深淵の赤い光",
+          "id": 11
+        }
+      ]
+    },
+    {
+      "title": "異世界で始める小さな雑貨屋さん",
+      "slug": "little-general-store",
+      "genre": "異世界・癒やし",
+      "description": "祖母の形見の鍵に導かれ、アリアがたどり着いたのは異世界の「星灯り雑貨店」。精霊ヒラとともに、訪れる人の想いに寄り添う贈り物を選んでいく。",
+      "cover_url": "/_cdn/static/8448cd7c-73df-4f35-b228-a75b8a9b63d8-little-general-store-aria-final-v2.png",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "はじまりの鍵",
+          "id": 14
+        }
+      ]
+    },
+    {
+      "title": "ブラックジャックによろしく",
+      "slug": "blackjack-ni-yoroshiku",
+      "genre": "医療・ヒューマンドラマ",
+      "description": "著作者：佐藤秀峰。永禄大学付属病院の研修医・斉藤英二郎が、医療現場の現実に向き合う物語。原稿提供：佐藤漫画製作所／電書バト（https://www.densho810.com/free/）。公式配布原稿を利用規約に基づき掲載。",
+      "cover_url": "/_cdn/static/blackjack-yoroshiku-v01-p001.jpg",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "第1巻（全209ページ）",
+          "id": 16
+        },
+        {
+          "episodeNumber": 2,
+          "title": "第2巻（全199ページ）",
+          "id": 17
+        },
+        {
+          "episodeNumber": 3,
+          "title": "第3巻（全221ページ）",
+          "id": 18
+        }
+      ]
+    },
+    {
+      "title": "ペッパー＆キャロット",
+      "slug": "pepper-and-carrot",
+      "genre": "ファンタジー・コメディ",
+      "description": "若い魔女ペッパーと猫キャロットの魔法と冒険の物語。原作・作画：David Revoy。日本語翻訳：guruguru（第1〜6話）。原作・翻訳：CC BY 4.0（https://creativecommons.org/licenses/by/4.0/）。出典：https://www.peppercarrot.com/ja/webcomics/peppercarrot.html 。原稿は日本語公式版を改変せず使用。MANGA ZEROは原作者・翻訳者とは無関係の再配布サイトです。",
+      "cover_url": "https://www.peppercarrot.com/0_sources/ep01_Potion-of-Flight/low-res/ja_Pepper-and-Carrot_by-David-Revoy_E01P00.jpg",
+      "episodes": [
+        {
+          "episodeNumber": 1,
+          "title": "飛行薬",
+          "id": 19
+        },
+        {
+          "episodeNumber": 2,
+          "title": "虹の薬",
+          "id": 20
+        },
+        {
+          "episodeNumber": 3,
+          "title": "秘密の材料",
+          "id": 21
+        },
+        {
+          "episodeNumber": 4,
+          "title": "天才のひらめき",
+          "id": 22
+        },
+        {
+          "episodeNumber": 5,
+          "title": "クリスマススペシャルエピソード",
+          "id": 23
+        },
+        {
+          "episodeNumber": 6,
+          "title": "魔法薬コンテスト",
+          "id": 24
+        }
+      ]
+    }
+  ]
+}
