@@ -71,6 +71,14 @@ def main():
                 assert "offline=1" in page.url
                 assert not blocked,f"Unexpected external requests: {blocked[:5]}"
                 assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1"),"Horizontal overflow"
+                page.goto(base+"/index.html?offline=1&preview=1")
+                page.locator(".card").first.wait_for()
+                assert page.locator(".cover").count()==0
+                page.locator(".card a").first.click()
+                assert "preview=1" in page.url
+                page.locator("#pages div").first.wait_for()
+                assert page.locator("#pages img").count()==0
+                assert not blocked
                 context.close()
                 print(f"PASS: {device} catalog, 209-page reader, navigation, strict offline requests")
             browser.close()
