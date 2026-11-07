@@ -29,6 +29,11 @@ def main():
     catalog_html=(ROOT/"index.html").read_text(encoding="utf-8")
     assert "asset-manifest.json" in reader and "asset-manifest.json" in catalog_html
     assert "reader.html?id=" in catalog_html
+    assert "offline=1" in reader and "offline=1" in catalog_html
+    assert "assetMap[u]||(offline?" in reader, "Reader offline mode must disable CDN fallback"
+    assert "(offline?'':" in catalog_html, "Catalog offline mode must disable CDN fallback"
+    assert 'id="prev"' in reader and 'id="next"' in reader
+    assert "verify_offline.py" in (ROOT/"README.md").read_text(encoding="utf-8")
     if empty: print(f"WARNING: episodes without image pages: {empty}")
     print(f"PASS: {len(works)} works, {len(ids)} episode records, complete volume chunks; {len(empty)} episodes have no image pages")
 if __name__=="__main__":main()
