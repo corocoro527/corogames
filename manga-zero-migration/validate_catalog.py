@@ -20,6 +20,7 @@ def main():
     assert len(ids)==len(set(ids))==24
     listed=[ep["id"] for w in works for ep in w["episodes"]]
     assert sorted(ids)==sorted(listed),(set(ids)-set(listed),set(listed)-set(ids))
-    empty=[ep["id"] for ep in episodes if not ep.get("images")]\n    if empty: print(f"WARNING: episodes without image pages: {empty}")
+    empty=[ep["id"] for ep in episodes if not ep.get("images")]
+    if empty: print(f"WARNING: episodes without image pages: {empty}")
     print(f"PASS: {len(works)} works, {len(ids)} episode records, complete volume chunks; {len(empty)} episodes have no image pages")
 if __name__=="__main__":main()
