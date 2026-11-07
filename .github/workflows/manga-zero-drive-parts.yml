@@ -28,8 +28,8 @@ jobs:
           root=Path('.')
           files=sorted(p for p in root.rglob('*') if p.is_file())
           assert files, 'No backup files'
-          groups=[[],[]]
-          sizes=[0,0]
+          groups=[[] for _ in range(8)]
+          sizes=[0]*8
           for p in sorted(files,key=lambda p:p.stat().st_size,reverse=True):
               i=sizes.index(min(sizes))
               groups[i].append(p)
@@ -38,9 +38,9 @@ jobs:
               out=Path('/tmp')/f'manga-zero-private-backup-part-{i}.zip'
               with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_STORED) as z:
                   for p in group:z.write(p,p.as_posix())
-              assert out.stat().st_size<500_000_000, f'Part {i} too large'
+              assert out.stat().st_size<95_000_000, f'Part {i} too large'
               print(out.name,out.stat().st_size,hashlib.sha256(out.read_bytes()).hexdigest())
-          Path('/tmp/backup-parts-manifest.json').write_text(json.dumps({'parts':2,'original_file_count':len(files),'original_total_bytes':sum(p.stat().st_size for p in files)},indent=2))
+          Path('/tmp/backup-parts-manifest.json').write_text(json.dumps({'parts':8,'original_file_count':len(files),'original_total_bytes':sum(p.stat().st_size for p in files)},indent=2))
           PY
       - uses: actions/upload-artifact@v4
         with:
@@ -52,6 +52,42 @@ jobs:
         with:
           name: manga-zero-private-backup-part-2
           path: /tmp/manga-zero-private-backup-part-2.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-3
+          path: /tmp/manga-zero-private-backup-part-3.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-4
+          path: /tmp/manga-zero-private-backup-part-4.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-5
+          path: /tmp/manga-zero-private-backup-part-5.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-6
+          path: /tmp/manga-zero-private-backup-part-6.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-7
+          path: /tmp/manga-zero-private-backup-part-7.zip
+          retention-days: 30
+          compression-level: 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-private-backup-part-8
+          path: /tmp/manga-zero-private-backup-part-8.zip
           retention-days: 30
           compression-level: 0
       - uses: actions/upload-artifact@v4
