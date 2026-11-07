@@ -38,6 +38,15 @@ jobs:
               p.write_text(content.replace(needle,'const preview=true;'))
           PY
           if grep -q "const preview=new URLSearchParams" /tmp/manga-zero-preview/*.html; then exit 1; fi
+          python3 - <<'PY'
+          from pathlib import Path
+          for p in Path('/tmp/manga-zero-preview').glob('*.html'):
+              s=p.read_text()
+              assert 'const preview=true;' in s, p
+              assert 'const preview=new URLSearchParams' not in s, p
+          assert not list(Path('/tmp/manga-zero-preview').rglob('backup-assets'))
+          print('PASS: preview package is image-free and preview mode is forced')
+          PY
           cat > /tmp/manga-zero-preview/README.txt <<'EOF'
           MANGA ZERO static preview, no bundled images.
           Serve this directory using: python3 -m http.server 8000
