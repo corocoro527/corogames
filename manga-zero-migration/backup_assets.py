@@ -38,11 +38,18 @@ def main():
         try:
             if not dest.exists() or dest.stat().st_size==0:
                 req=urllib.request.Request(src,headers={"User-Agent":"MangaZeroMigrationBackup/1.0"})
-                with urllib.request.urlopen(req,timeout=40) as resp:
-                    data=resp.read()
-                    if not (data.startswith(bytes.fromhex("ffd8ff")) or data.startswith(bytes.fromhex("89504e470d0a1a0a")) or data[:6] in (b"GIF87a",b"GIF89a") or (data.startswith(b"RIFF") and data[8:12]==b"WEBP")):raise ValueError("unsupported image signature")
-                dest.write_bytes(data)
-                time.sleep(.08)
+                for attempt in range(5):
+                    try:
+                        with urllib.request.urlopen(req,timeout=40) as resp:
+                            data=resp.read()
+                        if not (data.startswith(bytes.fromhex("ffd8ff")) or data.startswith(bytes.fromhex("89504e470d0a1a0a")) or data[:6] in (b"GIF87a",b"GIF89a") or (data.startswith(b"RIFF") and data[8:12]==b"WEBP")):
+                            raise ValueError("unsupported image signature")
+                        dest.write_bytes(data)
+                        break
+                    except Exception:
+                        if attempt==4: raise
+                        time.sleep(min(30,2**attempt*3))
+                time.sleep(.35)
             b=dest.read_bytes()
             report.append({"source":url,"file":filename,"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest()})
         except Exception as exc: errors.append({"url":url,"error":str(exc)})
