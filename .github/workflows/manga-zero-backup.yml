@@ -28,6 +28,12 @@ jobs:
           assert not report['errors'], report['errors'][:5]
           assert len(report['saved'])==report['totalUniqueReferences']==len(manifest['assets'])
           assert all((p/path).is_file() for path in manifest['assets'].values())
+          import sys
+          sys.path.insert(0,str(p))
+          from backup_assets import references
+          expected=set(references())
+          assert set(manifest['assets'])==expected, 'Missing source image references'
+          assert all((p/path).stat().st_size>0 for path in manifest['assets'].values())
           print(f"Verified offline package: {len(manifest['assets'])} images")
           PY
       - name: Upload asset backup artifact
