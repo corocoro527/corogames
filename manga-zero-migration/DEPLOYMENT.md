@@ -1,6 +1,6 @@
 # MANGA ZERO — static reader deployment checklist
 
-**Status:** preview package generated successfully; production has not been migrated. This guide is for the static catalog/reader only, not the original Floot backend.
+**Status:** complete offline archive and browser tests have passed; production has not been migrated. This guide is for the static catalog/reader only, not the original Floot backend.
 
 ## Artifact downloads
 - Static preview workflow: https://github.com/corocoro527/corogames/actions/workflows/manga-zero-preview.yml
@@ -34,6 +34,13 @@
 - Reuses verified offline artifact and checks actual image decoding in Chromium on desktop/mobile.
 - Successful image download and SHA256 verification are not substitutes for successful browser rendering.
 - Confirm this workflow is green before deploying; a queued or running workflow is **not** a pass.
+
+## Verified test evidence (2026-11-08)
+- Full-image browser workflow **passed**: https://github.com/corocoro527/corogames/actions/runs/42415090791
+- All 884 image hashes verified, and representative cover/page images decoded in Chromium on desktop and mobile. This is **not** a visual inspection of every individual page.
+- Updated same-series previous/next navigation browser regression **passed**: https://github.com/corocoro527/corogames/actions/runs/42415176718
+- Browser checks run against local HTTP and block requests outside the local site.
+- Production hosting and DNS remain untouched.
 
 ## Free hosting decision
 A static host such as GitHub Pages or Cloudflare Pages may be suitable for a rights-cleared catalog and reader. The full image archive is hundreds of megabytes, so check repository size, per-file limits, bandwidth, and durable storage before choosing a host. Do not deploy all images into the existing repository by default.
