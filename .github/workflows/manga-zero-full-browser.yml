@@ -1,0 +1,47 @@
+name: MANGA ZERO full offline image browser test
+on:
+  push:
+    branches: [manga-zero-migration]
+    paths:
+      - '.github/workflows/manga-zero-full-browser.yml'
+  workflow_dispatch:
+jobs:
+  full-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download verified complete offline package
+        uses: actions/download-artifact@v4
+        with:
+          name: manga-zero-complete-offline-site
+          run-id: 42414723367
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          path: /tmp/manga-full
+      - name: Restore verified image assets to current reader
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          src=Path('/tmp/manga-full')
+          matches=[p for p in src.rglob('backup-assets') if p.is_dir()]
+          assert matches, 'Complete offline archive has no backup-assets'
+          dest=Path('manga-zero-migration/backup-assets')
+          shutil.copytree(matches[0],dest,dirs_exist_ok=True)
+          for name in ('asset-manifest.json','asset-backup-report.json'):
+              found=list(src.rglob(name))
+              assert found,name
+              shutil.copy2(found[0],dest.parent/name)
+          PY
+      - name: Verify all 884 images and hashes
+        run: python3 manga-zero-migration/verify_offline.py
+      - name: Install Chromium
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Verify actual images render on desktop and mobile
+        run: python3 manga-zero-migration/browser_test.py
