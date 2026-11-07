@@ -65,3 +65,12 @@ Confirm hosting and redistribution rights for each work and all required attribu
 - Hosting URL verified and rollback plan documented
 
 **Do not update manga.koropopgames.com DNS until the above criteria pass.** Login, comments, uploads and administration require a separate backend migration.
+
+## GitHub Pages preview deployment blocker (2026-11-08)
+- Image-free preview ZIP and actual packaged Chromium tests passed: https://github.com/corocoro527/corogames/actions/runs/42415569989
+- GitHub Pages deployment from migration branch was rejected by the protected `github-pages` environment: https://github.com/corocoro527/corogames/actions/runs/42415655352
+- A separate `manga-zero-preview` environment was also rejected: GitHub Pages accepts deployments from `main` only in the current repository settings: https://github.com/corocoro527/corogames/actions/runs/42415703635
+- To prevent repeated failures, Pages preview workflow is manual-only. No production Pages configuration, main branch, or DNS was changed.
+- **Next authorized setup step:** In repository Settings > Environments > github-pages, explicitly allow `manga-zero-migration` as a deployment branch, and verify Settings > Pages > Build and deployment uses GitHub Actions. Then manually run `MANGA ZERO image-free GitHub Pages preview` on the migration branch. Alternatively provision a separate free static-hosting project with no existing site dependencies.
+- The intended GitHub Pages path is `/manga-zero-preview/` under the repository's Pages URL. Do not claim it is live until an actual successful deployment and HTTP check.
+- GitHub Pages is a repository-level site; even a separate subpath can affect an existing Pages deployment. Inspect existing Pages setup before enabling it. Prefer a dedicated host for zero interference.
