@@ -1,0 +1,31 @@
+name: MANGA ZERO browser smoke tests
+on:
+  push:
+    branches: [manga-zero-migration]
+    paths:
+      - 'manga-zero-migration/*.html'
+      - 'manga-zero-migration/*.json'
+      - 'manga-zero-migration/volumes/**'
+      - '.github/workflows/manga-zero-browser.yml'
+  workflow_dispatch:
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Chromium browser test runtime
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+      - name: Test desktop and mobile reader
+        run: python3 manga-zero-migration/browser_test.py
+      - name: Upload browser screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-browser-debug
+          path: /tmp/manga-zero-browser/
+          if-no-files-found: ignore
