@@ -18,3 +18,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check catalog, episode IDs, page ordering and reader assets
         run: python3 manga-zero-migration/validate_catalog.py
+      - name: Check embedded JavaScript syntax in catalog and reader
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for name in ('index.html','reader.html'):
+              html=(Path('manga-zero-migration')/name).read_text()
+              scripts=re.findall(r'<script(?:\\s[^>]*)?>(.*?)</script>',html,re.S|re.I)
+              assert scripts, f'No inline scripts in {name}'
+              for i,script in enumerate(scripts):
+                  Path(f'/tmp/manga-{name}-{i}.js').write_text(script)
+          PY
+          for file in /tmp/manga-*.js; do node --check "$file"; done
