@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check catalog, episode IDs, page ordering and reader assets
         run: python3 manga-zero-migration/validate_catalog.py
+      - name: Check offline backup Python syntax
+        run: python3 -m py_compile manga-zero-migration/verify_offline.py manga-zero-migration/backup_assets.py
       - name: Check embedded JavaScript syntax in catalog and reader
         run: |
           python3 - <<'PY'
