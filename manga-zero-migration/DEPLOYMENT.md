@@ -8,6 +8,14 @@
 - Workflow artifacts expire after 30 days; copy verified backups to durable private storage.
 - The preview ZIP has no image files and cannot independently display the manga.
 
+## Confirmed full offline artifact (2026-11-08)
+- GitHub Actions run: https://github.com/corocoro527/corogames/actions/runs/42414723367
+- Artifact ID: `13591270258` (`manga-zero-complete-offline-site`)
+- Artifact ZIP size: 578,713,628 bytes
+- GitHub retention expiry: 2026-12-07 (UTC)
+- Download the artifact and retain at least two private copies before expiry. GitHub Actions artifacts are not permanent hosting.
+- Integrity verification passed in CI for all 884 referenced images; this does not establish public redistribution rights.
+
 ## Validate a complete offline package
 1. Download the **successful** full backup artifact (not a failed partial backup).
 2. Extract while preserving the `backup-assets/` folder and manifest paths.
