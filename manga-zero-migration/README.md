@@ -22,6 +22,17 @@ Without `asset-manifest.json` and `backup-assets/`, image URLs may fall back to 
 ## Offline image package
 The `MANGA ZERO public asset backup` GitHub Actions workflow runs `validate_catalog.py`, downloads images, builds `asset-manifest.json` and uploads an artifact containing the static reader and image files. Only call it a complete offline backup when the job's validation and image steps succeed. Download the artifact, extract it preserving directory structure, and serve the resulting folder locally.
 
+## Verify an extracted offline package
+Extract the full artifact with its folder structure intact, then run:
+
+```sh
+cd manga-zero-migration
+python3 verify_offline.py
+python3 -m http.server 8000
+```
+
+Visit `http://localhost:8000/?offline=1`. The standalone verifier checks every expected image, exact byte size and SHA256, and required site files without contacting Floot. Only a `PASS` result establishes package integrity.
+
 ## What is not migrated
 Authentication, user accounts, comments, creator submissions, administration, original server APIs, and private database records are **not implemented** in the static reader. Do not present this prototype as a full feature-for-feature migration.
 
