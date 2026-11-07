@@ -74,3 +74,11 @@ Confirm hosting and redistribution rights for each work and all required attribu
 - **Next authorized setup step:** In repository Settings > Environments > github-pages, explicitly allow `manga-zero-migration` as a deployment branch, and verify Settings > Pages > Build and deployment uses GitHub Actions. Then manually run `MANGA ZERO image-free GitHub Pages preview` on the migration branch. Alternatively provision a separate free static-hosting project with no existing site dependencies.
 - The intended GitHub Pages path is `/manga-zero-preview/` under the repository's Pages URL. Do not claim it is live until an actual successful deployment and HTTP check.
 - GitHub Pages is a repository-level site; even a separate subpath can affect an existing Pages deployment. Inspect existing Pages setup before enabling it. Prefer a dedicated host for zero interference.
+
+## Google Drive private-backup recovery verified (2026-11-08)
+- Eight private ZIP artifacts (each ~73.6 MB) were uploaded to the user's Google Drive. Google Drive metadata confirmed all eight exist with owner-only permissions.
+- All eight files were subsequently fetched **back from Google Drive**, inspected as nested ZIPs, and extracted in a separate verification runtime.
+- Verified 8/8 outer ZIP CRC tests, 8/8 inner ZIP CRC tests, 911 restored files with no duplicate names, 884/884 image byte sizes and SHA-256 hashes matching `asset-backup-report.json`, and zero missing/mismatched image assets or backup report errors.
+- Each Google Drive file contains an **outer GitHub Actions artifact ZIP** with one inner `manga-zero-private-backup-part-N.zip`. Recovery requires unpacking both layers, then combining the inner archives into a single directory.
+- Backup is now durable independently of GitHub Actions retention, subject to continued access to the user's private Drive. This does not grant public redistribution rights.
+- Hosting remains blocked: no isolated public preview URL is verified, and existing Pages settings, main branch and DNS must not be changed without ensuring no disruption.
