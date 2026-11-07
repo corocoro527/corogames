@@ -1,5 +1,9 @@
 name: MANGA ZERO repackage verified image backup
 on:
+  push:
+    branches: [manga-zero-migration]
+    paths:
+      - '.github/workflows/manga-zero-repackage.yml'
   workflow_dispatch:
 jobs:
   repackage:
