@@ -1,0 +1,86 @@
+name: MANGA ZERO repackage verified image backup
+on:
+  workflow_dispatch:
+jobs:
+  repackage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Retrieve previous successful 884-image backup
+        uses: actions/download-artifact@v4
+        with:
+          name: manga-zero-public-assets
+          run-id: 42411682898
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          path: /tmp/manga-old-backup
+      - name: Merge saved images with current static reader
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          root=Path('manga-zero-migration')
+          old=Path('/tmp/manga-old-backup')
+          dirs=[p for p in old.rglob('backup-assets') if p.is_dir()]
+          assert dirs, f'No backup-assets directory found: {list(old.iterdir())}'
+          src=max(dirs,key=lambda p:len(list(p.iterdir())))
+          dest=root/'backup-assets'
+          dest.mkdir(exist_ok=True)
+          for image in src.iterdir():
+              if image.is_file(): shutil.copy2(image,dest/image.name)
+          print('Recovered',len(list(dest.iterdir())),'files')
+          PY
+      - name: Reconstruct report and manifest from recovered files
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,sys
+          from pathlib import Path
+          root=Path('manga-zero-migration')
+          sys.path.insert(0,str(root))
+          from backup_assets import references
+          from urllib.parse import urlparse
+          saved=[]
+          errors=[]
+          for url in sorted(set(references())):
+              if url.startswith('/_cdn/static/'):
+                  filename=url.removeprefix('/_cdn/static/')
+              elif url.startswith('https://'):
+                  filename='external-'+hashlib.sha256(url.encode()).hexdigest()[:16]+'-'+Path(urlparse(url).path).name
+              else:
+                  errors.append({'url':url,'error':'unsupported URL'});continue
+              path=root/'backup-assets'/filename
+              if not path.is_file() or path.stat().st_size==0:
+                  errors.append({'url':url,'error':'missing recovered file'});continue
+              data=path.read_bytes()
+              saved.append({'source':url,'file':filename,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          (root/'asset-backup-report.json').write_text(json.dumps({'totalUniqueReferences':len(set(references())),'saved':saved,'errors':errors},indent=2))
+          (root/'asset-manifest.json').write_text(json.dumps({'assets':{x['source']:'backup-assets/'+x['file'] for x in saved}},indent=2))
+          print('Recovered',len(saved),'images;',len(errors),'missing')
+          assert not errors,errors[:5]
+          PY
+      - name: Verify full offline package and local HTTP
+        run: |
+          python3 manga-zero-migration/verify_offline.py
+          python3 manga-zero-migration/validate_catalog.py
+          python3 manga-zero-migration/smoke_test.py
+      - name: Upload independently usable offline site
+        uses: actions/upload-artifact@v4
+        with:
+          name: manga-zero-complete-offline-site
+          retention-days: 30
+          path: |
+            manga-zero-migration/backup-assets/
+            manga-zero-migration/asset-backup-report.json
+            manga-zero-migration/asset-manifest.json
+            manga-zero-migration/backup_assets.py
+            manga-zero-migration/verify_offline.py
+            manga-zero-migration/index.html
+            manga-zero-migration/reader.html
+            manga-zero-migration/public-catalog.json
+            manga-zero-migration/episodes-original.json
+            manga-zero-migration/episodes-remaining.json
+            manga-zero-migration/volumes/
