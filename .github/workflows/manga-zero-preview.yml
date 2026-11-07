@@ -54,6 +54,40 @@ jobs:
           In preview mode, image placeholders are expected because this package contains no images.\n          This preview package permanently disables image loads, even without query parameters.
           This package is NOT an independent complete deployment.
           EOF
+      - name: Test packaged preview in Chromium without image requests
+        run: |
+          python3 -m pip install playwright
+          python3 -m playwright install --with-deps chromium
+          python3 - <<'PY'
+          from pathlib import Path
+          import http.server, socketserver, threading
+          from playwright.sync_api import sync_playwright
+          root=Path('/tmp/manga-zero-preview')
+          class Handler(http.server.SimpleHTTPRequestHandler):
+              def __init__(self,*a,**kw): super().__init__(*a,directory=str(root),**kw)
+              def log_message(self,*a): pass
+          class Server(socketserver.ThreadingTCPServer): allow_reuse_address=True
+          with Server(('127.0.0.1',0),Handler) as server:
+              threading.Thread(target=server.serve_forever,daemon=True).start()
+              base=f'http://127.0.0.1:{server.server_address[1]}'
+              with sync_playwright() as pw:
+                  browser=pw.chromium.launch()
+                  for width in (390,1280):
+                      page=browser.new_page(viewport={'width':width,'height':800})
+                      images=[]
+                      page.on('request',lambda req: images.append(req.url) if req.resource_type=='image' else None)
+                      page.goto(base+'/index.html')
+                      assert page.locator('.card').count()==12
+                      assert page.locator('.cover').count()==0
+                      page.locator('.card a').first.click()
+                      page.locator('#pages div').first.wait_for()
+                      assert page.locator('#pages img').count()==0
+                      assert not images, images
+                      page.close()
+                  browser.close()
+              server.shutdown()
+          print('PASS: packaged preview never requests images on desktop or mobile')
+          PY
       - name: Upload preview package
         uses: actions/upload-artifact@v4
         with:
