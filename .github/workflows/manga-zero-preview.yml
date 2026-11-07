@@ -30,8 +30,8 @@ jobs:
           cat > /tmp/manga-zero-preview/README.txt <<'EOF'
           MANGA ZERO static preview, no bundled images.
           Serve this directory using: python3 -m http.server 8000
-          Then open: http://localhost:8000/?offline=1
-          In offline mode, image placeholders are expected because this package contains no images.
+          Then open: http://localhost:8000/?offline=1&preview=1
+          In preview mode, image placeholders are expected because this package contains no images.\n          Do not remove preview=1 when publicly serving this package; otherwise source CDN fallback may occur.
           This package is NOT an independent complete deployment.
           EOF
       - name: Upload preview package
