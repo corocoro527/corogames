@@ -61,7 +61,10 @@ def main():
                 page.goto(base+"/reader.html?id=16&offline=1")
                 page.locator("#pages img, #pages div").first.wait_for()
                 page.locator("#next").click()
-                assert page.locator("#episode").input_value()!="16"
+                assert page.locator("#episode").input_value()=="17"
+                page.goto(base+"/reader.html?id=18&offline=1")
+                page.locator("#next").wait_for()
+                assert page.locator("#next").is_disabled(), "Last volume must not navigate into another manga"
                 assert "offline=1" in page.url
                 assert not blocked,f"Unexpected external requests: {blocked[:5]}"
                 assert page.evaluate("document.documentElement.scrollWidth <= window.innerWidth + 1"),"Horizontal overflow"
