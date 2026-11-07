@@ -40,7 +40,7 @@ def main():
                 req=urllib.request.Request(src,headers={"User-Agent":"MangaZeroMigrationBackup/1.0"})
                 with urllib.request.urlopen(req,timeout=40) as resp:
                     data=resp.read()
-                    if not resp.headers.get("content-type","").startswith("image/"):raise ValueError("not an image")
+                    if not (data.startswith(bytes.fromhex("ffd8ff")) or data.startswith(bytes.fromhex("89504e470d0a1a0a")) or data[:6] in (b"GIF87a",b"GIF89a") or (data.startswith(b"RIFF") and data[8:12]==b"WEBP")):raise ValueError("unsupported image signature")
                 dest.write_bytes(data)
                 time.sleep(.08)
             b=dest.read_bytes()
